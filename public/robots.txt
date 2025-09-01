@@ -19,7 +19,6 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
 Disallow: /cgi-bin/
-Disallow: /assets/private/
 
 # Allow essential resources
 Allow: /assets/
@@ -31,32 +30,5 @@ Allow: /*.gif$
 Allow: /*.svg$
 Allow: /favicon.ico
 Allow: /apple-touch-icon.png
-Allow: /favicon-16x16.png
-Allow: /favicon-32x32.png
-Allow: /android-chrome-192x192.png
-Allow: /android-chrome-512x512.png
-Allow: /site.webmanifest
 Allow: /sitemap.xml
 Allow: /robots.txt
-
-# Service pages
-Allow: /services/
-Allow: /blog/
-Allow: /contact/
-Allow: /about/
-Allow: /pricing/
-Allow: /locations/
-Allow: /charlotte-computer-repair/
-Allow: /matthews-computer-repair/
-Allow: /indian-trail-computer-repair/
-Allow: /mint-hill-computer-repair/
-Allow: /monroe-computer-repair/
-Allow: /smartphone-screen-repair-charlotte/
-Allow: /tablet-ipad-repair/
-Allow: /smart-tv-repair/
-Allow: /printer-router-repair/
-Allow: /pcb-micro-soldering/
-Allow: /appliance-electronics-repair/
-Allow: /nintendo-switch-repair/
-Allow: /graphic-design/
-Allow: /remote-assistance/

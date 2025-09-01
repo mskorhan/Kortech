@@ -22,7 +22,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   keywords,
   canonicalUrl,
   schema,
-  ogImage = "https://www.kortechservice.com/transparent-logo-1.png",
+  ogImage = "/og/kortech-home-1200x630.jpg",
   ogType = "website",
   ogUrl,
   twitterCard = "summary_large_image",
@@ -30,10 +30,28 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   service
 }) => {
   const currentLocation = useLocation();
-  // Clean canonical URL - remove parameters and ensure proper format
-  const cleanCanonicalPath = canonicalUrl ? canonicalUrl.split('?')[0].split('#')[0] : currentLocation.pathname.split('?')[0].split('#')[0];
-  const fullCanonicalUrl = `https://www.kortechservice.com${cleanCanonicalPath}`;
+  
+  // Generate absolute canonical URL
+  const generateCanonicalUrl = () => {
+    if (canonicalUrl) {
+      // If canonicalUrl is already absolute, use it as-is
+      if (canonicalUrl.startsWith('http')) {
+        return canonicalUrl;
+      }
+      // If relative, make it absolute
+      const cleanPath = canonicalUrl.split('?')[0].split('#')[0];
+      return `https://www.kortechservice.com${cleanPath}`;
+    }
+    // Default to current pathname if no canonicalUrl provided
+    const cleanPath = currentLocation.pathname.split('?')[0].split('#')[0];
+    return `https://www.kortechservice.com${cleanPath}`;
+  };
+  
+  const fullCanonicalUrl = generateCanonicalUrl();
   const fullOgUrl = ogUrl || fullCanonicalUrl || `https://www.kortechservice.com${currentLocation.pathname}`;
+  
+  // Generate absolute OG image URL
+  const fullOgImage = ogImage.startsWith('http') ? ogImage : `https://www.kortechservice.com${ogImage}`;
   
   // Dynamic title and description based on page
   const dynamicTitle = title || 'KorTech Service • Computer Repair Charlotte NC';
@@ -91,7 +109,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       {fullOgUrl && <meta property="og:url" content={fullOgUrl} />}
       <meta property="og:title" content={dynamicTitle} />
       <meta property="og:description" content={dynamicDescription} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={fullOgImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content="KorTech Service" />
@@ -101,7 +119,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={dynamicTitle} />
       <meta name="twitter:description" content={dynamicDescription} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image" content={fullOgImage} />
       <meta name="twitter:site" content="@kortechservice" />
       <meta name="twitter:creator" content="@kortechservice" />
       

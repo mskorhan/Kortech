@@ -1,0 +1,105 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "KorTech Service",
+  "logo": "https://www.kortechservice.com/transparent-logo-1.png",
+  "image": "https://www.kortechservice.com/transparent-logo-1.png",
+  "description": "Professional computer repair Charlotte NC. Mac & PC repair, virus removal, data recovery & IT support. Same-day service. Call 704-246-7642 for free quote!",
+  "url": "https://www.kortechservice.com",
+  "telephone": "704-246-7642",
+  "hasMap": "https://www.google.com/maps/place/Kortech+Service/@35.14047,-80.7400749,17z",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1721 Sardis Rd N, Suite 7A",
+    "addressLocality": "Charlotte",
+    "addressRegion": "NC",
+    "postalCode": "28270",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "35.14047",
+    "longitude": "-80.7400749"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "704-246-7642",
+    "contactType": "customer service",
+    "areaServed": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Monroe, NC"],
+    "availableLanguage": "English"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "11:00",
+      "closes": "16:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "96"
+  },
+  "serviceArea": [
+    "Charlotte, NC",
+    "Matthews, NC",
+    "Indian Trail, NC", 
+    "Mint Hill, NC",
+    "Monroe, NC",
+    "Pineville, NC",
+    "Ballantyne, NC"
+  ],
+  "sameAs": [
+    "https://www.facebook.com/KortechService/",
+    "https://www.instagram.com/kortechservices",
+    "https://twitter.com/kortechservice",
+    "https://www.linkedin.com/company/kortechservice",
+    "https://www.youtube.com/@kortechservice",
+    "https://g.page/kortechservice"
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Computer Repair",
+        "description": "Professional Mac & PC repair services"
+      },
+      "areaServed": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Monroe, NC"]
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Data Recovery",
+        "description": "Professional data recovery from failed drives"
+      },
+      "areaServed": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Monroe, NC"]
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Smartphone Repair",
+        "description": "iPhone and Android repair services"
+      },
+      "areaServed": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Monroe, NC"]
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Gaming Console Repair",
+        "description": "PS5, Xbox, and Nintendo Switch repair"
+      },
+      "areaServed": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Monroe, NC"]
+    }
+  ]
+}
