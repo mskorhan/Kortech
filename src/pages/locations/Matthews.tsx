@@ -67,7 +67,7 @@ const Matthews = () => {
       "@type": "LocalBusiness",
       "name": "KorTech Service - Matthews Computer Repair",
       "description": "Professional computer repair, data recovery, and IT support services serving Matthews, NC. Expert technicians providing quality service to Matthews residents since 1998.",
-      "url": "https://kortechservice.com/matthews-computer-repair",
+      "url": "https://www.kortechservice.com/matthews-computer-repair",
       "telephone": "704-246-7642",
       "address": {
         "@type": "PostalAddress",

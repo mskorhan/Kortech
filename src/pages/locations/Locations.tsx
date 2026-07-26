@@ -56,8 +56,8 @@ const Locations = () => {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "KorTech Service",
-      "url": "https://kortechservice.com",
-      "logo": "https://kortechservice.com/transparent-logo-1.png",
+      "url": "https://www.kortechservice.com",
+      "logo": "https://www.kortechservice.com/transparent-logo-1.png",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "704-246-7642",

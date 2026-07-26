@@ -68,7 +68,7 @@ const Monroe = () => {
       "@type": "LocalBusiness",
       "name": "KorTech Service - Monroe Computer Repair",
       "description": "Professional computer repair, data recovery, and IT support services serving Monroe, NC. Expert technicians providing quality service with pickup and delivery.",
-      "url": "https://kortechservice.com/monroe-computer-repair",
+      "url": "https://www.kortechservice.com/monroe-computer-repair",
       "telephone": "704-246-7642",
       "address": {
         "@type": "PostalAddress",

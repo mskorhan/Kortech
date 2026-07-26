@@ -15,7 +15,7 @@ const TermsConditions = () => {
       "@type": "WebPage",
       "name": "Terms and Conditions",
       "description": "Terms and conditions for KorTech Service computer repair and IT support services in Charlotte, NC.",
-      "url": "https://kortechservice.com/terms"
+      "url": "https://www.kortechservice.com/terms"
     }
   ];
 
@@ -121,7 +121,7 @@ const TermsConditions = () => {
                   </div>
                   <div>
                     <p><strong>Email:</strong> info@kortechservice.com</p>
-                    <p><strong>Website:</strong> https://kortechservice.com</p>
+                    <p><strong>Website:</strong> https://www.kortechservice.com</p>
                     <p><strong>Hours:</strong> Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
                     <p><strong>Established:</strong> 1998</p>
                   </div>
@@ -451,7 +451,7 @@ const TermsConditions = () => {
             
             <p className="text-sm text-slate-600 mt-8">
               Last updated: January 2025. These terms and conditions are subject to change. 
-              Current version is always available at https://kortechservice.com/terms
+              Current version is always available at https://www.kortechservice.com/terms
             </p>
           </div>
           

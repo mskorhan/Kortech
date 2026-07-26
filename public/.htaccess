@@ -27,14 +27,6 @@ RewriteCond %{REQUEST_URI} !\.(js|css|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|e
 RewriteRule ^ index.html [L]
 
 # ------------------------------------------
-# ✅ Allow and Optimize for Search Engine Bots
-# ------------------------------------------
-<IfModule mod_rewrite.c>
-  RewriteCond %{HTTP_USER_AGENT} !(googlebot|bingbot|slurp|duckduckbot|baiduspider|yandex|facebookexternalhit|twitterbot|openai|chatgpt|linkedinbot|applebot|petalbot|semrushbot|ahrefsbot|mj12bot) [NC]
-  RewriteRule .* - [E=BOTBLOCK:1]
-</IfModule>
-
-# ------------------------------------------
 # ✅ GZIP Compression
 # ------------------------------------------
 <IfModule mod_deflate.c>

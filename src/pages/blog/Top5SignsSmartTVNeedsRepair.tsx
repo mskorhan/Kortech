@@ -28,7 +28,7 @@ const Top5SignsSmartTVNeedsRepair = () => {
         "name": "KorTech Service",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://kortechservice.com/transparent-logo-1.png"
+          "url": "https://www.kortechservice.com/transparent-logo-1.png"
         }
       },
       "datePublished": "2025-01-30",

@@ -20,7 +20,7 @@ const Contact = () => {
       "@type": "ContactPage",
       "name": "Contact KorTech Service - Charlotte Computer Repair",
       "description": "Contact KorTech Service for professional computer repair in Charlotte, NC. Visit our shop, call, or text for same-day service.",
-      "url": "https://kortechservice.com/contact"
+      "url": "https://www.kortechservice.com/contact"
     }
   ];
 

@@ -8,7 +8,9 @@ import {
   Mail,
   MessageSquare,
   FileText,
-  Info
+  Info,
+  Eye,
+  EyeOff
 } from 'lucide-react';
 
 const MailInForm = () => {
@@ -18,7 +20,7 @@ const MailInForm = () => {
       "@type": "WebPage",
       "name": "Mail-In Repair Form",
       "description": "Complete mail-in repair form for shipping your device to KorTech Service for professional computer repair.",
-      "url": "https://kortechservice.com/mail-in-form"
+      "url": "https://www.kortechservice.com/mail-in-form"
     }
   ];
 
@@ -44,6 +46,7 @@ const MailInForm = () => {
   
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -277,7 +280,7 @@ const MailInForm = () => {
       </head>
       <body>
         <div class="header">
-          <img src="https://kortechservice.com/transparent-logo-1.png" alt="KorTech Service Logo" class="logo">
+          <img src="https://www.kortechservice.com/transparent-logo-1.png" alt="KorTech Service Logo" class="logo">
           <div class="company-name">KorTech Service</div>
           <div class="contact-info">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</div>
           <div class="contact-info">Phone: 704-246-7642 | Text: 980-888-5300 | Email: info@kortechservice.com</div>
@@ -583,11 +586,12 @@ const MailInForm = () => {
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">
                         Full Name *
                       </label>
                       <input
                         type="text"
+                        id="fullName"
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleChange}
@@ -597,11 +601,12 @@ const MailInForm = () => {
                       {errors.fullName && <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                         Email Address *
                       </label>
                       <input
                         type="email"
+                        id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
@@ -611,11 +616,12 @@ const MailInForm = () => {
                       {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                         Phone Number *
                       </label>
                       <input
                         type="tel"
+                        id="phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
@@ -625,11 +631,12 @@ const MailInForm = () => {
                       {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
                         Street Address
                       </label>
                       <input
                         type="text"
+                        id="address"
                         name="address"
                         value={formData.address}
                         onChange={handleChange}
@@ -638,11 +645,12 @@ const MailInForm = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">
                         City
                       </label>
                       <input
                         type="text"
+                        id="city"
                         name="city"
                         value={formData.city}
                         onChange={handleChange}
@@ -651,11 +659,12 @@ const MailInForm = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-1">
                         State
                       </label>
                       <input
                         type="text"
+                        id="state"
                         name="state"
                         value={formData.state}
                         onChange={handleChange}
@@ -664,11 +673,12 @@ const MailInForm = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="zip" className="block text-sm font-medium text-gray-700 mb-1">
                         ZIP Code
                       </label>
                       <input
                         type="text"
+                        id="zip"
                         name="zip"
                         value={formData.zip}
                         onChange={handleChange}
@@ -678,7 +688,7 @@ const MailInForm = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Device Information */}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
@@ -687,10 +697,11 @@ const MailInForm = () => {
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="deviceType" className="block text-sm font-medium text-gray-700 mb-1">
                         Device Type *
                       </label>
                       <select
+                        id="deviceType"
                         name="deviceType"
                         value={formData.deviceType}
                         onChange={handleChange}
@@ -709,11 +720,12 @@ const MailInForm = () => {
                       {errors.deviceType && <p className="mt-1 text-sm text-red-600">{errors.deviceType}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="deviceBrand" className="block text-sm font-medium text-gray-700 mb-1">
                         Brand
                       </label>
                       <input
                         type="text"
+                        id="deviceBrand"
                         name="deviceBrand"
                         value={formData.deviceBrand}
                         onChange={handleChange}
@@ -722,11 +734,12 @@ const MailInForm = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="deviceModel" className="block text-sm font-medium text-gray-700 mb-1">
                         Model
                       </label>
                       <input
                         type="text"
+                        id="deviceModel"
                         name="deviceModel"
                         value={formData.deviceModel}
                         onChange={handleChange}
@@ -735,11 +748,12 @@ const MailInForm = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="serialNumber" className="block text-sm font-medium text-gray-700 mb-1">
                         Serial Number
                       </label>
                       <input
                         type="text"
+                        id="serialNumber"
                         name="serialNumber"
                         value={formData.serialNumber}
                         onChange={handleChange}
@@ -748,19 +762,32 @@ const MailInForm = () => {
                       />
                     </div>
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                         Device Password
                       </label>
-                      <input
-                        type="text"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Password for administrator account"
-                      />
+                      <div className="relative">
+                        <input
+                          type={showPassword ? 'text' : 'password'}
+                          id="password"
+                          name="password"
+                          value={formData.password}
+                          onChange={handleChange}
+                          className="w-full px-4 py-2 pr-11 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          placeholder="Password for administrator account"
+                          autoComplete="off"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-gray-700"
+                          aria-label={showPassword ? 'Hide password' : 'Show password'}
+                        >
+                          {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                        </button>
+                      </div>
                       <p className="mt-1 text-xs text-gray-500">
                         We need this to access your device for diagnostics. If you're not comfortable sharing, you can create a temporary admin account.
+                        This information stays in your browser only for printing this form — it is never transmitted or stored on our servers.
                       </p>
                     </div>
                   </div>
@@ -773,10 +800,11 @@ const MailInForm = () => {
                     Problem Description
                   </h3>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="problemDescription" className="block text-sm font-medium text-gray-700 mb-1">
                       Describe the issue with your device *
                     </label>
                     <textarea
+                      id="problemDescription"
                       name="problemDescription"
                       value={formData.problemDescription}
                       onChange={handleChange}

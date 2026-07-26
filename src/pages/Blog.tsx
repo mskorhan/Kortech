@@ -171,13 +171,13 @@ const Blog = () => {
       "@type": "Blog",
       "name": "KorTech Service Blog",
       "description": "Expert computer repair tips, guides, and tech insights from Charlotte's trusted IT professionals",
-      "url": "https://kortechservice.com/blog",
+      "url": "https://www.kortechservice.com/blog",
       "publisher": {
         "@type": "Organization",
         "name": "KorTech Service",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://kortechservice.com/transparent-logo-1.png"
+          "url": "https://www.kortechservice.com/transparent-logo-1.png"
         }
       }
     }

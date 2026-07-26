@@ -68,7 +68,7 @@ const MintHill = () => {
       "@type": "LocalBusiness",
       "name": "KorTech Service - Mint Hill Computer Repair",
       "description": "Professional computer repair, data recovery, and IT support services serving Mint Hill, NC. Expert technicians providing quality service with pickup and delivery.",
-      "url": "https://kortechservice.com/mint-hill-computer-repair",
+      "url": "https://www.kortechservice.com/mint-hill-computer-repair",
       "telephone": "704-246-7642",
       "address": {
         "@type": "PostalAddress",

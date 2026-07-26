@@ -21,7 +21,7 @@ const About = () => {
       "@type": "AboutPage",
       "name": "About KorTech Service - Charlotte Computer Repair",
       "description": "Learn about KorTech Service, Charlotte's trusted computer repair company since 1998. Professional Mac & PC repair, data recovery, and IT support.",
-      "url": "https://kortechservice.com/about",
+      "url": "https://www.kortechservice.com/about",
       "mainEntity": {
         "@type": "LocalBusiness",
         "name": "KorTech Service",

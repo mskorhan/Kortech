@@ -68,7 +68,7 @@ const Charlotte = () => {
       "@type": "LocalBusiness",
       "name": "KorTech Service - Charlotte Computer Repair",
       "description": "Professional computer repair, data recovery, and IT support services in Charlotte, NC. Serving Charlotte residents and businesses since 1998.",
-      "url": "https://kortechservice.com/charlotte-computer-repair",
+      "url": "https://www.kortechservice.com/charlotte-computer-repair",
       "telephone": "704-246-7642",
       "address": {
         "@type": "PostalAddress",
