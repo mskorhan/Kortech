@@ -38,6 +38,7 @@ jobs:
           if ! git diff --quiet -- src/data/reviews.json; then
             git add src/data/reviews.json
             git commit -m "chore: update Google reviews data"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
             git push
           else
             echo "No changes to reviews data."
