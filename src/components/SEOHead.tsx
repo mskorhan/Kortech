@@ -22,7 +22,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   keywords,
   canonicalUrl,
   schema,
-  ogImage = "https://www.kortechservice.com/assets/og-image.png",
+  ogImage = "https://www.kortechservice.com/transparent-logo-1.png",
   ogType = "website",
   ogUrl,
   twitterCard = "summary_large_image",
@@ -99,7 +99,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={dynamicTitle} />
       <meta name="twitter:description" content={dynamicDescription} />
-      <meta name="twitter:image" content={ogImage.replace('og-image', 'twitter-image')} />
+      <meta name="twitter:image" content={ogImage} />
       <meta name="twitter:site" content="@kortechservice" />
       <meta name="twitter:creator" content="@kortechservice" />
       
