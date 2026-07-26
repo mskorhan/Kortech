@@ -30,9 +30,12 @@ const StickyCTA: React.FC<StickyCTAProps> = ({
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed bottom-0 left-0 right-0 z-50 bg-white border-t-2 border-blue-500 shadow-2xl transform transition-transform duration-300 ${
-      showOnMobile ? 'block' : 'hidden'
-    } ${showOnDesktop ? 'lg:block' : 'lg:hidden'}`}>
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-50 bg-white border-t-2 border-blue-500 shadow-2xl transform transition-transform duration-300 ${
+        showOnMobile ? 'block' : 'hidden'
+      } ${showOnDesktop ? 'lg:block' : 'lg:hidden'}`}
+      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+    >
       <div className="max-w-7xl mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex-1">

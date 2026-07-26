@@ -10,6 +10,7 @@ const Navbar: React.FC = () => {
 
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
   const servicesButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -71,6 +72,23 @@ const Navbar: React.FC = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return;
+
+      if (isServicesDropdownOpen) {
+        setIsServicesDropdownOpen(false);
+        setIsServicesDropdownClicked(false);
+        servicesButtonRef.current?.focus();
+      } else if (isOpen) {
+        setIsOpen(false);
+        mobileMenuButtonRef.current?.focus();
+      }
+    }
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isServicesDropdownOpen, isOpen]);
+
   return (
     <>
       <nav className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
@@ -100,6 +118,9 @@ const Navbar: React.FC = () => {
                   ref={servicesButtonRef}
                   onClick={toggleServicesDropdown}
                   onMouseDown={(e) => e.stopPropagation()}
+                  aria-expanded={isServicesDropdownOpen}
+                  aria-controls="desktop-services-menu"
+                  aria-haspopup="true"
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-1 ${
                     isActive('/services') || servicePages.some(s => isActive(s.path))
                       ? 'text-brand-primary bg-blue-50'
@@ -116,6 +137,7 @@ const Navbar: React.FC = () => {
 
                 {isServicesDropdownOpen && (
                   <div
+                    id="desktop-services-menu"
                     ref={servicesDropdownRef}
                     onMouseDown={(e) => e.stopPropagation()}
                     className="services-dropdown absolute top-full left-0 mt-1 w-64 max-h-[80vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-100 py-3 z-50 backdrop-blur-sm"
@@ -222,7 +244,11 @@ const Navbar: React.FC = () => {
             {/* Mobile toggle */}
             <div className="lg:hidden">
               <button
+                ref={mobileMenuButtonRef}
                 onClick={() => setIsOpen(o => !o)}
+                aria-expanded={isOpen}
+                aria-controls="mobile-menu"
+                aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 className="text-slate-600 hover:text-brand-primary focus:outline-none p-2"
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -234,7 +260,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile */}
       {isOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-200 overflow-y-auto max-h-[calc(100vh-8rem)] fixed top-16 left-0 right-0 z-40 shadow-lg">
+        <div id="mobile-menu" className="lg:hidden bg-white border-t border-slate-200 overflow-y-auto max-h-[calc(100vh-8rem)] fixed top-16 left-0 right-0 z-40 shadow-lg">
           <div className="px-4 pt-2 pb-3 space-y-1 border-t border-slate-200">
             <button
               onClick={() => handleNavigation('/')}
@@ -252,13 +278,15 @@ const Navbar: React.FC = () => {
             <div className="relative mb-2">
               <button
                 onClick={() => setIsMobileServicesDropdownOpen(o => !o)}
+                aria-expanded={isMobileServicesDropdownOpen}
+                aria-controls="mobile-services-menu"
                 className="block w-full text-left px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50 flex items-center justify-between"
               >
                 <span>Services</span>
                 <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${isMobileServicesDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {isMobileServicesDropdownOpen && (
-                <div className="bg-slate-50 rounded-lg ml-4 mt-2 mb-4 max-h-[30vh] overflow-y-auto">
+                <div id="mobile-services-menu" className="bg-slate-50 rounded-lg ml-4 mt-2 mb-4 max-h-[30vh] overflow-y-auto">
                   {servicePages.map((service, idx) => (
                     <Link
                       key={idx}

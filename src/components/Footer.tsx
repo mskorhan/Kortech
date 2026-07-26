@@ -1,5 +1,5 @@
 import FiveStarReviews from './FiveStarReviews';
-import { Phone, Mail, MapPin, Clock, Star, Facebook, Linkedin, MessageSquare, Instagram, Twitter, Youtube } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Facebook, Linkedin, MessageSquare, Instagram, Twitter, Youtube } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -29,13 +29,9 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-slate-200 text-sm leading-relaxed font-light">
-              Professional Mac & PC repair, data recovery, mobile device repair, 
+              Professional Mac & PC repair, data recovery, mobile device repair,
              and IT support in Charlotte, NC since 1998. Serving 100,000+ customers.
             </p>
-            <div className="flex items-center space-x-3 bg-blue-500/30 p-4 rounded-xl border border-blue-400/30">
-              <Star className="h-5 w-5 text-yellow-400 fill-current" />
-              <span className="text-sm font-light text-blue-100">4.8/5 Google Reviews (96 reviews)</span>
-            </div>
           </div>
 
           {/* Quick Links */}

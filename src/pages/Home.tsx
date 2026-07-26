@@ -113,16 +113,16 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen bg-white overflow-hidden pb-20">
       <SEOHead
         title="KorTech Service • Computer Repair Charlotte NC"
         description="Professional computer repair, Mac & PC repair, virus removal, data recovery & IT support in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 for free diagnostics!"
         canonicalUrl="/"
         schema={schema}
       />
-      
+
       <StickyCTA showOnMobile={true} />
-      
+
       {/* Hero Section */}
       <section className="relative bg-hero-gradient text-slate-800 py-responsive overflow-hidden tech-grid mobile-safe" id="home-hero">
         {/* Animated background elements */}
