@@ -1,6 +1,5 @@
 import SEOHead from '../components/SEOHead';
 import FiveStarReviews from '../components/FiveStarReviews';
-import { trackPhoneCall, trackTextMessage } from '../utils/analytics';
 import {
   Phone,
   Mail,
@@ -98,13 +97,7 @@ const Contact = () => {
                 key={index}
                 href={method.action}
                 className={`group bg-white rounded-3xl p-8 text-center hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-${method.color}-200 transform hover:-translate-y-1`}
-                onClick={() => {
-                  if (method.action.startsWith('tel:')) {
-                    trackPhoneCall('contact_page_methods');
-                  } else if (method.action.startsWith('sms:')) {
-                    trackTextMessage('contact_page_methods');
-                  }
-                }}
+                data-track-source="contact_page_methods"
               >
                 <div className={`w-20 h-20 bg-${method.color}-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-${method.color}-100 transition-colors`}>
                   <method.icon className={`h-10 w-10 text-${method.color}-600`} />
@@ -279,7 +272,7 @@ const Contact = () => {
               <a
                href="tel:704-246-7642?utm_source=site&utm_medium=contact&utm_campaign=phone_cta"
                 className="bg-[#0099FF] hover:bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 min-w-[180px]"
-                onClick={() => trackPhoneCall('contact_page_cta')}
+                data-track-source="contact_page_cta"
               >
                 <Phone className="h-6 w-6" />
                 <span>704-246-7642</span>
@@ -287,7 +280,7 @@ const Contact = () => {
               <a
                href="sms:980-888-5300?utm_source=site&utm_medium=contact&utm_campaign=text_cta"
                 className="border-2 border-[#0099FF] text-[#0099FF] hover:bg-[#0099FF] hover:text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 bg-white/80 backdrop-blur-sm min-w-[180px]"
-                onClick={() => trackTextMessage('contact_page_cta')}
+                data-track-source="contact_page_cta"
               >
                 <MessageSquare className="h-6 w-6" />
                 <span>980-888-5300</span>

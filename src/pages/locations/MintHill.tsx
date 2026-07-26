@@ -1,6 +1,5 @@
 import SEOHead from '../../components/SEOHead';
 import StickyCTA from '../../components/StickyCTA';
-import { trackPhoneCall, trackTextMessage } from '../../utils/analytics';
 import { 
   Phone, 
   MessageSquare, 
@@ -161,7 +160,7 @@ const MintHill = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="tel:704-246-7642"
-                onClick={() => trackPhoneCall('location_mint_hill_hero')}
+                data-track-source="location_mint_hill_hero"
                 className="bg-purple-500 hover:bg-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg transform hover:scale-105"
               >
                 <Phone className="h-6 w-6" />
@@ -169,7 +168,7 @@ const MintHill = () => {
               </a>
               <a
                 href="sms:980-888-5300"
-                onClick={() => trackTextMessage('location_mint_hill_hero')}
+                data-track-source="location_mint_hill_hero"
                 className="border-2 border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
               >
                 <MessageSquare className="h-6 w-6" />
@@ -298,7 +297,7 @@ const MintHill = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a
               href="tel:704-246-7642"
-              onClick={() => trackPhoneCall('location_mint_hill_footer')}
+              data-track-source="location_mint_hill_footer"
               className="bg-white text-purple-900 hover:bg-purple-50 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <Phone className="h-6 w-6" />
@@ -306,7 +305,7 @@ const MintHill = () => {
             </a>
             <a
               href="sms:980-888-5300"
-              onClick={() => trackTextMessage('location_mint_hill_footer')}
+              data-track-source="location_mint_hill_footer"
               className="border-2 border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
             >
               <MessageSquare className="h-6 w-6" />

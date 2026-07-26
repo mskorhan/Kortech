@@ -1,6 +1,5 @@
 import React from 'react';
 import { Phone, MessageSquare, Calendar, ArrowRight } from 'lucide-react';
-import { trackPhoneCall, trackTextMessage } from '../utils/analytics';
 
 interface ServiceCTAProps {
   service: string;
@@ -32,7 +31,7 @@ const ServiceCTA: React.FC<ServiceCTAProps> = ({
         <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
           <a
             href="tel:704-246-7642"
-            onClick={() => trackPhoneCall('service_cta')}
+            data-track-source="service_cta"
             className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <Phone className="h-5 w-5" />
@@ -40,7 +39,7 @@ const ServiceCTA: React.FC<ServiceCTAProps> = ({
           </a>
           <a
             href="sms:980-888-5300"
-            onClick={() => trackTextMessage('service_cta')}
+            data-track-source="service_cta"
             className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
           >
             <MessageSquare className="h-5 w-5" />

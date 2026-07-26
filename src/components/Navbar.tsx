@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, MessageSquare, ChevronDown, ChevronRight } from 'lucide-react';
-import { trackPhoneCall, trackTextMessage } from '../utils/analytics';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -227,7 +226,7 @@ const Navbar: React.FC = () => {
               <div className="flex items-center space-x-2 ml-4 pl-4 border-l border-slate-200">
                 <a
                   href="tel:704-246-7642"
-                  onClick={() => trackPhoneCall('navbar_desktop')}
+                  data-track-source="navbar_desktop"
                   className="bg-brand-primary hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center space-x-1 whitespace-nowrap tech-glow"
                 >
                   <Phone className="h-3 w-3" />
@@ -235,7 +234,7 @@ const Navbar: React.FC = () => {
                 </a>
                 <a
                   href="sms:980-888-5300"
-                  onClick={() => trackTextMessage('navbar_desktop')}
+                  data-track-source="navbar_desktop"
                   className="border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center space-x-1 whitespace-nowrap tech-border"
                 >
                   <MessageSquare className="h-3 w-3" />
@@ -343,7 +342,7 @@ const Navbar: React.FC = () => {
             <div className="flex flex-col space-y-3 pt-4 border-t border-slate-200">
               <a
                 href="tel:704-246-7642"
-                onClick={() => trackPhoneCall('navbar_mobile')}
+                data-track-source="navbar_mobile"
                 className="bg-brand-primary hover:bg-brand-dark text-white py-3 rounded-xl font-semibold text-base text-center flex items-center justify-center space-x-2"
               >
                 <Phone className="h-5 w-5" />
@@ -351,7 +350,7 @@ const Navbar: React.FC = () => {
               </a>
               <a
                 href="sms:980-888-5300"
-                onClick={() => trackTextMessage('navbar_mobile')}
+                data-track-source="navbar_mobile"
                 className="border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white py-3 rounded-xl font-semibold text-base text-center flex items-center justify-center space-x-2"
               >
                 <MessageSquare className="h-5 w-5" />

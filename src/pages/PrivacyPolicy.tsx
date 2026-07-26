@@ -1,5 +1,4 @@
 import SEOHead from '../components/SEOHead';
-import { trackPhoneCall, trackTextMessage } from '../utils/analytics';
 import {
   Shield, 
   Lock, 
@@ -722,11 +721,11 @@ const PrivacyPolicy = () => {
                     <p className="text-slate-600">Charlotte, NC 28270</p>
                   </div>
                   <div className="space-y-3">
-                    <a href="tel:704-246-7642" className="flex items-center text-blue-600 hover:text-blue-800 transition-colors" onClick={() => trackPhoneCall('privacy_policy_page')}>
+                    <a href="tel:704-246-7642" className="flex items-center text-blue-600 hover:text-blue-800 transition-colors" data-track-source="privacy_policy_page">
                       <Phone className="h-5 w-5 mr-2" />
                       <span>704-246-7642</span>
                     </a>
-                    <a href="sms:980-888-5300" className="flex items-center text-blue-600 hover:text-blue-800 transition-colors" onClick={() => trackTextMessage('privacy_policy_page')}>
+                    <a href="sms:980-888-5300" className="flex items-center text-blue-600 hover:text-blue-800 transition-colors" data-track-source="privacy_policy_page">
                       <MessageSquare className="h-5 w-5 mr-2" />
                       <span>980-888-5300 (Text)</span>
                     </a>

@@ -1,5 +1,4 @@
 import SEOHead from '../components/SEOHead';
-import { trackPhoneCall, trackTextMessage } from '../utils/analytics';
 import {
   ArrowRight,
   CheckCircle, FileText, Shield, Truck, Phone, Mail,
@@ -333,11 +332,11 @@ const TermsConditions = () => {
                     <Mail className="h-5 w-5" />
                     <span>info@kortechservice.com</span>
                   </a>
-                  <a href="tel:704-246-7642" className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800" onClick={() => trackPhoneCall('terms_page')}>
+                  <a href="tel:704-246-7642" className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800" data-track-source="terms_page">
                     <Phone className="h-5 w-5" />
                     <span>704-246-7642</span>
                   </a>
-                  <a href="sms:980-888-5300" className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800" onClick={() => trackTextMessage('terms_page')}>
+                  <a href="sms:980-888-5300" className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800" data-track-source="terms_page">
                     <MessageSquare className="h-5 w-5" />
                     <span>980-888-5300 (Text)</span>
                   </a>

@@ -40,6 +40,28 @@ export const trackFormSubmission = (formType: string) => {
   });
 };
 
+// Delegated click tracking for tel:/sms: links. Instead of wiring an onClick
+// handler to every call/text CTA across the site, each link just needs
+// data-track-source="some_id" and this single document-level listener
+// (initialized once from App.tsx) picks it up.
+export const initDelegatedContactTracking = () => {
+  if (typeof document === 'undefined') return;
+
+  document.addEventListener('click', (event) => {
+    const link = (event.target as Element).closest('a[href^="tel:"], a[href^="sms:"]');
+    if (!link) return;
+
+    const source = link.getAttribute('data-track-source') || 'unknown';
+    const href = link.getAttribute('href') || '';
+
+    if (href.startsWith('tel:')) {
+      trackPhoneCall(source);
+    } else if (href.startsWith('sms:')) {
+      trackTextMessage(source);
+    }
+  });
+};
+
 const GA_MEASUREMENT_ID = 'G-E7XS9FQ2E6';
 
 export const trackPageView = (pagePath: string, pageTitle: string) => {

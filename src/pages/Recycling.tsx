@@ -1,5 +1,4 @@
 import SEOHead from '../components/SEOHead';
-import { trackPhoneCall, trackTextMessage } from '../utils/analytics';
 import {
   Shield,
   CheckCircle,
@@ -572,7 +571,7 @@ const Recycling = () => {
               <a
                 href="tel:704-246-7642"
                 className="bg-green-600 hover:bg-white hover:text-green-800 text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-2xl hover:shadow-green-500/25 transform hover:scale-105"
-                onClick={() => trackPhoneCall('recycling_page')}
+                data-track-source="recycling_page"
               >
                 <Phone className="h-6 w-6" />
                 <span>Call 704-246-7642</span>
@@ -580,7 +579,7 @@ const Recycling = () => {
               <a
                 href="sms:980-888-5300"
                 className="border-2 border-white text-white hover:bg-white hover:text-green-800 px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300"
-                onClick={() => trackTextMessage('recycling_page')}
+                data-track-source="recycling_page"
               >
                 <MessageSquare className="h-6 w-6" />
                 <span>Text Questions</span>

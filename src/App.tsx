@@ -4,7 +4,7 @@ import LinkValidator from './components/LinkValidator';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
-import { trackPageView } from './utils/analytics';
+import { trackPageView, initDelegatedContactTracking } from './utils/analytics';
 import Home from './pages/Home';
 
 const About = lazy(() => import('./pages/About'));
@@ -100,6 +100,10 @@ function ScrollToTop() {
 }
 
 function App() {
+  React.useEffect(() => {
+    initDelegatedContactTracking();
+  }, []);
+
   return (
     <Router>
       <div className="min-h-screen bg-white">

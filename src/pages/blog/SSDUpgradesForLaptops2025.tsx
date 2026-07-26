@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
-import { trackPhoneCall } from '../../utils/analytics';
 import {
   Calendar,
   User,
@@ -309,7 +308,7 @@ const SSDUpgradesForLaptops2025 = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="tel:704-246-7642"
-                  onClick={() => trackPhoneCall('blog_ssd_upgrades_2025_inline')}
+                  data-track-source="blog_ssd_upgrades_2025_inline"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center space-x-2 transition-all duration-300"
                 >
                   <Phone className="h-5 w-5" />
@@ -404,7 +403,7 @@ const SSDUpgradesForLaptops2025 = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:704-246-7642"
-              onClick={() => trackPhoneCall('blog_ssd_upgrades_2025_cta')}
+              data-track-source="blog_ssd_upgrades_2025_cta"
               className="bg-white text-green-600 hover:bg-green-50 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <Phone className="h-6 w-6" />
