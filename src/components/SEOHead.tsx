@@ -7,7 +7,7 @@ interface SEOHeadProps {
   description: string;
   keywords?: string;
   canonicalUrl?: string;
-  schema?: any[];
+  schema?: Record<string, unknown>[];
   ogImage?: string;
   ogType?: string;
   ogUrl?: string;

@@ -1,21 +1,13 @@
 import React from 'react';
 import SEOHead from '../components/SEOHead';
 import { 
-  Recycle, 
-  Leaf, 
-  Shield, 
-  CheckCircle, 
-  Phone, 
-  Mail, 
+  Shield,
+  CheckCircle,
+  Phone,
   MapPin,
   Clock,
   MessageSquare,
-  Sparkles,
-  Award,
-  Users,
-  Heart,
   Truck,
-  FileText,
   AlertTriangle
 } from 'lucide-react';
 
@@ -129,33 +121,6 @@ const Recycling = () => {
     "Fluorescent bulbs",
     "Medical devices",
     "Items containing hazardous materials"
-  ];
-
-  const benefits = [
-    {
-      icon: Leaf,
-      title: "Environmental Protection",
-      description: "Prevent toxic materials from entering landfills and protect our Charlotte environment",
-      color: "green"
-    },
-    {
-      icon: Recycle,
-      title: "Resource Recovery",
-      description: "Valuable materials like gold, silver, and rare earth elements are recovered and reused",
-      color: "blue"
-    },
-    {
-      icon: Shield,
-      title: "Data Security",
-      description: "Professional data destruction ensures your personal information stays secure",
-      color: "purple"
-    },
-    {
-      icon: Heart,
-      title: "Community Impact",
-      description: "Support local Charlotte recycling efforts and responsible e-waste management",
-      color: "red"
-    }
   ];
 
   const process = [

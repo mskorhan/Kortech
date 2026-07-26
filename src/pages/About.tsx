@@ -1,10 +1,9 @@
 import React from 'react';
 import SEOHead from '../components/SEOHead';
 import { 
-  CheckCircle, 
-  Star, 
-  Phone, 
-  Mail, 
+  CheckCircle,
+  Star,
+  Phone,
   Clock,
   Shield,
   Users,

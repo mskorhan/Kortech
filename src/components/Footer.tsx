@@ -107,7 +107,7 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-lg font-medium text-white">Services</h3>
             <ul className="space-y-3 text-sm">
-              <li><a href="/laptop-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/laptop-screen-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Laptop Repair
               </a></li>
@@ -122,10 +122,6 @@ const Footer = () => {
               <li><a href="/business-it-support" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Business IT Support
-              </a></li>
-              <li><a href="/it-support" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
-                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                IT Support
               </a></li>
               <li><a href="/virus-malware-removal" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>

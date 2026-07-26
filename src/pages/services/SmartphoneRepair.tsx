@@ -1,13 +1,9 @@
-import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  Smartphone, 
-  Wrench, 
-  Shield, 
-  Clock,
-  CheckCircle, 
+import {
+  Smartphone,
+  CheckCircle,
   Star,
   Battery,
   Monitor,

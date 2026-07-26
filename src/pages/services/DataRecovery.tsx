@@ -1,19 +1,16 @@
-import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  HardDrive, 
-  Shield, 
-  Clock, 
-  CheckCircle, 
+import {
+  HardDrive,
+  Shield,
+  CheckCircle,
   Star,
   MapPin,
   AlertTriangle,
   Database,
   Zap,
   FileText,
-  Search,
   Link
 } from 'lucide-react';
 

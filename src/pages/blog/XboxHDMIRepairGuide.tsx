@@ -9,9 +9,7 @@ import {
   CheckCircle,
   AlertTriangle,
   Zap,
-  Phone,
-  Wrench,
-  Monitor
+  Phone
 } from 'lucide-react';
 
 const XboxHDMIRepairGuide = () => {

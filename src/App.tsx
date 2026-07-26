@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigationType } from 'react-router-dom';
 import LinkValidator from './components/LinkValidator';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -25,8 +25,6 @@ import XboxHDMIRepair from './pages/services/XboxHDMIRepair';
 import LaptopScreenRepair from './pages/services/LaptopScreenRepair';
 import SSDUpgrades from './pages/services/SSDUpgrades';
 import VirusMalwareRemoval from './pages/services/VirusMalwareRemoval';
-import LaptopRepair from './pages/services/LaptopScreenRepair';
-import ITSupport from './pages/services/ITSupport';
 import DataRecovery from './pages/services/DataRecovery';
 import CustomGamingPC from './pages/services/CustomGamingPC';
 import WaterDamageRepair from './pages/services/WaterDamageRepair';
@@ -112,14 +110,14 @@ function App() {
           <Route path="/graphic-design" element={<GraphicDesign />} />
           <Route path="/remote-assistance" element={<RemoteAssistance />} />
           
-          <Route path="/laptop-repair" element={<LaptopRepair />} />
+          <Route path="/laptop-repair" element={<Navigate to="/laptop-screen-repair" replace />} />
           {/* Service Landing Pages */}
           <Route path="/ps5-hdmi-repair" element={<PS5HDMIRepair />} />
           <Route path="/xbox-hdmi-repair" element={<XboxHDMIRepair />} />
           <Route path="/laptop-screen-repair" element={<LaptopScreenRepair />} />
           <Route path="/ssd-upgrades" element={<SSDUpgrades />} />
           <Route path="/virus-malware-removal" element={<VirusMalwareRemoval />} />
-          <Route path="/it-support" element={<ITSupport />} />
+          <Route path="/it-support" element={<Navigate to="/business-it-support" replace />} />
           <Route path="/business-it-support" element={<BusinessITSupport />} />
           <Route path="/data-recovery" element={<DataRecovery />} />
           <Route path="/custom-gaming-pc" element={<CustomGamingPC />} />

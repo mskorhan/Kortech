@@ -1,11 +1,9 @@
 import React from 'react';
 import SEOHead from '../components/SEOHead';
 import { 
-  CheckCircle, 
-  Star, 
-  Phone, 
-  Mail, 
-  ArrowRight,
+  CheckCircle,
+  Star,
+  Phone,
   Clock,
   Shield,
   MessageSquare,
@@ -21,9 +19,7 @@ import {
   Thermometer,
   Gamepad2,
   Printer,
-  Database,
   Laptop,
-  Sparkles,
   Target,
   Award
 } from 'lucide-react';

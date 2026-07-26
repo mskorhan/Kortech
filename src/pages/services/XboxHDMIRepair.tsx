@@ -1,16 +1,10 @@
-import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  Gamepad2, 
-  Wrench, 
-  Clock, 
-  Shield, 
-  CheckCircle, 
-  Star,
-  AlertTriangle,
-  Zap
+import {
+  Shield,
+  CheckCircle,
+  Star
 } from 'lucide-react';
 
 const XboxHDMIRepair = () => {

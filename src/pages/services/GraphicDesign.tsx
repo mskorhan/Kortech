@@ -1,14 +1,11 @@
-import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  Palette, 
-  Monitor, 
-  Image, 
-  Clock,
-  CheckCircle, 
-  Star,
+import {
+  Palette,
+  Monitor,
+  Image,
+  CheckCircle,
   Layers,
   FileText,
   Smartphone

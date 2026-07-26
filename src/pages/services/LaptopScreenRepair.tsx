@@ -1,18 +1,16 @@
-import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  Laptop, 
-  Wrench, 
-  Clock, 
-  Shield, 
-  CheckCircle, 
+import {
+  Laptop,
+  Wrench,
+  Clock,
+  Shield,
+  CheckCircle,
   MapPin,
   Star,
   AlertTriangle,
-  Monitor,
-  Link
+  Monitor
 } from 'lucide-react';
 
 const LaptopRepair = () => {
@@ -71,7 +69,7 @@ const LaptopRepair = () => {
       <SEOHead
         title="Laptop Repair Charlotte NC | KorTech Service"
         description="Professional laptop repair services at our Charlotte, NC location. Screen replacement, keyboard repair, battery service for all brands. Walk-ins welcome! Call 704-246-7642!"
-        canonicalUrl="/laptop-repair"
+        canonicalUrl="/laptop-screen-repair"
         schema={schema}
       />
 

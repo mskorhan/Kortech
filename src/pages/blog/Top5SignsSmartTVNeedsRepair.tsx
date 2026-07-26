@@ -8,7 +8,6 @@ import {
   Tv, 
   CheckCircle,
   AlertTriangle,
-  Volume2,
   Zap,
   Phone
 } from 'lucide-react';

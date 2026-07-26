@@ -2,17 +2,13 @@ import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
+import {
   Zap,
   Cpu,
-  Thermometer, 
-  Shield, 
-  Clock,
-  CheckCircle, 
+  Thermometer,
+  CheckCircle,
   Star,
-  Settings,
-  Wrench,
-  AlertTriangle
+  Settings
 } from 'lucide-react';
 
 const ApplianceElectronicsRepair = () => {

@@ -8,11 +8,7 @@ import {
   Shield, 
   CheckCircle,
   AlertTriangle,
-  Zap,
-  Phone,
-  Laptop,
-  Search,
-  Lock
+  Phone
 } from 'lucide-react';
 
 const StepsToRemoveVirusFromWindowsPC = () => {

@@ -1,21 +1,14 @@
 import React, { useState, useRef } from 'react';
 import SEOHead from '../components/SEOHead';
-import { 
-  Printer, 
-  Package, 
-  CheckCircle, 
-  AlertCircle, 
-  Phone, 
-  Mail, 
+import {
+  Printer,
+  Package,
+  CheckCircle,
+  Phone,
+  Mail,
   MessageSquare,
-  ArrowRight,
   FileText,
-  Info,
-  Smartphone,
-  Laptop,
-  Monitor,
-  Tablet,
-  HardDrive
+  Info
 } from 'lucide-react';
 
 const MailInForm = () => {

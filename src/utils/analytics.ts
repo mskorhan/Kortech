@@ -1,12 +1,9 @@
 // Analytics utility functions
-declare global {
-  interface Window {
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
-  }
-}
+import '../types/gtag';
 
-export const trackEvent = (eventName: string, parameters: Record<string, any> = {}) => {
+type EventParameters = Record<string, string | number | boolean | undefined>;
+
+export const trackEvent = (eventName: string, parameters: EventParameters = {}) => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, parameters);
   }

@@ -8,10 +8,7 @@ import {
   Shield, 
   CheckCircle,
   AlertTriangle,
-  Zap,
-  Phone,
-  Lock,
-  Search
+  Phone
 } from 'lucide-react';
 
 const VirusRemovalGuideCharlotte = () => {

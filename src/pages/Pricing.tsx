@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import SEOHead from '../components/SEOHead';
 import { 
-  CheckCircle, 
-  X, 
-  Star, 
-  Phone, 
-  Mail, 
+  CheckCircle,
+  X,
+  Star,
+  Phone,
   ArrowRight,
   Clock,
   Shield,
   MessageSquare,
   Crown,
-  Sparkles,
   TrendingUp,
   Award,
   Target,

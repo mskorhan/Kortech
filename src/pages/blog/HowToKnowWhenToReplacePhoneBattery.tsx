@@ -8,7 +8,6 @@ import {
   Battery, 
   CheckCircle,
   AlertTriangle,
-  Clock,
   Zap,
   Smartphone,
   Phone

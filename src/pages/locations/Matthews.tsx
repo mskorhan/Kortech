@@ -12,10 +12,7 @@ import {
   HardDrive,
   Smartphone,
   Wifi,
-  Shield,
-  Award,
-  Users,
-  Target
+  Users
 } from 'lucide-react';
 
 const Matthews = () => {

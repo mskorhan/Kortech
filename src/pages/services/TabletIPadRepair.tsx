@@ -1,17 +1,11 @@
-import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  Tablet, 
-  Monitor, 
-  Shield, 
-  Clock,
-  CheckCircle, 
-  Star,
-  Battery,
-  Zap,
-  Wrench
+import {
+  Tablet,
+  Monitor,
+  CheckCircle,
+  Star
 } from 'lucide-react';
 
 const TabletIPadRepair = () => {

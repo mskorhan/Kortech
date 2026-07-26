@@ -1,13 +1,11 @@
-import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  Droplets, 
-  AlertTriangle, 
-  Clock, 
-  Shield, 
-  CheckCircle, 
+import {
+  Droplets,
+  AlertTriangle,
+  Shield,
+  CheckCircle,
   Star,
   Zap,
   Phone,

@@ -2,17 +2,13 @@ import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  Monitor, 
-  Zap, 
-  Clock, 
-  Shield, 
-  CheckCircle, 
+import {
+  Monitor,
+  Zap,
+  CheckCircle,
   Star,
   Gamepad2,
-  Cpu,
-  HardDrive,
-  MemoryStick
+  HardDrive
 } from 'lucide-react';
 
 const CustomGamingPC = () => {

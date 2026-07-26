@@ -1,13 +1,11 @@
-import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  Printer, 
-  Wifi, 
-  Shield, 
-  Clock,
-  CheckCircle, 
+import {
+  Printer,
+  Wifi,
+  Shield,
+  CheckCircle,
   Star,
   Settings,
   Network,
@@ -267,7 +265,7 @@ const PrinterRouterRepair = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="/it-support" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/business-it-support" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Settings className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">IT Support</h3>
               <p className="text-slate-600">Comprehensive IT support for businesses</p>

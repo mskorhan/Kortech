@@ -9,9 +9,7 @@ import {
   CheckCircle,
   AlertTriangle,
   Zap,
-  Phone,
-  TrendingUp,
-  BarChart3
+  Phone
 } from 'lucide-react';
 
 const SSDUpgradesForLaptops2025 = () => {

@@ -12,11 +12,8 @@ import {
   HardDrive,
   Smartphone,
   Wifi,
-  Shield,
-  Zap,
   Award,
-  Users,
-  Target
+  Users
 } from 'lucide-react';
 
 const Charlotte = () => {

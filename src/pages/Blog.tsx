@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
-import { 
-  Calendar, User, ArrowRight, BookOpen, Gamepad2, HardDrive, Shield, 
-  Monitor, AlertTriangle, Smartphone, Cpu, Tv, Database, Zap, Wrench
+import {
+  Calendar, ArrowRight, BookOpen, Gamepad2, HardDrive, Shield,
+  Monitor, AlertTriangle, Smartphone, Cpu, Tv, Database, Wrench
 } from 'lucide-react';
 
 const Blog = () => {
@@ -164,15 +164,6 @@ const Blog = () => {
       featured: false,
       path: '/blog/virus-removal-guide-charlotte'
     }
-  ];
-
-  const categories = [
-    'All Posts',
-    'Gaming Console Repair',
-    'Hardware Upgrades',
-    'Security & Malware',
-    'Gaming PCs',
-    'Data Recovery'
   ];
 
   const schema = [

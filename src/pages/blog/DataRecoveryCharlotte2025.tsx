@@ -5,10 +5,9 @@ import {
   Calendar,
   User,
   ArrowRight, 
-  Database, 
+  Database,
   CheckCircle,
   AlertTriangle,
-  Clock,
   HardDrive,
   Phone,
   Shield

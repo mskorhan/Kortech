@@ -1,17 +1,13 @@
-import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  Cpu, 
-  Zap, 
-  Clock, 
-  Shield, 
-  CheckCircle, 
+import {
+  Cpu,
+  Zap,
+  CheckCircle,
   Star,
   Settings,
-  Wrench,
-  AlertTriangle
+  Wrench
 } from 'lucide-react';
 
 const PCBMicroSoldering = () => {

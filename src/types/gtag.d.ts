@@ -1,3 +1,5 @@
+type GtagConfigValue = string | number | boolean | undefined;
+
 declare global {
   interface Window {
     gtag: (
@@ -12,10 +14,10 @@ declare global {
         event_category?: string;
         event_label?: string;
         source?: string;
-        [key: string]: any;
+        [key: string]: GtagConfigValue;
       }
     ) => void;
-    dataLayer: any[];
+    dataLayer: unknown[];
   }
 }
 

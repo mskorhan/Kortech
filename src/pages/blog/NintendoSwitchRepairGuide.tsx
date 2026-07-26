@@ -9,9 +9,7 @@ import {
   CheckCircle,
   AlertTriangle,
   Zap,
-  Phone,
-  Battery,
-  Monitor
+  Phone
 } from 'lucide-react';
 
 const NintendoSwitchRepairGuide = () => {

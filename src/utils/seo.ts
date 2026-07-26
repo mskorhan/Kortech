@@ -16,7 +16,7 @@ export const generateMetaDescription = (
   return `Professional ${service} in ${location} & surrounding areas. Expert technicians, transparent pricing, same-day service available. ${callToAction} or Text/Call 980-888-5300.`;
 };
 
-export const generateStructuredData = (type: string, data: any) => {
+export const generateStructuredData = (type: string, data: Record<string, unknown>) => {
   const baseData = {
     '@context': 'https://schema.org',
     '@type': type,

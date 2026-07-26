@@ -1,14 +1,12 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
 import { 
-  Gamepad2, 
-  Wrench, 
-  Clock, 
-  Shield, 
-  CheckCircle, 
+  Gamepad2,
+  Wrench,
+  Shield,
+  CheckCircle,
   Star,
   AlertTriangle,
   Zap,

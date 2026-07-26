@@ -11,7 +11,6 @@ import {
   Zap,
   Phone,
   Monitor,
-  HardDrive,
   Gamepad2
 } from 'lucide-react';
 

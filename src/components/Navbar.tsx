@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
     { name: 'Laptop Screen Repair', path: '/laptop-screen-repair' },
     { name: 'SSD Upgrades', path: '/ssd-upgrades' },
     { name: 'Virus & Malware Removal', path: '/virus-malware-removal' },
-    { name: 'IT Support', path: '/it-support' },
+    { name: 'IT Support', path: '/business-it-support' },
     { name: 'Data Recovery', path: '/data-recovery' },
     { name: 'Custom Gaming PC', path: '/custom-gaming-pc' },
     { name: 'Water Damage Repair', path: '/water-damage-repair' },

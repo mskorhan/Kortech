@@ -1,13 +1,10 @@
-import React from 'react';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
-  Tv, 
-  Monitor, 
-  Shield, 
-  Clock,
-  CheckCircle, 
+import {
+  Tv,
+  Monitor,
+  CheckCircle,
   Star,
   Zap,
   Settings,

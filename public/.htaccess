@@ -12,6 +12,12 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [L,R=301]
 
 # ------------------------------------------
+# ✅ Consolidated duplicate-content redirects
+# ------------------------------------------
+Redirect 301 /laptop-repair /laptop-screen-repair
+Redirect 301 /it-support /business-it-support
+
+# ------------------------------------------
 # ✅ React Router / SPA Support
 # ------------------------------------------
 # Prevent fallback for file types

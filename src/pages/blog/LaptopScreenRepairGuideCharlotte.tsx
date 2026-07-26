@@ -10,8 +10,7 @@ import {
   AlertTriangle,
   Zap,
   Phone,
-  Monitor,
-  Wrench
+  Monitor
 } from 'lucide-react';
 
 const LaptopScreenRepairGuideCharlotte = () => {

@@ -12,7 +12,6 @@ import {
   HardDrive,
   Smartphone,
   Wifi,
-  Award,
   Users,
   Truck
 } from 'lucide-react';

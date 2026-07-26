@@ -8,10 +8,8 @@ import {
   HardDrive, 
   CheckCircle,
   AlertTriangle,
-  Clock,
   Database,
-  Phone,
-  Shield
+  Phone
 } from 'lucide-react';
 
 const SignsHardDriveFailingDataRecoveryTips = () => {

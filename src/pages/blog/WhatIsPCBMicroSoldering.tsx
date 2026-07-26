@@ -9,7 +9,6 @@ import {
   CheckCircle,
   AlertTriangle,
   Zap,
-  Smartphone,
   Phone
 } from 'lucide-react';
 

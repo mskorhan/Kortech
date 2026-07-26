@@ -1,11 +1,10 @@
-import React from 'react';
 import SEOHead from '../components/SEOHead';
-import { 
+import {
   ArrowRight,
-  CheckCircle, FileText, Shield, Truck, Phone, Mail, 
-  AlertCircle, HelpCircle, Clock, MessageSquare, 
-  Info, User, Briefcase, Lock, Scale, Globe, 
-  AlertTriangle, Zap, Package, Settings, MapPin
+  CheckCircle, FileText, Shield, Truck, Phone, Mail,
+  AlertCircle, HelpCircle, MessageSquare,
+  Briefcase, Lock, Scale,
+  Package, Settings, MapPin
 } from 'lucide-react';
 
 const TermsConditions = () => {
