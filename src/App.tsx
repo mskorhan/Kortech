@@ -1,62 +1,63 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigationType } from 'react-router-dom';
 import LinkValidator from './components/LinkValidator';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
 import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import Pricing from './pages/Pricing';
-import Contact from './pages/Contact';
-import Recycling from './pages/Recycling'; 
-import TermsConditions from './pages/TermsConditions';
-import MailInForm from './pages/MailInForm';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import Blog from './pages/Blog';
+
+const About = lazy(() => import('./pages/About'));
+const Services = lazy(() => import('./pages/Services'));
+const Pricing = lazy(() => import('./pages/Pricing'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Recycling = lazy(() => import('./pages/Recycling'));
+const TermsConditions = lazy(() => import('./pages/TermsConditions'));
+const MailInForm = lazy(() => import('./pages/MailInForm'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const Blog = lazy(() => import('./pages/Blog'));
 
 // Service Pages
-import GraphicDesign from './pages/services/GraphicDesign';
-import RemoteAssistance from './pages/services/RemoteAssistance';
+const GraphicDesign = lazy(() => import('./pages/services/GraphicDesign'));
+const RemoteAssistance = lazy(() => import('./pages/services/RemoteAssistance'));
 
 // Service Landing Pages
-import PS5HDMIRepair from './pages/services/PS5HDMIRepair';
-import XboxHDMIRepair from './pages/services/XboxHDMIRepair';
-import LaptopScreenRepair from './pages/services/LaptopScreenRepair';
-import SSDUpgrades from './pages/services/SSDUpgrades';
-import VirusMalwareRemoval from './pages/services/VirusMalwareRemoval';
-import DataRecovery from './pages/services/DataRecovery';
-import CustomGamingPC from './pages/services/CustomGamingPC';
-import WaterDamageRepair from './pages/services/WaterDamageRepair';
-import SmartphoneRepair from './pages/services/SmartphoneRepair';
-import TabletIPadRepair from './pages/services/TabletIPadRepair';
-import SmartTVRepair from './pages/services/SmartTVRepair';
-import PrinterRouterRepair from './pages/services/PrinterRouterRepair';
-import PCBMicroSoldering from './pages/services/PCBMicroSoldering';
-import ApplianceElectronicsRepair from './pages/services/ApplianceElectronicsRepair';
-import BusinessITSupport from './pages/services/ITSupport';
-import NintendoSwitchRepair from './pages/services/NintendoSwitchRepair';
+const PS5HDMIRepair = lazy(() => import('./pages/services/PS5HDMIRepair'));
+const XboxHDMIRepair = lazy(() => import('./pages/services/XboxHDMIRepair'));
+const LaptopScreenRepair = lazy(() => import('./pages/services/LaptopScreenRepair'));
+const SSDUpgrades = lazy(() => import('./pages/services/SSDUpgrades'));
+const VirusMalwareRemoval = lazy(() => import('./pages/services/VirusMalwareRemoval'));
+const DataRecovery = lazy(() => import('./pages/services/DataRecovery'));
+const CustomGamingPC = lazy(() => import('./pages/services/CustomGamingPC'));
+const WaterDamageRepair = lazy(() => import('./pages/services/WaterDamageRepair'));
+const SmartphoneRepair = lazy(() => import('./pages/services/SmartphoneRepair'));
+const TabletIPadRepair = lazy(() => import('./pages/services/TabletIPadRepair'));
+const SmartTVRepair = lazy(() => import('./pages/services/SmartTVRepair'));
+const PrinterRouterRepair = lazy(() => import('./pages/services/PrinterRouterRepair'));
+const PCBMicroSoldering = lazy(() => import('./pages/services/PCBMicroSoldering'));
+const ApplianceElectronicsRepair = lazy(() => import('./pages/services/ApplianceElectronicsRepair'));
+const BusinessITSupport = lazy(() => import('./pages/services/ITSupport'));
+const NintendoSwitchRepair = lazy(() => import('./pages/services/NintendoSwitchRepair'));
 
 // Location Pages
-import Charlotte from './pages/locations/Charlotte';
-import Matthews from './pages/locations/Matthews';
-import IndianTrail from './pages/locations/IndianTrail';
-import MintHill from './pages/locations/MintHill';
-import Monroe from './pages/locations/Monroe';
-import Locations from './pages/locations/Locations';
-import HowToKnowWhenToReplacePhoneBattery from './pages/blog/HowToKnowWhenToReplacePhoneBattery';
-import WhatIsPCBMicroSoldering from './pages/blog/WhatIsPCBMicroSoldering';
-import Top5SignsSmartTVNeedsRepair from './pages/blog/Top5SignsSmartTVNeedsRepair';
-import SSDUpgradesForLaptops2025 from './pages/blog/SSDUpgradesForLaptops2025';
-import DataRecoveryCharlotte2025 from './pages/blog/DataRecoveryCharlotte2025';
-import StepsToRemoveVirusFromWindowsPC from './pages/blog/StepsToRemoveVirusFromWindowsPC';
-import HowToFixBrokenPS5HDMIPort from './pages/blog/HowToFixBrokenPS5HDMIPort';
-import CustomGamingPCBuildGuide2025 from './pages/blog/CustomGamingPCBuildGuide2025';
-import SignsHardDriveFailingDataRecoveryTips from './pages/blog/SignsHardDriveFailingDataRecoveryTips';
-import LaptopScreenRepairGuideCharlotte from './pages/blog/LaptopScreenRepairGuideCharlotte';
-import NintendoSwitchRepairGuide from './pages/blog/NintendoSwitchRepairGuide';
-import XboxHDMIRepairGuide from './pages/blog/XboxHDMIRepairGuide';
-import VirusRemovalGuideCharlotte from './pages/blog/VirusRemovalGuideCharlotte';
+const Charlotte = lazy(() => import('./pages/locations/Charlotte'));
+const Matthews = lazy(() => import('./pages/locations/Matthews'));
+const IndianTrail = lazy(() => import('./pages/locations/IndianTrail'));
+const MintHill = lazy(() => import('./pages/locations/MintHill'));
+const Monroe = lazy(() => import('./pages/locations/Monroe'));
+const Locations = lazy(() => import('./pages/locations/Locations'));
+const HowToKnowWhenToReplacePhoneBattery = lazy(() => import('./pages/blog/HowToKnowWhenToReplacePhoneBattery'));
+const WhatIsPCBMicroSoldering = lazy(() => import('./pages/blog/WhatIsPCBMicroSoldering'));
+const Top5SignsSmartTVNeedsRepair = lazy(() => import('./pages/blog/Top5SignsSmartTVNeedsRepair'));
+const SSDUpgradesForLaptops2025 = lazy(() => import('./pages/blog/SSDUpgradesForLaptops2025'));
+const DataRecoveryCharlotte2025 = lazy(() => import('./pages/blog/DataRecoveryCharlotte2025'));
+const StepsToRemoveVirusFromWindowsPC = lazy(() => import('./pages/blog/StepsToRemoveVirusFromWindowsPC'));
+const HowToFixBrokenPS5HDMIPort = lazy(() => import('./pages/blog/HowToFixBrokenPS5HDMIPort'));
+const CustomGamingPCBuildGuide2025 = lazy(() => import('./pages/blog/CustomGamingPCBuildGuide2025'));
+const SignsHardDriveFailingDataRecoveryTips = lazy(() => import('./pages/blog/SignsHardDriveFailingDataRecoveryTips'));
+const LaptopScreenRepairGuideCharlotte = lazy(() => import('./pages/blog/LaptopScreenRepairGuideCharlotte'));
+const NintendoSwitchRepairGuide = lazy(() => import('./pages/blog/NintendoSwitchRepairGuide'));
+const XboxHDMIRepairGuide = lazy(() => import('./pages/blog/XboxHDMIRepairGuide'));
+const VirusRemovalGuideCharlotte = lazy(() => import('./pages/blog/VirusRemovalGuideCharlotte'));
 
 // ScrollToTop component to handle scrolling to top on route changes
 function ScrollToTop() {
@@ -101,6 +102,7 @@ function App() {
         <CookieConsent />
         <Navbar />
         <main id="main-content">
+        <Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -160,6 +162,7 @@ function App() {
           <Route path="/blog/xbox-hdmi-repair-guide" element={<XboxHDMIRepairGuide />} />
           <Route path="/blog/virus-removal-guide-charlotte" element={<VirusRemovalGuideCharlotte />} />
         </Routes>
+        </Suspense>
         </main>
         <Footer />
       </div>
