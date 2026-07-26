@@ -1,4 +1,4 @@
-name: Update Google reviews and deploy
+name: Update Google reviews
 
 on:
   schedule:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  update-and-deploy:
+  update-reviews:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,6 +32,7 @@ jobs:
         run: node scripts/fetch-google-reviews.mjs
 
       - name: Commit updated reviews data
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -40,18 +41,17 @@ jobs:
             git commit -m "chore: update Google reviews data"
             git pull --rebase origin "${GITHUB_REF_NAME}"
             git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
           else
             echo "No changes to reviews data."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Build site
-        run: npm run build
-
-      - name: Deploy to Bluehost via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.BLUEHOST_FTP_HOST }}
-          username: ${{ secrets.BLUEHOST_FTP_USER }}
-          password: ${{ secrets.BLUEHOST_FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: ${{ secrets.BLUEHOST_FTP_REMOTE_DIR }}
+      # A push made with the default GITHUB_TOKEN does not trigger other
+      # workflows (GitHub's anti-recursion guard), so deploy.yml would not
+      # otherwise fire when reviews data changes. Trigger it explicitly.
+      - name: Trigger deploy
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --ref "${GITHUB_REF_NAME}"
