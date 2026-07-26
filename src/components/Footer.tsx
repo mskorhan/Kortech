@@ -1,7 +1,5 @@
-import React from 'react';
-import { reviewCount, getRotatingReview } from '../utils/reviews';
-import GooglePlacesAPI from './GooglePlacesAPI';
-import { Phone, Mail, MapPin, Clock, Star, Facebook, Linkedin, MessageSquare, Instagram, Twitter, Youtube, ExternalLink } from 'lucide-react';
+import FiveStarReviews from './FiveStarReviews';
+import { Phone, Mail, MapPin, Clock, Star, Facebook, Linkedin, MessageSquare, Instagram, Twitter, Youtube } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -13,43 +11,11 @@ const Footer = () => {
           backgroundSize: '20px 20px'
         }}></div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
         {/* Google Reviews in Footer */}
-        <div className="bg-slate-600/50 rounded-lg p-4 mb-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <span className="text-white font-medium">
-                4.8/5 • {reviewCount} Google Reviews
-              </span>
-            </div>
-            <a
-              href="https://g.page/kortechservice"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-300 hover:text-blue-100 text-sm flex items-center space-x-1"
-            >
-              <span>Read Reviews</span>
-              <ExternalLink className="h-3 w-3" />
-            </a>
-          </div>
-          
-          {(() => {
-            const review = getRotatingReview();
-            return (
-              <div className="mt-3 pt-3 border-t border-slate-500/50">
-                <p className="text-slate-200 text-sm italic">"{review.text.substring(0, 80)}..."</p>
-                <p className="text-slate-300 text-xs mt-1">- {review.author}</p>
-              </div>
-            );
-          })()}
-        </div>
-        
+        <FiveStarReviews showInFooter />
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-6">

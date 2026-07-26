@@ -1,6 +1,5 @@
-import React from 'react';
 import SEOHead from '../components/SEOHead';
-import { 
+import {
   CheckCircle,
   Star,
   Phone,
@@ -21,7 +20,8 @@ import {
   Printer,
   Laptop,
   Target,
-  Award
+  Award,
+  Sparkles
 } from 'lucide-react';
 
 const Services = () => {
@@ -320,21 +320,29 @@ const Services = () => {
     {
       service: "Computer Diagnostic",
       price: "Call/Text For Quote",
+      description: "Complete computer troubleshooting and analysis",
+      note: "Applied toward repair cost",
       icon: Target
     },
     {
       service: "Mac & PC Repair",
       price: "Call/Text For Quote",
+      description: "Hardware repairs, upgrades, and replacements",
+      note: "Depends on complexity",
       icon: Shield
     },
     {
       service: "Data Recovery",
       price: "Call/Text For Quote",
+      description: "Professional data recovery from failed drives",
+      note: "Varies by data amount",
       icon: Award
     },
     {
       service: "Network Setup",
       price: "Call/Text For Quote",
+      description: "Professional network installation and configuration",
+      note: "Per device/location",
       icon: Zap
     }
   ];

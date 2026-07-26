@@ -4,7 +4,8 @@ import FAQSection from '../../components/FAQSection';
 import {
   Shield,
   CheckCircle,
-  Star
+  Star,
+  Gamepad2
 } from 'lucide-react';
 
 const XboxHDMIRepair = () => {

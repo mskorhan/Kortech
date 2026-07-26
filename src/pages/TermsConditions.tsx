@@ -4,7 +4,8 @@ import {
   CheckCircle, FileText, Shield, Truck, Phone, Mail,
   AlertCircle, HelpCircle, MessageSquare,
   Briefcase, Lock, Scale,
-  Package, Settings, MapPin
+  Package, Settings, MapPin,
+  AlertTriangle
 } from 'lucide-react';
 
 const TermsConditions = () => {

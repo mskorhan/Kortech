@@ -1,5 +1,51 @@
 # KorTech Service Website Deployment Guide
 
+## Automated Monthly Google Reviews Refresh
+
+The site displays real 5-star Google reviews via `src/data/reviews.json`, which is
+regenerated once a month by `.github/workflows/update-reviews.yml`. The workflow
+fetches your business's reviews from the Google Places API, filters to 5-star
+reviews only, commits the updated JSON, rebuilds the site, and uploads the new
+`dist/` folder to Bluehost over FTP — fully automated, no live API calls from
+visitor browsers, no hosting changes required.
+
+### One-time setup
+
+1. **Create a Google Cloud project and Places API key**
+   - Go to https://console.cloud.google.com/ and create (or select) a project.
+   - Enable the **Places API** for that project (APIs & Services > Library).
+   - Create an API key (APIs & Services > Credentials > Create Credentials > API key).
+   - Restrict the key to the Places API only (Credentials > click the key > API
+     restrictions > Restrict key > select "Places API"). Do not restrict by HTTP
+     referrer, since this key is only ever called from GitHub's servers, not a browser.
+
+2. **Find your Google Place ID**
+   - Use Google's Place ID Finder: https://developers.google.com/maps/documentation/places/web-service/place-id
+   - Search for "KorTech Service" and copy the Place ID it returns.
+
+3. **Add GitHub repository secrets**
+   In your GitHub repo: Settings > Secrets and variables > Actions > New repository secret.
+   Add each of the following:
+   - `GOOGLE_PLACES_API_KEY` — the API key from step 1
+   - `GOOGLE_PLACE_ID` — the Place ID from step 2
+   - `BLUEHOST_FTP_HOST` — your Bluehost FTP hostname (e.g. `ftp.kortechservice.com`)
+   - `BLUEHOST_FTP_USER` — your Bluehost FTP username
+   - `BLUEHOST_FTP_PASSWORD` — your Bluehost FTP password
+   - `BLUEHOST_FTP_REMOTE_DIR` — the remote directory to upload into (typically `/public_html/`)
+
+4. **That's it.** The workflow runs automatically on the 1st of every month. You can
+   also trigger it manually any time from the GitHub Actions tab (workflow_dispatch).
+
+### Running the fetch script manually
+
+To preview what the script would write without waiting for the monthly run:
+
+```bash
+GOOGLE_PLACES_API_KEY=your_key GOOGLE_PLACE_ID=your_place_id node scripts/fetch-google-reviews.mjs
+```
+
+This overwrites `src/data/reviews.json` locally — review the diff before committing.
+
 ## Deploying to kortechservice.com
 
 ### Option 1: Static Website (Recommended for simplicity)

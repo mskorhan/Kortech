@@ -82,44 +82,17 @@ All contact methods work without backend:
 ## Google Reviews Integration
 
 ### Current Implementation
-The website includes a Google Reviews component that displays:
-- Current rating: 4.8/5 stars
-- Total reviews: 96 reviews
-- Business information and hours
-
-### For Live Google Reviews
-To implement truly live Google reviews that update automatically, you'll need:
-
-1. **Google Places API Key**:
-   - Go to [Google Cloud Console](https://console.cloud.google.com/)
-   - Enable Places API
-   - Create an API key
-   - Restrict the key to your domain
-
-2. **Backend Implementation** (recommended):
-   ```javascript
-   // Example backend endpoint
-   app.get('/api/google-reviews', async (req, res) => {
-     const response = await fetch(
-       `https://maps.googleapis.com/maps/api/place/details/json?place_id=YOUR_PLACE_ID&fields=name,rating,user_ratings_total,reviews&key=${API_KEY}`
-     );
-     const data = await response.json();
-     res.json(data.result);
-   });
-   ```
-
-3. **Update the Component**:
-   - Replace the fallback data in `LiveGoogleReviews.tsx`
-   - Point the fetch call to your backend endpoint
-   - The component will automatically refresh every 30 minutes
-
-### Manual Updates
-Until you implement the API, you can manually update the review count in:
-- `src/components/LiveGoogleReviews.tsx` (line 25: `user_ratings_total`)
-- `src/components/FiveStarReviews.tsx` (line 15: `user_ratings_total`)
+The `FiveStarReviews` component (`src/components/FiveStarReviews.tsx`) renders real,
+5-star-only Google reviews from `src/data/reviews.json`. That file is generated
+automatically once a month by a GitHub Actions workflow — see
+"Automated Monthly Google Reviews Refresh" in `deployment-guide.md` for full setup
+instructions (Google Cloud project, Places API key, Place ID, and required GitHub
+secrets).
 
 ### Security Note
-Never expose your Google Places API key in frontend code. Always use a backend proxy to make API calls.
+The Google Places API key is only ever used server-side inside the GitHub Actions
+workflow (`scripts/fetch-google-reviews.mjs`) — it is never bundled into the frontend
+or exposed to visitor browsers.
 
 ## Server Configuration
 

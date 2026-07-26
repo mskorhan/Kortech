@@ -10,7 +10,7 @@ const LinkValidator: React.FC<LinkValidatorProps> = ({ enabled = false }) => {
   const [isChecking, setIsChecking] = useState(false);
 
   useEffect(() => {
-    if (!enabled || process.env.NODE_ENV === 'production') return;
+    if (!enabled || import.meta.env.PROD) return;
 
     const validateLinks = async () => {
       setIsChecking(true);
@@ -36,7 +36,7 @@ const LinkValidator: React.FC<LinkValidatorProps> = ({ enabled = false }) => {
     return () => clearTimeout(timer);
   }, [enabled]);
 
-  if (!enabled || process.env.NODE_ENV === 'production') return null;
+  if (!enabled || import.meta.env.PROD) return null;
 
   const brokenLinks = results.filter(r => r.status === 'broken');
   const warnings = results.filter(r => r.status === 'warning');

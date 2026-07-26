@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { 
@@ -15,20 +14,15 @@ import {
   HardDrive,
   Smartphone,
   Wifi,
-  Settings,
-  Zap,
   Award,
   MapPin,
   Sparkles,
   TrendingUp,
   Target,
-  Play,
   Gift
 } from 'lucide-react';
-import GoogleReviews from '../components/GoogleReviews';
-import LiveGoogleReviews from '../components/LiveGoogleReviews';
 import StickyCTA from '../components/StickyCTA';
-import GooglePlacesAPI from '../components/GooglePlacesAPI';
+import FiveStarReviews from '../components/FiveStarReviews';
 
 export default function Home() {
   const schema = [
@@ -298,7 +292,6 @@ export default function Home() {
 
           <div className="text-center mt-16">
             <Link
-              href="/services" 
               to="/services"
               className="btn-primary text-base sm:text-lg md:text-xl hover-glow inline-flex items-center space-x-3 mobile-full-width"
             >
@@ -310,7 +303,7 @@ export default function Home() {
       </section>
 
       {/* Google Reviews */}
-      <GooglePlacesAPI maxReviews={3} />
+      <FiveStarReviews maxReviews={3} />
 
       {/* Why Choose Us */}
       <section className="py-responsive bg-gradient-to-br from-slate-50 to-white tech-grid overflow-x-hidden" id="home-why-choose-us">

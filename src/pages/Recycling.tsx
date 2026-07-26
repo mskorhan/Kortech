@@ -1,6 +1,5 @@
-import React from 'react';
 import SEOHead from '../components/SEOHead';
-import { 
+import {
   Shield,
   CheckCircle,
   Phone,
@@ -8,7 +7,11 @@ import {
   Clock,
   MessageSquare,
   Truck,
-  AlertTriangle
+  AlertTriangle,
+  Recycle,
+  Award,
+  Leaf,
+  Heart
 } from 'lucide-react';
 
 const Recycling = () => {

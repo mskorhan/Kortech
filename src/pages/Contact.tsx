@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-import { reviewCount, getRotatingReview } from '../utils/reviews';
 import SEOHead from '../components/SEOHead';
-import GooglePlacesAPI from '../components/GooglePlacesAPI';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
+import FiveStarReviews from '../components/FiveStarReviews';
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
   MessageSquare,
-  Send,
   CheckCircle,
   Star,
   Navigation,
   Sparkles,
-  FileText,
-  ExternalLink
+  FileText
 } from 'lucide-react';
 
 const Contact = () => {
@@ -27,38 +23,6 @@ const Contact = () => {
       "url": "https://kortechservice.com/contact"
     }
   ];
-
-  const [formData, setFormData] = useState({
-    name: '', 
-    email: '', 
-    phone: '', 
-    service: '', 
-    message: '' 
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`Service Request: ${formData.service || 'General Inquiry'}`);
-    const body = encodeURIComponent(`
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Service: ${formData.service}
-
-Message:
-${formData.message}
-    `);
-    
-    window.location.href = `mailto:info@kortechservice.com?subject=${subject}&body=${body}`;
-  };
 
   const contactMethods = [
     {
@@ -283,54 +247,7 @@ ${formData.message}
       </section>
 
       {/* Google Reviews */}
-      <GooglePlacesAPI maxReviews={3} />
-
-      {/* Google Reviews Widget */}
-      <section className="py-16 bg-yellow-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              {reviewCount} Google Reviews
-            </h2>
-            <div className="flex items-center justify-center space-x-1 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-6 w-6 text-yellow-400 fill-current" />
-              ))}
-              <span className="ml-2 text-lg font-semibold">4.8/5</span>
-            </div>
-          </div>
-          
-          <div className="bg-white rounded-xl p-6 shadow-lg border border-yellow-200">
-            {(() => {
-              const review = getRotatingReview();
-              return (
-                <div className="text-center">
-                  <p className="text-slate-600 mb-4 italic">"{review.text}"</p>
-                  <div className="flex items-center justify-center space-x-1 mb-2">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <p className="font-semibold text-slate-800">- {review.author}</p>
-                  <p className="text-sm text-slate-500">{review.date}</p>
-                </div>
-              );
-            })()}
-          </div>
-          
-          <div className="text-center mt-6">
-            <a
-              href="https://g.page/kortechservice"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300"
-            >
-              <span>Read All {reviewCount} Reviews</span>
-              <ExternalLink className="h-5 w-5" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <FiveStarReviews maxReviews={3} />
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-blue-50 to-slate-100 relative overflow-hidden">

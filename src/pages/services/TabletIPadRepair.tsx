@@ -5,7 +5,8 @@ import {
   Tablet,
   Monitor,
   CheckCircle,
-  Star
+  Star,
+  Wrench
 } from 'lucide-react';
 
 const TabletIPadRepair = () => {
