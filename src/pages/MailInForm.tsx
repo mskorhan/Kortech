@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import SEOHead from '../components/SEOHead';
+import { trackFormSubmission, trackPhoneCall, trackTextMessage } from '../utils/analytics';
 import {
   Printer,
   Package,
@@ -82,8 +83,9 @@ const MailInForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
+      trackFormSubmission('mail_in_repair_form');
       setFormSubmitted(true);
       window.scrollTo(0, 0);
     }
@@ -936,6 +938,7 @@ const MailInForm = () => {
               <a
                 href="tel:704-246-7642"
                 className="flex items-center space-x-3 bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors"
+                onClick={() => trackPhoneCall('mail_in_form_page')}
               >
                 <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
                   <Phone className="h-5 w-5 text-blue-600" />
@@ -948,6 +951,7 @@ const MailInForm = () => {
               <a
                 href="sms:980-888-5300"
                 className="flex items-center space-x-3 bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors"
+                onClick={() => trackTextMessage('mail_in_form_page')}
               >
                 <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                   <MessageSquare className="h-5 w-5 text-green-600" />

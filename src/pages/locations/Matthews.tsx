@@ -1,5 +1,6 @@
 import SEOHead from '../../components/SEOHead';
 import StickyCTA from '../../components/StickyCTA';
+import { trackPhoneCall, trackTextMessage } from '../../utils/analytics';
 import { 
   Phone, 
   MessageSquare, 
@@ -164,6 +165,7 @@ const Matthews = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="tel:704-246-7642?utm_source=site&utm_medium=matthews_page&utm_campaign=phone_cta"
+                onClick={() => trackPhoneCall('location_matthews_hero')}
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg transform hover:scale-105"
               >
                 <Phone className="h-6 w-6" />
@@ -171,6 +173,7 @@ const Matthews = () => {
               </a>
               <a
                 href="sms:980-888-5300?utm_source=site&utm_medium=matthews_page&utm_campaign=text_cta"
+                onClick={() => trackTextMessage('location_matthews_hero')}
                 className="border-2 border-white text-white hover:bg-white hover:text-green-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
               >
                 <MessageSquare className="h-6 w-6" />
@@ -353,6 +356,7 @@ const Matthews = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a
              href="tel:704-246-7642?utm_source=site&utm_medium=matthews_page&utm_campaign=phone_cta"
+             onClick={() => trackPhoneCall('location_matthews_footer')}
               className="bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <Phone className="h-6 w-6" />
@@ -360,6 +364,7 @@ const Matthews = () => {
             </a>
             <a
              href="sms:980-888-5300?utm_source=site&utm_medium=matthews_page&utm_campaign=text_cta"
+             onClick={() => trackTextMessage('location_matthews_footer')}
               className="border-2 border-white text-white hover:bg-white hover:text-green-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
             >
               <MessageSquare className="h-6 w-6" />

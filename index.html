@@ -14,33 +14,14 @@
     <meta name="description"
           content="Professional computer repair, Mac & PC repair, virus removal, data recovery & IT support in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 for free diagnostics!" />
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_MEASUREMENT_ID%"></script>
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7XS9FQ2E6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', '%VITE_GA_MEASUREMENT_ID%');
-      
-      // Google Ads Conversion Tracking
-      gtag('config', '%VITE_GOOGLE_ADS_CONVERSION_ID%');
-      
-      // Enhanced ecommerce tracking for service requests
-      function trackServiceRequest(service, value) {
-        gtag('event', 'generate_lead', {
-          'currency': 'USD',
-          'value': value || 150,
-          'service_type': service
-        });
-      }
+      gtag('config', 'G-E7XS9FQ2E6');
     </script>
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','%VITE_GTM_CONTAINER_ID%');</script>
     
     <!-- Additional Local SEO Meta Tags -->
     <meta name="geo.region" content="US-NC" />
@@ -214,10 +195,6 @@
     <link rel="canonical" href="https://www.kortechservice.com" />
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=%VITE_GTM_CONTAINER_ID%"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

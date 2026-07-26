@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
+import { trackPhoneCall } from '../utils/analytics';
 
 interface Props {
   children: ReactNode;
@@ -57,7 +58,7 @@ class ErrorBoundary extends Component<Props, State> {
             </button>
             <div className="mt-4 pt-4 border-t border-gray-200">
               <p className="text-sm text-gray-500">
-                Need help? Call <a href="tel:704-246-7642" className="text-blue-600 hover:text-blue-800">704-246-7642</a>
+                Need help? Call <a href="tel:704-246-7642" onClick={() => trackPhoneCall('error_boundary_fallback')} className="text-blue-600 hover:text-blue-800">704-246-7642</a>
               </p>
             </div>
           </div>

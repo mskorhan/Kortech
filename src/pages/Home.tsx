@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import StickyCTA from '../components/StickyCTA';
 import FiveStarReviews from '../components/FiveStarReviews';
+import { trackPhoneCall, trackTextMessage } from '../utils/analytics';
 
 export default function Home() {
   const schema = [
@@ -164,7 +165,7 @@ export default function Home() {
               <a
                 href="tel:704-246-7642"
                 className="btn-primary text-base sm:text-lg md:text-xl hover-glow mobile-full-width"
-                onClick={() => console.log('GA4 conversion: PHONE_CLICK')}
+                onClick={() => trackPhoneCall('home_hero')}
               >
                 <Phone className="h-6 w-6 mr-3 flex-shrink-0" />
                 <span>Call 704-246-7642</span>
@@ -172,7 +173,7 @@ export default function Home() {
               <a
                 href="sms:980-888-5300"
                 className="btn-secondary text-base sm:text-lg md:text-xl mobile-full-width"
-                onClick={() => console.log('GA4 conversion: SMS_CLICK')}
+                onClick={() => trackTextMessage('home_hero')}
               >
                 <MessageSquare className="h-6 w-6 mr-3 flex-shrink-0" />
                 <span>Text/Call 980-888-5300</span>
@@ -436,6 +437,7 @@ export default function Home() {
               <a
                 href="tel:704-246-7642?utm_source=site&utm_medium=cta&utm_campaign=phone_cta"
                 className="bg-white text-brand-primary hover:bg-gray-100 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-base sm:text-lg md:text-xl flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 min-w-[200px] sm:min-w-[220px] mobile-full-width"
+                onClick={() => trackPhoneCall('home_final_cta')}
               >
                 <Phone className="h-6 w-6" />
                 <span>704-246-7642</span>
@@ -443,6 +445,7 @@ export default function Home() {
               <a
                 href="sms:980-888-5300?utm_source=site&utm_medium=cta&utm_campaign=text_cta"
                 className="border-2 border-white text-white hover:bg-white hover:text-brand-primary px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-base sm:text-lg md:text-xl flex items-center justify-center space-x-2 transition-all duration-300 min-w-[200px] sm:min-w-[220px] mobile-full-width"
+                onClick={() => trackTextMessage('home_final_cta')}
               >
                 <MessageSquare className="h-6 w-6" />
                 <span>980-888-5300</span>

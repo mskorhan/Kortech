@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, MessageSquare, X } from 'lucide-react';
+import { trackPhoneCall, trackTextMessage } from '../utils/analytics';
 
 interface StickyCTAProps {
   showOnMobile?: boolean;
@@ -50,6 +51,7 @@ const StickyCTA: React.FC<StickyCTAProps> = ({
           <div className="flex items-center space-x-2 ml-4">
             <a
               href="tel:704-246-7642"
+              onClick={() => trackPhoneCall('sticky_cta')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center space-x-1 transition-colors"
             >
               <Phone className="h-4 w-4" />
@@ -57,6 +59,7 @@ const StickyCTA: React.FC<StickyCTAProps> = ({
             </a>
             <a
               href="sms:980-888-5300"
+              onClick={() => trackTextMessage('sticky_cta')}
               className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center space-x-1 transition-colors"
             >
               <MessageSquare className="h-4 w-4" />

@@ -1,6 +1,4 @@
 // Analytics utility functions
-import '../types/gtag';
-
 type EventParameters = Record<string, string | number | boolean | undefined>;
 
 export const trackEvent = (eventName: string, parameters: EventParameters = {}) => {
@@ -42,9 +40,11 @@ export const trackFormSubmission = (formType: string) => {
   });
 };
 
+const GA_MEASUREMENT_ID = 'G-E7XS9FQ2E6';
+
 export const trackPageView = (pagePath: string, pageTitle: string) => {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-XXXXXXXXXX', {
+    window.gtag('config', GA_MEASUREMENT_ID, {
       page_path: pagePath,
       page_title: pageTitle
     });

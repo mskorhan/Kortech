@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SEOHead from '../components/SEOHead';
-import { 
+import { trackPhoneCall, trackTextMessage } from '../utils/analytics';
+import {
   CheckCircle,
   X,
   Star,
@@ -467,6 +468,7 @@ const Pricing = () => {
               <a
                href="tel:704-246-7642?utm_source=site&utm_medium=pricing&utm_campaign=phone_cta"
                 className="bg-brand-primary hover:bg-white hover:text-brand-dark text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-2xl transform hover:scale-105"
+                onClick={() => trackPhoneCall('pricing_page')}
               >
                 <Phone className="h-6 w-6" />
                 <span>Call Now</span>
@@ -474,6 +476,7 @@ const Pricing = () => {
               <a
                href="sms:980-888-5300?utm_source=site&utm_medium=pricing&utm_campaign=text_cta"
                 className="border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300"
+                onClick={() => trackTextMessage('pricing_page')}
               >
                 <MessageSquare className="h-6 w-6" />
                 <span>Send Text</span>

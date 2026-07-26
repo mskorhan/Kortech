@@ -1,4 +1,5 @@
 import SEOHead from '../components/SEOHead';
+import { trackPhoneCall, trackTextMessage } from '../utils/analytics';
 import {
   CheckCircle,
   Star,
@@ -602,6 +603,7 @@ const Services = () => {
               <a
                 href="tel:704-246-7642?utm_source=site&utm_medium=services&utm_campaign=phone_cta"
                 className="bg-[#0099FF] hover:bg-white hover:text-[#071930] text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-2xl hover:shadow-[#0099FF]/25 transform hover:scale-105"
+                onClick={() => trackPhoneCall('services_page')}
               >
                 <Phone className="h-6 w-6" />
                 <span>Call Now</span>
@@ -609,6 +611,7 @@ const Services = () => {
               <a
                 href="sms:980-888-5300?utm_source=site&utm_medium=services&utm_campaign=text_cta"
                 className="border-2 border-[#0099FF] text-[#0099FF] hover:bg-[#0099FF] hover:text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300"
+                onClick={() => trackTextMessage('services_page')}
               >
                 <MessageSquare className="h-6 w-6" />
                 <span>Send Text</span>

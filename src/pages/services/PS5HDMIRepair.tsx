@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
-import { 
+import { trackPhoneCall, trackTextMessage } from '../../utils/analytics';
+import {
   Gamepad2,
   Wrench,
   Shield,
@@ -114,14 +115,14 @@ const PS5HDMIRepair = () => {
                 <a
                   href="tel:704-246-7642"
                   className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg transform hover:scale-105"
-                  onClick={() => console.log('GA4 conversion: PHONE_CLICK')}
+                  onClick={() => trackPhoneCall('service_ps5_hdmi_hero')}
                 >
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
                   href="sms:980-888-5300"
                   className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
-                  onClick={() => console.log('GA4 conversion: SMS_CLICK')}
+                  onClick={() => trackTextMessage('service_ps5_hdmi_hero')}
                 >
                   <span>Text/Call 980-888-5300</span>
                 </a>

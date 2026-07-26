@@ -4,6 +4,7 @@ import LinkValidator from './components/LinkValidator';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
+import { trackPageView } from './utils/analytics';
 import Home from './pages/Home';
 
 const About = lazy(() => import('./pages/About'));
@@ -63,7 +64,8 @@ const VirusRemovalGuideCharlotte = lazy(() => import('./pages/blog/VirusRemovalG
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
   const navigationType = useNavigationType();
-  
+  const isFirstRender = React.useRef(true);
+
   React.useEffect(() => {
     // Only scroll to top if there's no hash and it's not a POP navigation (back/forward)
     // or if it's a POP navigation to a different pathname
@@ -83,7 +85,17 @@ function ScrollToTop() {
       }, 0);
     }
   }, [pathname, hash, navigationType]);
-  
+
+  React.useEffect(() => {
+    // The initial pageview is already sent by the gtag snippet in index.html;
+    // only track subsequent client-side route changes here.
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    trackPageView(pathname, document.title);
+  }, [pathname]);
+
   return null;
 }
 
