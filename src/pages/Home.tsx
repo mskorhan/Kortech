@@ -23,8 +23,11 @@ import {
 } from 'lucide-react';
 import StickyCTA from '../components/StickyCTA';
 import FiveStarReviews from '../components/FiveStarReviews';
+import reviewsData from '../data/reviews.json';
 
 export default function Home() {
+  const { rating, totalReviews } = reviewsData;
+
   const schema = [
     {
       "@context": "https://schema.org",
@@ -63,8 +66,8 @@ export default function Home() {
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "96"
+        "ratingValue": String(rating ?? "4.8"),
+        "reviewCount": String(totalReviews ?? "0")
       },
       "serviceArea": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Surrounding Areas"]
     }

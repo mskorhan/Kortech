@@ -1,4 +1,5 @@
 import SEOHead from '../../components/SEOHead';
+import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
 import { 
   Phone, 
@@ -15,6 +16,8 @@ import {
 } from 'lucide-react';
 
 const Matthews = () => {
+  const { rating, totalReviews } = reviewsData;
+
   const services = [
     {
       icon: Monitor,
@@ -96,8 +99,8 @@ const Matthews = () => {
       "priceRange": "$$",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "96"
+        "ratingValue": String(rating ?? "4.8"),
+        "reviewCount": String(totalReviews ?? "0")
       }
     },
     {

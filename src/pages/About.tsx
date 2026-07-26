@@ -1,4 +1,5 @@
 import SEOHead from '../components/SEOHead';
+import reviewsData from '../data/reviews.json';
 import {
   CheckCircle,
   Star,
@@ -37,11 +38,13 @@ const About = () => {
     }
   ];
 
+  const { rating, totalReviews } = reviewsData;
+
   const achievements = [
-    { 
+    {
       icon: Star,
-      title: "4.8/5 Google Rating",
-      description: "Based on 150+ verified customer reviews",
+      title: rating ? `${rating}/5 Google Rating` : "Google Rating",
+      description: totalReviews ? `Based on ${totalReviews}+ verified customer reviews` : "Based on verified customer reviews",
       color: "yellow"
     },
     {
@@ -102,9 +105,9 @@ const About = () => {
       description: "Reached 50,000+ satisfied customers milestone"
     },
     {
-      year: "2024",
-      title: "Today",
-      description: "100,000+ customers served with 4.8★ Google rating"
+      year: "Today",
+      title: "Growing Strong",
+      description: "100,000+ customers served with a 4.8★ Google rating"
     }
   ];
 

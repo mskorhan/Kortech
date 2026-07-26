@@ -214,7 +214,7 @@ const Footer = () => {
 
         <div className="border-t border-slate-600/50 mt-12 pt-8 text-center text-sm text-slate-300">
           <div className="space-y-2">
-            <p className="font-light">&copy; 2024 KorTech Service. All rights reserved. Professional Tech Support in Charlotte, NC.</p>
+            <p className="font-light">&copy; {new Date().getFullYear()} KorTech Service. All rights reserved. Professional Tech Support in Charlotte, NC.</p>
             <div className="flex flex-wrap justify-center gap-4 text-xs text-slate-400">
               <a href="/privacy-policy" className="hover:text-slate-200 transition-colors">Privacy Policy</a>
               <span>•</span>
