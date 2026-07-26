@@ -1,7 +1,38 @@
 {
-  "updatedAt": null,
-  "rating": null,
-  "totalReviews": null,
+  "updatedAt": "2026-07-26T09:42:34.334Z",
+  "rating": 4.8,
+  "totalReviews": 111,
   "googleMapsUrl": "https://g.page/kortechservice",
-  "fiveStarReviews": []
+  "fiveStarReviews": [
+    {
+      "author": "Robert Plunkett (Bob)",
+      "text": "Outstanding!  I can’t imagine how anyone could be better than our experience  with Kortech.  Absolutely wonderful, courteous   Knowledgeable .   Fixed several problems that the Apple could not after a 10-day stay. Reasonably priced.  HIGHLY recommend!",
+      "time": 1772965843,
+      "relativeTime": "4 months ago"
+    },
+    {
+      "author": "Ryan White",
+      "text": "Just had THE best computer repair service of my life. And for what I paid I got a serious deal and same-day repair. I was desperate for a repair and I was apprehensive to go into a shop because I've had bad experiences in this area. Kortech Service was fast, worked over time and at a great price. Im very happy with what my repair!!",
+      "time": 1780967613,
+      "relativeTime": "a month ago"
+    },
+    {
+      "author": "Tirth Patel",
+      "text": "This place is amazing! I didn't need help with a computer but my head unit for my truck and Salahuddin (sorry If i spelt it wrong) was able to fix the issue. Installed it in my truck and it works perfect. I also forgot to mention he was able to get my in as soon as I called and had me out the door within an hour. I cannot recommend this place enough. I will be 100% going back if I have any tech issues.",
+      "time": 1774132457,
+      "relativeTime": "4 months ago"
+    },
+    {
+      "author": "Emrah Asar",
+      "text": "The best service and technicians here!\nAny computer or laptop issues they are the best in town, I had my computer completely powered out and I couldn’t bring it back on. I had very important data that was work related and personal.. They helped me recover all my data and transfer to another computer. I highly recommend this place !",
+      "time": 1754507253,
+      "relativeTime": "11 months ago"
+    },
+    {
+      "author": "Derick Pritchett",
+      "text": "I previously left a bad review however it was my misunderstanding...he was able to help me solve my problem and help get me up and running despite my initial dissatisfaction..I wish I hadn't left the bad review...he does good work and very fair and reasonable!",
+      "time": 1776443714,
+      "relativeTime": "3 months ago"
+    }
+  ]
 }
