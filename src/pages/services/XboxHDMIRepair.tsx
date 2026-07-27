@@ -53,8 +53,10 @@ const XboxHDMIRepair = () => {
       "areaServed": "Charlotte, NC",
       "offers": {
         "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Professional Xbox HDMI port repair service"
+        "description": "Free diagnostic — Professional Xbox HDMI port repair service. A detailed quote is provided before any repair work begins."
       }
     }
   ];

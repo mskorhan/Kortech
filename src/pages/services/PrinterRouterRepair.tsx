@@ -57,8 +57,10 @@ const PrinterRouterRepair = () => {
       "areaServed": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Monroe, NC"],
       "offers": {
         "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Professional printer and network repair services"
+        "description": "Free diagnostic — Professional printer and network repair services. A detailed quote is provided before any repair work begins."
       }
     },
     {

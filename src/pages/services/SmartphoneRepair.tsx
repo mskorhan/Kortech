@@ -55,8 +55,10 @@ const SmartphoneRepair = () => {
       "areaServed": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Monroe, NC"],
       "offers": {
         "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Professional smartphone repair services"
+        "description": "Free diagnostic — Professional smartphone repair services. A detailed quote is provided before any repair work begins."
       }
     },
     {

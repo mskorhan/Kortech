@@ -54,8 +54,10 @@ const NintendoSwitchRepair = () => {
       "areaServed": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Monroe, NC"],
       "offers": {
         "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Professional Nintendo Switch repair services"
+        "description": "Free diagnostic — Professional Nintendo Switch repair services. A detailed quote is provided before any repair work begins."
       }
     },
     {

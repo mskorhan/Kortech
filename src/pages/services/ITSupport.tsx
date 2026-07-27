@@ -60,8 +60,10 @@ const BusinessITSupport = () => {
       "areaServed": ["Charlotte, NC", "Matthews, NC", "Mint Hill, NC", "Pineville, NC", "Ballantyne, NC"],
       "offers": {
         "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Professional business IT support and technical services"
+        "description": "Free diagnostic — Professional business IT support and technical services. A detailed quote is provided before any repair work begins."
       }
     }
   ];

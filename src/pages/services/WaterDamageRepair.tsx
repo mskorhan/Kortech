@@ -57,8 +57,10 @@ const WaterDamageRepair = () => {
       "areaServed": "Charlotte, NC",
       "offers": {
         "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Emergency water damage repair services"
+        "description": "Free diagnostic — Emergency water damage repair services. A detailed quote is provided before any repair work begins."
       }
     }
   ];

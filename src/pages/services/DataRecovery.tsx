@@ -59,8 +59,10 @@ const DataRecovery = () => {
       "areaServed": "Charlotte, NC",
       "offers": {
         "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Professional data recovery services"
+        "description": "Free diagnostic — Professional data recovery services. A detailed quote is provided before any repair work begins."
       }
     }
   ];

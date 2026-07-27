@@ -57,8 +57,10 @@ const SSDUpgrades = () => {
       "areaServed": "Charlotte, NC",
       "offers": {
         "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Professional SSD upgrade installation service"
+        "description": "Free diagnostic — Professional SSD upgrade installation service. A detailed quote is provided before any repair work begins."
       }
     }
   ];

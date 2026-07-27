@@ -56,8 +56,10 @@ const RemoteAssistance = () => {
       "areaServed": ["Charlotte, NC", "Matthews, NC", "Mint Hill, NC", "Pineville, NC", "Ballantyne, NC"],
       "offers": {
         "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Limited remote assistance for verified returning customers only"
+        "description": "Free diagnostic — Limited remote assistance for verified returning customers only. A detailed quote is provided before any repair work begins."
       }
     },
     {
