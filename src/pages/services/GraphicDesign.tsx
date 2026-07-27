@@ -79,8 +79,8 @@ const GraphicDesign = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Graphic Design Charlotte NC - Professional Logo & Branding Services"
-        description="Professional graphic design services in Charlotte, NC. Logo design, branding, print materials, digital graphics, and more for businesses of all sizes. Call 704-246-7642!"
+        title="Graphic Design Charlotte NC | KorTech Service"
+        description="Professional graphic design services in Charlotte, NC. Logo design, branding, and print materials for businesses of all sizes. Call 704-246-7642!"
         keywords="graphic design Charlotte, logo design Charlotte NC, branding services, print design, digital graphics, website design Charlotte"
         canonicalUrl="/graphic-design"
         schema={schema}

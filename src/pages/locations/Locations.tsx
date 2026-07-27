@@ -184,7 +184,7 @@ const Locations = () => {
     <div className="min-h-screen bg-white" id="locations-page">
       <SEOHead
         title="Service Locations | Computer Repair Charlotte Area"
-        description="KorTech Service provides professional computer repair, data recovery, IT support throughout Charlotte, Matthews, Indian Trail, Mint Hill, Monroe, Ballantyne, Pineville, Waxhaw, Weddington, and Stallings, NC. Call 704-246-7642!"
+        description="KorTech Service provides computer repair, data recovery, and IT support across 10 Charlotte-area towns, from Ballantyne to Monroe. Call 704-246-7642!"
         canonicalUrl="/locations"
         schema={schema}
       />

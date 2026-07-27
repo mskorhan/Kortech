@@ -81,7 +81,7 @@ const PrinterRouterRepair = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Printer & Router Repair Charlotte NC - Network Troubleshooting"
+        title="Printer & Router Repair Charlotte NC | KorTech Service"
         description="Professional printer repair and network troubleshooting in Charlotte, NC. Router setup, Wi-Fi configuration, and printer maintenance. Call 704-246-7642!"
         keywords="printer repair Charlotte, router repair Charlotte NC, network troubleshooting, Wi-Fi setup Charlotte, printer maintenance"
         canonicalUrl="/printer-router-repair"

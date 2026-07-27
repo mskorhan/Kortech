@@ -236,7 +236,7 @@ const Blog = () => {
     <div className="min-h-screen bg-white" id="blog-page">
       <SEOHead
         title="Tech Blog • Computer Repair Tips • KorTech Charlotte"
-        description="Expert computer repair tips, gaming console guides, tech insights from Charlotte's trusted IT professionals serving Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 or 980-888-5300."
+        description="Expert computer repair tips, gaming console guides, and tech insights from Charlotte's trusted IT professionals. Call 704-246-7642!"
         canonicalUrl="/blog"
         schema={schema}
       />

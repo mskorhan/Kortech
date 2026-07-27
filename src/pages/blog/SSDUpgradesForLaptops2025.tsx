@@ -39,8 +39,8 @@ const SSDUpgradesForLaptops2025 = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Best SSD Upgrade for Old Laptop 2025 - Speed Up Your Computer 5x Faster"
-        description="Transform your slow laptop into a speed machine with the right SSD upgrade. Complete guide to choosing and installing SSDs for maximum performance boost in Charlotte, Matthews, Mint Hill, and Indian Trail."
+        title="Best SSD Upgrade for Old Laptop 2025 | KorTech Service"
+        description="Transform your slow laptop into a speed machine with the right SSD upgrade. Complete guide to choosing and installing SSDs for maximum performance boost."
         keywords="SSD upgrade Charlotte, laptop SSD installation, speed up laptop Charlotte NC, SSD upgrade Matthews, SSD upgrade Mint Hill, SSD upgrade Indian Trail"
         canonicalUrl="/blog/best-ssd-upgrade-old-laptop-2025"
         schema={schema}

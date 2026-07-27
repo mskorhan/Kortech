@@ -40,8 +40,8 @@ const DataRecoveryCharlotte2025 = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Data Recovery Services in Charlotte - How to Recover Lost Files in 2025"
-        description="Expert guide to data recovery options in Charlotte, NC. Learn how to recover lost files from failed hard drives, SSDs, and storage devices with professional help in Charlotte, Matthews, Mint Hill, and Indian Trail."
+        title="Data Recovery in Charlotte - How to Recover Lost Files 2025"
+        description="Expert guide to data recovery options in Charlotte, NC. Learn how to recover lost files from failed hard drives, SSDs, and storage devices."
         keywords="data recovery Charlotte, hard drive recovery Charlotte NC, recover lost files, SSD data recovery Charlotte, file recovery Matthews, data recovery Mint Hill, data recovery Indian Trail"
         canonicalUrl="/blog/data-recovery-charlotte-2025"
         schema={schema}

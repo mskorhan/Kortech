@@ -39,7 +39,7 @@ const Top5SignsSmartTVNeedsRepair = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Top 5 Signs Your Smart TV Needs Repair - Expert Troubleshooting Guide"
+        title="Top 5 Signs Your Smart TV Needs Repair | KorTech Service"
         description="Learn the top 5 warning signs that your smart TV needs professional repair. Expert troubleshooting tips from Charlotte's TV repair specialists."
         keywords="smart TV repair signs, TV troubleshooting guide, when to repair TV, TV screen problems, TV audio issues, smart TV not working, Charlotte TV repair"
         canonicalUrl="/blog/top-5-signs-smart-tv-needs-repair"

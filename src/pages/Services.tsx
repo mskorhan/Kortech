@@ -351,7 +351,7 @@ const Services = () => {
     <div className="min-h-screen bg-white" id="services-page">
       <SEOHead
         title="Computer Repair Services • Charlotte NC • KorTech"
-        description="Professional computer repair services in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Mac & PC repair, data recovery, virus removal, IT support. Call 704-246-7642 or 980-888-5300."
+        description="Professional computer repair services in Charlotte, NC. Mac & PC repair, data recovery, virus removal, and IT support. Call 704-246-7642!"
         canonicalUrl="/services"
         schema={schema}
       />

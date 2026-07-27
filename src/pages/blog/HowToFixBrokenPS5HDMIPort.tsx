@@ -40,8 +40,8 @@ const HowToFixBrokenPS5HDMIPort = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="How to Fix PS5 HDMI Port No Signal After Drop - Complete Repair Guide"
-        description="Step-by-step guide to diagnosing PS5 HDMI port damage after dropping your console. Learn when DIY fixes work and when professional PS5 HDMI repair in Charlotte is needed."
+        title="How to Fix PS5 HDMI Port No Signal After Drop | KorTech"
+        description="Step-by-step guide to diagnosing PS5 HDMI port damage after a drop. Learn when DIY fixes work and when professional repair is needed."
         keywords="PS5 HDMI port repair, PS5 no signal, PS5 HDMI port broken, fix PS5 HDMI port, PS5 HDMI repair Charlotte"
         canonicalUrl="/blog/how-to-fix-broken-ps5-hdmi-port"
         schema={schema}

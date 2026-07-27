@@ -39,8 +39,8 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="What to Do When Your Phone or Laptop Gets Wet - Charlotte Emergency Guide"
-        description="Dropped your phone in water or spilled a drink on your laptop? Here's exactly what to do in the first 24 hours, and the mistakes that make water damage worse. Charlotte NC."
+        title="What to Do When Your Phone or Laptop Gets Wet | KorTech"
+        description="Dropped your phone in water or spilled a drink on your laptop? Here's what to do in the first 24 hours, and the mistakes that make it worse."
         keywords="phone water damage Charlotte, laptop spill repair, water damaged phone what to do, liquid damage repair Charlotte NC, wet phone repair"
         canonicalUrl="/blog/what-to-do-when-device-gets-wet-charlotte"
         schema={schema}

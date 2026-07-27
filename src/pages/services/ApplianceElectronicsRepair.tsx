@@ -78,7 +78,7 @@ const ApplianceElectronicsRepair = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Appliance Electronics Repair Charlotte NC - Microwave & Thermostat"
+        title="Appliance Electronics Repair Charlotte NC | KorTech"
         description="Professional appliance electronics repair in Charlotte, NC. Microwave, thermostat, smart home device, and small appliance repair services. Call 704-246-7642!"
         keywords="appliance electronics repair Charlotte, microwave repair Charlotte NC, thermostat repair, smart home device repair, small appliance repair"
         canonicalUrl="/appliance-electronics-repair"

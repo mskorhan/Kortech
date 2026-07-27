@@ -23,7 +23,7 @@ const TermsConditions = () => {
     <div className="min-h-screen bg-white" id="terms-conditions">
       <SEOHead
         title="Terms & Conditions • KorTech Service Charlotte"
-        description="Terms and conditions for KorTech Service computer repair and IT support services in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 or 980-888-5300."
+        description="Terms and conditions for KorTech Service computer repair and IT support services in Charlotte, NC."
         canonicalUrl="/terms"
         schema={schema}
       />

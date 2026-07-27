@@ -115,7 +115,7 @@ const About = () => {
     <div className="min-h-screen bg-white" id="about-page">
       <SEOHead
         title="About KorTech Service • Charlotte Computer Repair"
-        description="Learn about KorTech Service, Charlotte's trusted computer repair company since 1998. Professional Mac & PC repair in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 or 980-888-5300."
+        description="Learn about KorTech Service, Charlotte's trusted computer repair company since 1998. Mac & PC repair, data recovery, and IT support."
         canonicalUrl="/about"
         schema={schema}
       />

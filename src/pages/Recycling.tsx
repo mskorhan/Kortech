@@ -157,7 +157,7 @@ const Recycling = () => {
     <div className="min-h-screen bg-white" id="recycling-page">
       <SEOHead
         title="Free Electronics Recycling • Charlotte NC • KorTech"
-        description="Free electronics recycling in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Environmentally responsible disposal of computers, phones, electronics. Call 704-246-7642 or 980-888-5300."
+        description="Free electronics recycling in Charlotte, NC. Environmentally responsible disposal of computers, phones, and electronics. Call 704-246-7642!"
         canonicalUrl="/recycling"
         schema={schema}
       />

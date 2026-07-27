@@ -447,7 +447,7 @@ const MailInForm = () => {
     <div className="min-h-screen bg-white" id="mail-in-form-page">
       <SEOHead
         title="Mail-In Repair Form • Charlotte Computer Repair"
-        description="Complete mail-in repair form for shipping your device to KorTech Service for professional computer repair in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 or 980-888-5300."
+        description="Complete mail-in repair form for shipping your device to KorTech Service for professional computer repair. Call 704-246-7642!"
         canonicalUrl="/mail-in-form"
         schema={schema}
       />

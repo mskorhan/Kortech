@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
     <div className="min-h-screen bg-white" id="privacy-policy">
       <SEOHead
         title="Privacy Policy • KorTech Service Charlotte NC"
-        description="KorTech Service privacy policy. Learn how we protect your personal information and data during computer repair services in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 or 980-888-5300."
+        description="KorTech Service privacy policy. Learn how we protect your personal information and data during computer repair services in Charlotte and surrounding areas."
         canonicalUrl="/privacy-policy"
         schema={schema}
       />

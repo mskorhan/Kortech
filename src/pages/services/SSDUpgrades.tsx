@@ -69,7 +69,7 @@ const SSDUpgrades = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="SSD Upgrade Charlotte NC | KorTech Service"
-        description="Professional SSD upgrade service in Charlotte, NC. Speed up your laptop 3-5x faster with solid state drive installation. Data migration included. Call 704-246-7642!"
+        description="Professional SSD upgrade service in Charlotte, NC. Speed up your laptop 3-5x faster with solid state drive installation. Call 704-246-7642!"
         canonicalUrl="/ssd-upgrades"
         schema={schema}
       />

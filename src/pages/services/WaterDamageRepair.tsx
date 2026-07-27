@@ -69,7 +69,7 @@ const WaterDamageRepair = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Water Damage Repair Charlotte NC - Emergency Electronics Recovery"
+        title="Water Damage Repair Charlotte NC | KorTech Service"
         description="Emergency water damage repair in Charlotte, NC. Professional cleaning and restoration for water-damaged phones, laptops, and electronics. Call 704-246-7642!"
         keywords="water damage repair Charlotte, phone water damage Charlotte NC, laptop water damage repair, electronics water damage"
         canonicalUrl="/water-damage-repair"

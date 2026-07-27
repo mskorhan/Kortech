@@ -40,7 +40,7 @@ const SignsYourBusinessNeedsITSupport = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="7 Signs Your Small Business Needs IT Support | KorTech"
-        description="Recurring outages, slow computers, no backup plan? Learn the 7 warning signs your Charlotte-area small business needs professional IT support before a small problem becomes a costly one."
+        description="Recurring outages, slow computers, no backup plan? Learn the 7 warning signs your small business needs professional IT support."
         keywords="small business IT support, business computer support Charlotte, network support for business, IT support signs, business technology help"
         canonicalUrl="/blog/signs-your-business-needs-it-support"
         schema={schema}

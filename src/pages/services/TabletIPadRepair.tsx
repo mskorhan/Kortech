@@ -82,8 +82,8 @@ const TabletIPadRepair = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Tablet & iPad Repair Charlotte NC - Professional Screen Repair"
-        description="Professional tablet and iPad repair in Charlotte, NC. Screen replacement, battery repair, and water damage service. Same-day iPad repair available. Call 704-246-7642!"
+        title="Tablet & iPad Repair Charlotte NC | KorTech Service"
+        description="Professional tablet and iPad repair in Charlotte, NC. Screen replacement, battery repair, and water damage service. Call 704-246-7642!"
         keywords="tablet repair Charlotte, iPad repair Charlotte NC, iPad screen repair, Samsung Galaxy Tab repair, tablet screen replacement, iPad battery replacement Charlotte"
         canonicalUrl="/tablet-ipad-repair"
         schema={schema}

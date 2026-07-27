@@ -80,7 +80,7 @@ const SmartTVRepair = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Smart TV Repair Charlotte NC - Television Screen & Audio Repair"
+        title="Smart TV Repair Charlotte NC | KorTech Service"
         description="Professional smart TV repair in Charlotte, NC. Samsung, LG, Sony TV repair, screen replacement, audio issues, and smart TV connectivity. Call 704-246-7642!"
         keywords="smart TV repair Charlotte, TV repair Charlotte NC, Samsung TV repair, LG TV repair, television screen repair, TV audio repair"
         canonicalUrl="/smart-tv-repair"

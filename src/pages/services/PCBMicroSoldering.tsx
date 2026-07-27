@@ -84,7 +84,7 @@ const PCBMicroSoldering = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="PCB Micro-Soldering Repair Charlotte NC - Electronics Rework"
-        description="Professional PCB-level micro-soldering and electronics rework in Charlotte, NC. Circuit board repair for smartphones, laptops, and electronic devices. Call 704-246-7642!"
+        description="Professional PCB-level micro-soldering in Charlotte, NC. Circuit board repair for smartphones, laptops, and electronics. Call 704-246-7642!"
         keywords="PCB micro-soldering Charlotte, electronics rework Charlotte NC, circuit board repair, micro-soldering service, motherboard repair"
         canonicalUrl="/pcb-micro-soldering"
         schema={schema}

@@ -105,7 +105,7 @@ const Contact = () => {
     <div className="min-h-screen bg-white" id="contact-page">
       <SEOHead
         title="Contact • Charlotte Computer Repair • KorTech Service"
-        description="Contact KorTech Service for computer repair in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Visit our Sardis Road location or call 704-246-7642 or 980-888-5300."
+        description="Contact KorTech Service for computer repair in Charlotte, NC. Visit our Sardis Road location or call 704-246-7642!"
         canonicalUrl="/contact"
         schema={schema}
       />

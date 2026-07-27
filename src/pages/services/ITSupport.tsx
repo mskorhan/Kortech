@@ -72,8 +72,8 @@ const BusinessITSupport = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Business IT Support Charlotte NC - On-Site Network & Computer Support"
-        description="Professional business IT support services in Charlotte, NC. On-site network setup, computer maintenance, and ongoing IT support for local businesses. Call 704-246-7642!"
+        title="Business IT Support Charlotte NC | KorTech Service"
+        description="Professional business IT support in Charlotte, NC. On-site network setup, computer maintenance, and ongoing support. Call 704-246-7642!"
         keywords="business IT support Charlotte, on-site IT support Charlotte NC, network setup Charlotte, business computer support, IT services Charlotte"
         canonicalUrl="/business-it-support"
         schema={schema}

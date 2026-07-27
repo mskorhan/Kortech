@@ -79,7 +79,7 @@ const RemoteAssistance = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Optional Remote Help for Returning Clients - KorTech Service Charlotte"
+        title="Remote Help for Returning Clients | KorTech Service"
         description="Limited remote assistance available only to existing, verified customers of our Charlotte computer repair shop by appointment. Main services performed in-shop."
         keywords="remote assistance Charlotte, computer help returning customers, local computer repair Charlotte"
         canonicalUrl="/remote-assistance"

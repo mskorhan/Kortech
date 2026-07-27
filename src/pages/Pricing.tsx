@@ -165,7 +165,7 @@ const Pricing = () => {
     <div className="min-h-screen bg-white" id="pricing-page">
       <SEOHead
         title="Pricing • Computer Repair Charlotte • KorTech Service"
-        description="Transparent computer repair pricing in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. IT support plans, diagnostic fees, service costs. Call 704-246-7642 or 980-888-5300."
+        description="Transparent computer repair pricing in Charlotte, NC. IT support plans, diagnostic fees, and service costs. Call 704-246-7642!"
         canonicalUrl="/pricing"
         schema={schema}
       />

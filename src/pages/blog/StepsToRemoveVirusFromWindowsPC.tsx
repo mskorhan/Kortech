@@ -71,8 +71,8 @@ const StepsToRemoveVirusFromWindowsPC = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="How to Remove Viruses from Windows PC - Charlotte Expert Guide 2025"
-        description="Complete step-by-step guide to removing viruses, malware, and ransomware from your Windows PC. Professional techniques from Charlotte's computer security experts."
+        title="How to Remove Viruses from Windows PC | KorTech 2025"
+        description="Complete step-by-step guide to removing viruses, malware, and ransomware from your Windows PC using professional techniques."
         keywords="virus removal Charlotte, malware removal Charlotte NC, ransomware removal, Windows virus removal, computer security Charlotte, virus removal Matthews, virus removal Mint Hill"
         canonicalUrl="/blog/steps-to-remove-virus-from-windows-pc"
         schema={schema}

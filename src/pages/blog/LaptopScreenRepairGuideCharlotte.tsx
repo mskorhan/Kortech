@@ -41,7 +41,7 @@ const LaptopScreenRepairGuideCharlotte = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Laptop Screen Repair Guide - Options for Charlotte Residents"
-        description="Complete guide to laptop screen repair options in Charlotte, Matthews, and Mint Hill. Compare costs, repair times, and quality considerations for all laptop brands."
+        description="Complete guide to laptop screen repair options in Charlotte, NC. Compare costs, repair times, and quality considerations for all brands."
         keywords="laptop screen repair Charlotte, cracked laptop screen Charlotte NC, laptop screen replacement Matthews, laptop repair Mint Hill, broken laptop screen fix Charlotte"
         canonicalUrl="/blog/laptop-screen-repair-guide-charlotte"
         schema={schema}

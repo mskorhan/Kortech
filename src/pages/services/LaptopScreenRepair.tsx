@@ -71,7 +71,7 @@ const LaptopRepair = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Laptop Repair Charlotte NC | KorTech Service"
-        description="Professional laptop repair services at our Charlotte, NC location. Screen replacement, keyboard repair, battery service for all brands. Walk-ins welcome! Call 704-246-7642!"
+        description="Professional laptop repair in Charlotte, NC. Screen replacement, keyboard repair, and battery service for all brands. Call 704-246-7642!"
         canonicalUrl="/laptop-screen-repair"
         schema={schema}
       />

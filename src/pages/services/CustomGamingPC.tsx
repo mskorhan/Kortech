@@ -67,7 +67,7 @@ const CustomGamingPC = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Custom Gaming PC Build Charlotte NC - Professional PC Assembly"
+        title="Custom Gaming PC Build Charlotte NC | KorTech Service"
         description="Expert custom gaming PC building in Charlotte, NC. Professional assembly, component selection, and optimization. Gaming PCs from $800. Call 704-246-7642!"
         keywords="custom gaming PC Charlotte, gaming PC build Charlotte NC, gaming computer assembly, PC builder Charlotte"
         canonicalUrl="/custom-gaming-pc"

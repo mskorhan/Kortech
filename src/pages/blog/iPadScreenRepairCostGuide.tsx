@@ -40,7 +40,7 @@ const IPadScreenRepairCostGuide = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="iPad & Tablet Screen Repair Cost Guide 2026 | KorTech"
-        description="Cracked your iPad or Android tablet screen? Learn what screen repair typically costs, what affects the price, and when replacement makes more sense than repair in Charlotte."
+        description="Cracked your iPad or Android tablet screen? Learn what screen repair typically costs and when replacement makes more sense than repair."
         keywords="iPad screen repair cost, tablet screen repair, cracked iPad screen, iPad repair Charlotte, tablet repair price"
         canonicalUrl="/blog/ipad-screen-repair-cost-guide"
         schema={schema}

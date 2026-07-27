@@ -40,7 +40,7 @@ const PrinterWontConnectToWifiFix = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Printer Won't Connect to Wi-Fi? 8 Fixes to Try | KorTech"
-        description="Printer stuck offline or won't join your Wi-Fi network? Try these 8 troubleshooting steps in order before scheduling a professional printer and router repair visit in Charlotte."
+        description="Printer stuck offline or won't join your Wi-Fi network? Try these 8 troubleshooting steps before scheduling a professional repair visit."
         keywords="printer won't connect to wifi, printer offline fix, printer wifi troubleshooting, router repair Charlotte, printer not printing"
         canonicalUrl="/blog/printer-wont-connect-to-wifi-fix"
         schema={schema}

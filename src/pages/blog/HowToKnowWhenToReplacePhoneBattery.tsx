@@ -40,7 +40,7 @@ const HowToKnowWhenToReplacePhoneBattery = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="How to Know When to Replace Your Phone Battery - 7 Warning Signs"
+        title="How to Know When to Replace Your Phone Battery | KorTech"
         description="Learn the 7 critical warning signs that indicate it's time to replace your smartphone battery. Expert advice from Charlotte's trusted phone repair specialists."
         keywords="phone battery replacement, when to replace phone battery, smartphone battery life, battery drain issues, phone battery warning signs, iPhone battery replacement Charlotte"
         canonicalUrl="/blog/how-to-know-when-to-replace-phone-battery"
