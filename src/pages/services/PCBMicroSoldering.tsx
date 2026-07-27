@@ -7,7 +7,8 @@ import {
   CheckCircle,
   Star,
   Settings,
-  Wrench
+  Wrench,
+  FileText
 } from 'lucide-react';
 
 const PCBMicroSoldering = () => {
@@ -267,6 +268,26 @@ const PCBMicroSoldering = () => {
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
               Related Electronics Services
             </h2>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a href="/blog/what-is-pcb-micro-soldering" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">What is PCB Micro-Soldering?</h4>
+                  <p className="text-sm text-slate-600 mt-1">Learn how board-level micro-soldering repair works and when it's needed.</p>
+                </div>
+              </a>
+              <a href="/blog/how-to-fix-broken-ps5-hdmi-port" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">How to Fix a Broken PS5 HDMI Port</h4>
+                  <p className="text-sm text-slate-600 mt-1">A common example of board-level repair work our micro-soldering techs handle.</p>
+                </div>
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

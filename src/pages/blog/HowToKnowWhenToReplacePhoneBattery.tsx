@@ -326,7 +326,7 @@ const HowToKnowWhenToReplacePhoneBattery = () => {
               </div>
             </Link>
             
-            <Link to="/blog/why-ssd-upgrades-make-laptops-faster-2025" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/best-ssd-upgrade-old-laptop-2025" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
                   Best SSD Upgrade for Old Laptop 2025 - Speed Up Your Computer 5x Faster

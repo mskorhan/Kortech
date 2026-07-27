@@ -7,7 +7,8 @@ import {
   Star,
   Battery,
   Monitor,
-  Zap
+  Zap,
+  FileText
 } from 'lucide-react';
 
 const SmartphoneRepair = () => {
@@ -263,6 +264,26 @@ const SmartphoneRepair = () => {
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
               Related Mobile Device Services
             </h2>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a href="/blog/how-to-know-when-to-replace-phone-battery" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">How to Know When to Replace Your Phone Battery</h4>
+                  <p className="text-sm text-slate-600 mt-1">Signs your smartphone battery is failing and when a replacement makes sense.</p>
+                </div>
+              </a>
+              <a href="/blog/what-to-do-when-device-gets-wet-charlotte" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">What to Do When Your Device Gets Wet</h4>
+                  <p className="text-sm text-slate-600 mt-1">Emergency steps to save a water-damaged smartphone before you bring it in.</p>
+                </div>
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

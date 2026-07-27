@@ -17,12 +17,23 @@ import {
 } from 'lucide-react';
 
 const PrivacyPolicy = () => {
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Privacy Policy",
+      "description": "Privacy policy for KorTech Service computer repair and IT support services in Charlotte, NC.",
+      "url": "https://www.kortechservice.com/privacy-policy"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-white" id="privacy-policy">
       <SEOHead
         title="Privacy Policy • KorTech Service Charlotte NC"
         description="KorTech Service privacy policy. Learn how we protect your personal information and data during computer repair services in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 or 980-888-5300."
         canonicalUrl="/privacy-policy"
+        schema={schema}
       />
 
       {/* Hero Section */}

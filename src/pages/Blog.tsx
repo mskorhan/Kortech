@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import {
   Calendar, ArrowRight, BookOpen, Gamepad2, HardDrive, Shield,
-  Monitor, AlertTriangle, Smartphone, Cpu, Tv, Database, Wrench, Droplets
+  Monitor, AlertTriangle, Smartphone, Cpu, Tv, Database, Wrench, Droplets,
+  Building, Wifi, Tablet
 } from 'lucide-react';
 
 const Blog = () => {
@@ -18,6 +19,42 @@ const Blog = () => {
       readTime: '7 min read',
       featured: true,
       path: '/blog/what-to-do-when-device-gets-wet-charlotte'
+    },
+    {
+      slug: 'signs-your-business-needs-it-support',
+      title: '7 Signs Your Small Business Needs IT Support - Charlotte Business Guide',
+      excerpt: 'Recurring outages, slow computers, no backup plan? Learn the 7 warning signs your business needs professional IT support before a small problem becomes a costly one.',
+      date: '2026-07-27',
+      author: 'KorTech Service Team',
+      category: 'Business IT Support',
+      icon: Building,
+      readTime: '8 min read',
+      featured: true,
+      path: '/blog/signs-your-business-needs-it-support'
+    },
+    {
+      slug: 'printer-wont-connect-to-wifi-fix',
+      title: "Printer Won't Connect to Wi-Fi? 8 Fixes to Try Before Calling for Help",
+      excerpt: 'Printer stuck offline or won\'t join your Wi-Fi network? Try these 8 troubleshooting steps before scheduling a professional printer and router repair visit.',
+      date: '2026-07-27',
+      author: 'KorTech Service Team',
+      category: 'Printer & Network Repair',
+      icon: Wifi,
+      readTime: '7 min read',
+      featured: false,
+      path: '/blog/printer-wont-connect-to-wifi-fix'
+    },
+    {
+      slug: 'ipad-screen-repair-cost-guide',
+      title: 'iPad & Tablet Screen Repair Cost Guide - What to Expect in 2026',
+      excerpt: 'Cracked your iPad or Android tablet screen? Here\'s what screen repair typically costs, what affects the price, and when replacement makes more sense than repair.',
+      date: '2026-07-27',
+      author: 'KorTech Service Team',
+      category: 'Tablet & iPad Repair',
+      icon: Tablet,
+      readTime: '7 min read',
+      featured: false,
+      path: '/blog/ipad-screen-repair-cost-guide'
     },
     {
       slug: 'how-to-fix-broken-ps5-hdmi-port',
@@ -56,7 +93,7 @@ const Blog = () => {
       path: '/blog/steps-to-remove-virus-from-windows-pc'
     },
     {
-      slug: 'custom-gaming-pc-build-charlotte-2025',
+      slug: 'custom-gaming-pc-build-guide-2025',
       title: 'Custom Gaming PC Build Charlotte 2025 - Best Components Under $1500',
       excerpt: 'Build the perfect gaming PC in Charlotte with our 2025 component guide. Expert recommendations for budget gaming builds under $1500 with maximum performance for Charlotte gamers.',
       date: '2025-01-08',

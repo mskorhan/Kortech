@@ -436,7 +436,7 @@ const LaptopScreenRepairGuideCharlotte = () => {
               </div>
             </Link>
             
-            <Link to="/blog/water-damage-repair-guide" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/what-to-do-when-device-gets-wet-charlotte" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
                   Laptop Water Damage Repair - Emergency Steps for Charlotte Residents

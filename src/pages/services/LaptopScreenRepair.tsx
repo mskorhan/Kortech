@@ -10,7 +10,8 @@ import {
   MapPin,
   Star,
   AlertTriangle,
-  Monitor
+  Monitor,
+  FileText
 } from 'lucide-react';
 
 const LaptopRepair = () => {
@@ -338,6 +339,26 @@ const LaptopRepair = () => {
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
               Related Computer Services
             </h2>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a href="/blog/laptop-screen-repair-guide-charlotte" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Laptop Screen Repair Guide for Charlotte Residents</h4>
+                  <p className="text-sm text-slate-600 mt-1">Everything Charlotte laptop owners need to know about screen damage and repair options.</p>
+                </div>
+              </a>
+              <a href="/blog/what-to-do-when-device-gets-wet-charlotte" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">What to Do When Your Device Gets Wet</h4>
+                  <p className="text-sm text-slate-600 mt-1">Emergency steps for Charlotte residents to minimize liquid damage to laptops and other devices.</p>
+                </div>
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

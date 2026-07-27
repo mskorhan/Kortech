@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
 import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
@@ -24,25 +25,29 @@ const Matthews = () => {
       icon: Monitor,
       title: "Computer Repair Matthews",
       description: "Expert Mac & PC repair services in Matthews, NC",
-      price: "Call/Text For Quote"
+      price: "Call/Text For Quote",
+      link: "/services"
     },
     {
       icon: HardDrive,
       title: "Data Recovery Matthews",
       description: "Professional data recovery services for Matthews residents",
-      price: "Call/Text For Quote"
+      price: "Call/Text For Quote",
+      link: "/data-recovery"
     },
     {
       icon: Smartphone,
       title: "Mobile Device Repair",
       description: "iPhone, iPad, and Android repair in Matthews",
-      price: "Call/Text For Quote"
+      price: "Call/Text For Quote",
+      link: "/smartphone-screen-repair-charlotte"
     },
     {
       icon: Wifi,
       title: "Network Setup Matthews",
       description: "Business and home network installation in Matthews",
-      price: "Call/Text For Quote"
+      price: "Call/Text For Quote",
+      link: "/business-it-support"
     }
   ];
 
@@ -216,14 +221,17 @@ const Matthews = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
+              <Link key={index} to={service.link} className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 block group">
                 <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
                   <service.icon className="h-6 w-6 text-green-600" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-800 mb-2">{service.title}</h3>
                 <p className="text-slate-600 text-sm mb-4">{service.description}</p>
-                <div className="text-green-600 font-bold">{service.price}</div>
-              </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-green-600 font-bold">{service.price}</span>
+                  <span className="text-sm font-medium text-green-600 opacity-0 group-hover:opacity-100 transition-opacity">Learn More &rarr;</span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

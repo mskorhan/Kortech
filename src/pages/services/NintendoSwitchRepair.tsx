@@ -6,7 +6,8 @@ import {
   Wrench,
   CheckCircle,
   Star,
-  Zap
+  Zap,
+  FileText
 } from 'lucide-react';
 
 const NintendoSwitchRepair = () => {
@@ -262,6 +263,26 @@ const NintendoSwitchRepair = () => {
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
               Related Gaming Services
             </h2>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a href="/blog/nintendo-switch-repair-guide" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Nintendo Switch Repair Guide</h4>
+                  <p className="text-sm text-slate-600 mt-1">Common Nintendo Switch problems and how to get them professionally repaired.</p>
+                </div>
+              </a>
+              <a href="/blog/custom-gaming-pc-build-guide-2025" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Custom Gaming PC Build Guide 2025</h4>
+                  <p className="text-sm text-slate-600 mt-1">Planning a gaming upgrade? Learn what to look for in a custom-built gaming PC.</p>
+                </div>
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

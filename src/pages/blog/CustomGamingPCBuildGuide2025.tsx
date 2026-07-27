@@ -416,7 +416,7 @@ const CustomGamingPCBuildGuide2025 = () => {
               </div>
             </Link>
             
-            <Link to="/blog/ps5-hdmi-repair" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/how-to-fix-broken-ps5-hdmi-port" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
                   How to Fix PS5 HDMI Port No Signal After Drop - Complete Repair Guide
