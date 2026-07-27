@@ -48,6 +48,8 @@ const MailInForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -81,13 +83,42 @@ const MailInForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (validateForm()) {
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    // The device password intentionally never leaves the browser (see the
+    // field's own privacy note below) — it's excluded from the notification
+    // payload and only ever appears in the on-screen/printed summary.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: _password, ...notificationPayload } = formData;
+
+    try {
+      const response = await fetch('https://kortech-mailin-form.mskorhan.workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(notificationPayload)
+      });
+
+      if (!response.ok) {
+        throw new Error('Notification request failed');
+      }
+
       trackFormSubmission('mail_in_repair_form');
       setFormSubmitted(true);
       window.scrollTo(0, 0);
+    } catch {
+      setSubmitError(
+        "We couldn't send your form to us automatically. Please still print it below and include it with your device, or call/text us so we know it's coming."
+      );
+      setFormSubmitted(true);
+      window.scrollTo(0, 0);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -473,7 +504,13 @@ const MailInForm = () => {
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">Form Completed Successfully!</h2>
                 <p className="text-gray-600">Please print this form and include it with your device.</p>
               </div>
-              
+
+              {submitError && (
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-8 text-sm text-yellow-800">
+                  {submitError}
+                </div>
+              )}
+
               <div ref={formRef} className="border-2 border-dashed border-gray-300 rounded-lg p-6 mb-8">
                 <div className="mb-6 pb-6 border-b border-gray-200">
                   <h3 className="text-lg font-bold text-gray-900 mb-4">Customer Information</h3>
@@ -919,10 +956,11 @@ const MailInForm = () => {
                 <div className="flex justify-center pt-4">
                   <button
                     type="submit"
-                    className="inline-flex items-center space-x-2 bg-[#0099FF] hover:bg-[#071930] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center space-x-2 bg-[#0099FF] hover:bg-[#071930] disabled:opacity-60 disabled:cursor-not-allowed text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
                   >
                     <FileText className="h-5 w-5" />
-                    <span>Submit and Generate Form</span>
+                    <span>{isSubmitting ? 'Submitting...' : 'Submit and Generate Form'}</span>
                   </button>
                 </div>
               </form>

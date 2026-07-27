@@ -1,0 +1,11 @@
+name = "kortech-mailin-form"
+main = "src/index.ts"
+compatibility_date = "2026-07-26"
+
+[vars]
+NOTIFY_TO_EMAIL = "info@kortechservice.com"
+NOTIFY_FROM_EMAIL = "KorTech Service <notifications@mail.kortechservice.com>"
+ALLOWED_ORIGIN = "https://www.kortechservice.com"
+
+# RESEND_API_KEY is set as a secret, not here:
+#   npx wrangler secret put RESEND_API_KEY
