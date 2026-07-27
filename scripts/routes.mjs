@@ -1,0 +1,58 @@
+// Single source of truth for the site's public routes.
+// Used by generate-sitemap.mjs (and the prerender script) so the sitemap
+// and prerendered pages can never drift from what App.tsx actually serves.
+export const routes = [
+  { path: '/', changefreq: 'weekly', priority: 1.0 },
+  { path: '/about', changefreq: 'monthly', priority: 0.8 },
+  { path: '/services', changefreq: 'weekly', priority: 0.9 },
+  { path: '/pricing', changefreq: 'monthly', priority: 0.7 },
+  { path: '/contact', changefreq: 'monthly', priority: 0.8 },
+  { path: '/recycling', changefreq: 'monthly', priority: 0.6 },
+  { path: '/terms', changefreq: 'yearly', priority: 0.3 },
+  { path: '/privacy-policy', changefreq: 'yearly', priority: 0.3 },
+  { path: '/mail-in-form', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog', changefreq: 'weekly', priority: 0.8 },
+
+  // Service pages
+  { path: '/graphic-design', changefreq: 'monthly', priority: 0.8 },
+  { path: '/remote-assistance', changefreq: 'monthly', priority: 0.8 },
+  { path: '/ps5-hdmi-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/xbox-hdmi-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/laptop-screen-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/ssd-upgrades', changefreq: 'monthly', priority: 0.8 },
+  { path: '/virus-malware-removal', changefreq: 'monthly', priority: 0.8 },
+  { path: '/business-it-support', changefreq: 'monthly', priority: 0.8 },
+  { path: '/data-recovery', changefreq: 'monthly', priority: 0.9 },
+  { path: '/custom-gaming-pc', changefreq: 'monthly', priority: 0.8 },
+  { path: '/water-damage-repair', changefreq: 'monthly', priority: 0.8 },
+  { path: '/smartphone-screen-repair-charlotte', changefreq: 'monthly', priority: 0.9 },
+  { path: '/tablet-ipad-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/smart-tv-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/printer-router-repair', changefreq: 'monthly', priority: 0.8 },
+  { path: '/pcb-micro-soldering', changefreq: 'monthly', priority: 0.8 },
+  { path: '/appliance-electronics-repair', changefreq: 'monthly', priority: 0.8 },
+  { path: '/nintendo-switch-repair', changefreq: 'monthly', priority: 0.9 },
+
+  // Location pages
+  { path: '/locations', changefreq: 'monthly', priority: 0.8 },
+  { path: '/charlotte-computer-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/matthews-computer-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/indian-trail-computer-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/mint-hill-computer-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/monroe-computer-repair', changefreq: 'monthly', priority: 0.9 },
+
+  // Blog posts
+  { path: '/blog/how-to-fix-broken-ps5-hdmi-port', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/best-ssd-upgrade-old-laptop-2025', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/steps-to-remove-virus-from-windows-pc', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/custom-gaming-pc-build-guide-2025', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/signs-hard-drive-failing-data-recovery-tips', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/how-to-know-when-to-replace-phone-battery', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/what-is-pcb-micro-soldering', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/top-5-signs-smart-tv-needs-repair', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/data-recovery-charlotte-2025', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/laptop-screen-repair-guide-charlotte', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/nintendo-switch-repair-guide', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/xbox-hdmi-repair-guide', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/virus-removal-guide-charlotte', changefreq: 'monthly', priority: 0.7 },
+];
