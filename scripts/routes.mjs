@@ -55,4 +55,5 @@ export const routes = [
   { path: '/blog/nintendo-switch-repair-guide', changefreq: 'monthly', priority: 0.7 },
   { path: '/blog/xbox-hdmi-repair-guide', changefreq: 'monthly', priority: 0.7 },
   { path: '/blog/virus-removal-guide-charlotte', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/what-to-do-when-device-gets-wet-charlotte', changefreq: 'monthly', priority: 0.7 },
 ];

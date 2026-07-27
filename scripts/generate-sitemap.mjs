@@ -68,6 +68,7 @@ const blogSlugToFile = {
   'nintendo-switch-repair-guide': 'NintendoSwitchRepairGuide.tsx',
   'xbox-hdmi-repair-guide': 'XboxHDMIRepairGuide.tsx',
   'virus-removal-guide-charlotte': 'VirusRemovalGuideCharlotte.tsx',
+  'what-to-do-when-device-gets-wet-charlotte': 'WhatToDoWhenDeviceGetsWetCharlotte.tsx',
 };
 
 function lastCommitDate(relativeFile) {

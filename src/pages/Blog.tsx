@@ -2,12 +2,24 @@ import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import {
   Calendar, ArrowRight, BookOpen, Gamepad2, HardDrive, Shield,
-  Monitor, AlertTriangle, Smartphone, Cpu, Tv, Database, Wrench
+  Monitor, AlertTriangle, Smartphone, Cpu, Tv, Database, Wrench, Droplets
 } from 'lucide-react';
 
 const Blog = () => {
   const blogPosts = [
-    { 
+    {
+      slug: 'what-to-do-when-device-gets-wet-charlotte',
+      title: 'What to Do When Your Phone or Laptop Gets Wet - Charlotte Emergency Guide',
+      excerpt: 'Dropped your phone in water or spilled a drink on your laptop? Here\'s exactly what to do in the first 24 hours, and the mistakes that make water damage worse.',
+      date: '2026-07-27',
+      author: 'KorTech Service Team',
+      category: 'Water Damage Repair',
+      icon: Droplets,
+      readTime: '7 min read',
+      featured: true,
+      path: '/blog/what-to-do-when-device-gets-wet-charlotte'
+    },
+    {
       slug: 'how-to-fix-broken-ps5-hdmi-port',
       title: 'How to Fix PS5 HDMI Port No Signal After Drop - Complete Repair Guide',
       excerpt: 'Step-by-step guide to diagnosing PS5 HDMI port damage after dropping your console. Learn when DIY fixes work and when professional PS5 HDMI repair in Charlotte is needed.',

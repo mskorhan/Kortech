@@ -59,6 +59,7 @@ const LaptopScreenRepairGuideCharlotte = lazy(() => import('./pages/blog/LaptopS
 const NintendoSwitchRepairGuide = lazy(() => import('./pages/blog/NintendoSwitchRepairGuide'));
 const XboxHDMIRepairGuide = lazy(() => import('./pages/blog/XboxHDMIRepairGuide'));
 const VirusRemovalGuideCharlotte = lazy(() => import('./pages/blog/VirusRemovalGuideCharlotte'));
+const WhatToDoWhenDeviceGetsWetCharlotte = lazy(() => import('./pages/blog/WhatToDoWhenDeviceGetsWetCharlotte'));
 
 // ScrollToTop component to handle scrolling to top on route changes
 function ScrollToTop() {
@@ -177,6 +178,7 @@ function App() {
           <Route path="/blog/nintendo-switch-repair-guide" element={<NintendoSwitchRepairGuide />} />
           <Route path="/blog/xbox-hdmi-repair-guide" element={<XboxHDMIRepairGuide />} />
           <Route path="/blog/virus-removal-guide-charlotte" element={<VirusRemovalGuideCharlotte />} />
+          <Route path="/blog/what-to-do-when-device-gets-wet-charlotte" element={<WhatToDoWhenDeviceGetsWetCharlotte />} />
         </Routes>
         </Suspense>
         </main>
