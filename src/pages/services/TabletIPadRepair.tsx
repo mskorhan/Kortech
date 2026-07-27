@@ -6,7 +6,8 @@ import {
   Monitor,
   CheckCircle,
   Star,
-  Wrench
+  Wrench,
+  FileText
 } from 'lucide-react';
 
 const TabletIPadRepair = () => {
@@ -401,6 +402,26 @@ const TabletIPadRepair = () => {
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
               Related Mobile Device Services
             </h2>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a href="/blog/ipad-screen-repair-cost-guide" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">iPad & Tablet Screen Repair Cost Guide</h4>
+                  <p className="text-sm text-slate-600 mt-1">What affects the price, and when repair makes more sense than replacement.</p>
+                </div>
+              </a>
+              <a href="/blog/what-to-do-when-device-gets-wet-charlotte" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">What to Do When Your Device Gets Wet</h4>
+                  <p className="text-sm text-slate-600 mt-1">Emergency steps to save a water-damaged tablet or iPad.</p>
+                </div>
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

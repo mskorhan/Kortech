@@ -12,7 +12,8 @@ import {
   Database,
   Zap,
   MapPin,
-  Building
+  Building,
+  FileText
 } from 'lucide-react';
 
 const BusinessITSupport = () => {
@@ -347,6 +348,26 @@ const BusinessITSupport = () => {
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
               Related Business Services
             </h2>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a href="/blog/signs-your-business-needs-it-support" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">7 Signs Your Small Business Needs IT Support</h4>
+                  <p className="text-sm text-slate-600 mt-1">Recurring outages, slow computers, and no backup plan are warning signs worth acting on.</p>
+                </div>
+              </a>
+              <a href="/blog/printer-wont-connect-to-wifi-fix" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+                <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Printer Won't Connect to Wi-Fi? 8 Fixes to Try</h4>
+                  <p className="text-sm text-slate-600 mt-1">Troubleshooting steps for office printer and network connectivity issues.</p>
+                </div>
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
