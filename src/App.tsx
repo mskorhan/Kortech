@@ -45,6 +45,11 @@ const Matthews = lazy(() => import('./pages/locations/Matthews'));
 const IndianTrail = lazy(() => import('./pages/locations/IndianTrail'));
 const MintHill = lazy(() => import('./pages/locations/MintHill'));
 const Monroe = lazy(() => import('./pages/locations/Monroe'));
+const Ballantyne = lazy(() => import('./pages/locations/Ballantyne'));
+const Pineville = lazy(() => import('./pages/locations/Pineville'));
+const Waxhaw = lazy(() => import('./pages/locations/Waxhaw'));
+const Weddington = lazy(() => import('./pages/locations/Weddington'));
+const Stallings = lazy(() => import('./pages/locations/Stallings'));
 const Locations = lazy(() => import('./pages/locations/Locations'));
 const HowToKnowWhenToReplacePhoneBattery = lazy(() => import('./pages/blog/HowToKnowWhenToReplacePhoneBattery'));
 const WhatIsPCBMicroSoldering = lazy(() => import('./pages/blog/WhatIsPCBMicroSoldering'));
@@ -60,6 +65,9 @@ const NintendoSwitchRepairGuide = lazy(() => import('./pages/blog/NintendoSwitch
 const XboxHDMIRepairGuide = lazy(() => import('./pages/blog/XboxHDMIRepairGuide'));
 const VirusRemovalGuideCharlotte = lazy(() => import('./pages/blog/VirusRemovalGuideCharlotte'));
 const WhatToDoWhenDeviceGetsWetCharlotte = lazy(() => import('./pages/blog/WhatToDoWhenDeviceGetsWetCharlotte'));
+const SignsYourBusinessNeedsITSupport = lazy(() => import('./pages/blog/SignsYourBusinessNeedsITSupport'));
+const PrinterWontConnectToWifiFix = lazy(() => import('./pages/blog/PrinterWontConnectToWifiFix'));
+const IPadScreenRepairCostGuide = lazy(() => import('./pages/blog/IPadScreenRepairCostGuide'));
 
 // ScrollToTop component to handle scrolling to top on route changes
 function ScrollToTop() {
@@ -162,6 +170,11 @@ function App() {
           <Route path="/indian-trail-computer-repair" element={<IndianTrail />} />
           <Route path="/mint-hill-computer-repair" element={<MintHill />} />
           <Route path="/monroe-computer-repair" element={<Monroe />} />
+          <Route path="/ballantyne-computer-repair" element={<Ballantyne />} />
+          <Route path="/pineville-computer-repair" element={<Pineville />} />
+          <Route path="/waxhaw-computer-repair" element={<Waxhaw />} />
+          <Route path="/weddington-computer-repair" element={<Weddington />} />
+          <Route path="/stallings-computer-repair" element={<Stallings />} />
           <Route path="/locations" element={<Locations />} />
           
           {/* Blog Posts */}
@@ -179,6 +192,9 @@ function App() {
           <Route path="/blog/xbox-hdmi-repair-guide" element={<XboxHDMIRepairGuide />} />
           <Route path="/blog/virus-removal-guide-charlotte" element={<VirusRemovalGuideCharlotte />} />
           <Route path="/blog/what-to-do-when-device-gets-wet-charlotte" element={<WhatToDoWhenDeviceGetsWetCharlotte />} />
+          <Route path="/blog/signs-your-business-needs-it-support" element={<SignsYourBusinessNeedsITSupport />} />
+          <Route path="/blog/printer-wont-connect-to-wifi-fix" element={<PrinterWontConnectToWifiFix />} />
+          <Route path="/blog/ipad-screen-repair-cost-guide" element={<IPadScreenRepairCostGuide />} />
         </Routes>
         </Suspense>
         </main>

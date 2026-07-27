@@ -32,6 +32,11 @@ const pageFileForRoute = (route) => {
     '/indian-trail-computer-repair': 'src/pages/locations/IndianTrail.tsx',
     '/mint-hill-computer-repair': 'src/pages/locations/MintHill.tsx',
     '/monroe-computer-repair': 'src/pages/locations/Monroe.tsx',
+    '/ballantyne-computer-repair': 'src/pages/locations/Ballantyne.tsx',
+    '/pineville-computer-repair': 'src/pages/locations/Pineville.tsx',
+    '/waxhaw-computer-repair': 'src/pages/locations/Waxhaw.tsx',
+    '/weddington-computer-repair': 'src/pages/locations/Weddington.tsx',
+    '/stallings-computer-repair': 'src/pages/locations/Stallings.tsx',
     '/graphic-design': 'src/pages/services/GraphicDesign.tsx',
     '/remote-assistance': 'src/pages/services/RemoteAssistance.tsx',
     '/ps5-hdmi-repair': 'src/pages/services/PS5HDMIRepair.tsx',
@@ -69,6 +74,9 @@ const blogSlugToFile = {
   'xbox-hdmi-repair-guide': 'XboxHDMIRepairGuide.tsx',
   'virus-removal-guide-charlotte': 'VirusRemovalGuideCharlotte.tsx',
   'what-to-do-when-device-gets-wet-charlotte': 'WhatToDoWhenDeviceGetsWetCharlotte.tsx',
+  'signs-your-business-needs-it-support': 'SignsYourBusinessNeedsITSupport.tsx',
+  'printer-wont-connect-to-wifi-fix': 'PrinterWontConnectToWifiFix.tsx',
+  'ipad-screen-repair-cost-guide': 'iPadScreenRepairCostGuide.tsx',
 };
 
 function lastCommitDate(relativeFile) {

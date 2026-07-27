@@ -124,6 +124,26 @@ const Footer = () => {
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Monroe
               </a></li>
+              <li><a href="/ballantyne-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Ballantyne
+              </a></li>
+              <li><a href="/pineville-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Pineville
+              </a></li>
+              <li><a href="/waxhaw-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Waxhaw
+              </a></li>
+              <li><a href="/weddington-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Weddington
+              </a></li>
+              <li><a href="/stallings-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Stallings
+              </a></li>
               <li><a href="/locations" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 All Service Areas

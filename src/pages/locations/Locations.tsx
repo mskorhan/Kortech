@@ -48,6 +48,41 @@ const Locations = () => {
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Virus Removal"],
       path: "/monroe-computer-repair",
       image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+    },
+    {
+      city: "Ballantyne",
+      description: "Serving Ballantyne with pickup and delivery services.",
+      services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Network Setup"],
+      path: "/ballantyne-computer-repair",
+      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+    },
+    {
+      city: "Pineville",
+      description: "Serving Pineville with pickup and delivery services.",
+      services: ["Computer Repair", "Laptop Screen Repair", "Virus Removal", "IT Support"],
+      path: "/pineville-computer-repair",
+      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+    },
+    {
+      city: "Waxhaw",
+      description: "Serving Waxhaw with pickup and delivery services.",
+      services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "IT Support"],
+      path: "/waxhaw-computer-repair",
+      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+    },
+    {
+      city: "Weddington",
+      description: "Serving Weddington with pickup and delivery services.",
+      services: ["Computer Repair", "Laptop Screen Repair", "Data Recovery", "Network Setup"],
+      path: "/weddington-computer-repair",
+      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+    },
+    {
+      city: "Stallings",
+      description: "Serving Stallings with pickup and delivery services.",
+      services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Virus Removal"],
+      path: "/stallings-computer-repair",
+      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
     }
   ];
 
@@ -115,6 +150,31 @@ const Locations = () => {
           "@type": "City",
           "name": "Monroe",
           "addressRegion": "NC"
+        },
+        {
+          "@type": "City",
+          "name": "Ballantyne",
+          "addressRegion": "NC"
+        },
+        {
+          "@type": "City",
+          "name": "Pineville",
+          "addressRegion": "NC"
+        },
+        {
+          "@type": "City",
+          "name": "Waxhaw",
+          "addressRegion": "NC"
+        },
+        {
+          "@type": "City",
+          "name": "Weddington",
+          "addressRegion": "NC"
+        },
+        {
+          "@type": "City",
+          "name": "Stallings",
+          "addressRegion": "NC"
         }
       ]
     }
@@ -124,7 +184,7 @@ const Locations = () => {
     <div className="min-h-screen bg-white" id="locations-page">
       <SEOHead
         title="Service Locations | Computer Repair Charlotte Area"
-        description="KorTech Service provides professional computer repair, data recovery, IT support throughout Charlotte, Matthews, Indian Trail, Mint Hill, Monroe, NC. Call 704-246-7642!"
+        description="KorTech Service provides professional computer repair, data recovery, IT support throughout Charlotte, Matthews, Indian Trail, Mint Hill, Monroe, Ballantyne, Pineville, Waxhaw, Weddington, and Stallings, NC. Call 704-246-7642!"
         canonicalUrl="/locations"
         schema={schema}
       />
@@ -148,7 +208,7 @@ const Locations = () => {
             </h1>
             
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Professional computer repair, data recovery, and IT support services throughout Charlotte, Matthews, Indian Trail, Mint Hill, and Monroe, NC.
+              Professional computer repair, data recovery, and IT support services throughout Charlotte, Matthews, Indian Trail, Mint Hill, Monroe, Ballantyne, Pineville, Waxhaw, Weddington, and Stallings, NC.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -322,7 +382,7 @@ const Locations = () => {
                   Pickup Service
                 </h3>
                 <p className="text-slate-600 text-sm mb-4">
-                  We'll pick up your device from your home or business in Charlotte, Matthews, Indian Trail, Mint Hill, or Monroe.
+                  We'll pick up your device from your home or business in Charlotte, Matthews, Indian Trail, Mint Hill, Monroe, Ballantyne, Pineville, Waxhaw, Weddington, or Stallings.
                 </p>
                 <ul className="space-y-2 text-sm text-slate-600">
                   <li className="flex items-center space-x-2">

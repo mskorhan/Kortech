@@ -40,6 +40,11 @@ export const routes = [
   { path: '/indian-trail-computer-repair', changefreq: 'monthly', priority: 0.9 },
   { path: '/mint-hill-computer-repair', changefreq: 'monthly', priority: 0.9 },
   { path: '/monroe-computer-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/ballantyne-computer-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/pineville-computer-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/waxhaw-computer-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/weddington-computer-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/stallings-computer-repair', changefreq: 'monthly', priority: 0.9 },
 
   // Blog posts
   { path: '/blog/how-to-fix-broken-ps5-hdmi-port', changefreq: 'monthly', priority: 0.7 },
@@ -56,4 +61,7 @@ export const routes = [
   { path: '/blog/xbox-hdmi-repair-guide', changefreq: 'monthly', priority: 0.7 },
   { path: '/blog/virus-removal-guide-charlotte', changefreq: 'monthly', priority: 0.7 },
   { path: '/blog/what-to-do-when-device-gets-wet-charlotte', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/signs-your-business-needs-it-support', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/printer-wont-connect-to-wifi-fix', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/ipad-screen-repair-cost-guide', changefreq: 'monthly', priority: 0.7 },
 ];

@@ -11,7 +11,12 @@ const ALL_AREAS: Area[] = [
   { name: 'Matthews', path: '/matthews-computer-repair' },
   { name: 'Indian Trail', path: '/indian-trail-computer-repair' },
   { name: 'Mint Hill', path: '/mint-hill-computer-repair' },
-  { name: 'Monroe', path: '/monroe-computer-repair' }
+  { name: 'Monroe', path: '/monroe-computer-repair' },
+  { name: 'Ballantyne', path: '/ballantyne-computer-repair' },
+  { name: 'Pineville', path: '/pineville-computer-repair' },
+  { name: 'Waxhaw', path: '/waxhaw-computer-repair' },
+  { name: 'Weddington', path: '/weddington-computer-repair' },
+  { name: 'Stallings', path: '/stallings-computer-repair' }
 ];
 
 interface NearbyAreasProps {

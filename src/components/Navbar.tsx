@@ -65,7 +65,12 @@ const Navbar: React.FC = () => {
     { name: 'Matthews', path: '/matthews-computer-repair' },
     { name: 'Indian Trail', path: '/indian-trail-computer-repair' },
     { name: 'Mint Hill', path: '/mint-hill-computer-repair' },
-    { name: 'Monroe', path: '/monroe-computer-repair' }
+    { name: 'Monroe', path: '/monroe-computer-repair' },
+    { name: 'Ballantyne', path: '/ballantyne-computer-repair' },
+    { name: 'Pineville', path: '/pineville-computer-repair' },
+    { name: 'Waxhaw', path: '/waxhaw-computer-repair' },
+    { name: 'Weddington', path: '/weddington-computer-repair' },
+    { name: 'Stallings', path: '/stallings-computer-repair' }
   ];
 
   useEffect(() => {
@@ -245,7 +250,7 @@ const Navbar: React.FC = () => {
                       </button>
                       <p className="text-xs text-slate-500 mt-1">Charlotte & surrounding areas</p>
                     </div>
-                    <div className="py-2">
+                    <div className="py-2 max-h-[60vh] overflow-y-auto">
                       {locationPages.map((loc, idx) => (
                         <Link
                           key={idx}
