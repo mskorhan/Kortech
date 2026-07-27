@@ -25,7 +25,10 @@ async function main() {
   });
   const base = `http://127.0.0.1:4173`;
 
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
 
   try {
     for (const { path: route } of routes) {
