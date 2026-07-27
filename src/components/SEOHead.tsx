@@ -22,7 +22,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   keywords,
   canonicalUrl,
   schema,
-  ogImage = "https://www.kortechservice.com/transparent-logo-1.png",
+  ogImage = "https://www.kortechservice.com/og-image.png",
   ogType = "website",
   ogUrl,
   twitterCard = "summary_large_image",

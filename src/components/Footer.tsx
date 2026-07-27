@@ -16,7 +16,7 @@ const Footer = () => {
         {/* Google Reviews in Footer */}
         <FiveStarReviews showInFooter />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
@@ -96,6 +96,37 @@ const Footer = () => {
               <li><a href="/services" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 All Services
+              </a></li>
+            </ul>
+          </div>
+
+          {/* Service Areas */}
+          <div className="space-y-6">
+            <h3 className="text-lg font-medium text-white">Service Areas</h3>
+            <ul className="space-y-3 text-sm">
+              <li><a href="/charlotte-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Charlotte
+              </a></li>
+              <li><a href="/matthews-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Matthews
+              </a></li>
+              <li><a href="/indian-trail-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Indian Trail
+              </a></li>
+              <li><a href="/mint-hill-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Mint Hill
+              </a></li>
+              <li><a href="/monroe-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Monroe
+              </a></li>
+              <li><a href="/locations" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+                <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                All Service Areas
               </a></li>
             </ul>
           </div>

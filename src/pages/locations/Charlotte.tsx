@@ -1,6 +1,7 @@
 import SEOHead from '../../components/SEOHead';
 import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
+import NearbyAreas from '../../components/NearbyAreas';
 import { 
   Phone, 
   MessageSquare, 
@@ -415,6 +416,8 @@ const Charlotte = () => {
           </div>
         </div>
       </section>
+
+      <NearbyAreas currentPath="/charlotte-computer-repair" />
     </div>
   );
 };

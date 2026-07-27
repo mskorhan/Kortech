@@ -7,9 +7,14 @@ const Navbar: React.FC = () => {
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [isMobileServicesDropdownOpen, setIsMobileServicesDropdownOpen] = useState(false);
   const [isServicesDropdownClicked, setIsServicesDropdownClicked] = useState(false);
+  const [isLocationsDropdownOpen, setIsLocationsDropdownOpen] = useState(false);
+  const [isMobileLocationsDropdownOpen, setIsMobileLocationsDropdownOpen] = useState(false);
+  const [isLocationsDropdownClicked, setIsLocationsDropdownClicked] = useState(false);
 
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
   const servicesButtonRef = useRef<HTMLButtonElement>(null);
+  const locationsDropdownRef = useRef<HTMLDivElement>(null);
+  const locationsButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   const location = useLocation();
@@ -27,6 +32,11 @@ const Navbar: React.FC = () => {
   const toggleServicesDropdown = () => {
     setIsServicesDropdownOpen(open => !open);
     setIsServicesDropdownClicked(true);
+  };
+
+  const toggleLocationsDropdown = () => {
+    setIsLocationsDropdownOpen(open => !open);
+    setIsLocationsDropdownClicked(true);
   };
 
   const servicePages = [
@@ -50,6 +60,14 @@ const Navbar: React.FC = () => {
     { name: 'Remote Assistance', path: '/remote-assistance' }
   ];
 
+  const locationPages = [
+    { name: 'Charlotte', path: '/charlotte-computer-repair' },
+    { name: 'Matthews', path: '/matthews-computer-repair' },
+    { name: 'Indian Trail', path: '/indian-trail-computer-repair' },
+    { name: 'Mint Hill', path: '/mint-hill-computer-repair' },
+    { name: 'Monroe', path: '/monroe-computer-repair' }
+  ];
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -63,10 +81,21 @@ const Navbar: React.FC = () => {
         setIsServicesDropdownOpen(false);
         setIsServicesDropdownClicked(false);
       }
+      if (
+        isLocationsDropdownOpen &&
+        isLocationsDropdownClicked &&
+        locationsDropdownRef.current &&
+        locationsButtonRef.current &&
+        !locationsDropdownRef.current.contains(event.target as Node) &&
+        !locationsButtonRef.current.contains(event.target as Node)
+      ) {
+        setIsLocationsDropdownOpen(false);
+        setIsLocationsDropdownClicked(false);
+      }
     }
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isServicesDropdownOpen, isServicesDropdownClicked]);
+  }, [isServicesDropdownOpen, isServicesDropdownClicked, isLocationsDropdownOpen, isLocationsDropdownClicked]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -80,6 +109,10 @@ const Navbar: React.FC = () => {
         setIsServicesDropdownOpen(false);
         setIsServicesDropdownClicked(false);
         servicesButtonRef.current?.focus();
+      } else if (isLocationsDropdownOpen) {
+        setIsLocationsDropdownOpen(false);
+        setIsLocationsDropdownClicked(false);
+        locationsButtonRef.current?.focus();
       } else if (isOpen) {
         setIsOpen(false);
         mobileMenuButtonRef.current?.focus();
@@ -87,7 +120,7 @@ const Navbar: React.FC = () => {
     }
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [isServicesDropdownOpen, isOpen]);
+  }, [isServicesDropdownOpen, isLocationsDropdownOpen, isOpen]);
 
   return (
     <>
@@ -166,6 +199,66 @@ const Navbar: React.FC = () => {
                         >
                           <div className="w-2 h-2 bg-brand-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                           <span className="font-medium">{service.name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="relative">
+                <button
+                  ref={locationsButtonRef}
+                  onClick={toggleLocationsDropdown}
+                  onMouseDown={(e) => e.stopPropagation()}
+                  aria-expanded={isLocationsDropdownOpen}
+                  aria-controls="desktop-locations-menu"
+                  aria-haspopup="true"
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-1 ${
+                    isActive('/locations') || locationPages.some(l => isActive(l.path))
+                      ? 'text-brand-primary bg-blue-50'
+                      : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
+                  }`}
+                >
+                  <span>Locations</span>
+                  <ChevronDown
+                    className={`h-3 w-3 transition-transform duration-200 ${
+                      isLocationsDropdownOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {isLocationsDropdownOpen && (
+                  <div
+                    id="desktop-locations-menu"
+                    ref={locationsDropdownRef}
+                    onMouseDown={(e) => e.stopPropagation()}
+                    className="services-dropdown absolute top-full left-0 mt-1 w-64 bg-white rounded-2xl shadow-2xl border border-slate-100 py-3 z-50 backdrop-blur-sm"
+                  >
+                    <div className="px-6 py-3 border-b border-slate-100 bg-gradient-to-r from-blue-50 to-slate-50 rounded-t-2xl">
+                      <button
+                        onMouseDown={(e) => e.stopPropagation()}
+                        onClick={() => handleNavigation('/locations')}
+                        className="block text-sm font-bold text-brand-primary hover:text-brand-dark transition-colors duration-200"
+                      >
+                        📍 All Service Areas
+                      </button>
+                      <p className="text-xs text-slate-500 mt-1">Charlotte & surrounding areas</p>
+                    </div>
+                    <div className="py-2">
+                      {locationPages.map((loc, idx) => (
+                        <Link
+                          key={idx}
+                          to={loc.path}
+                          onClick={() => {
+                            setIsOpen(false);
+                            setIsLocationsDropdownOpen(false);
+                            setIsLocationsDropdownClicked(false);
+                          }}
+                          className="block w-full text-left px-6 py-3 text-sm text-slate-700 hover:text-brand-primary hover:bg-gradient-to-r hover:from-blue-50 hover:to-slate-50 transition-all duration-200 flex items-center space-x-3 group"
+                        >
+                          <div className="w-2 h-2 bg-brand-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                          <span className="font-medium">{loc.name}</span>
                         </Link>
                       ))}
                     </div>
@@ -301,6 +394,49 @@ const Navbar: React.FC = () => {
                       className="block px-4 py-2 text-sm text-slate-600 hover:text-brand-primary hover:bg-slate-100 transition-all rounded-lg flex items-center"
                     >
                       {service.name}
+                      <ChevronRight className="h-4 w-4 ml-auto text-slate-400" />
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="relative mb-2">
+              <button
+                onClick={() => setIsMobileLocationsDropdownOpen(o => !o)}
+                aria-expanded={isMobileLocationsDropdownOpen}
+                aria-controls="mobile-locations-menu"
+                className="block w-full text-left px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50 flex items-center justify-between"
+              >
+                <span>Locations</span>
+                <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${isMobileLocationsDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isMobileLocationsDropdownOpen && (
+                <div id="mobile-locations-menu" className="bg-slate-50 rounded-lg ml-4 mt-2 mb-4 max-h-[30vh] overflow-y-auto">
+                  <Link
+                    to="/locations"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setIsMobileLocationsDropdownOpen(false);
+                      window.scrollTo(0, 0);
+                    }}
+                    className="block px-4 py-2 text-sm font-semibold text-brand-primary hover:bg-slate-100 transition-all rounded-lg flex items-center"
+                  >
+                    All Service Areas
+                    <ChevronRight className="h-4 w-4 ml-auto text-slate-400" />
+                  </Link>
+                  {locationPages.map((loc, idx) => (
+                    <Link
+                      key={idx}
+                      to={loc.path}
+                      onClick={() => {
+                        setIsOpen(false);
+                        setIsMobileLocationsDropdownOpen(false);
+                        window.scrollTo(0, 0);
+                      }}
+                      className="block px-4 py-2 text-sm text-slate-600 hover:text-brand-primary hover:bg-slate-100 transition-all rounded-lg flex items-center"
+                    >
+                      {loc.name}
                       <ChevronRight className="h-4 w-4 ml-auto text-slate-400" />
                     </Link>
                   ))}
