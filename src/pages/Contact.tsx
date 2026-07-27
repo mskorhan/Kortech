@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import SEOHead from '../components/SEOHead';
 import FiveStarReviews from '../components/FiveStarReviews';
+import { trackFormSubmission } from '../utils/analytics';
+import { NOTIFY_ENDPOINT } from '../utils/notifyEndpoint';
 import {
   Phone,
   Mail,
@@ -10,10 +13,57 @@ import {
   Star,
   Navigation,
   Sparkles,
-  FileText
+  FileText,
+  Send
 } from 'lucide-react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', message: '' });
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
+  };
+
+  const validate = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (!formData.fullName.trim()) newErrors.fullName = 'Name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch(NOTIFY_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formType: 'contact', ...formData })
+      });
+
+      if (!response.ok) throw new Error('Contact form request failed');
+
+      trackFormSubmission('contact_page_form');
+      setSubmitStatus('success');
+      setFormData({ fullName: '', email: '', phone: '', message: '' });
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const schema = [
     {
       "@context": "https://schema.org",
@@ -107,6 +157,113 @@ const Contact = () => {
                 <p className="text-slate-600 font-light">{method.description}</p>
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form */}
+      <section className="py-24 bg-slate-50" id="contact-form">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-slate-800 mb-4">Send Us a Message</h2>
+            <p className="text-lg text-slate-600">
+              Prefer to write it out? Send us the details and we'll get back to you.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
+            {submitStatus === 'success' ? (
+              <div className="text-center py-8">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="h-8 w-8 text-green-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
+                <p className="text-gray-600">We'll get back to you as soon as possible.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleContactSubmit} className="space-y-6">
+                {submitStatus === 'error' && (
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
+                    We couldn't send your message automatically. Please call or text us instead, or try again in a moment.
+                  </div>
+                )}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="contact-fullName" className="block text-sm font-medium text-gray-700 mb-1">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="contact-fullName"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-2 border ${errors.fullName ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                      placeholder="John Doe"
+                    />
+                    {errors.fullName && <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>}
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                      placeholder="john@example.com"
+                    />
+                    {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="contact-phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="(704) 246-7642"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">
+                    Message *
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={5}
+                    className={`w-full px-4 py-2 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                    placeholder="Tell us what's going on with your device..."
+                  />
+                  {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+                </div>
+
+                <div className="flex justify-center pt-2">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center space-x-2 bg-[#0099FF] hover:bg-[#071930] disabled:opacity-60 disabled:cursor-not-allowed text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
+                  >
+                    <Send className="h-5 w-5" />
+                    <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </section>

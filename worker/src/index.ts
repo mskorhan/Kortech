@@ -23,12 +23,25 @@ interface MailInFormPayload {
   agreeToTerms: boolean;
 }
 
+interface ContactFormPayload {
+  fullName: string;
+  email: string;
+  phone?: string;
+  message: string;
+}
+
 const REQUIRED_STRING_FIELDS: (keyof MailInFormPayload)[] = [
   'fullName',
   'email',
   'phone',
   'deviceType',
   'problemDescription',
+];
+
+const CONTACT_REQUIRED_STRING_FIELDS: (keyof ContactFormPayload)[] = [
+  'fullName',
+  'email',
+  'message',
 ];
 
 const MAX_FIELD_LENGTH = 2000;
@@ -113,6 +126,41 @@ function validate(payload: unknown): { ok: true; data: MailInFormPayload } | { o
   };
 }
 
+function validateContact(payload: unknown): { ok: true; data: ContactFormPayload } | { ok: false; error: string } {
+  if (typeof payload !== 'object' || payload === null) {
+    return { ok: false, error: 'Invalid request body' };
+  }
+  const data = payload as Record<string, unknown>;
+
+  for (const field of CONTACT_REQUIRED_STRING_FIELDS) {
+    const value = data[field];
+    if (typeof value !== 'string' || !value.trim()) {
+      return { ok: false, error: `Missing required field: ${field}` };
+    }
+    if (value.length > MAX_FIELD_LENGTH) {
+      return { ok: false, error: `Field too long: ${field}` };
+    }
+  }
+
+  if (!EMAIL_RE.test(data.email as string)) {
+    return { ok: false, error: 'Invalid email address' };
+  }
+
+  if (data.phone !== undefined && (typeof data.phone !== 'string' || data.phone.length > MAX_FIELD_LENGTH)) {
+    return { ok: false, error: 'Invalid field: phone' };
+  }
+
+  return {
+    ok: true,
+    data: {
+      fullName: (data.fullName as string).trim(),
+      email: (data.email as string).trim(),
+      phone: (data.phone as string | undefined)?.trim(),
+      message: (data.message as string).trim(),
+    },
+  };
+}
+
 function buildEmailHtml(d: MailInFormPayload): string {
   const row = (label: string, value: string | undefined) =>
     `<tr><td style="padding:4px 12px 4px 0;color:#666;font-size:13px;white-space:nowrap;">${escapeHtml(label)}</td><td style="padding:4px 0;font-size:14px;">${escapeHtml(value || 'Not provided')}</td></tr>`;
@@ -149,6 +197,24 @@ function buildEmailHtml(d: MailInFormPayload): string {
   `;
 }
 
+function buildContactEmailHtml(d: ContactFormPayload): string {
+  const row = (label: string, value: string | undefined) =>
+    `<tr><td style="padding:4px 12px 4px 0;color:#666;font-size:13px;white-space:nowrap;">${escapeHtml(label)}</td><td style="padding:4px 0;font-size:14px;">${escapeHtml(value || 'Not provided')}</td></tr>`;
+
+  return `
+    <div style="font-family:Arial,sans-serif;max-width:600px;">
+      <h2 style="color:#0099FF;">New Contact Page Message</h2>
+      <table>
+        ${row('Name', d.fullName)}
+        ${row('Email', d.email)}
+        ${row('Phone', d.phone)}
+      </table>
+      <h3>Message</h3>
+      <p style="white-space:pre-wrap;background:#f8f9fa;padding:12px;border:1px solid #ddd;border-radius:6px;">${escapeHtml(d.message)}</p>
+    </div>
+  `;
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const origin = env.ALLOWED_ORIGIN;
@@ -171,12 +237,36 @@ export default {
       });
     }
 
-    const result = validate(payload);
-    if (!result.ok) {
-      return new Response(JSON.stringify({ error: result.error }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
-      });
+    const formType = typeof payload === 'object' && payload !== null && 'formType' in payload
+      ? (payload as Record<string, unknown>).formType
+      : 'mail_in';
+
+    let subject: string;
+    let html: string;
+    let replyTo: string;
+
+    if (formType === 'contact') {
+      const result = validateContact(payload);
+      if (!result.ok) {
+        return new Response(JSON.stringify({ error: result.error }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
+        });
+      }
+      subject = `Contact Form: ${result.data.fullName}`;
+      html = buildContactEmailHtml(result.data);
+      replyTo = result.data.email;
+    } else {
+      const result = validate(payload);
+      if (!result.ok) {
+        return new Response(JSON.stringify({ error: result.error }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
+        });
+      }
+      subject = `Mail-In Form: ${result.data.fullName} — ${result.data.deviceType}`;
+      html = buildEmailHtml(result.data);
+      replyTo = result.data.email;
     }
 
     const emailRes = await fetch('https://api.resend.com/emails', {
@@ -188,9 +278,9 @@ export default {
       body: JSON.stringify({
         from: env.NOTIFY_FROM_EMAIL,
         to: env.NOTIFY_TO_EMAIL,
-        reply_to: result.data.email,
-        subject: `Mail-In Form: ${result.data.fullName} — ${result.data.deviceType}`,
-        html: buildEmailHtml(result.data),
+        reply_to: replyTo,
+        subject,
+        html,
       }),
     });
 

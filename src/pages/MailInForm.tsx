@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission } from '../utils/analytics';
+import { NOTIFY_ENDPOINT } from '../utils/notifyEndpoint';
 import {
   Printer,
   Package,
@@ -98,7 +99,7 @@ const MailInForm = () => {
     const { password: _password, ...notificationPayload } = formData;
 
     try {
-      const response = await fetch('https://kortech-mailin-form.mskorhan.workers.dev', {
+      const response = await fetch(NOTIFY_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(notificationPayload)
