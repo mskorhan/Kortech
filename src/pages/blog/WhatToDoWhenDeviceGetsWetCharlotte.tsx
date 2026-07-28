@@ -16,7 +16,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "What to Do When Your Phone or Laptop Gets Wet - Charlotte Emergency Guide",
+      "headline": "What to Do When Your Phone or Laptop Gets Wet | KorTech",
       "description": "Dropped your phone in water or spilled a drink on your laptop? Here's exactly what to do in the first 24 hours, and the common mistakes that make water damage worse.",
       "image": "https://images.pexels.com/photos/4526407/pexels-photo-4526407.jpeg",
       "author": {

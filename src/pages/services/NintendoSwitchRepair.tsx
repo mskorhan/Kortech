@@ -78,7 +78,7 @@ const NintendoSwitchRepair = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Nintendo Switch Repair Charlotte NC | KorTech Service"
+        title="Nintendo Switch Repair Charlotte NC - Joy-Con Drift & Screen Fix"
         description="Professional Nintendo Switch repair in Charlotte, NC. Joy-Con drift fix, screen replacement, and charging port repair. All Switch models. Call 704-246-7642!"
         keywords="Nintendo Switch repair Charlotte, Joy-Con drift fix Charlotte NC, Switch screen repair, Switch charging port repair, Nintendo Switch Lite repair"
         canonicalUrl="/nintendo-switch-repair"

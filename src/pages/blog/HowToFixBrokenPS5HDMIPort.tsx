@@ -17,7 +17,7 @@ const HowToFixBrokenPS5HDMIPort = () => {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "How to Fix PS5 HDMI Port No Signal After Drop - Complete Repair Guide",
+      "headline": "How to Fix PS5 HDMI Port No Signal After Drop | KorTech",
       "description": "Step-by-step guide to diagnosing PS5 HDMI port damage after dropping your console. Learn when DIY fixes work and when professional PS5 HDMI repair in Charlotte is needed.",
       "image": "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg",
       "author": {

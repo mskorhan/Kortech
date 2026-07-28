@@ -16,7 +16,7 @@ const SSDUpgradesForLaptops2025 = () => {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "Best SSD Upgrade for Old Laptop 2025 - Speed Up Your Computer 5x Faster",
+      "headline": "Best SSD Upgrade for Old Laptop 2025 | KorTech Service",
       "description": "Transform your slow laptop into a speed machine with the right SSD upgrade. Complete guide to choosing and installing SSDs for maximum performance boost in Charlotte.",
       "image": "https://images.pexels.com/photos/4508751/pexels-photo-4508751.jpeg",
       "author": {

@@ -17,7 +17,7 @@ const HowToKnowWhenToReplacePhoneBattery = () => {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "How to Know When to Replace Your Phone Battery - 7 Warning Signs",
+      "headline": "How to Know When to Replace Your Phone Battery | KorTech",
       "description": "Learn the 7 critical warning signs that indicate it's time to replace your smartphone battery. Expert advice from Charlotte's trusted phone repair specialists.",
       "image": "https://images.pexels.com/photos/4195325/pexels-photo-4195325.jpeg",
       "author": {

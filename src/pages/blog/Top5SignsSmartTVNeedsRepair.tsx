@@ -16,7 +16,7 @@ const Top5SignsSmartTVNeedsRepair = () => {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "Top 5 Signs Your Smart TV Needs Repair - Expert Troubleshooting Guide",
+      "headline": "Top 5 Signs Your Smart TV Needs Repair | KorTech Service",
       "description": "Learn the top 5 warning signs that your smart TV needs professional repair. Expert troubleshooting tips from Charlotte's TV repair specialists.",
       "image": "https://images.pexels.com/photos/5490778/pexels-photo-5490778.jpeg",
       "author": {

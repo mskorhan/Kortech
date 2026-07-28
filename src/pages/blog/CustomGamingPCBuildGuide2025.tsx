@@ -41,7 +41,7 @@ const CustomGamingPCBuildGuide2025 = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Custom Gaming PC Build Guide 2025 | KorTech Service"
+        title="Custom Gaming PC Build Guide 2025 - Best Components Under $1500"
         description="Build the perfect gaming PC in Charlotte with our 2025 component guide. Expert recommendations for budget builds under $1500 with maximum performance."
         keywords="custom gaming PC Charlotte, gaming PC build Charlotte NC, budget gaming PC, gaming computer build, PC builder Charlotte, gaming PC components 2025"
         canonicalUrl="/blog/custom-gaming-pc-build-guide-2025"

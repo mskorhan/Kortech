@@ -16,7 +16,7 @@ const SignsYourBusinessNeedsITSupport = () => {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "7 Signs Your Small Business Needs IT Support - Charlotte Business Guide",
+      "headline": "7 Signs Your Small Business Needs IT Support | KorTech",
       "description": "Recurring network outages, slow computers, and no backup plan are costing your business more than you think. Learn the 7 warning signs it's time to bring in professional IT support.",
       "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg",
       "author": {

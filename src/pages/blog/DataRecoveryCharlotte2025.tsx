@@ -17,7 +17,7 @@ const DataRecoveryCharlotte2025 = () => {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "Data Recovery Services in Charlotte - How to Recover Lost Files in 2025",
+      "headline": "Data Recovery in Charlotte - How to Recover Lost Files 2025",
       "description": "Expert guide to data recovery options in Charlotte, NC. Learn how to recover lost files from failed hard drives, SSDs, and storage devices with professional help.",
       "image": "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg",
       "author": {

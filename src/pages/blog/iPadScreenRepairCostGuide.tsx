@@ -16,7 +16,7 @@ const IPadScreenRepairCostGuide = () => {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "iPad & Tablet Screen Repair Cost Guide - What to Expect in 2026",
+      "headline": "iPad & Tablet Screen Repair Cost Guide 2026 | KorTech",
       "description": "Cracked your iPad or Android tablet screen? Here's what screen repair typically costs, what affects the price, and when replacement makes more sense than repair.",
       "image": "https://images.pexels.com/photos/4526481/pexels-photo-4526481.jpeg",
       "author": {

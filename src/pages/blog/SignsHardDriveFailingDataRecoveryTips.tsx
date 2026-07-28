@@ -39,7 +39,7 @@ const SignsHardDriveFailingDataRecoveryTips = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Signs Your Hard Drive is Failing | Data Recovery Tips"
+        title="Signs Your Hard Drive is Failing - Data Recovery Tips Charlotte"
         description="Learn the warning signs of hard drive failure and emergency data recovery steps from Charlotte's data recovery experts. Don't lose your valuable files!"
         keywords="hard drive failure signs, clicking hard drive, data recovery Charlotte, hard drive recovery Charlotte NC, data recovery Matthews, data recovery Mint Hill, data recovery Indian Trail"
         canonicalUrl="/blog/signs-hard-drive-failing-data-recovery-tips"

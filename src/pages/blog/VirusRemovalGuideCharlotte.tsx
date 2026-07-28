@@ -38,7 +38,7 @@ const VirusRemovalGuideCharlotte = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Complete Virus Removal Guide for Charlotte Residents 2025"
+        title="Complete Virus Removal Guide for Charlotte Residents - 2025 Edition"
         description="Step-by-step guide to removing viruses, malware, and ransomware from your computer. Expert tips from Charlotte's computer security specialists."
         keywords="virus removal Charlotte, malware removal Charlotte NC, ransomware removal, computer security Charlotte, virus removal Matthews, virus removal Mint Hill, virus removal Indian Trail"
         canonicalUrl="/blog/virus-removal-guide-charlotte"

@@ -16,7 +16,7 @@ const PrinterWontConnectToWifiFix = () => {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "Printer Won't Connect to Wi-Fi? 8 Fixes to Try Before Calling for Help",
+      "headline": "Printer Won't Connect to Wi-Fi? 8 Fixes to Try | KorTech",
       "description": "Printer stuck offline or won't join your Wi-Fi network? Try these 8 troubleshooting steps in order before scheduling a professional printer and router repair visit.",
       "image": "https://images.pexels.com/photos/6963062/pexels-photo-6963062.jpeg",
       "author": {

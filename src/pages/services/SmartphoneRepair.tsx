@@ -79,7 +79,7 @@ const SmartphoneRepair = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Smartphone Repair Charlotte NC | KorTech Service"
+        title="Smartphone Repair Charlotte NC - iPhone & Android Screen Repair"
         description="Professional smartphone repair in Charlotte, NC. iPhone & Samsung screen repair, battery replacement, water damage repair. Call 704-246-7642!"
         keywords="smartphone repair Charlotte, iPhone screen repair Charlotte NC, Samsung Galaxy repair, Android repair Charlotte, phone battery replacement"
         canonicalUrl="/smartphone-screen-repair-charlotte"

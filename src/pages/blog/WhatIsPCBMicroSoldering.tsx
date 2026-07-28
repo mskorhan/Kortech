@@ -16,7 +16,7 @@ const WhatIsPCBMicroSoldering = () => {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "What is PCB-Level Micro-Soldering? Expert Guide to Circuit Board Repair",
+      "headline": "What is PCB-Level Micro-Soldering? | KorTech Service",
       "description": "Learn what PCB-level micro-soldering is, how it works, and why it's crucial for modern electronics repair. Expert insights from Charlotte's electronics repair specialists.",
       "image": "https://images.pexels.com/photos/3912982/pexels-photo-3912982.jpeg",
       "author": {
