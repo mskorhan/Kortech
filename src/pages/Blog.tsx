@@ -3,7 +3,7 @@ import SEOHead from '../components/SEOHead';
 import {
   Calendar, ArrowRight, BookOpen, Gamepad2, HardDrive, Shield,
   Monitor, AlertTriangle, Smartphone, Cpu, Tv, Database, Wrench, Droplets,
-  Building, Wifi, Tablet
+  Building, Wifi, Tablet, Palette
 } from 'lucide-react';
 
 const Blog = () => {
@@ -55,6 +55,18 @@ const Blog = () => {
       readTime: '7 min read',
       featured: false,
       path: '/blog/ipad-screen-repair-cost-guide'
+    },
+    {
+      slug: 'small-business-logo-design-checklist',
+      title: 'What to Look for in a Small Business Logo Design',
+      excerpt: 'Getting a logo made for your small business? Here\'s what actually matters - versatility, scalability, and file formats - before you approve any design.',
+      date: '2026-07-28',
+      author: 'KorTech Service Team',
+      category: 'Graphic Design',
+      icon: Palette,
+      readTime: '7 min read',
+      featured: false,
+      path: '/blog/small-business-logo-design-checklist'
     },
     {
       slug: 'how-to-fix-broken-ps5-hdmi-port',

@@ -77,6 +77,7 @@ const blogSlugToFile = {
   'signs-your-business-needs-it-support': 'SignsYourBusinessNeedsITSupport.tsx',
   'printer-wont-connect-to-wifi-fix': 'PrinterWontConnectToWifiFix.tsx',
   'ipad-screen-repair-cost-guide': 'iPadScreenRepairCostGuide.tsx',
+  'small-business-logo-design-checklist': 'SmallBusinessLogoDesignChecklist.tsx',
 };
 
 function lastCommitDate(relativeFile) {

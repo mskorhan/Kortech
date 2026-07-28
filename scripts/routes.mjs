@@ -64,4 +64,5 @@ export const routes = [
   { path: '/blog/signs-your-business-needs-it-support', changefreq: 'monthly', priority: 0.7 },
   { path: '/blog/printer-wont-connect-to-wifi-fix', changefreq: 'monthly', priority: 0.7 },
   { path: '/blog/ipad-screen-repair-cost-guide', changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog/small-business-logo-design-checklist', changefreq: 'monthly', priority: 0.7 },
 ];

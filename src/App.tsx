@@ -68,6 +68,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = lazy(() => import('./pages/blog/WhatT
 const SignsYourBusinessNeedsITSupport = lazy(() => import('./pages/blog/SignsYourBusinessNeedsITSupport'));
 const PrinterWontConnectToWifiFix = lazy(() => import('./pages/blog/PrinterWontConnectToWifiFix'));
 const IPadScreenRepairCostGuide = lazy(() => import('./pages/blog/iPadScreenRepairCostGuide'));
+const SmallBusinessLogoDesignChecklist = lazy(() => import('./pages/blog/SmallBusinessLogoDesignChecklist'));
 
 // ScrollToTop component to handle scrolling to top on route changes
 function ScrollToTop() {
@@ -195,6 +196,7 @@ function App() {
           <Route path="/blog/signs-your-business-needs-it-support" element={<SignsYourBusinessNeedsITSupport />} />
           <Route path="/blog/printer-wont-connect-to-wifi-fix" element={<PrinterWontConnectToWifiFix />} />
           <Route path="/blog/ipad-screen-repair-cost-guide" element={<IPadScreenRepairCostGuide />} />
+          <Route path="/blog/small-business-logo-design-checklist" element={<SmallBusinessLogoDesignChecklist />} />
         </Routes>
         </Suspense>
         </main>

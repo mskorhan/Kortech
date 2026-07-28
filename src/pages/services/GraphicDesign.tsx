@@ -376,6 +376,34 @@ const GraphicDesign = () => {
           </div>
         </div>
       </section>
+
+      {/* Related Blog Articles */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-800 mb-4">
+              Related Blog Articles
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <a href="/blog/small-business-logo-design-checklist" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <FileText className="h-5 w-5 text-purple-600 mr-3 mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="font-bold text-slate-800 group-hover:text-purple-600 transition-colors">What to Look for in a Small Business Logo Design</h3>
+                <p className="text-sm text-slate-600 mt-1">A practical checklist to run through before approving any logo or branding project.</p>
+              </div>
+            </a>
+            <a href="/blog/signs-your-business-needs-it-support" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <FileText className="h-5 w-5 text-purple-600 mr-3 mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="font-bold text-slate-800 group-hover:text-purple-600 transition-colors">7 Signs Your Small Business Needs IT Support</h3>
+                <p className="text-sm text-slate-600 mt-1">Recurring outages, slow computers, and no backup plan are warning signs worth acting on.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
