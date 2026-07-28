@@ -67,7 +67,7 @@ const VirusRemovalGuideCharlotte = lazy(() => import('./pages/blog/VirusRemovalG
 const WhatToDoWhenDeviceGetsWetCharlotte = lazy(() => import('./pages/blog/WhatToDoWhenDeviceGetsWetCharlotte'));
 const SignsYourBusinessNeedsITSupport = lazy(() => import('./pages/blog/SignsYourBusinessNeedsITSupport'));
 const PrinterWontConnectToWifiFix = lazy(() => import('./pages/blog/PrinterWontConnectToWifiFix'));
-const IPadScreenRepairCostGuide = lazy(() => import('./pages/blog/IPadScreenRepairCostGuide'));
+const IPadScreenRepairCostGuide = lazy(() => import('./pages/blog/iPadScreenRepairCostGuide'));
 
 // ScrollToTop component to handle scrolling to top on route changes
 function ScrollToTop() {
