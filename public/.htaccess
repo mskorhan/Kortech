@@ -20,7 +20,19 @@ Redirect 301 /it-support /business-it-support
 # ------------------------------------------
 # ✅ React Router / SPA Support
 # ------------------------------------------
-# Prevent fallback for file types
+# Known app routes serve index.html normally (200). Anything else falls
+# through to the 404 ErrorDocument below, which also serves index.html
+# (so React Router renders the NotFound page) but with a real 404 status —
+# without this split, every unmatched URL returned 200, which Google flags
+# as a soft 404 since the URL clearly isn't a real page.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.(js|css|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot|ico|json|txt|xml|pdf|zip)$
+# BEGIN generated known-routes (kept in sync with scripts/routes.mjs by generate-sitemap.mjs)
+RewriteCond %{REQUEST_URI} !^/(about|services|pricing|contact|recycling|terms|privacy-policy|mail-in-form|blog(/[^/]+)?|graphic-design|remote-assistance|ps5-hdmi-repair|xbox-hdmi-repair|laptop-screen-repair|ssd-upgrades|virus-malware-removal|business-it-support|data-recovery|custom-gaming-pc|water-damage-repair|smartphone-screen-repair-charlotte|tablet-ipad-repair|smart-tv-repair|printer-router-repair|pcb-micro-soldering|appliance-electronics-repair|nintendo-switch-repair|locations|charlotte-computer-repair|matthews-computer-repair|indian-trail-computer-repair|mint-hill-computer-repair|monroe-computer-repair|ballantyne-computer-repair|pineville-computer-repair|waxhaw-computer-repair|weddington-computer-repair|stallings-computer-repair)/?$
+# END generated known-routes
+RewriteRule ^ - [R=404,L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !\.(js|css|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot|ico|json|txt|xml|pdf|zip)$
@@ -127,6 +139,8 @@ Options -Indexes
 </FilesMatch>
 
 # ------------------------------------------
-# ✅ Custom 404 Page (Optional)
+# ✅ Custom 404 Page
 # ------------------------------------------
-# ErrorDocument 404 /404.html
+# Serves the SPA shell so React Router renders the NotFound page/copy,
+# while Apache still reports a real 404 status to crawlers.
+ErrorDocument 404 /index.html

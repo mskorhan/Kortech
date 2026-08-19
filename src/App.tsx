@@ -16,6 +16,7 @@ const TermsConditions = lazy(() => import('./pages/TermsConditions'));
 const MailInForm = lazy(() => import('./pages/MailInForm'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const Blog = lazy(() => import('./pages/Blog'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Service Pages
 const GraphicDesign = lazy(() => import('./pages/services/GraphicDesign'));
@@ -197,6 +198,8 @@ function App() {
           <Route path="/blog/printer-wont-connect-to-wifi-fix" element={<PrinterWontConnectToWifiFix />} />
           <Route path="/blog/ipad-screen-repair-cost-guide" element={<IPadScreenRepairCostGuide />} />
           <Route path="/blog/small-business-logo-design-checklist" element={<SmallBusinessLogoDesignChecklist />} />
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>
         </main>

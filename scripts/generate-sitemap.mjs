@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { execSync } from 'child_process';
-import { writeFileSync } from 'fs';
+import { writeFileSync, readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { routes } from './routes.mjs';
@@ -8,6 +8,7 @@ import { routes } from './routes.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE = 'https://www.kortechservice.com';
 const OUT_PATH = path.join(__dirname, '../public/sitemap.xml');
+const HTACCESS_PATH = path.join(__dirname, '../public/.htaccess');
 
 // Maps a route path to the source file(s) whose last-commit date should
 // drive its <lastmod>. Falls back to the repo's last commit if no mapping.
@@ -138,6 +139,33 @@ ${urls.join('\n')}
 `;
 }
 
+function updateHtaccessKnownRoutes() {
+  const segments = new Set();
+  for (const { path: route } of routes) {
+    if (route === '/') continue;
+    const first = route.split('/').filter(Boolean)[0];
+    segments.add(first === 'blog' ? 'blog(/[^/]+)?' : first);
+  }
+  const pattern = `RewriteCond %{REQUEST_URI} !^/(${[...segments].join('|')})/?$`;
+
+  const htaccess = readFileSync(HTACCESS_PATH, 'utf8');
+  const beginMarker = '# BEGIN generated known-routes (kept in sync with scripts/routes.mjs by generate-sitemap.mjs)';
+  const endMarker = '# END generated known-routes';
+  const start = htaccess.indexOf(beginMarker);
+  const end = htaccess.indexOf(endMarker);
+  if (start === -1 || end === -1) {
+    console.warn('generate-sitemap: known-routes markers not found in .htaccess, skipping sync');
+    return;
+  }
+  const before = htaccess.slice(0, start + beginMarker.length);
+  const after = htaccess.slice(end);
+  const updated = `${before}\n${pattern}\n${after}`;
+  writeFileSync(HTACCESS_PATH, updated, 'utf8');
+  console.log(`.htaccess known-routes synced (${segments.size} route segments)`);
+}
+
 const xml = buildSitemap();
 writeFileSync(OUT_PATH, xml, 'utf8');
 console.log(`Sitemap written: ${OUT_PATH} (${routes.length} URLs)`);
+
+updateHtaccessKnownRoutes();

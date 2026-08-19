@@ -14,6 +14,7 @@ interface SEOHeadProps {
   twitterCard?: string;
   location?: string;
   service?: string;
+  noindex?: boolean;
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
@@ -27,7 +28,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   ogUrl,
   twitterCard = "summary_large_image",
   location,
-  service
+  service,
+  noindex = false
 }) => {
   const currentLocation = useLocation();
   const fullCanonicalUrl = canonicalUrl ? `https://www.kortechservice.com${canonicalUrl}` : undefined;
@@ -104,9 +106,19 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="twitter:creator" content="@kortechservice" />
       
       {/* Additional SEO meta tags */}
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <meta name="googlebot" content="index, follow" />
-      <meta name="bingbot" content="index, follow" />
+      {noindex ? (
+        <>
+          <meta name="robots" content="noindex, follow" />
+          <meta name="googlebot" content="noindex, follow" />
+          <meta name="bingbot" content="noindex, follow" />
+        </>
+      ) : (
+        <>
+          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+          <meta name="googlebot" content="index, follow" />
+          <meta name="bingbot" content="index, follow" />
+        </>
+      )}
       
       {/* Local business specific */}
       {location && <meta name="geo.placename" content={location} />}
