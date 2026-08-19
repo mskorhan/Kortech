@@ -6,8 +6,14 @@ on:
     - cron: '0 8 1 * *'
   workflow_dispatch: {}
 
+# contents: write - commit/push the automation branch
+# pull-requests: write - open or update the PR into main
+# main is ruleset-protected (no direct pushes), so this workflow never
+# pushes to main itself; it only pushes to automation/update-reviews and
+# lets the normal PR/merge path bring the change into main.
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   update-reviews:
@@ -15,6 +21,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -31,27 +39,52 @@ jobs:
           GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
         run: node scripts/fetch-google-reviews.mjs
 
-      - name: Commit updated reviews data
-        id: commit
+      - name: Validate change scope
+        run: |
+          if git diff --quiet -- src/data/reviews.json; then
+            echo "changed=false" >> "$GITHUB_ENV"
+            echo "No changes to reviews data."
+            exit 0
+          fi
+          # The fetch script only ever writes src/data/reviews.json. If
+          # anything else in the working tree changed, something is wrong
+          # (a bug in the script, an unrelated uncommitted change in the
+          # runner) - fail loudly rather than let this automation commit
+          # arbitrary files to a PR.
+          other_changes=$(git diff --name-only -- . ':!src/data/reviews.json')
+          if [ -n "$other_changes" ]; then
+            echo "::error::Unexpected files changed outside src/data/reviews.json:"
+            echo "$other_changes"
+            exit 1
+          fi
+          echo "changed=true" >> "$GITHUB_ENV"
+
+      - name: Commit and push automation branch
+        if: env.changed == 'true'
+        env:
+          BRANCH: automation/update-reviews
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- src/data/reviews.json; then
-            git add src/data/reviews.json
-            git commit -m "chore: update Google reviews data"
-            git pull --rebase origin "${GITHUB_REF_NAME}"
-            git push
-            echo "pushed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "No changes to reviews data."
-            echo "pushed=false" >> "$GITHUB_OUTPUT"
-          fi
+          git checkout -B "$BRANCH"
+          git add src/data/reviews.json
+          git commit -m "chore: update Google reviews data"
+          git push --force origin "$BRANCH"
 
-      # A push made with the default GITHUB_TOKEN does not trigger other
-      # workflows (GitHub's anti-recursion guard), so deploy.yml would not
-      # otherwise fire when reviews data changes. Trigger it explicitly.
-      - name: Trigger deploy
-        if: steps.commit.outputs.pushed == 'true'
+      - name: Open or update PR
+        if: env.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run deploy.yml --ref "${GITHUB_REF_NAME}"
+          BRANCH: automation/update-reviews
+        run: |
+          existing=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            echo "Updating existing PR #$existing"
+            gh pr edit "$existing" --body "Automated monthly refresh of five-star Google reviews. Updated $(date -u +%Y-%m-%d)."
+          else
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "chore: update Google reviews data" \
+              --body "Automated monthly refresh of five-star Google reviews. Updated $(date -u +%Y-%m-%d)."
+          fi
