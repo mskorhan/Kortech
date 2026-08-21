@@ -60,7 +60,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       const position = index + 2;
       const name = part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
       const item = `https://www.kortechservice.com/${pathParts.slice(0, index + 1).join('/')}`;
-      
+
       breadcrumbSchema.itemListElement.push({
         "@type": "ListItem",
         "position": position,
@@ -70,7 +70,131 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     });
   }
 
-  const allSchemas = [breadcrumbSchema, ...(schema || [])];
+  // Sitewide LocalBusiness/Service facts every page should carry. Pages that
+  // pass their own schema (e.g. Home's richer LocalBusiness with live review
+  // data) supply it via the `schema` prop instead - only fall back to these
+  // defaults when the page doesn't already declare that @type, so no page
+  // ships zero or two entities of the same type.
+  const pageSchemaTypes = new Set((schema || []).map((s) => s['@type']));
+
+  const defaultLocalBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "KorTech Service",
+    "description": "Professional computer repair, Mac & PC repair, virus removal, data recovery & IT support in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 for free diagnostics!",
+    "url": "https://www.kortechservice.com",
+    "telephone": "704-246-7642",
+    "foundingDate": "1998",
+    "hasMap": "https://www.google.com/maps/place/Kortech+Service/@35.14047,-80.7400749,17z/data=!4m15!1m8!3m7!1s0x88542143faefb7af:0x9541d45ffcb5daa0!2s1721+Sardis+Rd+N+%237a,+Charlotte,+NC+28270!3b1!8m2!3d35.14047!4d-80.7375!16s%2Fg%2F11n_z1fxk6!3m5!1s0x885426acd2c33ca7:0x24292ff6e9c5f155!8m2!3d35.140474!4d-80.737464!16s%2Fg%2F1v_w31h1",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1721 Sardis Rd N, Suite 7A",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "postalCode": "28270",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "35.1495",
+      "longitude": "-80.8414"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "11:00",
+        "closes": "16:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/KortechService/",
+      "https://www.instagram.com/kortechservices",
+      "https://twitter.com/kortechservice",
+      "https://www.linkedin.com/company/kortechservice",
+      "https://www.youtube.com/@kortechservice",
+      "https://g.page/kortechservice"
+    ],
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "35.2271",
+        "longitude": "-80.8431"
+      },
+      "geoRadius": "50000",
+      "addressLocality": [
+        "Charlotte",
+        "Matthews",
+        "Indian Trail",
+        "Pineville",
+        "Mint Hill",
+        "Ballantyne",
+        "South Charlotte"
+      ]
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Computer Repair Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Computer Repair",
+            "description": "Mac and PC repair services including hardware and software troubleshooting"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Data Recovery",
+            "description": "Professional data recovery from failed hard drives and corrupted devices"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "IT Support",
+            "description": "Comprehensive IT support for businesses and individuals"
+          }
+        }
+      ]
+    }
+  };
+
+  const defaultServiceAreaSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Computer Repair Services",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "KorTech Service"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Charlotte", "addressRegion": "NC" },
+      { "@type": "City", "name": "Matthews", "addressRegion": "NC" },
+      { "@type": "City", "name": "Pineville", "addressRegion": "NC" },
+      { "@type": "City", "name": "Mint Hill", "addressRegion": "NC" },
+      { "@type": "Place", "name": "Ballantyne", "addressRegion": "NC" },
+      { "@type": "Place", "name": "South Charlotte", "addressRegion": "NC" }
+    ]
+  };
+
+  const allSchemas = [
+    breadcrumbSchema,
+    ...(pageSchemaTypes.has('LocalBusiness') ? [] : [defaultLocalBusinessSchema]),
+    ...(pageSchemaTypes.has('Service') ? [] : [defaultServiceAreaSchema]),
+    ...(schema || [])
+  ];
 
   return (
     <Helmet>
@@ -106,19 +230,12 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="twitter:creator" content="@kortechservice" />
       
       {/* Additional SEO meta tags */}
-      {noindex ? (
-        <>
-          <meta name="robots" content="noindex, follow" />
-          <meta name="googlebot" content="noindex, follow" />
-          <meta name="bingbot" content="noindex, follow" />
-        </>
-      ) : (
-        <>
-          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-          <meta name="googlebot" content="index, follow" />
-          <meta name="bingbot" content="index, follow" />
-        </>
-      )}
+      <meta
+        name="robots"
+        content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+      />
+      <meta name="googlebot" content={noindex ? "noindex, follow" : "index, follow"} />
+      <meta name="bingbot" content={noindex ? "noindex, follow" : "index, follow"} />
       
       {/* Local business specific */}
       {location && <meta name="geo.placename" content={location} />}
