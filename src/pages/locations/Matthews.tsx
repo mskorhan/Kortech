@@ -76,7 +76,7 @@ const Matthews = () => {
       "@type": "Service",
       "name": "Computer Repair in Matthews, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Matthews, NC. Expert technicians providing quality service to Matthews residents since 1998.",
-      "url": "https://www.kortechservice.com/matthews-computer-repair",
+      "url": "https://www.kortechservice.com/matthews-computer-repair/",
       "areaServed": [
         {
           "@type": "City",

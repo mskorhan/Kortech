@@ -17,6 +17,17 @@ interface SEOHeadProps {
   noindex?: boolean;
 }
 
+// The server only serves 200 at the trailing-slash form of every route
+// (Apache's mod_dir appends it for the prerendered directory/index.html
+// layout); the non-slash form always 301s. Every canonical/og:url/breadcrumb
+// URL must therefore end in "/" (root included) so nothing points at a URL
+// that immediately redirects away from itself.
+const SITE_ORIGIN = 'https://www.kortechservice.com';
+const canonicalizeUrl = (routePath: string): string => {
+  const segments = routePath.split('/').filter(Boolean);
+  return segments.length === 0 ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}/${segments.join('/')}/`;
+};
+
 const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
@@ -32,8 +43,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   noindex = false
 }) => {
   const currentLocation = useLocation();
-  const fullCanonicalUrl = canonicalUrl ? `https://www.kortechservice.com${canonicalUrl}` : undefined;
-  const fullOgUrl = ogUrl || fullCanonicalUrl || `https://www.kortechservice.com${currentLocation.pathname}`;
+  const fullCanonicalUrl = canonicalUrl ? canonicalizeUrl(canonicalUrl) : undefined;
+  const fullOgUrl = ogUrl || fullCanonicalUrl || canonicalizeUrl(currentLocation.pathname);
   
   // Dynamic title and description based on page
   const dynamicTitle = title || 'KorTech Service • Computer Repair Charlotte NC';
@@ -59,7 +70,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     pathParts.forEach((part, index) => {
       const position = index + 2;
       const name = part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-      const item = `https://www.kortechservice.com/${pathParts.slice(0, index + 1).join('/')}`;
+      const item = canonicalizeUrl(pathParts.slice(0, index + 1).join('/'));
 
       breadcrumbSchema.itemListElement.push({
         "@type": "ListItem",

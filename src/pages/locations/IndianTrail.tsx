@@ -77,7 +77,7 @@ const IndianTrail = () => {
       "@type": "Service",
       "name": "Computer Repair in Indian Trail, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Indian Trail, NC. Expert technicians providing quality service with pickup and delivery.",
-      "url": "https://www.kortechservice.com/indian-trail-computer-repair",
+      "url": "https://www.kortechservice.com/indian-trail-computer-repair/",
       "areaServed": [
         {
           "@type": "City",

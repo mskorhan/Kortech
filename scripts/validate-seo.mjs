@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(__dirname, '..', 'dist');
+const SITEMAP_PATH = path.join(__dirname, '..', 'public', 'sitemap.xml');
 
 // Node 20 (CI) predates fs.globSync (added in Node 22) - walk manually.
 function findIndexHtmlFiles(dir) {
@@ -44,6 +45,56 @@ function countMatches(html, re) {
   return (html.match(re) || []).length;
 }
 
+function extractOne(html, re) {
+  const match = html.match(re);
+  return match ? match[0] : null;
+}
+
+// The server only serves 200 at the trailing-slash form of every route, so
+// canonical/sitemap/og:url must all agree on that form - a canonical (or
+// sitemap entry) pointing at the non-slash URL is self-defeating, since that
+// URL just redirects away from itself.
+function checkUrlConsistency(files) {
+  const sitemapXml = readFileSync(SITEMAP_PATH, 'utf8');
+  const sitemapUrls = new Set(
+    [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
+  );
+
+  let failures = 0;
+
+  for (const file of files) {
+    const html = readFileSync(file, 'utf8');
+    const relPath = path.relative(DIST, file);
+    const problems = [];
+
+    const canonicalHref = extractOne(html, /<link[^>]*rel="canonical"[^>]*href="([^"]+)"/);
+    const ogUrlContent = extractOne(html, /<meta[^>]*property="og:url"[^>]*content="([^"]+)"/);
+
+    if (canonicalHref) {
+      const canonical = canonicalHref.match(/href="([^"]+)"/)[1];
+      if (!canonical.endsWith('/')) {
+        problems.push(`canonical missing trailing slash: ${canonical}`);
+      }
+      if (!sitemapUrls.has(canonical)) {
+        problems.push(`canonical not present in sitemap.xml: ${canonical}`);
+      }
+      if (ogUrlContent) {
+        const ogUrl = ogUrlContent.match(/content="([^"]+)"/)[1];
+        if (ogUrl !== canonical) {
+          problems.push(`og:url (${ogUrl}) does not match canonical (${canonical})`);
+        }
+      }
+    }
+
+    if (problems.length > 0) {
+      failures++;
+      console.error(`FAIL dist/${relPath}: ${problems.join(', ')}`);
+    }
+  }
+
+  return failures;
+}
+
 function main() {
   const files = findIndexHtmlFiles(DIST);
   if (files.length === 0) {
@@ -71,12 +122,14 @@ function main() {
     }
   }
 
+  failures += checkUrlConsistency(files);
+
   if (failures > 0) {
-    console.error(`\nvalidate-seo: ${failures}/${files.length} page(s) have duplicate or missing SEO tags.`);
+    console.error(`\nvalidate-seo: ${failures} page(s) have SEO tag or URL-consistency problems.`);
     process.exit(1);
   }
 
-  console.log(`validate-seo: ${files.length} page(s) checked, all have exactly one of each critical SEO tag.`);
+  console.log(`validate-seo: ${files.length} page(s) checked, all have exactly one of each critical SEO tag and consistent canonical/sitemap/og:url values.`);
 }
 
 main();

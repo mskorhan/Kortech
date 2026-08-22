@@ -77,7 +77,7 @@ const Weddington = () => {
       "@type": "Service",
       "name": "Computer Repair in Weddington, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Weddington, NC. Expert technicians providing quality service with pickup and delivery.",
-      "url": "https://www.kortechservice.com/weddington-computer-repair",
+      "url": "https://www.kortechservice.com/weddington-computer-repair/",
       "areaServed": [
         {
           "@type": "City",
