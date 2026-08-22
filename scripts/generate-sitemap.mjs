@@ -117,7 +117,11 @@ function lastmodFor(route) {
 
 function buildSitemap() {
   const urls = routes.map(({ path: route, changefreq, priority }) => {
-    const loc = `${SITE}${route === '/' ? '/' : route}`;
+    // The server only serves 200 at the trailing-slash form of every route
+    // (Apache's mod_dir appends it for the prerendered directory/index.html
+    // layout) - the sitemap must declare the same URL the page's own
+    // canonical tag uses, or Google treats them as two different pages.
+    const loc = route === '/' ? `${SITE}/` : `${SITE}${route}/`;
     const lastmod = lastmodFor(route);
     return [
       '  <url>',

@@ -15,7 +15,7 @@ const TermsConditions = () => {
       "@type": "WebPage",
       "name": "Terms and Conditions",
       "description": "Terms and conditions for KorTech Service computer repair and IT support services in Charlotte, NC.",
-      "url": "https://www.kortechservice.com/terms"
+      "url": "https://www.kortechservice.com/terms/"
     }
   ];
 

@@ -77,7 +77,7 @@ const MintHill = () => {
       "@type": "Service",
       "name": "Computer Repair in Mint Hill, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Mint Hill, NC. Expert technicians providing quality service with pickup and delivery.",
-      "url": "https://www.kortechservice.com/mint-hill-computer-repair",
+      "url": "https://www.kortechservice.com/mint-hill-computer-repair/",
       "areaServed": [
         {
           "@type": "City",

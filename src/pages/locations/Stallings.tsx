@@ -77,7 +77,7 @@ const Stallings = () => {
       "@type": "Service",
       "name": "Computer Repair in Stallings, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Stallings, NC. Expert technicians providing quality service with pickup and delivery.",
-      "url": "https://www.kortechservice.com/stallings-computer-repair",
+      "url": "https://www.kortechservice.com/stallings-computer-repair/",
       "areaServed": [
         {
           "@type": "City",

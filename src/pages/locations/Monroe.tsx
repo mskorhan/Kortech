@@ -77,7 +77,7 @@ const Monroe = () => {
       "@type": "Service",
       "name": "Computer Repair in Monroe, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Monroe, NC. Expert technicians providing quality service with pickup and delivery.",
-      "url": "https://www.kortechservice.com/monroe-computer-repair",
+      "url": "https://www.kortechservice.com/monroe-computer-repair/",
       "areaServed": [
         {
           "@type": "City",

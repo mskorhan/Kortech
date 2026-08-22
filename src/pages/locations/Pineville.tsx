@@ -77,7 +77,7 @@ const Pineville = () => {
       "@type": "Service",
       "name": "Computer Repair in Pineville, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Pineville, NC. Expert technicians providing quality service with pickup and delivery.",
-      "url": "https://www.kortechservice.com/pineville-computer-repair",
+      "url": "https://www.kortechservice.com/pineville-computer-repair/",
       "areaServed": [
         {
           "@type": "City",

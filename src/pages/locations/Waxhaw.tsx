@@ -77,7 +77,7 @@ const Waxhaw = () => {
       "@type": "Service",
       "name": "Computer Repair in Waxhaw, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Waxhaw, NC. Expert technicians providing quality service with pickup and delivery.",
-      "url": "https://www.kortechservice.com/waxhaw-computer-repair",
+      "url": "https://www.kortechservice.com/waxhaw-computer-repair/",
       "areaServed": [
         {
           "@type": "City",

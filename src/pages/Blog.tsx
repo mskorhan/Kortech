@@ -232,7 +232,7 @@ const Blog = () => {
       "@type": "Blog",
       "name": "KorTech Service Blog",
       "description": "Expert computer repair tips, guides, and tech insights from Charlotte's trusted IT professionals",
-      "url": "https://www.kortechservice.com/blog",
+      "url": "https://www.kortechservice.com/blog/",
       "publisher": {
         "@type": "Organization",
         "name": "KorTech Service",

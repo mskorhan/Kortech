@@ -22,7 +22,7 @@ const MailInForm = () => {
       "@type": "WebPage",
       "name": "Mail-In Repair Form",
       "description": "Complete mail-in repair form for shipping your device to KorTech Service for professional computer repair.",
-      "url": "https://www.kortechservice.com/mail-in-form"
+      "url": "https://www.kortechservice.com/mail-in-form/"
     }
   ];
 

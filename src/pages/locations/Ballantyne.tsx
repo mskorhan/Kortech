@@ -77,7 +77,7 @@ const Ballantyne = () => {
       "@type": "Service",
       "name": "Computer Repair in Ballantyne, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Ballantyne, NC. Expert technicians providing quality service with pickup and delivery.",
-      "url": "https://www.kortechservice.com/ballantyne-computer-repair",
+      "url": "https://www.kortechservice.com/ballantyne-computer-repair/",
       "areaServed": [
         {
           "@type": "City",

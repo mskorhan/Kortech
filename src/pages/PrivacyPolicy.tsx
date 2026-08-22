@@ -23,7 +23,7 @@ const PrivacyPolicy = () => {
       "@type": "WebPage",
       "name": "Privacy Policy",
       "description": "Privacy policy for KorTech Service computer repair and IT support services in Charlotte, NC.",
-      "url": "https://www.kortechservice.com/privacy-policy"
+      "url": "https://www.kortechservice.com/privacy-policy/"
     }
   ];
 

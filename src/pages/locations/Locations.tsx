@@ -92,7 +92,7 @@ const Locations = () => {
       "@type": "CollectionPage",
       "name": "Service Locations | Computer Repair Charlotte Area",
       "description": "KorTech Service provides computer repair, data recovery, and IT support across 10 Charlotte-area towns, from Ballantyne to Monroe.",
-      "url": "https://www.kortechservice.com/locations"
+      "url": "https://www.kortechservice.com/locations/"
     },
     {
       "@context": "https://schema.org",
@@ -101,7 +101,7 @@ const Locations = () => {
         "@type": "ListItem",
         "position": index + 1,
         "name": `${location.city}, NC`,
-        "url": `https://www.kortechservice.com${location.path}`,
+        "url": `https://www.kortechservice.com${location.path}/`,
         "item": {
           "@type": "City",
           "name": location.city,
