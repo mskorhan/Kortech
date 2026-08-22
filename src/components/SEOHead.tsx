@@ -48,7 +48,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.kortechservice.com"
+        "item": "https://www.kortechservice.com/"
       }
     ]
   };
