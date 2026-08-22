@@ -48,7 +48,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.kortechservice.com"
+        "item": "https://www.kortechservice.com/"
       }
     ]
   };
@@ -60,7 +60,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       const position = index + 2;
       const name = part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
       const item = `https://www.kortechservice.com/${pathParts.slice(0, index + 1).join('/')}`;
-      
+
       breadcrumbSchema.itemListElement.push({
         "@type": "ListItem",
         "position": position,
@@ -70,7 +70,13 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     });
   }
 
-  const allSchemas = [breadcrumbSchema, ...(schema || [])];
+  // Every page supplies its own content-appropriate schema via the `schema`
+  // prop (LocalBusiness, Service, AboutPage, BlogPosting, etc.) - SEOHead
+  // only adds the breadcrumb, which is genuinely true of every page.
+  const allSchemas = [
+    breadcrumbSchema,
+    ...(schema || [])
+  ];
 
   return (
     <Helmet>
@@ -106,19 +112,12 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="twitter:creator" content="@kortechservice" />
       
       {/* Additional SEO meta tags */}
-      {noindex ? (
-        <>
-          <meta name="robots" content="noindex, follow" />
-          <meta name="googlebot" content="noindex, follow" />
-          <meta name="bingbot" content="noindex, follow" />
-        </>
-      ) : (
-        <>
-          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-          <meta name="googlebot" content="index, follow" />
-          <meta name="bingbot" content="index, follow" />
-        </>
-      )}
+      <meta
+        name="robots"
+        content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+      />
+      <meta name="googlebot" content={noindex ? "noindex, follow" : "index, follow"} />
+      <meta name="bingbot" content={noindex ? "noindex, follow" : "index, follow"} />
       
       {/* Local business specific */}
       {location && <meta name="geo.placename" content={location} />}

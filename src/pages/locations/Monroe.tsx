@@ -74,19 +74,10 @@ const Monroe = () => {
   const schema = [
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "KorTech Service - Monroe Computer Repair",
+      "@type": "Service",
+      "name": "Computer Repair in Monroe, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Monroe, NC. Expert technicians providing quality service with pickup and delivery.",
       "url": "https://www.kortechservice.com/monroe-computer-repair",
-      "telephone": "704-246-7642",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1721 Sardis Rd N, Suite 7A",
-        "addressLocality": "Charlotte",
-        "addressRegion": "NC",
-        "postalCode": "28270",
-        "addressCountry": "US"
-      },
       "areaServed": [
         {
           "@type": "City",
@@ -94,15 +85,25 @@ const Monroe = () => {
           "addressRegion": "NC"
         }
       ],
-      "openingHours": [
-        "Mo-Fr 09:00-18:00",
-        "Sa 11:00-16:00"
-      ],
-      "priceRange": "$$",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": String(rating ?? "4.8"),
-        "reviewCount": String(totalReviews ?? "0")
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "KorTech Service",
+        "priceRange": "$$",
+        "url": "https://www.kortechservice.com/",
+        "telephone": "704-246-7642",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1721 Sardis Rd N, Suite 7A",
+          "addressLocality": "Charlotte",
+          "addressRegion": "NC",
+          "postalCode": "28270",
+          "addressCountry": "US"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": String(rating ?? "4.8"),
+          "reviewCount": String(totalReviews ?? "0")
+        }
       }
     },
     {

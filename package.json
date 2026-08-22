@@ -5,16 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-sitemap.mjs && vite build && node scripts/prerender.mjs",
+    "build": "node scripts/generate-sitemap.mjs && vite build && node scripts/prerender.mjs && node scripts/validate-seo.mjs",
     "build:analyze": "vite build --mode analyze",
-    "build:production": "node scripts/generate-sitemap.mjs && vite build --mode production && node scripts/prerender.mjs",
+    "build:production": "node scripts/generate-sitemap.mjs && vite build --mode production && node scripts/prerender.mjs && node scripts/validate-seo.mjs",
     "preview": "vite preview",
     "type-check": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.node.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "optimize-images": "node scripts/optimize-images.js",
     "generate-sitemap": "node scripts/generate-sitemap.mjs",
-    "prerender": "node scripts/prerender.mjs"
+    "prerender": "node scripts/prerender.mjs",
+    "validate-seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",

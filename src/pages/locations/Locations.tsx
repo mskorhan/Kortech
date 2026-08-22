@@ -89,94 +89,59 @@ const Locations = () => {
   const schema = [
     {
       "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Service Locations | Computer Repair Charlotte Area",
+      "description": "KorTech Service provides computer repair, data recovery, and IT support across 10 Charlotte-area towns, from Ballantyne to Monroe.",
+      "url": "https://www.kortechservice.com/locations"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": locations.map((location, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": `${location.city}, NC`,
+        "url": `https://www.kortechservice.com${location.path}`,
+        "item": {
+          "@type": "City",
+          "name": location.city,
+          "addressRegion": "NC"
+        }
+      }))
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "Organization",
       "name": "KorTech Service",
-      "url": "https://www.kortechservice.com",
+      "url": "https://www.kortechservice.com/",
       "logo": "https://www.kortechservice.com/transparent-logo-1.png",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "704-246-7642",
         "contactType": "customer service"
       },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1721 Sardis Rd N, Suite 7A",
-        "addressLocality": "Charlotte",
-        "addressRegion": "NC",
-        "postalCode": "28270",
-        "addressCountry": "US"
+      "location": {
+        "@type": "Place",
+        "name": "KorTech Service",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1721 Sardis Rd N, Suite 7A",
+          "addressLocality": "Charlotte",
+          "addressRegion": "NC",
+          "postalCode": "28270",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "35.2271",
+          "longitude": "-80.8431"
+        }
       },
-      "location": [
-        {
-          "@type": "Place",
-          "name": "KorTech Service - Charlotte",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "1721 Sardis Rd N, Suite 7A",
-            "addressLocality": "Charlotte",
-            "addressRegion": "NC",
-            "postalCode": "28270",
-            "addressCountry": "US"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "35.2271",
-            "longitude": "-80.8431"
-          }
-        }
-      ],
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Charlotte",
-          "addressRegion": "NC"
-        },
-        {
-          "@type": "City",
-          "name": "Matthews",
-          "addressRegion": "NC"
-        },
-        {
-          "@type": "City",
-          "name": "Indian Trail",
-          "addressRegion": "NC"
-        },
-        {
-          "@type": "City",
-          "name": "Mint Hill",
-          "addressRegion": "NC"
-        },
-        {
-          "@type": "City",
-          "name": "Monroe",
-          "addressRegion": "NC"
-        },
-        {
-          "@type": "City",
-          "name": "Ballantyne",
-          "addressRegion": "NC"
-        },
-        {
-          "@type": "City",
-          "name": "Pineville",
-          "addressRegion": "NC"
-        },
-        {
-          "@type": "City",
-          "name": "Waxhaw",
-          "addressRegion": "NC"
-        },
-        {
-          "@type": "City",
-          "name": "Weddington",
-          "addressRegion": "NC"
-        },
-        {
-          "@type": "City",
-          "name": "Stallings",
-          "addressRegion": "NC"
-        }
-      ]
+      "areaServed": locations.map((location) => ({
+        "@type": "City",
+        "name": location.city,
+        "addressRegion": "NC"
+      }))
     }
   ];
 

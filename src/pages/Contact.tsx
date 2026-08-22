@@ -71,6 +71,36 @@ const Contact = () => {
       "name": "Contact KorTech Service - Charlotte Computer Repair",
       "description": "Contact KorTech Service for professional computer repair in Charlotte, NC. Visit our shop, call, or text for same-day service.",
       "url": "https://www.kortechservice.com/contact"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "KorTech Service",
+      "telephone": "704-246-7642",
+      "email": "info@kortechservice.com",
+      "url": "https://www.kortechservice.com/contact",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1721 Sardis Rd N, Suite 7A",
+        "addressLocality": "Charlotte",
+        "addressRegion": "NC",
+        "postalCode": "28270",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "11:00",
+          "closes": "16:00"
+        }
+      ]
     }
   ];
 
