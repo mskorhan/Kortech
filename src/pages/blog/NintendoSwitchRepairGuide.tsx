@@ -418,7 +418,7 @@ const NintendoSwitchRepairGuide = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/nintendo-switch-repair"
+                  href="/nintendo-switch-repair/"
                   className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center space-x-2 transition-all duration-300"
                 >
                   <Gamepad2 className="h-5 w-5" />
@@ -436,7 +436,7 @@ const NintendoSwitchRepairGuide = () => {
           <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Related Articles</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link to="/blog/how-to-fix-broken-ps5-hdmi-port" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/how-to-fix-broken-ps5-hdmi-port/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-red-600 transition-colors">
                   How to Fix PS5 HDMI Port No Signal After Drop - Complete Repair Guide
@@ -454,7 +454,7 @@ const NintendoSwitchRepairGuide = () => {
               </div>
             </Link>
             
-            <Link to="/blog/xbox-hdmi-repair-guide" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/xbox-hdmi-repair-guide/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-red-600 transition-colors">
                   Xbox Series X HDMI Port Repair - DIY vs Professional Fix
@@ -472,7 +472,7 @@ const NintendoSwitchRepairGuide = () => {
               </div>
             </Link>
             
-            <Link to="/blog/custom-gaming-pc-build-guide-2025" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/custom-gaming-pc-build-guide-2025/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-red-600 transition-colors">
                   Custom Gaming PC Build Guide 2025 - Best Components Under $1500
@@ -513,7 +513,7 @@ const NintendoSwitchRepairGuide = () => {
               <span>Call 704-246-7642</span>
             </a>
             <a
-              href="/nintendo-switch-repair"
+              href="/nintendo-switch-repair/"
               className="border-2 border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <Gamepad2 className="h-6 w-6" />

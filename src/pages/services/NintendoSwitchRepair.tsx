@@ -119,7 +119,7 @@ const NintendoSwitchRepair = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/contact"
+                  href="/contact/"
                   className="border-2 border-white text-white hover:bg-white hover:text-red-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
                 >
                   <span>Get Free Quote</span>
@@ -268,14 +268,14 @@ const NintendoSwitchRepair = () => {
           <div className="mb-12">
             <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <a href="/blog/nintendo-switch-repair-guide" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/nintendo-switch-repair-guide/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Nintendo Switch Repair Guide</h4>
                   <p className="text-sm text-slate-600 mt-1">Common Nintendo Switch problems and how to get them professionally repaired.</p>
                 </div>
               </a>
-              <a href="/blog/custom-gaming-pc-build-guide-2025" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/custom-gaming-pc-build-guide-2025/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Custom Gaming PC Build Guide 2025</h4>
@@ -286,19 +286,19 @@ const NintendoSwitchRepair = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="/ps5-hdmi-repair" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/ps5-hdmi-repair/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Gamepad2 className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">PS5 HDMI Repair</h3>
               <p className="text-slate-600">Professional PlayStation 5 HDMI port repair</p>
             </a>
 
-            <a href="/xbox-hdmi-repair" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/xbox-hdmi-repair/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Gamepad2 className="h-12 w-12 text-green-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">Xbox HDMI Repair</h3>
               <p className="text-slate-600">Xbox Series X/S and Xbox One HDMI repair</p>
             </a>
 
-            <a href="/services" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/services/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Star className="h-12 w-12 text-purple-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">All Services</h3>
               <p className="text-slate-600">View our complete range of repair services</p>

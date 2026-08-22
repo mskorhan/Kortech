@@ -18,7 +18,7 @@ const Blog = () => {
       icon: Droplets,
       readTime: '7 min read',
       featured: true,
-      path: '/blog/what-to-do-when-device-gets-wet-charlotte'
+      path: '/blog/what-to-do-when-device-gets-wet-charlotte/'
     },
     {
       slug: 'signs-your-business-needs-it-support',
@@ -30,7 +30,7 @@ const Blog = () => {
       icon: Building,
       readTime: '8 min read',
       featured: true,
-      path: '/blog/signs-your-business-needs-it-support'
+      path: '/blog/signs-your-business-needs-it-support/'
     },
     {
       slug: 'printer-wont-connect-to-wifi-fix',
@@ -42,7 +42,7 @@ const Blog = () => {
       icon: Wifi,
       readTime: '7 min read',
       featured: false,
-      path: '/blog/printer-wont-connect-to-wifi-fix'
+      path: '/blog/printer-wont-connect-to-wifi-fix/'
     },
     {
       slug: 'ipad-screen-repair-cost-guide',
@@ -54,7 +54,7 @@ const Blog = () => {
       icon: Tablet,
       readTime: '7 min read',
       featured: false,
-      path: '/blog/ipad-screen-repair-cost-guide'
+      path: '/blog/ipad-screen-repair-cost-guide/'
     },
     {
       slug: 'small-business-logo-design-checklist',
@@ -66,7 +66,7 @@ const Blog = () => {
       icon: Palette,
       readTime: '7 min read',
       featured: false,
-      path: '/blog/small-business-logo-design-checklist'
+      path: '/blog/small-business-logo-design-checklist/'
     },
     {
       slug: 'how-to-fix-broken-ps5-hdmi-port',
@@ -78,7 +78,7 @@ const Blog = () => {
       icon: Gamepad2,
       readTime: '5 min read',
       featured: true,
-      path: '/blog/how-to-fix-broken-ps5-hdmi-port'
+      path: '/blog/how-to-fix-broken-ps5-hdmi-port/'
     },
     {
      slug: 'best-ssd-upgrade-old-laptop-2025',
@@ -90,7 +90,7 @@ const Blog = () => {
       icon: HardDrive,
       readTime: '7 min read', 
       featured: true,
-      path: '/blog/best-ssd-upgrade-old-laptop-2025'
+      path: '/blog/best-ssd-upgrade-old-laptop-2025/'
     },
     {
       slug: 'steps-to-remove-virus-from-windows-pc',
@@ -102,7 +102,7 @@ const Blog = () => {
       icon: Shield,
       readTime: '6 min read',
       featured: false,
-      path: '/blog/steps-to-remove-virus-from-windows-pc'
+      path: '/blog/steps-to-remove-virus-from-windows-pc/'
     },
     {
       slug: 'custom-gaming-pc-build-guide-2025',
@@ -114,7 +114,7 @@ const Blog = () => {
       icon: Monitor,
       readTime: '10 min read', 
       featured: true,
-      path: '/blog/custom-gaming-pc-build-guide-2025'
+      path: '/blog/custom-gaming-pc-build-guide-2025/'
     },
     {
       slug: 'signs-hard-drive-failing-data-recovery-tips',
@@ -126,7 +126,7 @@ const Blog = () => {
       icon: AlertTriangle,
       readTime: '8 min read',
       featured: false,
-      path: '/blog/signs-hard-drive-failing-data-recovery-tips'
+      path: '/blog/signs-hard-drive-failing-data-recovery-tips/'
     },
     {
       slug: 'how-to-know-when-to-replace-phone-battery',
@@ -138,7 +138,7 @@ const Blog = () => {
       icon: Smartphone,
       readTime: '8 min read', 
       featured: true,
-      path: '/blog/how-to-know-when-to-replace-phone-battery'
+      path: '/blog/how-to-know-when-to-replace-phone-battery/'
     },
     {
       slug: 'what-is-pcb-micro-soldering',
@@ -150,7 +150,7 @@ const Blog = () => {
       icon: Cpu,
       readTime: '10 min read', 
       featured: false,
-      path: '/blog/what-is-pcb-micro-soldering'
+      path: '/blog/what-is-pcb-micro-soldering/'
     },
     {
       slug: 'top-5-signs-smart-tv-needs-repair',
@@ -162,7 +162,7 @@ const Blog = () => {
       icon: Tv,
       readTime: '7 min read', 
       featured: false,
-      path: '/blog/top-5-signs-smart-tv-needs-repair'
+      path: '/blog/top-5-signs-smart-tv-needs-repair/'
     },
     {
       slug: 'data-recovery-charlotte-2025',
@@ -174,7 +174,7 @@ const Blog = () => {
       icon: Database,
       readTime: '9 min read', 
       featured: false,
-      path: '/blog/data-recovery-charlotte-2025'
+      path: '/blog/data-recovery-charlotte-2025/'
     },
     {
       slug: 'laptop-screen-repair-guide-charlotte',
@@ -186,7 +186,7 @@ const Blog = () => {
       icon: Monitor,
       readTime: '8 min read',
       featured: false,
-      path: '/blog/laptop-screen-repair-guide-charlotte'
+      path: '/blog/laptop-screen-repair-guide-charlotte/'
     },
     {
       slug: 'nintendo-switch-repair-guide',
@@ -198,7 +198,7 @@ const Blog = () => {
       icon: Gamepad2,
       readTime: '7 min read',
       featured: false,
-      path: '/blog/nintendo-switch-repair-guide'
+      path: '/blog/nintendo-switch-repair-guide/'
     },
     {
       slug: 'xbox-hdmi-repair-guide',
@@ -210,7 +210,7 @@ const Blog = () => {
       icon: Wrench,
       readTime: '6 min read',
       featured: false,
-      path: '/blog/xbox-hdmi-repair-guide'
+      path: '/blog/xbox-hdmi-repair-guide/'
     },
     {
       slug: 'virus-removal-guide-charlotte',
@@ -222,7 +222,7 @@ const Blog = () => {
       icon: Shield,
       readTime: '9 min read',
       featured: false,
-      path: '/blog/virus-removal-guide-charlotte'
+      path: '/blog/virus-removal-guide-charlotte/'
     }
   ];
 

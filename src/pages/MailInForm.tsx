@@ -921,7 +921,7 @@ const MailInForm = () => {
                       </div>
                       <div className="ml-3">
                         <label htmlFor="agreeToTerms" className="text-sm font-medium text-gray-700">
-                          I agree to the <a href="/terms" target="_blank" className="text-blue-600 hover:text-blue-800">Terms and Conditions</a>
+                          I agree to the <a href="/terms/" target="_blank" className="text-blue-600 hover:text-blue-800">Terms and Conditions</a>
                         </label>
                         {errors.agreeToTerms && <p className="text-sm text-red-600">{errors.agreeToTerms}</p>}
                         <p className="text-xs text-gray-500">

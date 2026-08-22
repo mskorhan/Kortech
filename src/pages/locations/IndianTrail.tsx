@@ -27,28 +27,28 @@ const IndianTrail = () => {
       title: "Computer Repair Indian Trail",
       description: "Expert Mac & PC repair services for Indian Trail, NC",
       price: "Call/Text For Quote",
-      link: "/services"
+      link: "/services/"
     },
     {
       icon: HardDrive,
       title: "Data Recovery Indian Trail",
       description: "Professional data recovery for Indian Trail residents",
       price: "Call/Text For Quote",
-      link: "/data-recovery"
+      link: "/data-recovery/"
     },
     {
       icon: Smartphone,
       title: "Mobile Device Repair",
       description: "iPhone, iPad, and Android repair in Indian Trail",
       price: "Call/Text For Quote",
-      link: "/smartphone-screen-repair-charlotte"
+      link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
       title: "Network Setup Indian Trail",
       description: "Business and home network installation",
       price: "Call/Text For Quote",
-      link: "/business-it-support"
+      link: "/business-it-support/"
     }
   ];
 
@@ -346,7 +346,7 @@ const IndianTrail = () => {
         </div>
       </section>
 
-      <NearbyAreas currentPath="/indian-trail-computer-repair" />
+      <NearbyAreas currentPath="/indian-trail-computer-repair/" />
     </div>
   );
 };

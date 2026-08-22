@@ -26,7 +26,7 @@ const NotFound = () => {
               Back to Home
             </Link>
             <Link
-              to="/services"
+              to="/services/"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition-colors"
             >
               <Wrench className="w-5 h-5" />

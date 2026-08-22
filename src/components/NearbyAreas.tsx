@@ -7,16 +7,16 @@ interface Area {
 }
 
 const ALL_AREAS: Area[] = [
-  { name: 'Charlotte', path: '/charlotte-computer-repair' },
-  { name: 'Matthews', path: '/matthews-computer-repair' },
-  { name: 'Indian Trail', path: '/indian-trail-computer-repair' },
-  { name: 'Mint Hill', path: '/mint-hill-computer-repair' },
-  { name: 'Monroe', path: '/monroe-computer-repair' },
-  { name: 'Ballantyne', path: '/ballantyne-computer-repair' },
-  { name: 'Pineville', path: '/pineville-computer-repair' },
-  { name: 'Waxhaw', path: '/waxhaw-computer-repair' },
-  { name: 'Weddington', path: '/weddington-computer-repair' },
-  { name: 'Stallings', path: '/stallings-computer-repair' }
+  { name: 'Charlotte', path: '/charlotte-computer-repair/' },
+  { name: 'Matthews', path: '/matthews-computer-repair/' },
+  { name: 'Indian Trail', path: '/indian-trail-computer-repair/' },
+  { name: 'Mint Hill', path: '/mint-hill-computer-repair/' },
+  { name: 'Monroe', path: '/monroe-computer-repair/' },
+  { name: 'Ballantyne', path: '/ballantyne-computer-repair/' },
+  { name: 'Pineville', path: '/pineville-computer-repair/' },
+  { name: 'Waxhaw', path: '/waxhaw-computer-repair/' },
+  { name: 'Weddington', path: '/weddington-computer-repair/' },
+  { name: 'Stallings', path: '/stallings-computer-repair/' }
 ];
 
 interface NearbyAreasProps {
@@ -44,7 +44,7 @@ const NearbyAreas = ({ currentPath }: NearbyAreasProps) => {
             </Link>
           ))}
           <Link
-            to="/locations"
+            to="/locations/"
             className="px-4 py-2 bg-brand-primary text-white rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors duration-200"
           >
             View All Service Areas

@@ -27,28 +27,28 @@ const Charlotte = () => {
       title: "Computer Repair Charlotte",
       description: "Expert Mac & PC repair services in Charlotte, NC",
       price: "Call/Text For Quote",
-      link: "/services"
+      link: "/services/"
     },
     {
       icon: HardDrive,
       title: "Data Recovery Charlotte",
       description: "Professional data recovery services for Charlotte residents",
       price: "Call/Text For Quote",
-      link: "/data-recovery"
+      link: "/data-recovery/"
     },
     {
       icon: Smartphone,
       title: "Mobile Device Repair",
       description: "iPhone, iPad, and Android repair in Charlotte",
       price: "Call/Text For Quote",
-      link: "/smartphone-screen-repair-charlotte"
+      link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
       title: "Network Setup Charlotte",
       description: "Business and home network installation in Charlotte",
       price: "Call/Text For Quote",
-      link: "/business-it-support"
+      link: "/business-it-support/"
     }
   ];
 
@@ -398,7 +398,7 @@ const Charlotte = () => {
         </div>
       </section>
 
-      <NearbyAreas currentPath="/charlotte-computer-repair" />
+      <NearbyAreas currentPath="/charlotte-computer-repair/" />
     </div>
   );
 };

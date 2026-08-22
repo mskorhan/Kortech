@@ -27,28 +27,28 @@ const Pineville = () => {
       title: "Computer Repair Pineville",
       description: "Expert Mac & PC repair services for Pineville, NC",
       price: "Call/Text For Quote",
-      link: "/services"
+      link: "/services/"
     },
     {
       icon: HardDrive,
       title: "Data Recovery Pineville",
       description: "Professional data recovery for Pineville residents",
       price: "Call/Text For Quote",
-      link: "/data-recovery"
+      link: "/data-recovery/"
     },
     {
       icon: Smartphone,
       title: "Mobile Device Repair",
       description: "iPhone, iPad, and Android repair in Pineville",
       price: "Call/Text For Quote",
-      link: "/smartphone-screen-repair-charlotte"
+      link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
       title: "Network Setup Pineville",
       description: "Business and home network installation",
       price: "Call/Text For Quote",
-      link: "/business-it-support"
+      link: "/business-it-support/"
     }
   ];
 
@@ -346,7 +346,7 @@ const Pineville = () => {
         </div>
       </section>
 
-      <NearbyAreas currentPath="/pineville-computer-repair" />
+      <NearbyAreas currentPath="/pineville-computer-repair/" />
     </div>
   );
 };

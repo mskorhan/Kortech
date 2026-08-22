@@ -111,7 +111,7 @@ const LaptopRepair = () => {
                   <span>Visit Our Shop: 704-246-7642</span>
                 </a>
                 <a
-                  href="/contact"
+                  href="/contact/"
                   className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
                 >
                   <span>Get Directions</span>
@@ -331,7 +331,7 @@ const LaptopRepair = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <p className="text-slate-600">
-              Looking for other services? <a href="/services" className="text-blue-600 hover:text-blue-800 font-medium">Browse all our computer repair services</a> in Charlotte, NC.
+              Looking for other services? <a href="/services/" className="text-blue-600 hover:text-blue-800 font-medium">Browse all our computer repair services</a> in Charlotte, NC.
             </p>
           </div>
           
@@ -344,14 +344,14 @@ const LaptopRepair = () => {
           <div className="mb-12">
             <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <a href="/blog/laptop-screen-repair-guide-charlotte" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/laptop-screen-repair-guide-charlotte/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Laptop Screen Repair Guide for Charlotte Residents</h4>
                   <p className="text-sm text-slate-600 mt-1">Everything Charlotte laptop owners need to know about screen damage and repair options.</p>
                 </div>
               </a>
-              <a href="/blog/what-to-do-when-device-gets-wet-charlotte" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/what-to-do-when-device-gets-wet-charlotte/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">What to Do When Your Device Gets Wet</h4>
@@ -362,19 +362,19 @@ const LaptopRepair = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="/ssd-upgrades" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/ssd-upgrades/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Shield className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">SSD Upgrades</h3>
               <p className="text-slate-600">Speed up your laptop with SSD upgrade installation</p>
             </a>
 
-            <a href="/data-recovery" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/data-recovery/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <AlertTriangle className="h-12 w-12 text-red-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">Data Recovery</h3>
               <p className="text-slate-600">Recover data from failed laptop drives</p>
             </a>
 
-            <a href="/services" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/services/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Star className="h-12 w-12 text-purple-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">All Services</h3>
               <p className="text-slate-600">View our complete range of repair services</p>

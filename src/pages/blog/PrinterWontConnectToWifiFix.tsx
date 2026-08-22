@@ -206,7 +206,7 @@ const PrinterWontConnectToWifiFix = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/printer-router-repair"
+                  href="/printer-router-repair/"
                   className="border border-cyan-600 text-cyan-600 hover:bg-cyan-50 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center space-x-2 transition-all duration-300"
                 >
                   <Wifi className="h-5 w-5" />
@@ -224,7 +224,7 @@ const PrinterWontConnectToWifiFix = () => {
           <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Related Articles</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link to="/blog/signs-your-business-needs-it-support" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/signs-your-business-needs-it-support/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-cyan-600 transition-colors">
                   7 Signs Your Small Business Needs IT Support
@@ -242,7 +242,7 @@ const PrinterWontConnectToWifiFix = () => {
               </div>
             </Link>
 
-            <Link to="/blog/steps-to-remove-virus-from-windows-pc" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/steps-to-remove-virus-from-windows-pc/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-cyan-600 transition-colors">
                   How to Remove Viruses from Windows PC - Charlotte Expert Guide 2025
@@ -260,7 +260,7 @@ const PrinterWontConnectToWifiFix = () => {
               </div>
             </Link>
 
-            <Link to="/blog/what-to-do-when-device-gets-wet-charlotte" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/what-to-do-when-device-gets-wet-charlotte/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-cyan-600 transition-colors">
                   What to Do When Your Phone or Laptop Gets Wet
@@ -301,7 +301,7 @@ const PrinterWontConnectToWifiFix = () => {
               <span>Call 704-246-7642</span>
             </a>
             <a
-              href="/printer-router-repair"
+              href="/printer-router-repair/"
               className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <Wifi className="h-6 w-6" />

@@ -106,7 +106,7 @@ const XboxHDMIRepair = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/contact"
+                  href="/contact/"
                   className="border-2 border-white text-white hover:bg-white hover:text-green-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
                 >
                   <span>Get Free Quote</span>
@@ -242,14 +242,14 @@ const XboxHDMIRepair = () => {
           <div className="mb-12">
             <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <a href="/blog/xbox-hdmi-repair-guide" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/xbox-hdmi-repair-guide/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Xbox HDMI Repair Guide</h4>
                   <p className="text-sm text-slate-600 mt-1">Complete guide to diagnosing and fixing Xbox HDMI port issues.</p>
                 </div>
               </a>
-              <a href="/blog/how-to-fix-broken-ps5-hdmi-port" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/how-to-fix-broken-ps5-hdmi-port/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">How to Fix a Broken PS5 HDMI Port</h4>
@@ -260,19 +260,19 @@ const XboxHDMIRepair = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="/ps5-hdmi-repair" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/ps5-hdmi-repair/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Gamepad2 className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">PS5 HDMI Repair</h3>
               <p className="text-slate-600">Professional PlayStation 5 HDMI port repair service</p>
             </a>
 
-            <a href="/custom-gaming-pc" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/custom-gaming-pc/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Shield className="h-12 w-12 text-purple-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">Custom Gaming PC</h3>
               <p className="text-slate-600">Build your dream gaming PC with expert assembly</p>
             </a>
 
-            <a href="/services" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/services/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Star className="h-12 w-12 text-green-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">All Services</h3>
               <p className="text-slate-600">View our complete range of repair services</p>

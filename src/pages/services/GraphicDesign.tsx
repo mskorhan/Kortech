@@ -120,7 +120,7 @@ const GraphicDesign = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/contact"
+                  href="/contact/"
                   className="border-2 border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
                 >
                   <span>Get Free Quote</span>
@@ -368,7 +368,7 @@ const GraphicDesign = () => {
             </p>
             
             <a
-              href="/contact"
+              href="/contact/"
               className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-xl font-bold text-lg inline-flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <span>Request Portfolio Samples</span>
@@ -387,14 +387,14 @@ const GraphicDesign = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            <a href="/blog/small-business-logo-design-checklist" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+            <a href="/blog/small-business-logo-design-checklist/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
               <FileText className="h-5 w-5 text-purple-600 mr-3 mt-1 flex-shrink-0" />
               <div>
                 <h3 className="font-bold text-slate-800 group-hover:text-purple-600 transition-colors">What to Look for in a Small Business Logo Design</h3>
                 <p className="text-sm text-slate-600 mt-1">A practical checklist to run through before approving any logo or branding project.</p>
               </div>
             </a>
-            <a href="/blog/signs-your-business-needs-it-support" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+            <a href="/blog/signs-your-business-needs-it-support/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
               <FileText className="h-5 w-5 text-purple-600 mr-3 mt-1 flex-shrink-0" />
               <div>
                 <h3 className="font-bold text-slate-800 group-hover:text-purple-600 transition-colors">7 Signs Your Small Business Needs IT Support</h3>

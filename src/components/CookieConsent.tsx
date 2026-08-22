@@ -44,7 +44,7 @@ const CookieConsent: React.FC = () => {
           </div>
           <div className="flex items-center gap-3">
             <a 
-              href="/privacy-policy" 
+              href="/privacy-policy/" 
               className="text-blue-300 hover:text-blue-100 text-sm underline"
             >
               Learn More

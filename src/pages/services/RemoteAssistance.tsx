@@ -130,7 +130,7 @@ const RemoteAssistance = () => {
                   <span>Visit Our Shop: 704-246-7642</span>
                 </a>
                 <a
-                  href="/contact"
+                  href="/contact/"
                   className="border-2 border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
                 >
                   <span>Schedule In-Shop Visit</span>
@@ -368,7 +368,7 @@ const RemoteAssistance = () => {
                     No appointment needed for diagnostics and most repairs. Same-day service available.
                   </p>
                   <a
-                    href="/contact"
+                    href="/contact/"
                     className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold inline-flex items-center space-x-2 transition-all duration-300"
                   >
                     <MapPin className="h-5 w-5" />

@@ -284,7 +284,7 @@ export default function Home() {
                 </ul>
                 <div className="flex items-center justify-between pt-4 border-t border-slate-200">
                   <span className="text-brand-primary font-bold text-base sm:text-lg">{service.price}</span>
-                  <a href="/services" className="text-brand-primary hover:text-brand-dark font-medium text-sm sm:text-base flex items-center space-x-2 group-hover:translate-x-1 transition-transform">
+                  <a href="/services/" className="text-brand-primary hover:text-brand-dark font-medium text-sm sm:text-base flex items-center space-x-2 group-hover:translate-x-1 transition-transform">
                     <span>Learn More</span>
                     <ArrowRight className="h-4 w-4" />
                   </a>
@@ -295,7 +295,7 @@ export default function Home() {
 
           <div className="text-center mt-16">
             <Link
-              to="/services"
+              to="/services/"
               className="btn-primary text-base sm:text-lg md:text-xl hover-glow inline-flex items-center space-x-3 mobile-full-width"
             >
               <span>View All Services</span>
@@ -453,7 +453,7 @@ export default function Home() {
                 <span>980-888-5300</span>
               </a>
               <a
-                href="/contact?utm_source=site&utm_medium=cta&utm_campaign=contact_cta"
+                href="/contact/?utm_source=site&utm_medium=cta&utm_campaign=contact_cta"
                 className="border-2 border-yellow-300 text-yellow-300 hover:bg-yellow-300 hover:text-brand-dark px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-base sm:text-lg md:text-xl flex items-center justify-center space-x-2 transition-all duration-300 min-w-[200px] sm:min-w-[220px] mobile-full-width"
               >
                 <Mail className="h-6 w-6" />

@@ -288,7 +288,7 @@ const WhatIsPCBMicroSoldering = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/pcb-micro-soldering"
+                  href="/pcb-micro-soldering/"
                   className="border border-indigo-600 text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center space-x-2 transition-all duration-300"
                 >
                   <Cpu className="h-5 w-5" />
@@ -306,7 +306,7 @@ const WhatIsPCBMicroSoldering = () => {
           <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Related Articles</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link to="/blog/how-to-fix-broken-ps5-hdmi-port" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/how-to-fix-broken-ps5-hdmi-port/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-indigo-600 transition-colors">
                   How to Fix PS5 HDMI Port No Signal After Drop - Complete Repair Guide
@@ -324,7 +324,7 @@ const WhatIsPCBMicroSoldering = () => {
               </div>
             </Link>
             
-            <Link to="/blog/how-to-know-when-to-replace-phone-battery" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/how-to-know-when-to-replace-phone-battery/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-indigo-600 transition-colors">
                   How to Know When to Replace Your Phone Battery - 7 Warning Signs
@@ -342,7 +342,7 @@ const WhatIsPCBMicroSoldering = () => {
               </div>
             </Link>
             
-            <Link to="/blog/top-5-signs-smart-tv-needs-repair" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/top-5-signs-smart-tv-needs-repair/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-indigo-600 transition-colors">
                   Top 5 Signs Your Smart TV Needs Repair - Expert Troubleshooting Guide
@@ -383,7 +383,7 @@ const WhatIsPCBMicroSoldering = () => {
               <span>Call 704-246-7642</span>
             </a>
             <a
-              href="/pcb-micro-soldering"
+              href="/pcb-micro-soldering/"
               className="border-2 border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <Cpu className="h-6 w-6" />
