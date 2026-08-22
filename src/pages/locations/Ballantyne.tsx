@@ -74,19 +74,10 @@ const Ballantyne = () => {
   const schema = [
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "KorTech Service - Ballantyne Computer Repair",
+      "@type": "Service",
+      "name": "Computer Repair in Ballantyne, NC",
       "description": "Professional computer repair, data recovery, and IT support services serving Ballantyne, NC. Expert technicians providing quality service with pickup and delivery.",
       "url": "https://www.kortechservice.com/ballantyne-computer-repair",
-      "telephone": "704-246-7642",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1721 Sardis Rd N, Suite 7A",
-        "addressLocality": "Charlotte",
-        "addressRegion": "NC",
-        "postalCode": "28270",
-        "addressCountry": "US"
-      },
       "areaServed": [
         {
           "@type": "City",
@@ -94,15 +85,25 @@ const Ballantyne = () => {
           "addressRegion": "NC"
         }
       ],
-      "openingHours": [
-        "Mo-Fr 09:00-18:00",
-        "Sa 11:00-16:00"
-      ],
       "priceRange": "$$",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": String(rating ?? "4.8"),
-        "reviewCount": String(totalReviews ?? "0")
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "KorTech Service",
+        "url": "https://www.kortechservice.com/",
+        "telephone": "704-246-7642",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1721 Sardis Rd N, Suite 7A",
+          "addressLocality": "Charlotte",
+          "addressRegion": "NC",
+          "postalCode": "28270",
+          "addressCountry": "US"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": String(rating ?? "4.8"),
+          "reviewCount": String(totalReviews ?? "0")
+        }
       }
     },
     {
