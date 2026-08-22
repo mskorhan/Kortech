@@ -84,10 +84,10 @@ const Matthews = () => {
           "addressRegion": "NC"
         }
       ],
-      "priceRange": "$$",
       "provider": {
         "@type": "LocalBusiness",
         "name": "KorTech Service",
+        "priceRange": "$$",
         "url": "https://www.kortechservice.com/",
         "telephone": "704-246-7642",
         "address": {
