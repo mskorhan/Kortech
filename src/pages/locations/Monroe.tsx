@@ -27,28 +27,28 @@ const Monroe = () => {
       title: "Computer Repair Monroe",
       description: "Expert Mac & PC repair services for Monroe, NC",
       price: "Call/Text For Quote",
-      link: "/services"
+      link: "/services/"
     },
     {
       icon: HardDrive,
       title: "Data Recovery Monroe",
       description: "Professional data recovery for Monroe residents",
       price: "Call/Text For Quote",
-      link: "/data-recovery"
+      link: "/data-recovery/"
     },
     {
       icon: Smartphone,
       title: "Mobile Device Repair",
       description: "iPhone, iPad, and Android repair in Monroe",
       price: "Call/Text For Quote",
-      link: "/smartphone-screen-repair-charlotte"
+      link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
       title: "Network Setup Monroe",
       description: "Business and home network installation",
       price: "Call/Text For Quote",
-      link: "/business-it-support"
+      link: "/business-it-support/"
     }
   ];
 
@@ -346,7 +346,7 @@ const Monroe = () => {
         </div>
       </section>
 
-      <NearbyAreas currentPath="/monroe-computer-repair" />
+      <NearbyAreas currentPath="/monroe-computer-repair/" />
     </div>
   );
 };

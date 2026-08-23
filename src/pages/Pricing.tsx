@@ -307,7 +307,7 @@ const Pricing = () => {
 
                   <div className="mt-8">
                     <a
-                      href="/contact"
+                      href="/contact/"
                       className={`w-full py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 text-center block transform hover:scale-105 ${
                         pkg.popular
                           ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg'
@@ -336,7 +336,7 @@ const Pricing = () => {
                 Get professional IT support tailored to your business needs. Contact us today to discuss your requirements.
               </p>
               <a
-                href="/contact"
+                href="/contact/"
                 className="btn-primary inline-flex items-center space-x-2"
               >
                 <span>Contact Us Now</span>

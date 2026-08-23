@@ -49,7 +49,7 @@ const ServiceCTA: React.FC<ServiceCTAProps> = ({
         
         <div className="text-center">
           <a
-            href="/contact"
+            href="/contact/"
             className="inline-flex items-center space-x-2 text-blue-200 hover:text-white font-medium"
           >
             <span>Get Free Quote</span>

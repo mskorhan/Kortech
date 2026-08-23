@@ -42,23 +42,23 @@ const Footer = () => {
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Home
               </a></li>
-              <li><a href="/about" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/about/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 About Us
               </a></li>
-              <li><a href="/services" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/services/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Services
               </a></li>
-              <li><a href="/pricing" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/pricing/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Plans
               </a></li>
-              <li><a href="/contact" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/contact/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Contact
               </a></li>
-              <li><a href="/blog" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/blog/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Tech Blog
               </a></li>
@@ -69,31 +69,31 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-lg font-medium text-white">Services</h3>
             <ul className="space-y-3 text-sm">
-              <li><a href="/laptop-screen-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/laptop-screen-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Laptop Repair
               </a></li>
-              <li><a href="/data-recovery" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/data-recovery/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Data Recovery
               </a></li>
-              <li><a href="/smartphone-screen-repair-charlotte" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/smartphone-screen-repair-charlotte/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Mobile Repair
               </a></li>
-              <li><a href="/business-it-support" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/business-it-support/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Business IT Support
               </a></li>
-              <li><a href="/virus-malware-removal" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/virus-malware-removal/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Virus Removal
               </a></li>
-              <li><a href="/printer-router-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/printer-router-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Network Setup
               </a></li>
-              <li><a href="/services" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/services/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 All Services
               </a></li>
@@ -104,47 +104,47 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-lg font-medium text-white">Service Areas</h3>
             <ul className="space-y-3 text-sm">
-              <li><a href="/charlotte-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/charlotte-computer-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Charlotte
               </a></li>
-              <li><a href="/matthews-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/matthews-computer-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Matthews
               </a></li>
-              <li><a href="/indian-trail-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/indian-trail-computer-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Indian Trail
               </a></li>
-              <li><a href="/mint-hill-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/mint-hill-computer-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Mint Hill
               </a></li>
-              <li><a href="/monroe-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/monroe-computer-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Monroe
               </a></li>
-              <li><a href="/ballantyne-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/ballantyne-computer-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Ballantyne
               </a></li>
-              <li><a href="/pineville-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/pineville-computer-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Pineville
               </a></li>
-              <li><a href="/waxhaw-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/waxhaw-computer-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Waxhaw
               </a></li>
-              <li><a href="/weddington-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/weddington-computer-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Weddington
               </a></li>
-              <li><a href="/stallings-computer-repair" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/stallings-computer-repair/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Stallings
               </a></li>
-              <li><a href="/locations" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
+              <li><a href="/locations/" className="text-slate-200 hover:text-blue-300 transition-colors duration-200 flex items-center group font-light">
                 <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 All Service Areas
               </a></li>
@@ -267,9 +267,9 @@ const Footer = () => {
           <div className="space-y-2">
             <p className="font-light">&copy; {new Date().getFullYear()} KorTech Service. All rights reserved. Professional Tech Support in Charlotte, NC.</p>
             <div className="flex flex-wrap justify-center gap-4 text-xs text-slate-400">
-              <a href="/privacy-policy" className="hover:text-slate-200 transition-colors">Privacy Policy</a>
+              <a href="/privacy-policy/" className="hover:text-slate-200 transition-colors">Privacy Policy</a>
               <span>•</span>
-              <a href="/terms" className="hover:text-slate-200 transition-colors">Terms & Conditions</a>
+              <a href="/terms/" className="hover:text-slate-200 transition-colors">Terms & Conditions</a>
               <span>•</span>
               <span>Follow us on social media for tech tips and updates!</span>
             </div>

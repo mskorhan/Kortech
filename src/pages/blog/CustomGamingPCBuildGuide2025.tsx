@@ -380,7 +380,7 @@ const CustomGamingPCBuildGuide2025 = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/custom-gaming-pc"
+                  href="/custom-gaming-pc/"
                   className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center space-x-2 transition-all duration-300"
                 >
                   <Monitor className="h-5 w-5" />
@@ -398,7 +398,7 @@ const CustomGamingPCBuildGuide2025 = () => {
           <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Related Articles</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link to="/blog/best-ssd-upgrade-old-laptop-2025" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/best-ssd-upgrade-old-laptop-2025/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
                   Best SSD Upgrade for Old Laptop 2025 - Speed Up Your Computer 5x Faster
@@ -416,7 +416,7 @@ const CustomGamingPCBuildGuide2025 = () => {
               </div>
             </Link>
             
-            <Link to="/blog/how-to-fix-broken-ps5-hdmi-port" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/how-to-fix-broken-ps5-hdmi-port/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
                   How to Fix PS5 HDMI Port No Signal After Drop - Complete Repair Guide
@@ -434,7 +434,7 @@ const CustomGamingPCBuildGuide2025 = () => {
               </div>
             </Link>
             
-            <Link to="/blog/steps-to-remove-virus-from-windows-pc" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/steps-to-remove-virus-from-windows-pc/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
                   How to Remove Viruses from Windows PC - Charlotte Expert Guide 2025
@@ -475,7 +475,7 @@ const CustomGamingPCBuildGuide2025 = () => {
               <span>Call 704-246-7642</span>
             </a>
             <a
-              href="/custom-gaming-pc"
+              href="/custom-gaming-pc/"
               className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <Cpu className="h-6 w-6" />

@@ -121,7 +121,7 @@ const WaterDamageRepair = () => {
                   <span>Emergency: 704-246-7642</span>
                 </a>
                 <a
-                  href="/contact"
+                  href="/contact/"
                   className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
                 >
                   <span>Get Help Now</span>
@@ -326,14 +326,14 @@ const WaterDamageRepair = () => {
           <div className="mb-12">
             <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <a href="/blog/what-to-do-when-device-gets-wet-charlotte" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/what-to-do-when-device-gets-wet-charlotte/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">What to Do When Your Device Gets Wet</h4>
                   <p className="text-sm text-slate-600 mt-1">Emergency first steps for Charlotte residents to minimize liquid damage.</p>
                 </div>
               </a>
-              <a href="/blog/signs-hard-drive-failing-data-recovery-tips" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/signs-hard-drive-failing-data-recovery-tips/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Signs Your Hard Drive is Failing</h4>
@@ -344,19 +344,19 @@ const WaterDamageRepair = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="/data-recovery" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/data-recovery/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Shield className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">Data Recovery</h3>
               <p className="text-slate-600">Recover data from water-damaged storage devices</p>
             </a>
 
-            <a href="/laptop-screen-repair" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/laptop-screen-repair/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <AlertTriangle className="h-12 w-12 text-orange-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">Screen Repair</h3>
               <p className="text-slate-600">Repair screens damaged by water exposure</p>
             </a>
 
-            <a href="/services" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/services/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Star className="h-12 w-12 text-purple-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">All Services</h3>
               <p className="text-slate-600">View our complete range of repair services</p>

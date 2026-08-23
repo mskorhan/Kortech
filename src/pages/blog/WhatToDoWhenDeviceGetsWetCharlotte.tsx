@@ -208,7 +208,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/water-damage-repair"
+                  href="/water-damage-repair/"
                   className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center space-x-2 transition-all duration-300"
                 >
                   <Droplets className="h-5 w-5" />
@@ -226,7 +226,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
           <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Related Articles</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link to="/blog/signs-hard-drive-failing-data-recovery-tips" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/signs-hard-drive-failing-data-recovery-tips/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
                   Signs Your Hard Drive is Failing - Data Recovery Tips Charlotte
@@ -244,7 +244,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
               </div>
             </Link>
 
-            <Link to="/blog/what-is-pcb-micro-soldering" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/what-is-pcb-micro-soldering/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
                   What is PCB-Level Micro-Soldering? Expert Guide to Circuit Board Repair
@@ -262,7 +262,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
               </div>
             </Link>
 
-            <Link to="/blog/how-to-know-when-to-replace-phone-battery" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/how-to-know-when-to-replace-phone-battery/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
                   How to Know When to Replace Your Phone Battery - 7 Warning Signs
@@ -303,7 +303,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
               <span>Call 704-246-7642</span>
             </a>
             <a
-              href="/water-damage-repair"
+              href="/water-damage-repair/"
               className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <Droplets className="h-6 w-6" />

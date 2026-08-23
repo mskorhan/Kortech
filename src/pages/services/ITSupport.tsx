@@ -113,7 +113,7 @@ const BusinessITSupport = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/contact"
+                  href="/contact/"
                   className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300"
                 >
                   <span>Schedule Consultation</span>
@@ -353,14 +353,14 @@ const BusinessITSupport = () => {
           <div className="mb-12">
             <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <a href="/blog/signs-your-business-needs-it-support" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/signs-your-business-needs-it-support/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">7 Signs Your Small Business Needs IT Support</h4>
                   <p className="text-sm text-slate-600 mt-1">Recurring outages, slow computers, and no backup plan are warning signs worth acting on.</p>
                 </div>
               </a>
-              <a href="/blog/printer-wont-connect-to-wifi-fix" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/printer-wont-connect-to-wifi-fix/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <FileText className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Printer Won't Connect to Wi-Fi? 8 Fixes to Try</h4>
@@ -371,19 +371,19 @@ const BusinessITSupport = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="/virus-malware-removal" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/virus-malware-removal/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Shield className="h-12 w-12 text-red-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">Security Services</h3>
               <p className="text-slate-600">Business virus removal and security solutions</p>
             </a>
 
-            <a href="/data-recovery" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/data-recovery/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Database className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">Data Recovery</h3>
               <p className="text-slate-600">Business data recovery and backup solutions</p>
             </a>
 
-            <a href="/services" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/services/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Star className="h-12 w-12 text-purple-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">All Services</h3>
               <p className="text-slate-600">View our complete range of business services</p>

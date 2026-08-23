@@ -26,28 +26,28 @@ const Matthews = () => {
       title: "Computer Repair Matthews",
       description: "Expert Mac & PC repair services in Matthews, NC",
       price: "Call/Text For Quote",
-      link: "/services"
+      link: "/services/"
     },
     {
       icon: HardDrive,
       title: "Data Recovery Matthews",
       description: "Professional data recovery services for Matthews residents",
       price: "Call/Text For Quote",
-      link: "/data-recovery"
+      link: "/data-recovery/"
     },
     {
       icon: Smartphone,
       title: "Mobile Device Repair",
       description: "iPhone, iPad, and Android repair in Matthews",
       price: "Call/Text For Quote",
-      link: "/smartphone-screen-repair-charlotte"
+      link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
       title: "Network Setup Matthews",
       description: "Business and home network installation in Matthews",
       price: "Call/Text For Quote",
-      link: "/business-it-support"
+      link: "/business-it-support/"
     }
   ];
 
@@ -372,7 +372,7 @@ const Matthews = () => {
         </div>
       </section>
 
-      <NearbyAreas currentPath="/matthews-computer-repair" />
+      <NearbyAreas currentPath="/matthews-computer-repair/" />
     </div>
   );
 };

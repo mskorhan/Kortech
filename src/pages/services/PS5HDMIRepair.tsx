@@ -363,14 +363,14 @@ const PS5HDMIRepair = () => {
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <Link to="/services" className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-medium">
+            <Link to="/services/" className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-medium">
               <span>← Back to All Services</span>
             </Link>
           </div>
           
           <div className="text-center mb-8">
             <p className="text-slate-600">
-              Need other computer services? <a href="/services" className="text-blue-600 hover:text-blue-800 font-medium">View all our computer repair services</a> in Charlotte, NC.
+              Need other computer services? <a href="/services/" className="text-blue-600 hover:text-blue-800 font-medium">View all our computer repair services</a> in Charlotte, NC.
             </p>
           </div>
           
@@ -383,14 +383,14 @@ const PS5HDMIRepair = () => {
           <div className="mb-12">
             <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Related Blog Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <a href="/blog/how-to-fix-broken-ps5-hdmi-port" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/how-to-fix-broken-ps5-hdmi-port/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <LinkIcon className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">How to Fix PS5 HDMI Port No Signal After Drop</h4>
                   <p className="text-sm text-slate-600 mt-1">Step-by-step guide to diagnosing PS5 HDMI port damage after dropping your console.</p>
                 </div>
               </a>
-              <a href="/blog/xbox-hdmi-repair-guide" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
+              <a href="/blog/xbox-hdmi-repair-guide/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group flex items-start">
                 <LinkIcon className="h-5 w-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Xbox Series X HDMI Port Repair - DIY vs Professional Fix</h4>
@@ -401,19 +401,19 @@ const PS5HDMIRepair = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="/xbox-hdmi-repair" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/xbox-hdmi-repair/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Gamepad2 className="h-12 w-12 text-green-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">Xbox HDMI Repair</h3>
               <p className="text-slate-600">Professional Xbox Series X/S and Xbox One HDMI port repair</p>
             </a>
 
-            <a href="/nintendo-switch-repair" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/nintendo-switch-repair/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Shield className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">Nintendo Switch Repair</h3>
               <p className="text-slate-600">Professional Nintendo Switch repair including Joy-Con drift fixes</p>
             </a>
 
-            <a href="/custom-gaming-pc" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <a href="/custom-gaming-pc/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Star className="h-12 w-12 text-purple-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">Custom Gaming PC</h3>
               <p className="text-slate-600">Build your dream gaming PC with expert assembly</p>

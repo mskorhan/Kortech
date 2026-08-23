@@ -204,7 +204,7 @@ const IPadScreenRepairCostGuide = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/tablet-ipad-repair"
+                  href="/tablet-ipad-repair/"
                   className="border border-purple-600 text-purple-600 hover:bg-purple-50 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center space-x-2 transition-all duration-300"
                 >
                   <Tablet className="h-5 w-5" />
@@ -222,7 +222,7 @@ const IPadScreenRepairCostGuide = () => {
           <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Related Articles</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link to="/blog/how-to-know-when-to-replace-phone-battery" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/how-to-know-when-to-replace-phone-battery/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
                   How to Know When to Replace Your Phone Battery - 7 Warning Signs
@@ -240,7 +240,7 @@ const IPadScreenRepairCostGuide = () => {
               </div>
             </Link>
 
-            <Link to="/blog/what-to-do-when-device-gets-wet-charlotte" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/what-to-do-when-device-gets-wet-charlotte/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
                   What to Do When Your Phone or Laptop Gets Wet
@@ -258,7 +258,7 @@ const IPadScreenRepairCostGuide = () => {
               </div>
             </Link>
 
-            <Link to="/blog/laptop-screen-repair-guide-charlotte" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/laptop-screen-repair-guide-charlotte/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
                   Laptop Screen Repair Guide - Options for Charlotte Residents
@@ -299,7 +299,7 @@ const IPadScreenRepairCostGuide = () => {
               <span>Call 704-246-7642</span>
             </a>
             <a
-              href="/tablet-ipad-repair"
+              href="/tablet-ipad-repair/"
               className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <Tablet className="h-6 w-6" />

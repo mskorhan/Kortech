@@ -18,70 +18,70 @@ const Locations = () => {
       description: "Our main location serving all of Charlotte and surrounding areas.",
       address: "1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Gaming Console Repair"],
-      path: "/charlotte-computer-repair",
+      path: "/charlotte-computer-repair/",
       image: "https://images.pexels.com/photos/2838886/pexels-photo-2838886.jpeg"
     },
     {
       city: "Matthews",
       description: "Serving Matthews with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Virus Removal", "IT Support"],
-      path: "/matthews-computer-repair",
+      path: "/matthews-computer-repair/",
       image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
     },
     {
       city: "Indian Trail",
       description: "Serving Indian Trail with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Network Setup"],
-      path: "/indian-trail-computer-repair",
+      path: "/indian-trail-computer-repair/",
       image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
     },
     {
       city: "Mint Hill",
       description: "Serving Mint Hill with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Gaming Console Repair", "IT Support"],
-      path: "/mint-hill-computer-repair",
+      path: "/mint-hill-computer-repair/",
       image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
     },
     {
       city: "Monroe",
       description: "Serving Monroe with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Virus Removal"],
-      path: "/monroe-computer-repair",
+      path: "/monroe-computer-repair/",
       image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
     },
     {
       city: "Ballantyne",
       description: "Serving Ballantyne with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Network Setup"],
-      path: "/ballantyne-computer-repair",
+      path: "/ballantyne-computer-repair/",
       image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
     },
     {
       city: "Pineville",
       description: "Serving Pineville with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Virus Removal", "IT Support"],
-      path: "/pineville-computer-repair",
+      path: "/pineville-computer-repair/",
       image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
     },
     {
       city: "Waxhaw",
       description: "Serving Waxhaw with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "IT Support"],
-      path: "/waxhaw-computer-repair",
+      path: "/waxhaw-computer-repair/",
       image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
     },
     {
       city: "Weddington",
       description: "Serving Weddington with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Data Recovery", "Network Setup"],
-      path: "/weddington-computer-repair",
+      path: "/weddington-computer-repair/",
       image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
     },
     {
       city: "Stallings",
       description: "Serving Stallings with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Virus Removal"],
-      path: "/stallings-computer-repair",
+      path: "/stallings-computer-repair/",
       image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
     }
   ];
@@ -101,7 +101,7 @@ const Locations = () => {
         "@type": "ListItem",
         "position": index + 1,
         "name": `${location.city}, NC`,
-        "url": `https://www.kortechservice.com${location.path}/`,
+        "url": `https://www.kortechservice.com${location.path}`,
         "item": {
           "@type": "City",
           "name": location.city,
@@ -239,7 +239,7 @@ const Locations = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="/charlotte-computer-repair"
+                  href="/charlotte-computer-repair/"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center space-x-2 transition-all duration-300"
                 >
                   <span>Charlotte Services</span>

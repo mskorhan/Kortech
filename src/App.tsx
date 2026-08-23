@@ -146,14 +146,14 @@ function App() {
           <Route path="/graphic-design" element={<GraphicDesign />} />
           <Route path="/remote-assistance" element={<RemoteAssistance />} />
           
-          <Route path="/laptop-repair" element={<Navigate to="/laptop-screen-repair" replace />} />
+          <Route path="/laptop-repair" element={<Navigate to="/laptop-screen-repair/" replace />} />
           {/* Service Landing Pages */}
           <Route path="/ps5-hdmi-repair" element={<PS5HDMIRepair />} />
           <Route path="/xbox-hdmi-repair" element={<XboxHDMIRepair />} />
           <Route path="/laptop-screen-repair" element={<LaptopScreenRepair />} />
           <Route path="/ssd-upgrades" element={<SSDUpgrades />} />
           <Route path="/virus-malware-removal" element={<VirusMalwareRemoval />} />
-          <Route path="/it-support" element={<Navigate to="/business-it-support" replace />} />
+          <Route path="/it-support" element={<Navigate to="/business-it-support/" replace />} />
           <Route path="/business-it-support" element={<BusinessITSupport />} />
           <Route path="/data-recovery" element={<DataRecovery />} />
           <Route path="/custom-gaming-pc" element={<CustomGamingPC />} />

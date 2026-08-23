@@ -40,37 +40,37 @@ const Navbar: React.FC = () => {
   };
 
   const servicePages = [
-    { name: 'PS5 HDMI Repair', path: '/ps5-hdmi-repair' },
-    { name: 'Xbox HDMI Repair', path: '/xbox-hdmi-repair' },
-    { name: 'Nintendo Switch Repair', path: '/nintendo-switch-repair' },
-    { name: 'Laptop Screen Repair', path: '/laptop-screen-repair' },
-    { name: 'SSD Upgrades', path: '/ssd-upgrades' },
-    { name: 'Virus & Malware Removal', path: '/virus-malware-removal' },
-    { name: 'IT Support', path: '/business-it-support' },
-    { name: 'Data Recovery', path: '/data-recovery' },
-    { name: 'Custom Gaming PC', path: '/custom-gaming-pc' },
-    { name: 'Water Damage Repair', path: '/water-damage-repair' },
-    { name: 'Smartphone Repair', path: '/smartphone-screen-repair-charlotte' },
-    { name: 'Tablet & iPad Repair', path: '/tablet-ipad-repair' },
-    { name: 'Smart TV Repair', path: '/smart-tv-repair' },
-    { name: 'Printer & Router Repair', path: '/printer-router-repair' },
-    { name: 'PCB Micro-Soldering', path: '/pcb-micro-soldering' },
-    { name: 'Appliance Electronics', path: '/appliance-electronics-repair' },
-    { name: 'Graphic Design', path: '/graphic-design' },
-    { name: 'Remote Assistance', path: '/remote-assistance' }
+    { name: 'PS5 HDMI Repair', path: '/ps5-hdmi-repair/' },
+    { name: 'Xbox HDMI Repair', path: '/xbox-hdmi-repair/' },
+    { name: 'Nintendo Switch Repair', path: '/nintendo-switch-repair/' },
+    { name: 'Laptop Screen Repair', path: '/laptop-screen-repair/' },
+    { name: 'SSD Upgrades', path: '/ssd-upgrades/' },
+    { name: 'Virus & Malware Removal', path: '/virus-malware-removal/' },
+    { name: 'IT Support', path: '/business-it-support/' },
+    { name: 'Data Recovery', path: '/data-recovery/' },
+    { name: 'Custom Gaming PC', path: '/custom-gaming-pc/' },
+    { name: 'Water Damage Repair', path: '/water-damage-repair/' },
+    { name: 'Smartphone Repair', path: '/smartphone-screen-repair-charlotte/' },
+    { name: 'Tablet & iPad Repair', path: '/tablet-ipad-repair/' },
+    { name: 'Smart TV Repair', path: '/smart-tv-repair/' },
+    { name: 'Printer & Router Repair', path: '/printer-router-repair/' },
+    { name: 'PCB Micro-Soldering', path: '/pcb-micro-soldering/' },
+    { name: 'Appliance Electronics', path: '/appliance-electronics-repair/' },
+    { name: 'Graphic Design', path: '/graphic-design/' },
+    { name: 'Remote Assistance', path: '/remote-assistance/' }
   ];
 
   const locationPages = [
-    { name: 'Charlotte', path: '/charlotte-computer-repair' },
-    { name: 'Matthews', path: '/matthews-computer-repair' },
-    { name: 'Indian Trail', path: '/indian-trail-computer-repair' },
-    { name: 'Mint Hill', path: '/mint-hill-computer-repair' },
-    { name: 'Monroe', path: '/monroe-computer-repair' },
-    { name: 'Ballantyne', path: '/ballantyne-computer-repair' },
-    { name: 'Pineville', path: '/pineville-computer-repair' },
-    { name: 'Waxhaw', path: '/waxhaw-computer-repair' },
-    { name: 'Weddington', path: '/weddington-computer-repair' },
-    { name: 'Stallings', path: '/stallings-computer-repair' }
+    { name: 'Charlotte', path: '/charlotte-computer-repair/' },
+    { name: 'Matthews', path: '/matthews-computer-repair/' },
+    { name: 'Indian Trail', path: '/indian-trail-computer-repair/' },
+    { name: 'Mint Hill', path: '/mint-hill-computer-repair/' },
+    { name: 'Monroe', path: '/monroe-computer-repair/' },
+    { name: 'Ballantyne', path: '/ballantyne-computer-repair/' },
+    { name: 'Pineville', path: '/pineville-computer-repair/' },
+    { name: 'Waxhaw', path: '/waxhaw-computer-repair/' },
+    { name: 'Weddington', path: '/weddington-computer-repair/' },
+    { name: 'Stallings', path: '/stallings-computer-repair/' }
   ];
 
   useEffect(() => {
@@ -160,7 +160,7 @@ const Navbar: React.FC = () => {
                   aria-controls="desktop-services-menu"
                   aria-haspopup="true"
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-1 ${
-                    isActive('/services') || servicePages.some(s => isActive(s.path))
+                    isActive('/services/') || servicePages.some(s => isActive(s.path))
                       ? 'text-brand-primary bg-blue-50'
                       : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                   }`}
@@ -183,7 +183,7 @@ const Navbar: React.FC = () => {
                     <div className="px-6 py-3 border-b border-slate-100 bg-gradient-to-r from-blue-50 to-slate-50 rounded-t-2xl">
                       <button
                         onMouseDown={(e) => e.stopPropagation()}
-                        onClick={() => handleNavigation('/services')}
+                        onClick={() => handleNavigation('/services/')}
                         className="block text-sm font-bold text-brand-primary hover:text-brand-dark transition-colors duration-200"
                       >
                         📋 All Services Overview
@@ -220,7 +220,7 @@ const Navbar: React.FC = () => {
                   aria-controls="desktop-locations-menu"
                   aria-haspopup="true"
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-1 ${
-                    isActive('/locations') || locationPages.some(l => isActive(l.path))
+                    isActive('/locations/') || locationPages.some(l => isActive(l.path))
                       ? 'text-brand-primary bg-blue-50'
                       : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                   }`}
@@ -243,7 +243,7 @@ const Navbar: React.FC = () => {
                     <div className="px-6 py-3 border-b border-slate-100 bg-gradient-to-r from-blue-50 to-slate-50 rounded-t-2xl">
                       <button
                         onMouseDown={(e) => e.stopPropagation()}
-                        onClick={() => handleNavigation('/locations')}
+                        onClick={() => handleNavigation('/locations/')}
                         className="block text-sm font-bold text-brand-primary hover:text-brand-dark transition-colors duration-200"
                       >
                         📍 All Service Areas
@@ -273,49 +273,49 @@ const Navbar: React.FC = () => {
 
               {/* rest of your desktop links/buttons */}
               <button
-                onClick={() => handleNavigation('/pricing')}
+                onClick={() => handleNavigation('/pricing/')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
-                  isActive('/pricing') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
+                  isActive('/pricing/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Plans
               </button>
               <button
-                onClick={() => handleNavigation('/recycling')}
+                onClick={() => handleNavigation('/recycling/')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
-                  isActive('/recycling') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
+                  isActive('/recycling/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Recycling
               </button>
               <button
-                onClick={() => handleNavigation('/contact')}
+                onClick={() => handleNavigation('/contact/')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
-                  isActive('/contact') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
+                  isActive('/contact/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Contact
               </button>
               <button
-                onClick={() => handleNavigation('/about')}
+                onClick={() => handleNavigation('/about/')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
-                  isActive('/about') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
+                  isActive('/about/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 About
               </button>
               <button
-                onClick={() => handleNavigation('/blog')}
+                onClick={() => handleNavigation('/blog/')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
-                  isActive('/blog') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
+                  isActive('/blog/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Blog
               </button>
               <button
-                onClick={() => handleNavigation('/mail-in-form')}
+                onClick={() => handleNavigation('/mail-in-form/')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
-                  isActive('/mail-in-form') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
+                  isActive('/mail-in-form/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Shipping Form
@@ -369,7 +369,7 @@ const Navbar: React.FC = () => {
               Home
             </button>
             <button
-              onClick={() => handleNavigation('/about')}
+              onClick={() => handleNavigation('/about/')}
               className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
             >
               About
@@ -419,7 +419,7 @@ const Navbar: React.FC = () => {
               {isMobileLocationsDropdownOpen && (
                 <div id="mobile-locations-menu" className="bg-slate-50 rounded-lg ml-4 mt-2 mb-4 max-h-[30vh] overflow-y-auto">
                   <Link
-                    to="/locations"
+                    to="/locations/"
                     onClick={() => {
                       setIsOpen(false);
                       setIsMobileLocationsDropdownOpen(false);
@@ -450,31 +450,31 @@ const Navbar: React.FC = () => {
             </div>
 
             <button
-              onClick={() => handleNavigation('/pricing')}
+              onClick={() => handleNavigation('/pricing/')}
               className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
             >
               Plans
             </button>
             <button
-              onClick={() => handleNavigation('/recycling')}
+              onClick={() => handleNavigation('/recycling/')}
               className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
             >
               Free Recycling
             </button>
             <button
-              onClick={() => handleNavigation('/contact')}
+              onClick={() => handleNavigation('/contact/')}
               className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
             >
               Contact
             </button>
             <button
-              onClick={() => handleNavigation('/blog')}
+              onClick={() => handleNavigation('/blog/')}
               className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
             >
               Blog
             </button>
             <button
-              onClick={() => handleNavigation('/mail-in-form')}
+              onClick={() => handleNavigation('/mail-in-form/')}
               className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
             >
               Shipping Form

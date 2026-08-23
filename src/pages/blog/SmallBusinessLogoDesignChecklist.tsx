@@ -201,7 +201,7 @@ const SmallBusinessLogoDesignChecklist = () => {
                   <span>Call 704-246-7642</span>
                 </a>
                 <a
-                  href="/graphic-design"
+                  href="/graphic-design/"
                   className="border border-pink-600 text-pink-600 hover:bg-pink-50 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center space-x-2 transition-all duration-300"
                 >
                   <Palette className="h-5 w-5" />
@@ -219,7 +219,7 @@ const SmallBusinessLogoDesignChecklist = () => {
           <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Related Articles</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link to="/blog/signs-your-business-needs-it-support" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/signs-your-business-needs-it-support/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-pink-600 transition-colors">
                   7 Signs Your Small Business Needs IT Support
@@ -237,7 +237,7 @@ const SmallBusinessLogoDesignChecklist = () => {
               </div>
             </Link>
 
-            <Link to="/blog/printer-wont-connect-to-wifi-fix" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/printer-wont-connect-to-wifi-fix/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-pink-600 transition-colors">
                   Printer Won't Connect to Wi-Fi? 8 Fixes to Try
@@ -255,7 +255,7 @@ const SmallBusinessLogoDesignChecklist = () => {
               </div>
             </Link>
 
-            <Link to="/blog/ipad-screen-repair-cost-guide" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Link to="/blog/ipad-screen-repair-cost-guide/" className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-pink-600 transition-colors">
                   iPad & Tablet Screen Repair Cost Guide
@@ -296,7 +296,7 @@ const SmallBusinessLogoDesignChecklist = () => {
               <span>Call 704-246-7642</span>
             </a>
             <a
-              href="/graphic-design"
+              href="/graphic-design/"
               className="border-2 border-white text-white hover:bg-white hover:text-pink-600 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300"
             >
               <Palette className="h-6 w-6" />

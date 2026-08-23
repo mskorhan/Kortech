@@ -473,7 +473,7 @@ const Contact = () => {
                 <span>980-888-5300</span>
               </a>
               <a
-               href="/mail-in-form?utm_source=site&utm_medium=contact&utm_campaign=mailin_cta"
+               href="/mail-in-form/?utm_source=site&utm_medium=contact&utm_campaign=mailin_cta"
                 className="border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 bg-white/80 backdrop-blur-sm min-w-[180px]"
               >
                 <FileText className="h-6 w-6" />

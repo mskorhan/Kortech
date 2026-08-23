@@ -27,28 +27,28 @@ const Weddington = () => {
       title: "Computer Repair Weddington",
       description: "Expert Mac & PC repair services for Weddington, NC",
       price: "Call/Text For Quote",
-      link: "/services"
+      link: "/services/"
     },
     {
       icon: HardDrive,
       title: "Data Recovery Weddington",
       description: "Professional data recovery for Weddington residents",
       price: "Call/Text For Quote",
-      link: "/data-recovery"
+      link: "/data-recovery/"
     },
     {
       icon: Smartphone,
       title: "Mobile Device Repair",
       description: "iPhone, iPad, and Android repair in Weddington",
       price: "Call/Text For Quote",
-      link: "/smartphone-screen-repair-charlotte"
+      link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
       title: "Network Setup Weddington",
       description: "Business and home network installation",
       price: "Call/Text For Quote",
-      link: "/business-it-support"
+      link: "/business-it-support/"
     }
   ];
 
@@ -346,7 +346,7 @@ const Weddington = () => {
         </div>
       </section>
 
-      <NearbyAreas currentPath="/weddington-computer-repair" />
+      <NearbyAreas currentPath="/weddington-computer-repair/" />
     </div>
   );
 };
