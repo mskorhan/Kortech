@@ -156,9 +156,6 @@ const Weddington = () => {
               <p className="text-lg text-indigo-100 mb-4">
                 <strong>Weddington Community:</strong> Serving Weddington residents and businesses near Weddington Rd and Providence Rd, we've been providing reliable, professional computer repair services to Weddington families for over 25 years.
               </p>
-              <p className="text-sm text-indigo-200 italic">
-                "KorTech's pickup and delivery service is perfect for our busy household in Weddington." - Weddington Parent
-              </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">

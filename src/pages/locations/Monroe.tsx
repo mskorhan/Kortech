@@ -156,9 +156,6 @@ const Monroe = () => {
               <p className="text-lg text-teal-100 mb-4">
                 <strong>Monroe Community:</strong> Serving Monroe residents via Highway 74 and easily accessible from downtown Monroe, we've been providing reliable computer repair services to Monroe families and businesses for over 25 years.
               </p>
-              <p className="text-sm text-teal-200 italic">
-                "KorTech has been our family's computer repair shop for years. Even though we're in Monroe, their pickup service makes it so convenient!" - Monroe Family
-              </p>
             </div>
             
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">

@@ -232,7 +232,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {timeline.map((item, index) => (
               <div key={index} className="bg-white rounded-3xl p-8 text-center hover:shadow-lg transition-all duration-300 border border-slate-200">
-                <div className="w-16 h-16 bg-[#0099FF] rounded-2xl flex items-center justify-center mx-auto mb-6 text-white text-xl font-bold">
+                <div className="w-16 h-16 bg-[#071930] rounded-2xl flex items-center justify-center mx-auto mb-6 text-white text-xl font-bold">
                   {item.year}
                 </div>
                 <h3 className="text-xl font-bold text-slate-800 mb-4">{item.title}</h3>
@@ -374,7 +374,7 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a
                 href="tel:704-246-7642?utm_source=site&utm_medium=about&utm_campaign=phone_cta"
-                className="bg-[#0099FF] hover:bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="bg-[#071930] hover:bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                 data-track-source="about_page"
               >
                 <Phone className="h-6 w-6" />

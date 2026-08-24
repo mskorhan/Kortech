@@ -55,7 +55,7 @@ const TermsConditions = () => {
             <div className="mt-6">
               <a
                 href="/mail-in-form/"
-                className="inline-flex items-center space-x-2 bg-[#0099FF] hover:bg-[#071930] text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg transform hover:scale-105"
+                className="inline-flex items-center space-x-2 bg-[#071930] hover:bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg transform hover:scale-105"
               >
                 <FileText className="h-5 w-5" />
                 <span>Complete Mail-In Form</span>
@@ -458,7 +458,7 @@ const TermsConditions = () => {
           <div className="mt-12 text-center">
             <a
               href="/contact/"
-              className="inline-flex items-center space-x-2 bg-[#0099FF] hover:bg-[#071930] text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
+              className="inline-flex items-center space-x-2 bg-[#071930] hover:bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
             >
               <span>Questions? Contact Us</span>
               <ArrowRight className="h-5 w-5" />

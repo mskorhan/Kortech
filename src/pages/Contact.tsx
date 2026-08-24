@@ -203,7 +203,7 @@ const Contact = () => {
 
           <div className="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
             {submitStatus === 'success' ? (
-              <div className="text-center py-8">
+              <div className="text-center py-8" role="status">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="h-8 w-8 text-green-600" />
                 </div>
@@ -211,9 +211,9 @@ const Contact = () => {
                 <p className="text-gray-600">We'll get back to you as soon as possible.</p>
               </div>
             ) : (
-              <form onSubmit={handleContactSubmit} className="space-y-6">
+              <form onSubmit={handleContactSubmit} className="space-y-6" noValidate>
                 {submitStatus === 'error' && (
-                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
+                  <div role="alert" className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
                     We couldn't send your message automatically. Please call or text us instead, or try again in a moment.
                   </div>
                 )}
@@ -229,10 +229,18 @@ const Contact = () => {
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
+                      required
+                      aria-required="true"
+                      aria-invalid={!!errors.fullName}
+                      aria-describedby={errors.fullName ? 'contact-fullName-error' : undefined}
                       className={`w-full px-4 py-2 border ${errors.fullName ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                       placeholder="John Doe"
                     />
-                    {errors.fullName && <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>}
+                    {errors.fullName && (
+                      <p id="contact-fullName-error" role="alert" className="mt-1 text-sm text-red-600">
+                        {errors.fullName}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">
@@ -244,10 +252,18 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
+                      required
+                      aria-required="true"
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? 'contact-email-error' : undefined}
                       className={`w-full px-4 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                       placeholder="john@example.com"
                     />
-                    {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                    {errors.email && (
+                      <p id="contact-email-error" role="alert" className="mt-1 text-sm text-red-600">
+                        {errors.email}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -276,17 +292,26 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
+                    required
+                    aria-required="true"
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? 'contact-message-error' : undefined}
                     className={`w-full px-4 py-2 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                     placeholder="Tell us what's going on with your device..."
                   />
-                  {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+                  {errors.message && (
+                    <p id="contact-message-error" role="alert" className="mt-1 text-sm text-red-600">
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="flex justify-center pt-2">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex items-center space-x-2 bg-[#0099FF] hover:bg-[#071930] disabled:opacity-60 disabled:cursor-not-allowed text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
+                    aria-busy={isSubmitting}
+                    className="inline-flex items-center space-x-2 bg-[#071930] hover:bg-slate-900 disabled:opacity-60 disabled:cursor-not-allowed text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
                   >
                     <Send className="h-5 w-5" />
                     <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
@@ -411,7 +436,7 @@ const Contact = () => {
                         href="https://www.google.com/maps/place/Kortech+Service/@35.14047,-80.7400749,17z/data=!4m15!1m8!3m7!1s0x88542143faefb7af:0x9541d45ffcb5daa0!2s1721+Sardis+Rd+N+%237a,+Charlotte,+NC+28270!3b1!8m2!3d35.14047!4d-80.7375!16s%2Fg%2F11n_z1fxk6!3m5!1s0x885426acd2c33ca7:0x24292ff6e9c5f155!8m2!3d35.140474!4d-80.737464!16s%2Fg%2F1v_w31h1?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-1 bg-[#0099FF] text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors"
+                        className="inline-flex items-center space-x-1 bg-[#071930] text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-900 transition-colors"
                       >
                         <Navigation className="h-4 w-4" />
                         <span>Directions</span>
@@ -458,7 +483,7 @@ const Contact = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a
                href="tel:704-246-7642?utm_source=site&utm_medium=contact&utm_campaign=phone_cta"
-                className="bg-[#0099FF] hover:bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 min-w-[180px]"
+                className="bg-[#071930] hover:bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 min-w-[180px]"
                 data-track-source="contact_page_cta"
               >
                 <Phone className="h-6 w-6" />

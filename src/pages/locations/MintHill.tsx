@@ -156,9 +156,6 @@ const MintHill = () => {
               <p className="text-lg text-purple-100 mb-4">
                 <strong>Mint Hill Community:</strong> Located just minutes from Mint Hill via Highway 51 and Lawyers Road, we've been proudly serving Mint Hill residents and local businesses for over 25 years. Our convenient Charlotte location makes us easily accessible from all Mint Hill neighborhoods.
               </p>
-              <p className="text-sm text-purple-200 italic">
-                "As a Mint Hill resident, I appreciate having KorTech so close by. Their pickup service makes it even more convenient, and their work is always top-notch!" - Mint Hill Resident
-              </p>
             </div>
             
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">

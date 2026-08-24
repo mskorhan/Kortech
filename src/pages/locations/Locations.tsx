@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
-import { 
-  MapPin, 
-  Phone, 
+import FiveStarReviews from '../../components/FiveStarReviews';
+import {
+  MapPin,
+  Phone,
   MessageSquare,
   ArrowRight,
   CheckCircle,
   Truck,
-  Clock,
-  Star
+  Clock
 } from 'lucide-react';
 
 const Locations = () => {
@@ -26,63 +26,63 @@ const Locations = () => {
       description: "Serving Matthews with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Virus Removal", "IT Support"],
       path: "/matthews-computer-repair/",
-      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
     },
     {
       city: "Indian Trail",
       description: "Serving Indian Trail with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Network Setup"],
       path: "/indian-trail-computer-repair/",
-      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
     },
     {
       city: "Mint Hill",
       description: "Serving Mint Hill with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Gaming Console Repair", "IT Support"],
       path: "/mint-hill-computer-repair/",
-      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
     },
     {
       city: "Monroe",
       description: "Serving Monroe with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Virus Removal"],
       path: "/monroe-computer-repair/",
-      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
     },
     {
       city: "Ballantyne",
       description: "Serving Ballantyne with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Network Setup"],
       path: "/ballantyne-computer-repair/",
-      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
     },
     {
       city: "Pineville",
       description: "Serving Pineville with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Virus Removal", "IT Support"],
       path: "/pineville-computer-repair/",
-      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
     },
     {
       city: "Waxhaw",
       description: "Serving Waxhaw with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "IT Support"],
       path: "/waxhaw-computer-repair/",
-      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
     },
     {
       city: "Weddington",
       description: "Serving Weddington with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Data Recovery", "Network Setup"],
       path: "/weddington-computer-repair/",
-      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
     },
     {
       city: "Stallings",
       description: "Serving Stallings with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Virus Removal"],
       path: "/stallings-computer-repair/",
-      image: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg"
+      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
     }
   ];
 
@@ -292,11 +292,17 @@ const Locations = () => {
                 to={location.path}
                 className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
-                <img 
-                  src={location.image} 
-                  alt={`${location.city} North Carolina computer repair services - Professional Mac PC laptop smartphone repair and IT support`} 
-                  className="w-full h-48 object-cover"
+                <img
+                  src={location.image}
+                  alt={`${location.city} North Carolina computer repair services - Professional Mac PC laptop smartphone repair and IT support`}
+                  className="w-full h-48 object-cover bg-slate-100"
                   loading="lazy"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    img.onerror = null;
+                    img.src = '/transparent-logo-1.png';
+                    img.className = 'w-full h-48 object-contain bg-slate-100 p-8';
+                  }}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">
@@ -404,63 +410,8 @@ const Locations = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 bg-slate-50" id="location-testimonials">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              What Our Customers Say
-            </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Trusted by customers throughout Charlotte and surrounding areas
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="flex items-center space-x-1 mb-4">
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-              </div>
-              <p className="text-slate-600 mb-4">
-                "KorTech Service saved my laptop when no one else could. They picked it up from my home in Charlotte and returned it good as new the next day. Excellent service!"
-              </p>
-              <div className="font-semibold text-slate-800">Sarah M. - Charlotte, NC</div>
-            </div>
-            
-            <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="flex items-center space-x-1 mb-4">
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-              </div>
-              <p className="text-slate-600 mb-4">
-                "As a Matthews resident, I was thrilled to find out KorTech offers pickup service. They fixed my gaming PC quickly and their prices were very reasonable."
-              </p>
-              <div className="font-semibold text-slate-800">James K. - Matthews, NC</div>
-            </div>
-            
-            <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="flex items-center space-x-1 mb-4">
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                <Star className="h-5 w-5 text-yellow-500 fill-current" />
-              </div>
-              <p className="text-slate-600 mb-4">
-                "I live in Indian Trail and was worried about finding quality computer repair. KorTech's pickup service was a lifesaver! Professional and fast service."
-              </p>
-              <div className="font-semibold text-slate-800">Michael T. - Indian Trail, NC</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Testimonials — real, verified Google reviews */}
+      <FiveStarReviews maxReviews={3} />
 
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white" id="locations-cta">

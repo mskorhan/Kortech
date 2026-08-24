@@ -21,7 +21,7 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
               {/* KorTech Service Logo */}
-              <div className="w-12 h-12 bg-[#0099FF] rounded-xl flex items-center justify-center relative overflow-hidden tech-glow">
+              <div className="w-12 h-12 bg-[#071930] rounded-xl flex items-center justify-center relative overflow-hidden tech-glow">
                 <div className="relative z-10 text-white font-bold text-base">KT</div>
               </div>
               <span className="text-2xl font-medium text-white">

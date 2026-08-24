@@ -29,7 +29,7 @@ const CTAButtons: React.FC<CTAButtonsProps> = ({
       <a
         href={`tel:704-246-7642?utm_source=site&utm_medium=${source}&utm_campaign=phone_cta`}
         data-track-source={source}
-        className={`bg-brand-primary hover:bg-brand-dark text-white rounded-xl font-bold flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg transform hover:scale-105 ${sizeClasses[size]}`}
+        className={`bg-brand-dark hover:bg-slate-900 text-white rounded-xl font-bold flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg transform hover:scale-105 ${sizeClasses[size]}`}
       >
         <Phone className="h-5 w-5 sm:h-6 sm:w-6" />
         <span>Call 704-246-7642</span>

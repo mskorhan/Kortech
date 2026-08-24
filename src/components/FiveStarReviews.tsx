@@ -113,7 +113,7 @@ const FiveStarReviews: FC<FiveStarReviewsProps> = ({ maxReviews = 3, showInFoote
             href={googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 bg-[#0099FF] hover:bg-[#071930] text-white px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg transform hover:scale-105"
+            className="inline-flex items-center space-x-2 bg-[#071930] hover:bg-slate-900 text-white px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg transform hover:scale-105"
           >
             <span>Read Our Google Reviews</span>
             <ExternalLink className="h-5 w-5" aria-hidden="true" />

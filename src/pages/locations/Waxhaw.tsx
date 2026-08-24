@@ -156,9 +156,6 @@ const Waxhaw = () => {
               <p className="text-lg text-emerald-100 mb-4">
                 <strong>Waxhaw Community:</strong> Serving Waxhaw residents and businesses near historic Downtown Waxhaw and along Providence Rd South, we've been providing reliable computer repair services to Waxhaw families for over 25 years.
               </p>
-              <p className="text-sm text-emerald-200 italic">
-                "KorTech made it so easy for us out here in Waxhaw - they picked up and dropped off our computer without us ever leaving home." - Waxhaw Family
-              </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">

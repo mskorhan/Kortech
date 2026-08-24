@@ -156,9 +156,6 @@ const Pineville = () => {
               <p className="text-lg text-rose-100 mb-4">
                 <strong>Pineville Community:</strong> Serving Pineville residents and businesses along Pineville-Matthews Rd and near Carolina Place Mall, we've been providing reliable computer repair services to Pineville families for over 25 years.
               </p>
-              <p className="text-sm text-rose-200 italic">
-                "Living near Carolina Place, KorTech's pickup service made getting my PC fixed completely hassle-free." - Pineville Resident
-              </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
