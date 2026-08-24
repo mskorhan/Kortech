@@ -14,8 +14,13 @@ RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [L,R=301]
 # ------------------------------------------
 # ✅ Consolidated duplicate-content redirects
 # ------------------------------------------
-Redirect 301 /laptop-repair /laptop-screen-repair
-Redirect 301 /it-support /business-it-support
+# Plain mod_alias `Redirect` directives here were being bypassed by the
+# known-routes 404 catch-all below (these two legacy paths aren't in that
+# whitelist, so requests fell straight through to R=404 before mod_alias
+# ever redirected them). Using RewriteRule instead, ahead of the catch-all,
+# makes the redirect win explicitly.
+RewriteRule ^laptop-repair/?$ /laptop-screen-repair/ [R=301,L]
+RewriteRule ^it-support/?$ /business-it-support/ [R=301,L]
 
 # ------------------------------------------
 # ✅ React Router / SPA Support
