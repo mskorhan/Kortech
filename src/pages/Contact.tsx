@@ -202,6 +202,15 @@ const Contact = () => {
           </div>
 
           <div className="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
+            <div className="sr-only" role="status" aria-live="polite">
+              {isSubmitting
+                ? 'Sending your message…'
+                : submitStatus === 'success'
+                ? 'Message sent successfully.'
+                : submitStatus === 'error'
+                ? "We couldn't send your message automatically. Please call or text us instead, or try again."
+                : ''}
+            </div>
             {submitStatus === 'success' ? (
               <div className="text-center py-8" role="status">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">

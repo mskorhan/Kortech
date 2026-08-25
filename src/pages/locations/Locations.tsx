@@ -19,70 +19,70 @@ const Locations = () => {
       address: "1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Gaming Console Repair"],
       path: "/charlotte-computer-repair/",
-      image: "https://images.pexels.com/photos/2838886/pexels-photo-2838886.jpeg"
+      image: "/images/locations/service-area-repair"
     },
     {
       city: "Matthews",
       description: "Serving Matthews with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Virus Removal", "IT Support"],
       path: "/matthews-computer-repair/",
-      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
+      image: "/images/locations/service-area-repair"
     },
     {
       city: "Indian Trail",
       description: "Serving Indian Trail with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Network Setup"],
       path: "/indian-trail-computer-repair/",
-      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
+      image: "/images/locations/service-area-repair"
     },
     {
       city: "Mint Hill",
       description: "Serving Mint Hill with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Gaming Console Repair", "IT Support"],
       path: "/mint-hill-computer-repair/",
-      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
+      image: "/images/locations/service-area-repair"
     },
     {
       city: "Monroe",
       description: "Serving Monroe with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Virus Removal"],
       path: "/monroe-computer-repair/",
-      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
+      image: "/images/locations/service-area-repair"
     },
     {
       city: "Ballantyne",
       description: "Serving Ballantyne with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Network Setup"],
       path: "/ballantyne-computer-repair/",
-      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
+      image: "/images/locations/service-area-repair"
     },
     {
       city: "Pineville",
       description: "Serving Pineville with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Virus Removal", "IT Support"],
       path: "/pineville-computer-repair/",
-      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
+      image: "/images/locations/service-area-repair"
     },
     {
       city: "Waxhaw",
       description: "Serving Waxhaw with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "IT Support"],
       path: "/waxhaw-computer-repair/",
-      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
+      image: "/images/locations/service-area-repair"
     },
     {
       city: "Weddington",
       description: "Serving Weddington with pickup and delivery services.",
       services: ["Computer Repair", "Laptop Screen Repair", "Data Recovery", "Network Setup"],
       path: "/weddington-computer-repair/",
-      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
+      image: "/images/locations/service-area-repair"
     },
     {
       city: "Stallings",
       description: "Serving Stallings with pickup and delivery services.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Virus Removal"],
       path: "/stallings-computer-repair/",
-      image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg"
+      image: "/images/locations/service-area-repair"
     }
   ];
 
@@ -292,18 +292,23 @@ const Locations = () => {
                 to={location.path}
                 className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
-                <img
-                  src={location.image}
-                  alt={`${location.city} North Carolina computer repair services - Professional Mac PC laptop smartphone repair and IT support`}
-                  className="w-full h-48 object-cover bg-slate-100"
-                  loading="lazy"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    img.onerror = null;
-                    img.src = '/transparent-logo-1.png';
-                    img.className = 'w-full h-48 object-contain bg-slate-100 p-8';
-                  }}
-                />
+                <picture>
+                  <source srcSet={`${location.image}.webp`} type="image/webp" />
+                  <img
+                    src={`${location.image}.jpg`}
+                    alt="Technician repairing a laptop's internal components on a workbench"
+                    width={1000}
+                    height={667}
+                    className="w-full h-48 object-cover bg-slate-100"
+                    loading="lazy"
+                    onError={(e) => {
+                      const img = e.currentTarget;
+                      img.onerror = null;
+                      img.src = '/transparent-logo-1.png';
+                      img.className = 'w-full h-48 object-contain bg-slate-100 p-8';
+                    }}
+                  />
+                </picture>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">
                     {location.city}, NC

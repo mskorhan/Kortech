@@ -496,6 +496,15 @@ const MailInForm = () => {
             </div>
           </div>
           
+          <div className="sr-only" role="status" aria-live="polite">
+            {isSubmitting
+              ? 'Submitting your form…'
+              : formSubmitted && submitError
+              ? "Form completed, but we couldn't send it automatically. Please print it and include it with your device, or call or text us."
+              : formSubmitted
+              ? 'Form completed successfully.'
+              : ''}
+          </div>
           {formSubmitted ? (
             <div className="bg-white rounded-xl shadow-lg border border-green-200 p-8">
               <div className="text-center mb-8" role="status">

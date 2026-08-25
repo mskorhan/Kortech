@@ -16,6 +16,8 @@ const Navbar: React.FC = () => {
   const locationsDropdownRef = useRef<HTMLDivElement>(null);
   const locationsButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const navRootRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -115,6 +117,67 @@ const Navbar: React.FC = () => {
     };
   }, [isOpen]);
 
+  // Isolate background content from keyboard/AT interaction while the mobile menu is open.
+  useEffect(() => {
+    if (!isOpen) return;
+    const navRoot = navRootRef.current;
+    const parent = navRoot?.parentElement;
+    if (!navRoot || !parent) return;
+
+    const siblings = Array.from(parent.children).filter(
+      (el) => el !== navRoot && !el.hasAttribute('data-mobile-menu-exempt')
+    ) as HTMLElement[];
+
+    siblings.forEach((el) => el.setAttribute('inert', ''));
+
+    return () => {
+      siblings.forEach((el) => el.removeAttribute('inert'));
+    };
+  }, [isOpen]);
+
+  // Trap Tab/Shift+Tab within the open mobile menu (defense-in-depth alongside `inert`).
+  useEffect(() => {
+    if (!isOpen) return;
+    const menu = mobileMenuRef.current;
+    if (!menu) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key !== 'Tab' || !menu) return;
+      const focusable = menu.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey) {
+        if (document.activeElement === first || !menu.contains(document.activeElement)) {
+          event.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last || !menu.contains(document.activeElement)) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
+  // Move focus into the menu when it opens.
+  useEffect(() => {
+    if (!isOpen) return;
+    const menu = mobileMenuRef.current;
+    if (!menu) return;
+    const firstFocusable = menu.querySelector<HTMLElement>(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    firstFocusable?.focus();
+  }, [isOpen]);
+
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
       if (event.key !== 'Escape') return;
@@ -137,7 +200,7 @@ const Navbar: React.FC = () => {
   }, [isServicesDropdownOpen, isLocationsDropdownOpen, isOpen]);
 
   return (
-    <>
+    <div ref={navRootRef}>
       <nav className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex justify-between items-center h-16">
@@ -370,7 +433,11 @@ const Navbar: React.FC = () => {
       {/* Mobile */}
       {isOpen && (
         <div
+          ref={mobileMenuRef}
           id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
           className="lg:hidden fixed top-16 right-0 bottom-0 left-0 z-40 bg-white overflow-y-auto overscroll-contain"
         >
           <div className="px-4 pt-2 pb-6 space-y-1 border-t border-slate-200">
@@ -513,7 +580,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
