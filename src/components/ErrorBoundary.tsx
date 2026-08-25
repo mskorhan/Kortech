@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
+import { hasAnalyticsConsent } from '../utils/consent';
 
 interface Props {
   children: ReactNode;
@@ -23,7 +24,7 @@ class ErrorBoundary extends Component<Props, State> {
     console.error('ErrorBoundary caught an error:', error, errorInfo);
     
     // In production, you might want to log this to an error reporting service
-    if (typeof window !== 'undefined' && window.gtag) {
+    if (typeof window !== 'undefined' && window.gtag && hasAnalyticsConsent()) {
       window.gtag('event', 'exception', {
         description: error.message,
         fatal: false
