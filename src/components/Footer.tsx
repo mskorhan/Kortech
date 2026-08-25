@@ -1,5 +1,6 @@
 import FiveStarReviews from './FiveStarReviews';
 import { Phone, Mail, MapPin, Clock, Facebook, Linkedin, MessageSquare, Instagram, Twitter, Youtube } from 'lucide-react';
+import { OPEN_COOKIE_SETTINGS_EVENT } from './CookieConsent';
 
 const Footer = () => {
   return (
@@ -270,6 +271,14 @@ const Footer = () => {
               <a href="/privacy-policy/" className="hover:text-slate-200 transition-colors">Privacy Policy</a>
               <span>•</span>
               <a href="/terms/" className="hover:text-slate-200 transition-colors">Terms & Conditions</a>
+              <span>•</span>
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event(OPEN_COOKIE_SETTINGS_EVENT))}
+                className="hover:text-slate-200 transition-colors underline-offset-2 hover:underline"
+              >
+                Cookie Settings
+              </button>
               <span>•</span>
               <span>Follow us on social media for tech tips and updates!</span>
             </div>

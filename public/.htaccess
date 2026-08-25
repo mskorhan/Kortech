@@ -127,7 +127,7 @@ RewriteRule ^ index.html [L]
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com *.googleadservices.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: *.google-analytics.com *.googletagmanager.com *.pexels.com; connect-src 'self' *.google-analytics.com *.googletagmanager.com kortech-mailin-form.mskorhan.workers.dev; frame-src 'self' *.google.com"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com *.googleadservices.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: *.google-analytics.com *.googletagmanager.com *.pexels.com; connect-src 'self' *.google-analytics.com analytics.google.com *.analytics.google.com *.googletagmanager.com kortech-mailin-form.mskorhan.workers.dev; frame-src 'self' *.google.com"
 </IfModule>
 
 # ------------------------------------------

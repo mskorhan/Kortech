@@ -12,13 +12,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Computer Repair Charlotte NC | KorTech Service</title>
 
-    <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7XS9FQ2E6"></script>
+    <!-- Google Analytics (GA4) — Consent Mode v2 defaults must be set before gtag.js
+         loads. gtag.js itself is only loaded once the visitor accepts (see
+         src/utils/consent.ts); this shim only queues commands until then. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-E7XS9FQ2E6');
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
     </script>
     
     <!-- Additional Local SEO Meta Tags -->

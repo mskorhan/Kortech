@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
 import { trackPageView, initDelegatedContactTracking } from './utils/analytics';
+import { initConsentMode } from './utils/consent';
 import Home from './pages/Home';
 
 const About = lazy(() => import('./pages/About'));
@@ -98,8 +99,10 @@ function ScrollToTop() {
   }, [pathname, hash, navigationType]);
 
   React.useEffect(() => {
-    // The initial pageview is already sent by the gtag snippet in index.html;
-    // only track subsequent client-side route changes here.
+    // The initial pageview (if consent already granted) is sent by
+    // initConsentMode() in App's effect below; only track subsequent
+    // client-side route changes here. trackPageView no-ops if consent
+    // hasn't been granted.
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
@@ -112,6 +115,7 @@ function ScrollToTop() {
 
 function App() {
   React.useEffect(() => {
+    initConsentMode();
     initDelegatedContactTracking();
   }, []);
 

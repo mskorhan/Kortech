@@ -1,8 +1,10 @@
 // Analytics utility functions
+import { hasAnalyticsConsent } from './consent';
+
 type EventParameters = Record<string, string | number | boolean | undefined>;
 
 export const trackEvent = (eventName: string, parameters: EventParameters = {}) => {
-  if (typeof window !== 'undefined' && window.gtag) {
+  if (typeof window !== 'undefined' && window.gtag && hasAnalyticsConsent()) {
     window.gtag('event', eventName, parameters);
   }
 };
@@ -65,7 +67,7 @@ export const initDelegatedContactTracking = () => {
 const GA_MEASUREMENT_ID = 'G-E7XS9FQ2E6';
 
 export const trackPageView = (pagePath: string, pageTitle: string) => {
-  if (typeof window !== 'undefined' && window.gtag) {
+  if (typeof window !== 'undefined' && window.gtag && hasAnalyticsConsent()) {
     window.gtag('config', GA_MEASUREMENT_ID, {
       page_path: pagePath,
       page_title: pageTitle
