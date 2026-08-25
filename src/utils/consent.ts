@@ -17,8 +17,9 @@ export const hasAnalyticsConsent = (): boolean => getStoredConsent() === 'accept
 const ensureGtagShim = () => {
   window.dataLayer = window.dataLayer || [];
   if (!window.gtag) {
-    window.gtag = function gtag(...args: unknown[]) {
-      window.dataLayer.push(args);
+    window.gtag = function gtag() {
+      // eslint-disable-next-line prefer-rest-params -- mirrors the gtag.js snippet's own shim, which pushes the raw arguments object
+      window.dataLayer.push(arguments);
     } as Window['gtag'];
   }
 };
@@ -38,13 +39,21 @@ const loadGtagScript = () => {
   gtagScriptLoaded = true;
 };
 
+let gtagInitialized = false;
+
 // Grants analytics_storage and starts GA4 measurement (loads gtag.js if not already
-// loaded, sends the consent update, then an initial config/pageview).
+// loaded, sends the consent update, then the required 'js' init command before the
+// initial config/pageview — gtag.js won't send any collect hit without 'js' having
+// been called first).
 export const grantAnalyticsConsent = () => {
   if (typeof window === 'undefined') return;
   ensureGtagShim();
   window.gtag('consent', 'update', { analytics_storage: 'granted' });
   loadGtagScript();
+  if (!gtagInitialized) {
+    window.gtag('js', new Date());
+    gtagInitialized = true;
+  }
   window.gtag('config', GA_MEASUREMENT_ID, {
     page_path: window.location.pathname,
     page_title: document.title
