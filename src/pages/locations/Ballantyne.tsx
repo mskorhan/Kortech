@@ -156,9 +156,6 @@ const Ballantyne = () => {
               <p className="text-lg text-orange-100 mb-4">
                 <strong>Ballantyne Community:</strong> Serving Ballantyne residents and businesses just off Johnston Rd and the Ballantyne Corporate Park, we've been the trusted computer repair choice for Ballantyne families and professionals for over 25 years.
               </p>
-              <p className="text-sm text-orange-200 italic">
-                "KorTech picked up my laptop from my office in Ballantyne Corporate Park and had it back the next day. Incredibly convenient!" - Ballantyne Professional
-              </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">

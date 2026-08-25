@@ -182,9 +182,6 @@ const Charlotte = () => {
               <p className="text-lg text-blue-100 mb-4">
                 <strong>Local Charlotte Landmark:</strong> Located just minutes from SouthPark Mall and easily accessible from Uptown Charlotte, our Sardis Road location has been serving the Charlotte community since 1998. We're proud to be part of the Queen City's tech community. Our convenient location near the intersection of Sardis Road and Rea Road makes us easily accessible from all Charlotte neighborhoods including Myers Park, Dilworth, South End, and NoDa.
               </p>
-              <p className="text-sm text-blue-200 italic">
-                "I've been bringing my computers to KorTech for over 10 years. They're the most reliable repair shop in Charlotte! Located right off Sardis Road, it's so convenient for us in the SouthPark area." - Local Charlotte Business Owner
-              </p>
             </div>
             
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">

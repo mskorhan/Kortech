@@ -156,9 +156,6 @@ const Stallings = () => {
               <p className="text-lg text-sky-100 mb-4">
                 <strong>Stallings Community:</strong> Serving Stallings residents and businesses along Highway 74 and near Stallings Rd, we've been providing reliable computer repair services to Stallings families and businesses for over 25 years.
               </p>
-              <p className="text-sm text-sky-200 italic">
-                "KorTech is our go-to for anything computer related here in Stallings. Fast, friendly, and convenient pickup service." - Stallings Resident
-              </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">

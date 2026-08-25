@@ -496,9 +496,18 @@ const MailInForm = () => {
             </div>
           </div>
           
+          <div className="sr-only" role="status" aria-live="polite">
+            {isSubmitting
+              ? 'Submitting your form…'
+              : formSubmitted && submitError
+              ? "Form completed, but we couldn't send it automatically. Please print it and include it with your device, or call or text us."
+              : formSubmitted
+              ? 'Form completed successfully.'
+              : ''}
+          </div>
           {formSubmitted ? (
             <div className="bg-white rounded-xl shadow-lg border border-green-200 p-8">
-              <div className="text-center mb-8">
+              <div className="text-center mb-8" role="status">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="h-8 w-8 text-green-600" />
                 </div>
@@ -507,7 +516,7 @@ const MailInForm = () => {
               </div>
 
               {submitError && (
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-8 text-sm text-yellow-800">
+                <div role="alert" className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-8 text-sm text-yellow-800">
                   {submitError}
                 </div>
               )}
@@ -600,7 +609,7 @@ const MailInForm = () => {
               <div className="flex justify-center">
                 <button
                   onClick={handlePrint}
-                  className="inline-flex items-center space-x-2 bg-[#0099FF] hover:bg-[#071930] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
+                  className="inline-flex items-center space-x-2 bg-[#071930] hover:bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
                 >
                   <Printer className="h-5 w-5" />
                   <span>Print This Form</span>
@@ -617,7 +626,7 @@ const MailInForm = () => {
                 </p>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-8" noValidate>
                 {/* Customer Information */}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
@@ -635,10 +644,18 @@ const MailInForm = () => {
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleChange}
+                        required
+                        aria-required="true"
+                        aria-invalid={!!errors.fullName}
+                        aria-describedby={errors.fullName ? 'fullName-error' : undefined}
                         className={`w-full px-4 py-2 border ${errors.fullName ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                         placeholder="John Doe"
                       />
-                      {errors.fullName && <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>}
+                      {errors.fullName && (
+                        <p id="fullName-error" role="alert" className="mt-1 text-sm text-red-600">
+                          {errors.fullName}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
@@ -650,10 +667,18 @@ const MailInForm = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        required
+                        aria-required="true"
+                        aria-invalid={!!errors.email}
+                        aria-describedby={errors.email ? 'email-error' : undefined}
                         className={`w-full px-4 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                         placeholder="john@example.com"
                       />
-                      {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                      {errors.email && (
+                        <p id="email-error" role="alert" className="mt-1 text-sm text-red-600">
+                          {errors.email}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
@@ -665,10 +690,18 @@ const MailInForm = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
+                        required
+                        aria-required="true"
+                        aria-invalid={!!errors.phone}
+                        aria-describedby={errors.phone ? 'phone-error' : undefined}
                         className={`w-full px-4 py-2 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                         placeholder="(123) 456-7890"
                       />
-                      {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+                      {errors.phone && (
+                        <p id="phone-error" role="alert" className="mt-1 text-sm text-red-600">
+                          {errors.phone}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
@@ -745,6 +778,10 @@ const MailInForm = () => {
                         name="deviceType"
                         value={formData.deviceType}
                         onChange={handleChange}
+                        required
+                        aria-required="true"
+                        aria-invalid={!!errors.deviceType}
+                        aria-describedby={errors.deviceType ? 'deviceType-error' : undefined}
                         className={`w-full px-4 py-2 border ${errors.deviceType ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                       >
                         <option value="">Select device type</option>
@@ -757,7 +794,11 @@ const MailInForm = () => {
                         <option value="Android Tablet">Android Tablet</option>
                         <option value="Other">Other</option>
                       </select>
-                      {errors.deviceType && <p className="mt-1 text-sm text-red-600">{errors.deviceType}</p>}
+                      {errors.deviceType && (
+                        <p id="deviceType-error" role="alert" className="mt-1 text-sm text-red-600">
+                          {errors.deviceType}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="deviceBrand" className="block text-sm font-medium text-gray-700 mb-1">
@@ -849,10 +890,18 @@ const MailInForm = () => {
                       value={formData.problemDescription}
                       onChange={handleChange}
                       rows={5}
+                      required
+                      aria-required="true"
+                      aria-invalid={!!errors.problemDescription}
+                      aria-describedby={errors.problemDescription ? 'problemDescription-error' : undefined}
                       className={`w-full px-4 py-2 border ${errors.problemDescription ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                       placeholder="Please provide as much detail as possible about the issue you're experiencing..."
                     ></textarea>
-                    {errors.problemDescription && <p className="mt-1 text-sm text-red-600">{errors.problemDescription}</p>}
+                    {errors.problemDescription && (
+                      <p id="problemDescription-error" role="alert" className="mt-1 text-sm text-red-600">
+                        {errors.problemDescription}
+                      </p>
+                    )}
                     <p className="mt-1 text-xs text-gray-500">
                       Include when the problem started, any error messages, and what you've already tried to fix it.
                     </p>
@@ -916,6 +965,10 @@ const MailInForm = () => {
                           type="checkbox"
                           checked={formData.agreeToTerms}
                           onChange={handleChange}
+                          required
+                          aria-required="true"
+                          aria-invalid={!!errors.agreeToTerms}
+                          aria-describedby={errors.agreeToTerms ? 'agreeToTerms-error' : undefined}
                           className={`h-4 w-4 text-blue-600 border-${errors.agreeToTerms ? 'red-500' : 'gray-300'} rounded focus:ring-blue-500`}
                         />
                       </div>
@@ -923,7 +976,11 @@ const MailInForm = () => {
                         <label htmlFor="agreeToTerms" className="text-sm font-medium text-gray-700">
                           I agree to the <a href="/terms/" target="_blank" className="text-blue-600 hover:text-blue-800">Terms and Conditions</a>
                         </label>
-                        {errors.agreeToTerms && <p className="text-sm text-red-600">{errors.agreeToTerms}</p>}
+                        {errors.agreeToTerms && (
+                          <p id="agreeToTerms-error" role="alert" className="text-sm text-red-600">
+                            {errors.agreeToTerms}
+                          </p>
+                        )}
                         <p className="text-xs text-gray-500">
                           By checking this box, you acknowledge that you have read and agree to our terms and conditions.
                         </p>
@@ -958,7 +1015,8 @@ const MailInForm = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex items-center space-x-2 bg-[#0099FF] hover:bg-[#071930] disabled:opacity-60 disabled:cursor-not-allowed text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
+                    aria-busy={isSubmitting}
+                    className="inline-flex items-center space-x-2 bg-[#071930] hover:bg-slate-900 disabled:opacity-60 disabled:cursor-not-allowed text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:scale-105"
                   >
                     <FileText className="h-5 w-5" />
                     <span>{isSubmitting ? 'Submitting...' : 'Submit and Generate Form'}</span>

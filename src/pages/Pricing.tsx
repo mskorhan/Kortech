@@ -311,7 +311,7 @@ const Pricing = () => {
                       className={`w-full py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 text-center block transform hover:scale-105 ${
                         pkg.popular
                           ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg'
-                          : 'bg-brand-primary hover:bg-brand-dark text-white shadow-lg'
+                          : 'bg-brand-dark hover:bg-slate-900 text-white shadow-lg'
                       }`}
                     >
                       <div className="flex items-center justify-center space-x-2">
@@ -466,7 +466,7 @@ const Pricing = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a
                href="tel:704-246-7642?utm_source=site&utm_medium=pricing&utm_campaign=phone_cta"
-                className="bg-brand-primary hover:bg-white hover:text-brand-dark text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-2xl transform hover:scale-105"
+                className="bg-brand-dark hover:bg-white hover:text-brand-dark text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-2xl transform hover:scale-105"
                 data-track-source="pricing_page"
               >
                 <Phone className="h-6 w-6" />

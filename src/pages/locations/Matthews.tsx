@@ -155,9 +155,6 @@ const Matthews = () => {
               <p className="text-lg text-green-100 mb-4">
                 <strong>Matthews Community:</strong> Just minutes from downtown Matthews and the Matthews Community Center, we've been proudly serving Matthews families and businesses for over 25 years. Our location is easily accessible from Independence Boulevard and Highway 51, making us convenient for all Matthews residents. Whether you're near the historic downtown area or in one of the newer developments off Weddington Road, we're your local computer repair experts.
               </p>
-              <p className="text-sm text-green-200 italic">
-                "KorTech has been our go-to for all computer issues. They understand the Matthews community and provide excellent local service! Being so close to Matthews makes it super convenient." - Matthews Resident
-              </p>
             </div>
             
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">

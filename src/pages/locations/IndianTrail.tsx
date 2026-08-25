@@ -156,9 +156,6 @@ const IndianTrail = () => {
               <p className="text-lg text-orange-100 mb-4">
                 <strong>Indian Trail Community:</strong> Conveniently located just off Highway 74 and easily accessible from Indian Trail via Independence Boulevard, we've been serving Indian Trail families and small businesses for over 25 years.
               </p>
-              <p className="text-sm text-orange-200 italic">
-                "Living in Indian Trail, I was worried about finding quality computer repair. KorTech's pickup service was a lifesaver! Professional and fast service." - Indian Trail Resident
-              </p>
             </div>
             
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">

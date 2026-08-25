@@ -45,7 +45,7 @@ const NearbyAreas = ({ currentPath }: NearbyAreasProps) => {
           ))}
           <Link
             to="/locations/"
-            className="px-4 py-2 bg-brand-primary text-white rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors duration-200"
+            className="px-4 py-2 bg-brand-dark text-white rounded-lg text-sm font-medium hover:bg-slate-900 transition-colors duration-200"
           >
             View All Service Areas
           </Link>
