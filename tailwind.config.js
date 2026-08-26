@@ -15,7 +15,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'brand-primary': '#0099FF',
+        'brand-primary': '#0077CC',
         'brand-dark': '#071930',
       },
       fontFamily: {

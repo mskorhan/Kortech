@@ -99,31 +99,31 @@ const PrivacyPolicy = () => {
                   <p className="text-slate-600 mb-3">When you use our computer repair and IT support services, we may collect the following personal information:</p>
                   <ul className="space-y-2 text-slate-600">
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Name and contact information (phone number, email address, mailing address)</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Device information (make, model, serial number, passwords for repair purposes)</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Service history and repair details</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Payment information (processed securely through third-party payment processors)</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Communication records (emails, phone calls, text messages)</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Business information (for commercial customers)</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Emergency contact information</span>
                     </li>
                   </ul>
@@ -290,15 +290,15 @@ const PrivacyPolicy = () => {
                   </h3>
                   <ul className="space-y-2 text-slate-600">
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Secure facility with restricted access</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Locked storage for devices and documentation</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Surveillance systems and security protocols</span>
                     </li>
                   </ul>
@@ -365,19 +365,19 @@ const PrivacyPolicy = () => {
                   <h3 className="text-lg font-semibold text-slate-800 mb-3">Service Providers</h3>
                   <ul className="space-y-2 text-slate-600">
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Third-party payment processors for billing</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Shipping companies for device transport</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Parts suppliers for warranty claims</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Cloud storage providers for secure data backup</span>
                     </li>
                   </ul>
@@ -549,27 +549,27 @@ const PrivacyPolicy = () => {
               <div className="bg-slate-50 rounded-lg p-5 border border-slate-200 mb-6">
                 <ul className="space-y-2 text-slate-600 grid grid-cols-1 md:grid-cols-2 gap-3">
                   <li className="flex items-start">
-                    <span className="text-blue-500 mr-2">•</span>
+                    <span className="text-blue-600 mr-2">•</span>
                     <span>Remember your preferences and settings</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-blue-500 mr-2">•</span>
+                    <span className="text-blue-600 mr-2">•</span>
                     <span>Analyze website traffic and usage patterns</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-blue-500 mr-2">•</span>
+                    <span className="text-blue-600 mr-2">•</span>
                     <span>Improve website functionality and user experience</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-blue-500 mr-2">•</span>
+                    <span className="text-blue-600 mr-2">•</span>
                     <span>Provide relevant content and advertisements</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-blue-500 mr-2">•</span>
+                    <span className="text-blue-600 mr-2">•</span>
                     <span>Track Google Ads performance and conversions</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-blue-500 mr-2">•</span>
+                    <span className="text-blue-600 mr-2">•</span>
                     <span>Enable remarketing campaigns</span>
                   </li>
                 </ul>

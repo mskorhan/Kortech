@@ -382,7 +382,7 @@ const About = () => {
               </a>
               <a
                 href="sms:980-888-5300?utm_source=site&utm_medium=about&utm_campaign=text_cta"
-                className="border-2 border-[#0099FF] text-[#0099FF] hover:bg-[#0099FF] hover:text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                className="border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center space-x-3 transition-all duration-300 bg-white/80 backdrop-blur-sm"
                 data-track-source="about_page"
               >
                 <MessageSquare className="h-6 w-6" />
