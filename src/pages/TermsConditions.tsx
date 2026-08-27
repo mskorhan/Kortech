@@ -58,7 +58,7 @@ const TermsConditions = () => {
                 className="inline-flex items-center space-x-2 bg-[#071930] hover:bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg transform hover:scale-105"
               >
                 <FileText className="h-5 w-5" />
-                <span>Complete Mail-In Form</span>
+                <span>Complete Mail-In Repair Form</span>
               </a>
             </div>
           </div>

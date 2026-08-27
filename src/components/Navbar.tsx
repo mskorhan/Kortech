@@ -390,7 +390,7 @@ const Navbar: React.FC = () => {
                   isActive('/mail-in-form/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
-                Shipping Form
+                Mail-In Repair Form
               </button>
 
               <div className="flex items-center space-x-2 ml-4 pl-4 border-l border-slate-200">
@@ -556,7 +556,7 @@ const Navbar: React.FC = () => {
               onClick={() => handleNavigation('/mail-in-form/')}
               className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
             >
-              Shipping Form
+              Mail-In Repair Form
             </button>
 
             <div className="flex flex-col space-y-3 pt-4 border-t border-slate-200">

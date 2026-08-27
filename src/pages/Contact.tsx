@@ -357,7 +357,7 @@ const Contact = () => {
                       href="https://www.google.com/maps/place/Kortech+Service/@35.14047,-80.7400749,17z/data=!4m15!1m8!3m7!1s0x88542143faefb7af:0x9541d45ffcb5daa0!2s1721+Sardis+Rd+N+%237a,+Charlotte,+NC+28270!3b1!8m2!3d35.14047!4d-80.7375!16s%2Fg%2F11n_z1fxk6!3m5!1s0x885426acd2c33ca7:0x24292ff6e9c5f155!8m2!3d35.140474!4d-80.737464!16s%2Fg%2F1v_w31h1?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-2 text-[#0099FF] hover:text-blue-600 font-medium transition-colors"
+                      className="inline-flex items-center space-x-2 text-brand-primary hover:text-brand-dark font-medium transition-colors"
                     >
                       <Navigation className="h-4 w-4" />
                       <span>Get Directions</span>
@@ -454,7 +454,7 @@ const Contact = () => {
                         href="https://g.page/kortechservice"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-1 border border-[#0099FF] text-[#0099FF] px-3 py-2 rounded-lg text-sm font-medium hover:bg-blue-50 transition-colors"
+                        className="inline-flex items-center space-x-1 border border-brand-primary text-brand-primary px-3 py-2 rounded-lg text-sm font-medium hover:bg-blue-50 transition-colors"
                       >
                         <Star className="h-4 w-4" />
                         <span>Reviews</span>
@@ -500,7 +500,7 @@ const Contact = () => {
               </a>
               <a
                href="sms:980-888-5300?utm_source=site&utm_medium=contact&utm_campaign=text_cta"
-                className="border-2 border-[#0099FF] text-[#0099FF] hover:bg-[#0099FF] hover:text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 bg-white/80 backdrop-blur-sm min-w-[180px]"
+                className="border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 bg-white/80 backdrop-blur-sm min-w-[180px]"
                 data-track-source="contact_page_cta"
               >
                 <MessageSquare className="h-6 w-6" />
@@ -511,7 +511,7 @@ const Contact = () => {
                 className="border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center space-x-2 transition-all duration-300 bg-white/80 backdrop-blur-sm min-w-[180px]"
               >
                 <FileText className="h-6 w-6" />
-                <span>Mail-In Form</span>
+                <span>Mail-In Repair Form</span>
               </a>
             </div>
 

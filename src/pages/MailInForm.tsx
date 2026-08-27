@@ -468,7 +468,7 @@ const MailInForm = () => {
             
             <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
               <span className="text-slate-800">
-                Mail-In Repair Form Charlotte
+                Mail-In Repair Form — Charlotte, NC
               </span>
             </h1>
             
@@ -916,18 +916,18 @@ const MailInForm = () => {
                   </h3>
                   <div className="space-y-4">
                     <div className="flex items-start">
-                      <div className="flex items-center h-5 mt-1">
+                      <label htmlFor="hasBackedUp" className="flex items-center justify-center p-3.5 -m-3.5 cursor-pointer">
                         <input
                           id="hasBackedUp"
                           name="hasBackedUp"
                           type="checkbox"
                           checked={formData.hasBackedUp}
                           onChange={handleChange}
-                          className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                          className="h-4 w-4 text-blue-600 border border-gray-300 rounded focus:ring-blue-500"
                         />
-                      </div>
+                      </label>
                       <div className="ml-3">
-                        <label htmlFor="hasBackedUp" className="text-sm font-medium text-gray-700">
+                        <label htmlFor="hasBackedUp" className="text-sm font-medium text-gray-700 cursor-pointer">
                           I have backed up all important data from my device
                         </label>
                         <p className="text-xs text-gray-500">
@@ -935,20 +935,20 @@ const MailInForm = () => {
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start">
-                      <div className="flex items-center h-5 mt-1">
+                      <label htmlFor="hasRemovedAccessories" className="flex items-center justify-center p-3.5 -m-3.5 cursor-pointer">
                         <input
                           id="hasRemovedAccessories"
                           name="hasRemovedAccessories"
                           type="checkbox"
                           checked={formData.hasRemovedAccessories}
                           onChange={handleChange}
-                          className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                          className="h-4 w-4 text-blue-600 border border-gray-300 rounded focus:ring-blue-500"
                         />
-                      </div>
+                      </label>
                       <div className="ml-3">
-                        <label htmlFor="hasRemovedAccessories" className="text-sm font-medium text-gray-700">
+                        <label htmlFor="hasRemovedAccessories" className="text-sm font-medium text-gray-700 cursor-pointer">
                           I have removed all accessories (SD cards, cases, etc.)
                         </label>
                         <p className="text-xs text-gray-500">
@@ -956,9 +956,9 @@ const MailInForm = () => {
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start">
-                      <div className="flex items-center h-5 mt-1">
+                      <label htmlFor="agreeToTerms" className="flex items-center justify-center p-3.5 -m-3.5 cursor-pointer">
                         <input
                           id="agreeToTerms"
                           name="agreeToTerms"
@@ -969,12 +969,12 @@ const MailInForm = () => {
                           aria-required="true"
                           aria-invalid={!!errors.agreeToTerms}
                           aria-describedby={errors.agreeToTerms ? 'agreeToTerms-error' : undefined}
-                          className={`h-4 w-4 text-blue-600 border-${errors.agreeToTerms ? 'red-500' : 'gray-300'} rounded focus:ring-blue-500`}
+                          className={`h-4 w-4 text-blue-600 border rounded focus:ring-blue-500 ${errors.agreeToTerms ? 'border-red-500 ring-2 ring-red-500 ring-offset-1' : 'border-gray-300'}`}
                         />
-                      </div>
+                      </label>
                       <div className="ml-3">
-                        <label htmlFor="agreeToTerms" className="text-sm font-medium text-gray-700">
-                          I agree to the <a href="/terms/" target="_blank" className="text-blue-600 hover:text-blue-800">Terms and Conditions</a>
+                        <label htmlFor="agreeToTerms" className="text-sm font-medium text-gray-700 cursor-pointer">
+                          I agree to the <a href="/terms/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Terms and Conditions</a>
                         </label>
                         {errors.agreeToTerms && (
                           <p id="agreeToTerms-error" role="alert" className="text-sm text-red-600">
