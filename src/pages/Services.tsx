@@ -28,11 +28,11 @@ const Services = () => {
   const faqs = [
     {
       question: "How much does computer repair cost in Charlotte?",
-      answer: "Computer repair costs vary by issue type. We provide free diagnostics ($75-$150 value, waived with repair) and transparent pricing. Most repairs range from $99+."
+      answer: "Computer repair costs vary by issue type. We provide diagnostics ($75-$150, waived with hardware repair) and transparent pricing. Call or text us for a quote specific to your issue."
     },
     {
       question: "Do you offer same-day computer repair service?",
-      answer: "Yes, we offer same-day service for most common computer issues at our Charlotte location. Walk-ins welcome or call ahead to ensure availability."
+      answer: "Same-day service is available for many common computer issues at our Charlotte location, depending on parts and current workload. Walk-ins welcome or call ahead to ensure availability."
     },
     {
       question: "What computer brands do you repair?",
@@ -299,7 +299,7 @@ const Services = () => {
     {
       step: "4",
       title: "Expert Repair",
-      description: "Our certified technicians perform the repair using quality parts",
+      description: "Our experienced technicians perform the repair using quality parts",
       icon: Settings
     },
     {
@@ -367,7 +367,7 @@ const Services = () => {
           <div className="space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <Sparkles className="h-5 w-5 text-yellow-400" />
-              <span className="text-white font-medium">Complete Computer Solutions - Free Diagnostic Available</span>
+              <span className="text-white font-medium">Complete Computer Solutions - Diagnostic Fee Waived With Hardware Repair</span>
             </div>
             
             <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
@@ -547,9 +547,9 @@ const Services = () => {
               <div className="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Shield className="h-8 w-8 text-[#0099FF]" />
               </div>
-              <h3 className="font-bold text-slate-800 mb-3">Quality Guarantee</h3>
+              <h3 className="font-bold text-slate-800 mb-3">14-Day Parts &amp; Workmanship Warranty</h3>
               <p className="text-sm text-slate-600 font-light">
-                All work performed at our Charlotte shop with quality parts and satisfaction guarantee
+                All work performed at our Charlotte shop with quality parts
               </p>
             </div>
 
@@ -559,7 +559,7 @@ const Services = () => {
               </div>
               <h3 className="font-bold text-slate-800 mb-3">Expert Service</h3>
               <p className="text-sm text-slate-600 font-light">
-                Local certified technicians with 25+ years experience serving Charlotte
+                Local experienced technicians with 25+ years experience serving Charlotte
               </p>
             </div>
 
@@ -569,7 +569,7 @@ const Services = () => {
               </div>
               <h3 className="font-bold text-slate-800 mb-3">Fast Turnaround</h3>
               <p className="text-sm text-slate-600 font-light">
-                Walk-in service and same-day repairs available for most issues
+                Walk-in service, with same-day repairs available for many issues
               </p>
             </div>
           </div>
@@ -639,15 +639,15 @@ const Services = () => {
             <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-300">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Free Diagnostic</span>
+                <span>Diagnostic Fee Waived With Hardware Repair</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Same-Day Service</span>
+                <span>Same-Day Service Available on Select Repairs</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Quality Guarantee</span>
+                <span>14-Day Parts &amp; Workmanship Warranty</span>
               </div>
             </div>
           </div>

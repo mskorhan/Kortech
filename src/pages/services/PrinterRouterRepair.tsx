@@ -17,7 +17,7 @@ const PrinterRouterRepair = () => {
   const faqs = [
     {
       question: "How much does printer repair cost?",
-      answer: "Printer repair costs vary by brand, model, and issue type. We provide free diagnostics and detailed quotes for all printer repair services."
+      answer: "Printer repair costs vary by brand, model, and issue type. We provide diagnostics ($75-$150, waived with hardware repair) and detailed quotes for all printer repair services."
     },
     {
       question: "Can you fix network connectivity issues?",
@@ -61,7 +61,7 @@ const PrinterRouterRepair = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional printer and network repair services. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional printer and network repair services. A detailed quote is provided before any repair work begins."
       }
     },
     {

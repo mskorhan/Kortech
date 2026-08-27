@@ -18,7 +18,7 @@ const ApplianceElectronicsRepair = () => {
     },
     {
       question: "How much does appliance electronics repair cost?",
-      answer: "Appliance electronics repair costs vary by device type and complexity. We provide free diagnostics and detailed quotes for all appliance repair services."
+      answer: "Appliance electronics repair costs vary by device type and complexity. We provide diagnostics ($75-$150, waived with hardware repair) and detailed quotes for all appliance repair services."
     },
     {
       question: "Is it worth repairing appliance electronics?",
@@ -58,7 +58,7 @@ const ApplianceElectronicsRepair = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional appliance electronics repair services. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional appliance electronics repair services. A detailed quote is provided before any repair work begins."
       }
     },
     {

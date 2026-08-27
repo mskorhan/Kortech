@@ -10,7 +10,7 @@ interface ServiceCTAProps {
 const ServiceCTA: React.FC<ServiceCTAProps> = ({ 
   service, 
   price = "Call/Text For Quote", 
-  urgentText = "Same-Day Service Available" 
+  urgentText = "Ask About Same-Day Service"
 }) => {
   return (
     <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-2xl p-8 my-12">

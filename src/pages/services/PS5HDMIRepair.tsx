@@ -17,7 +17,7 @@ const PS5HDMIRepair = () => {
   const faqs = [
     {
       question: "How much does PS5 HDMI repair cost?",
-      answer: "PS5 HDMI port repair costs vary depending on the extent of damage. We provide a free diagnostic to determine the exact issue and provide you with a detailed quote before any work begins."
+      answer: "PS5 HDMI port repair costs vary depending on the extent of damage. We provide a diagnostic ($75-$150, waived with hardware repair) to determine the exact issue and provide you with a detailed quote before any work begins."
     },
     {
       question: "How long does PS5 HDMI repair take?",
@@ -61,7 +61,7 @@ const PS5HDMIRepair = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional PS5 HDMI port repair service. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional PS5 HDMI port repair service. A detailed quote is provided before any repair work begins."
       }
     },
     {
@@ -132,7 +132,7 @@ const PS5HDMIRepair = () => {
               <div className="flex items-center space-x-6 text-sm">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Same-Day Service</span>
+                  <span>Same-Day Service Available</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />

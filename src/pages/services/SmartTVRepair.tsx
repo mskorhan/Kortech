@@ -16,7 +16,7 @@ const SmartTVRepair = () => {
   const faqs = [
     {
       question: "How much does smart TV repair cost?",
-      answer: "Smart TV repair costs vary by brand, model, and issue type. We provide free diagnostics and detailed quotes for all TV repair services."
+      answer: "Smart TV repair costs vary by brand, model, and issue type. We provide diagnostics ($75-$150, waived with hardware repair) and detailed quotes for all TV repair services."
     },
     {
       question: "What TV problems can you fix?",
@@ -60,7 +60,7 @@ const SmartTVRepair = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional smart TV and television repair services. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional smart TV and television repair services. A detailed quote is provided before any repair work begins."
       }
     },
     {

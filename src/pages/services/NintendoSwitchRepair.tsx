@@ -14,7 +14,7 @@ const NintendoSwitchRepair = () => {
   const faqs = [
     {
       question: "How much does Nintendo Switch repair cost?",
-      answer: "Nintendo Switch repair costs vary depending on the issue. We provide a free diagnostic to determine the exact problem and provide you with a detailed quote."
+      answer: "Nintendo Switch repair costs vary depending on the issue. We provide a diagnostic ($75-$150, waived with hardware repair) to determine the exact problem and provide you with a detailed quote."
     },
     {
       question: "What Nintendo Switch problems can you fix?",
@@ -58,7 +58,7 @@ const NintendoSwitchRepair = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional Nintendo Switch repair services. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional Nintendo Switch repair services. A detailed quote is provided before any repair work begins."
       }
     },
     {
@@ -129,7 +129,7 @@ const NintendoSwitchRepair = () => {
               <div className="flex items-center space-x-6 text-sm">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Same-Day Service</span>
+                  <span>Same-Day Service Available</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />

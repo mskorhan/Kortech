@@ -15,8 +15,7 @@ import {
   Target,
   Users,
   Zap,
-  Timer,
-  Gift
+  Timer
 } from 'lucide-react';
 
 const Pricing = () => {
@@ -39,11 +38,10 @@ const Pricing = () => {
     {
       name: "Basic Support",
       price: "$499",
-      originalPrice: "$750",
       period: "per month",
       description: "Essential IT support for small businesses",
-      badge: "Save $250/mo",
-      badgeColor: "bg-green-500",
+      badge: "Essentials",
+      badgeColor: "bg-blue-500",
       features: [
         "Computer hardware diagnosis & repair",
         "Software troubleshooting & updates",
@@ -60,14 +58,11 @@ const Pricing = () => {
       ],
       popular: false,
       cta: "Get Started",
-      gradient: "from-blue-500 to-blue-600",
-      savings: "$250",
-      discount: "33% OFF"
+      gradient: "from-blue-500 to-blue-600"
     },
     {
       name: "Professional Support",
       price: "$1499",
-      originalPrice: "$2250",
       period: "per month",
       description: "Comprehensive IT solutions for growing businesses",
       badge: "Most Popular",
@@ -89,14 +84,11 @@ const Pricing = () => {
       ],
       popular: true,
       cta: "Choose Plan",
-      gradient: "from-green-500 to-green-600",
-      savings: "$750",
-      discount: "33% OFF"
+      gradient: "from-green-500 to-green-600"
     },
     {
       name: "Enterprise Support",
       price: "$3499+",
-      originalPrice: "$5250+",
       period: "per month",
       description: "Complete enterprise IT management and support",
       badge: "Best Value",
@@ -116,9 +108,7 @@ const Pricing = () => {
       notIncluded: [],
       popular: false,
       cta: "Contact Us",
-      gradient: "from-purple-500 to-purple-600",
-      savings: "$1,750+",
-      discount: "33% OFF"
+      gradient: "from-purple-500 to-purple-600"
     }
   ];
 
@@ -126,38 +116,30 @@ const Pricing = () => {
     {
       service: "Computer Diagnostic",
       price: "Call/Text For Quote",
-      originalPrice: "",
       description: "Complete computer troubleshooting and analysis",
       note: "Applied toward repair cost",
-      icon: Target,
-      savings: "Save $75"
+      icon: Target
     },
     {
       service: "Mac & PC Repair",
       price: "Call/Text For Quote",
-      originalPrice: "",
       description: "Hardware repairs, upgrades, and replacements",
       note: "Depends on complexity",
-      icon: Shield,
-      savings: "Save 50%"
+      icon: Shield
     },
     {
       service: "Data Recovery",
       price: "Call/Text For Quote",
-      originalPrice: "",
       description: "Professional data recovery from failed drives",
       note: "Varies by data amount",
-      icon: Award,
-      savings: "Save $150+"
+      icon: Award
     },
     {
       service: "Network Setup",
       price: "Call/Text For Quote",
-      originalPrice: "",
       description: "Professional network installation and configuration",
       note: "Per device/location",
-      icon: Zap,
-      savings: "Save 50%"
+      icon: Zap
     }
   ];
 
@@ -181,28 +163,18 @@ const Pricing = () => {
           <div className="space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <Timer className="h-5 w-5 text-yellow-400" />
-              <span className="text-white font-medium">Limited Time: 33% OFF All Plans!</span>
+              <span className="text-white font-medium">Business IT Support Plans</span>
             </div>
-            
+
             <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
               <span className="text-white">
                 Pricing • Computer Repair Charlotte
               </span>
             </h1>
-            
-            <p className="text-xl text-gray-200 max-w-2xl mx-auto font-light">
-              Professional IT support plans at discounted rates. Save up to $1,750/month with our limited-time offer.
-            </p>
 
-            <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-2xl p-6 border border-red-400/30 backdrop-blur-sm">
-              <div className="flex items-center justify-center space-x-2 mb-2">
-                <Gift className="h-6 w-6 text-yellow-400" />
-                <span className="text-yellow-300 font-bold text-lg">SPECIAL OFFER</span>
-              </div>
-              <p className="text-white text-lg">
-                <strong>33% OFF</strong> all monthly plans - Save thousands per year!
-              </p>
-            </div>
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto font-light">
+              Choose the plan that fits your business, with transparent monthly pricing.
+            </p>
           </div>
         </div>
       </section>
@@ -211,17 +183,17 @@ const Pricing = () => {
       <section className="py-24 bg-slate-50" id="pricing-cards">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6 mb-16">
-            <div className="inline-flex items-center space-x-2 bg-red-100 rounded-full px-4 py-2">
-              <TrendingUp className="h-5 w-5 text-red-600" />
-              <span className="text-red-800 font-semibold">Limited Time Discount</span>
+            <div className="inline-flex items-center space-x-2 bg-blue-100 rounded-full px-4 py-2">
+              <TrendingUp className="h-5 w-5 text-blue-600" />
+              <span className="text-blue-800 font-semibold">Business IT Support Plans</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold">
               <span className="text-brand-dark">
-                Choose Your Discounted Plan
+                Choose the Plan That Fits Your Business
               </span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light">
-              Professional IT support packages at 33% off regular pricing - limited time offer
+              Professional IT support packages with transparent monthly pricing
             </p>
           </div>
 
@@ -237,11 +209,6 @@ const Pricing = () => {
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                {/* Discount Badge */}
-                <div className="absolute -top-4 -right-4 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg transform rotate-12 animate-pulse">
-                  {pkg.discount}
-                </div>
-
                 {/* Popular Badge */}
                 <div className={`absolute -top-4 left-1/2 transform -translate-x-1/2 ${pkg.badgeColor} text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center space-x-2`}>
                   {pkg.popular && <Crown className="h-4 w-4" />}
@@ -257,9 +224,7 @@ const Pricing = () => {
                     <div className="space-y-2">
                       <div className="flex items-center justify-center space-x-2">
                         <div className="flex flex-col items-center">
-                          <span className="text-slate-400 line-through text-lg">{pkg.originalPrice}</span>
                           <span className="text-5xl font-bold text-slate-800">{pkg.price}</span>
-                          <span className="text-green-600 font-medium text-sm">You save {pkg.savings}!</span>
                         </div>
                       </div>
                       <div className="text-lg text-slate-600">
@@ -353,7 +318,7 @@ const Pricing = () => {
           <div className="text-center space-y-6 mb-16">
             <div className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-4 py-2">
               <Target className="h-5 w-5 text-purple-600" />
-              <span className="text-purple-800 font-semibold">One-Time Services - Also Discounted!</span>
+              <span className="text-purple-800 font-semibold">One-Time Services</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold">
               <span className="text-brand-dark">
@@ -361,18 +326,13 @@ const Pricing = () => {
               </span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light">
-              Need a specific service? Our individual repairs and support are also on sale
+              Need a specific service? Call or text for a quote on individual repairs and support
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {additionalServices.map((service, index) => (
               <div key={index} className="bg-white rounded-3xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 group relative">
-                {/* Savings Badge */}
-                <div className="absolute -top-3 -right-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                  {service.savings}
-                </div>
-                
                 <div className="flex items-start space-x-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl flex items-center justify-center group-hover:from-purple-200 group-hover:to-pink-200 transition-colors">
                     <service.icon className="h-8 w-8 text-purple-600" />
@@ -434,7 +394,7 @@ const Pricing = () => {
                 <Clock className="h-8 w-8 text-orange-600" />
               </div>
               <div className="text-3xl font-bold text-orange-700 mb-2">24/7</div>
-              <div className="text-orange-600 font-medium">Enterprise Support</div>
+              <div className="text-orange-600 font-medium">Priority Support on Enterprise Plan</div>
             </div>
           </div>
         </div>

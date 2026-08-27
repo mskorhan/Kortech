@@ -30,7 +30,7 @@ const LaptopRepair = () => {
     },
     {
       question: "Can I walk in without an appointment?",
-      answer: "Yes! Walk-ins are welcome at our Charlotte location. We provide free diagnostics and can often begin repairs the same day for most laptop issues."
+      answer: "Yes! Walk-ins are welcome at our Charlotte location. We provide diagnostics ($75-$150, waived with hardware repair) and can often begin repairs the same day for most laptop issues."
     },
     {
       question: "Do you offer warranty on laptop repairs?",
@@ -62,7 +62,7 @@ const LaptopRepair = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional laptop repair services. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional laptop repair services. A detailed quote is provided before any repair work begins."
       }
     }
   ];
@@ -125,7 +125,7 @@ const LaptopRepair = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Same-Day Service</span>
+                  <span>Same-Day Service Available</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
@@ -319,7 +319,7 @@ const LaptopRepair = () => {
       {/* Service CTA */}
       <ServiceCTA 
         service="Laptop Repair" 
-        price="Walk-In for Free Diagnostic"
+        price="Walk-In for Diagnostic"
         urgentText="Same-Day Service Available at Our Charlotte Shop"
       />
 

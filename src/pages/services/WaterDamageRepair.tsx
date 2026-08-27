@@ -21,7 +21,7 @@ const WaterDamageRepair = () => {
     },
     {
       question: "How much does water damage repair cost?",
-      answer: "Water damage repair costs vary based on the extent of damage and device type. We provide free diagnostics to assess the damage and provide you with a detailed quote."
+      answer: "Water damage repair costs vary based on the extent of damage and device type. We provide diagnostics ($75-$150, waived with hardware repair) to assess the damage and provide you with a detailed quote."
     },
     {
       question: "How long does water damage repair take?",
@@ -61,7 +61,7 @@ const WaterDamageRepair = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Emergency water damage repair services. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Emergency water damage repair services. A detailed quote is provided before any repair work begins."
       }
     }
   ];

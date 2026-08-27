@@ -63,7 +63,7 @@ const PCBMicroSoldering = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional PCB micro-soldering and electronics repair services. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional PCB micro-soldering and electronics repair services. A detailed quote is provided before any repair work begins."
       }
     },
     {
@@ -142,7 +142,7 @@ const PCBMicroSoldering = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Quality Guarantee</span>
+                  <span>14-Day Parts &amp; Workmanship Warranty</span>
                 </div>
               </div>
             </div>

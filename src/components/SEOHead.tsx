@@ -48,7 +48,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   
   // Dynamic title and description based on page
   const dynamicTitle = title || 'KorTech Service • Computer Repair Charlotte NC';
-  const dynamicDescription = description || 'Professional computer repair, Mac & PC repair, virus removal, data recovery & IT support in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 for free diagnostics!';
+  const dynamicDescription = description || 'Professional computer repair, Mac & PC repair, virus removal, data recovery & IT support in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 — diagnostic fee waived with hardware repair!';
 
   // Generate breadcrumb schema for all pages
   const breadcrumbSchema = {

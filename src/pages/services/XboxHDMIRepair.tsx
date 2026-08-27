@@ -13,7 +13,7 @@ const XboxHDMIRepair = () => {
   const faqs = [
     {
       question: "How much does Xbox HDMI repair cost?",
-      answer: "Xbox HDMI port repair costs vary for Xbox Series X/S and Xbox One consoles. We provide a free diagnostic to determine the exact issue and provide you with a detailed quote."
+      answer: "Xbox HDMI port repair costs vary for Xbox Series X/S and Xbox One consoles. We provide a diagnostic ($75-$150, waived with hardware repair) to determine the exact issue and provide you with a detailed quote."
     },
     {
       question: "Do you repair both Xbox Series X/S and Xbox One?",
@@ -57,7 +57,7 @@ const XboxHDMIRepair = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional Xbox HDMI port repair service. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional Xbox HDMI port repair service. A detailed quote is provided before any repair work begins."
       }
     }
   ];

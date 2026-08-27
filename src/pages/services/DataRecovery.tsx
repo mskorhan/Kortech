@@ -18,7 +18,7 @@ const DataRecovery = () => {
   const faqs = [
     {
       question: "How much does data recovery cost?",
-      answer: "Data recovery costs vary based on the type of failure and amount of data. We provide free diagnostics and detailed quotes for all data recovery services."
+      answer: "Data recovery costs vary based on the type of failure and amount of data. We provide diagnostics and detailed quotes for all data recovery services."
     },
     {
       question: "What types of data can you recover?",
@@ -62,7 +62,7 @@ const DataRecovery = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional data recovery services. A detailed quote is provided before any repair work begins."
+        "description": "Professional data recovery services. A detailed quote is provided before any repair work begins."
       }
     }
   ];

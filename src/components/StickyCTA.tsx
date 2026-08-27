@@ -43,7 +43,7 @@ const StickyCTA: React.FC<StickyCTAProps> = ({
               Need Computer Repair?
             </p>
             <p className="text-xs text-slate-600">
-              Same-day Service Available • Call/Text Now!
+              Ask About Same-Day Service • Call/Text Now!
             </p>
           </div>
           

@@ -60,7 +60,7 @@ const SSDUpgrades = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional SSD upgrade installation service. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional SSD upgrade installation service. A detailed quote is provided before any repair work begins."
       }
     }
   ];

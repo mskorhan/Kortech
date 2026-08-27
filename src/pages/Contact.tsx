@@ -69,7 +69,7 @@ const Contact = () => {
       "@context": "https://schema.org",
       "@type": "ContactPage",
       "name": "Contact KorTech Service - Charlotte Computer Repair",
-      "description": "Contact KorTech Service for professional computer repair in Charlotte, NC. Visit our shop, call, or text for same-day service.",
+      "description": "Contact KorTech Service for professional computer repair in Charlotte, NC. Visit our shop, call, or text — same-day service available on select repairs.",
       "url": "https://www.kortechservice.com/contact/"
     },
     {
@@ -518,7 +518,7 @@ const Contact = () => {
             <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-slate-600">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Same-Day Service</span>
+                <span>Same-Day Service Available In-Shop</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
