@@ -547,7 +547,7 @@ const Services = () => {
               <div className="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Shield className="h-8 w-8 text-[#0099FF]" />
               </div>
-              <h3 className="font-bold text-slate-800 mb-3">14-Day Parts &amp; Workmanship Warranty</h3>
+              <h3 className="font-bold text-slate-800 mb-3">14-Day Limited Parts &amp; Workmanship Warranty</h3>
               <p className="text-sm text-slate-600 font-light">
                 All work performed at our Charlotte shop with quality parts
               </p>
@@ -647,7 +647,7 @@ const Services = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>14-Day Parts &amp; Workmanship Warranty</span>
+                <span>14-Day Limited Warranty</span>
               </div>
             </div>
           </div>

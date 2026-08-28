@@ -125,7 +125,7 @@ const LaptopRepair = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Same-Day Service Available</span>
+                  <span>Ask About Same-Day Service</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
@@ -292,7 +292,7 @@ const LaptopRepair = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-slate-800">Same-Day Service</h4>
+                    <h4 className="font-semibold text-slate-800">Same-Day Service Available</h4>
                     <p className="text-slate-600 text-sm">Many repairs completed while you wait</p>
                   </div>
                 </div>

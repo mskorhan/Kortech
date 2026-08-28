@@ -193,7 +193,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>14-Day Parts &amp; Workmanship Warranty</span>
+                  <span>14-Day Limited Warranty</span>
                 </div>
               </div>
             </div>
@@ -337,7 +337,7 @@ export default function Home() {
                   <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
                     <Clock className="h-6 w-6 text-brand-primary" />
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Same-Day Service Available</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Same-Day Service Available on Select Repairs</h3>
                   <p className="text-sm sm:text-base text-slate-600 font-light">Quick turnaround on select repairs</p>
                 </div>
 
@@ -472,7 +472,7 @@ export default function Home() {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>14-Day Parts &amp; Workmanship Warranty</span>
+                <span>14-Day Limited Warranty</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />

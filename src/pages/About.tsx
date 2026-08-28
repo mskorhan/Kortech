@@ -61,7 +61,7 @@ const About = () => {
     },
     {
       icon: Clock,
-      title: "Same-Day Service Available",
+      title: "Same-Day Service Available on Select Repairs",
       description: "Quick turnaround on select repairs",
       color: "purple"
     }
