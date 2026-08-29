@@ -61,8 +61,8 @@ const About = () => {
     },
     {
       icon: Clock,
-      title: "Same-Day Service",
-      description: "Quick turnaround for urgent repairs",
+      title: "Same-Day Service Available on Select Repairs",
+      description: "Quick turnaround on select repairs",
       color: "purple"
     }
   ];

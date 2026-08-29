@@ -59,7 +59,7 @@ const GraphicDesign = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional graphic design services. A detailed quote is provided before any repair work begins."
+        "description": "Professional graphic design services. A detailed quote is provided before any repair work begins."
       }
     },
     {

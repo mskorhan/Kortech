@@ -59,7 +59,7 @@ const CustomGamingPC = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional custom gaming PC building service. A detailed quote is provided before any repair work begins."
+        "description": "Professional custom gaming PC building service. A detailed quote is provided before any repair work begins."
       }
     }
   ];

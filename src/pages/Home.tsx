@@ -33,7 +33,7 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "KorTech Service",
-      "description": "Professional computer repair, Mac & PC repair, virus removal, data recovery, and IT support in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 for free diagnostics!",
+      "description": "Professional computer repair, Mac & PC repair, virus removal, data recovery, and IT support in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 — diagnostic fee waived with hardware repair!",
       "url": "https://www.kortechservice.com/",
       "telephone": "704-246-7642",
       "hasMap": "https://www.google.com/maps/place/Kortech+Service/@35.14047,-80.7400749,17z",
@@ -119,7 +119,7 @@ export default function Home() {
     <div className="min-h-screen bg-white overflow-hidden pb-20">
       <SEOHead
         title="KorTech Service • Computer Repair Charlotte NC"
-        description="Professional computer repair, Mac & PC repair, virus removal, data recovery & IT support in Charlotte, NC. Call 704-246-7642 for free diagnostics!"
+        description="Professional computer repair, Mac & PC repair, virus removal, data recovery & IT support in Charlotte, NC. Call 704-246-7642 — diagnostic fee waived with hardware repair!"
         canonicalUrl="/"
         schema={schema}
       />
@@ -158,7 +158,7 @@ export default function Home() {
                 <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-600 leading-relaxed font-light">
                   Professional Mac & PC repair, data recovery, mobile device repair, and IT support. Proudly serving Charlotte, Matthews, Mint Hill, Pineville, Ballantyne and surrounding areas since 1998 with in-shop and on-site service.
                   <span className="text-orange-600 font-semibold block mt-3 text-base sm:text-lg md:text-xl lg:text-2xl">
-                    🎯 Free Diagnostic: $75-$150 fee waived when repair is performed
+                    🎯 Diagnostic: $75-$150 fee waived when hardware repair is performed
                   </span>
                 </p>
               </div>
@@ -185,15 +185,15 @@ export default function Home() {
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-sm sm:text-base text-slate-600">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Same-Day Service</span>
+                  <span>Same-Day Service Available on Select Repairs</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Free Diagnostic</span>
+                  <span>Diagnostic Fee Waived With Hardware Repair</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>100% Guarantee</span>
+                  <span>14-Day Limited Warranty</span>
                 </div>
               </div>
             </div>
@@ -227,7 +227,7 @@ export default function Home() {
                   <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-4 border border-green-200">
                     <div className="flex items-center space-x-3">
                       <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                      <span className="text-green-700 font-medium text-base sm:text-lg"> Available Now - Same Day Service</span>
+                      <span className="text-green-700 font-medium text-base sm:text-lg"> Ask About Same-Day Service</span>
                     </div>
                   </div>
                 </div>
@@ -337,15 +337,15 @@ export default function Home() {
                   <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
                     <Clock className="h-6 w-6 text-brand-primary" />
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Same-Day Service</h3>
-                  <p className="text-sm sm:text-base text-slate-600 font-light">Quick turnaround for urgent repairs</p>
+                  <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Same-Day Service Available on Select Repairs</h3>
+                  <p className="text-sm sm:text-base text-slate-600 font-light">Quick turnaround on select repairs</p>
                 </div>
 
                 <div className="card p-6 hover-lift data-stream">
                   <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4">
                     <Shield className="h-6 w-6 text-green-600" />
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Quality Guarantee</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Quality Parts &amp; Workmanship</h3>
                   <p className="text-sm sm:text-base text-slate-600 font-light">All replaced parts used are of high quality</p>
                 </div>
 
@@ -354,7 +354,7 @@ export default function Home() {
                     <Users className="h-6 w-6 text-purple-600" />
                   </div>
                   <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Expert Technicians</h3>
-                  <p className="text-sm sm:text-base text-slate-600 font-light">Certified professionals with years of experience</p>
+                  <p className="text-sm sm:text-base text-slate-600 font-light">Experienced professionals with years of experience</p>
                 </div>
 
                 <div className="card p-6 hover-lift data-stream">
@@ -419,7 +419,7 @@ export default function Home() {
           <div className="space-responsive">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 border border-white/20 float tech-border">
               <Gift className="h-5 w-5 text-yellow-400" />
-              <span className="text-white font-medium text-sm sm:text-base md:text-lg">Ready to Get Started? Free Diagnostic Available!</span>
+              <span className="text-white font-medium text-sm sm:text-base md:text-lg">Ready to Get Started? Diagnostic Fee Waived With Repair!</span>
             </div>
 
             <h2 className="text-responsive-lg font-bold leading-tight">
@@ -464,15 +464,15 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 text-sm sm:text-base text-gray-300">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Same-Day Service</span>
+                <span>Same-Day Service Available on Select Repairs</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Free Diagnostic</span>
+                <span>Diagnostic Fee Waived With Hardware Repair</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>100% Guarantee</span>
+                <span>14-Day Limited Warranty</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />

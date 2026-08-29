@@ -14,7 +14,7 @@ const TabletIPadRepair = () => {
   const faqs = [
     {
       question: "How much does tablet screen repair cost?",
-      answer: "Tablet screen repair costs vary by device model and screen type. We provide free diagnostics and detailed quotes for all tablet screen replacements."
+      answer: "Tablet screen repair costs vary by device model and screen type. We provide diagnostics ($75-$150, waived with hardware repair) and detailed quotes for all tablet screen replacements."
     },
     {
       question: "How long does iPad repair take?",
@@ -62,7 +62,7 @@ const TabletIPadRepair = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional tablet and iPad repair services. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional tablet and iPad repair services. A detailed quote is provided before any repair work begins."
       }
     },
     {
@@ -133,7 +133,7 @@ const TabletIPadRepair = () => {
               <div className="flex items-center space-x-6 text-sm">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Same-Day Service</span>
+                  <span>Ask About Same-Day Service</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
@@ -276,7 +276,7 @@ const TabletIPadRepair = () => {
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Expert Repair</h3>
               <p className="text-slate-600 text-sm">
-                Our certified technicians perform the repair with quality parts
+                Our experienced technicians perform the repair with quality parts
               </p>
             </div>
 

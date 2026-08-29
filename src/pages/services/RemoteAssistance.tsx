@@ -59,7 +59,7 @@ const RemoteAssistance = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Limited remote assistance for verified returning customers only. A detailed quote is provided before any repair work begins."
+        "description": "Limited remote assistance for verified returning customers only. A detailed quote is provided before any repair work begins."
       }
     },
     {
@@ -144,7 +144,7 @@ const RemoteAssistance = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Same-Day Service</span>
+                  <span>Ask About Same-Day Service</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />

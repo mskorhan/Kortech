@@ -15,7 +15,7 @@ const SmartphoneRepair = () => {
   const faqs = [
     {
       question: "How much does smartphone screen repair cost?",
-      answer: "Smartphone screen repair costs vary by device model and screen type. We provide free diagnostics and detailed quotes for all smartphone screen replacements."
+      answer: "Smartphone screen repair costs vary by device model and screen type. We provide diagnostics ($75-$150, waived with hardware repair) and detailed quotes for all smartphone screen replacements."
     },
     {
       question: "How long does smartphone repair take?",
@@ -59,7 +59,7 @@ const SmartphoneRepair = () => {
         "price": "0",
         "priceCurrency": "USD",
         "availability": "InStock",
-        "description": "Free diagnostic — Professional smartphone repair services. A detailed quote is provided before any repair work begins."
+        "description": "Diagnostic fee waived with hardware repair — Professional smartphone repair services. A detailed quote is provided before any repair work begins."
       }
     },
     {
@@ -130,7 +130,7 @@ const SmartphoneRepair = () => {
               <div className="flex items-center space-x-6 text-sm">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Same-Day Service</span>
+                  <span>Ask About Same-Day Service</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
