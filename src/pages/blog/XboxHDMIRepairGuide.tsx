@@ -286,7 +286,7 @@ const XboxHDMIRepairGuide = () => {
             </ul>
             
             <p>
-              Most reputable repair shops in Charlotte will offer a free diagnostic assessment before beginning any work.
+              When comparing repair shops, ask about diagnostic fees, what the evaluation includes, and whether any diagnostic fee is applied toward the repair.
             </p>
             
             <h2>Preventing Future HDMI Port Damage</h2>
