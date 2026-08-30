@@ -30,7 +30,7 @@ const DataRecovery = () => {
     },
     {
       question: "What is your success rate for data recovery?",
-      answer: "Our success rate is over 95% for most common data loss scenarios. Even in severe cases like fire or water damage, we often recover significant portions of data."
+      answer: "Recovery likelihood varies by case — it depends on the type of failure, the physical condition of the drive, whether any recovery attempts have already been made, whether the device kept being used after the failure, and the extent of any media damage. We'll assess your device and give you an honest recovery estimate before you commit to service."
     },
     {
       question: "Do you offer emergency data recovery services?",
@@ -71,7 +71,7 @@ const DataRecovery = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Data Recovery Charlotte NC | KorTech Service"
-        description="Expert data recovery services in Charlotte, NC. Recover lost files from failed hard drives, SSDs, storage devices. 95% success rate. Call 704-246-7642!"
+        description="Expert data recovery services in Charlotte, NC. Recover lost files from failed hard drives, SSDs, storage devices. Call 704-246-7642!"
         canonicalUrl="/data-recovery"
         schema={schema}
       />
@@ -102,8 +102,8 @@ const DataRecovery = () => {
               </h1>
               
               <p className="text-xl text-gray-200 leading-relaxed">
-                Professional data recovery from failed hard drives, SSDs, and storage devices at our Charlotte location. 
-                95% success rate with walk-in diagnostics and emergency services available. Serving Charlotte, Matthews, Mint Hill, Pineville, and Ballantyne.
+                Professional data recovery from failed hard drives, SSDs, and storage devices at our Charlotte location.
+                Walk-in diagnostics and emergency services available. Serving Charlotte, Matthews, Mint Hill, Pineville, and Ballantyne.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -129,7 +129,7 @@ const DataRecovery = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>95% Success Rate</span>
+                  <span>Honest Recovery Assessment</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
@@ -152,8 +152,8 @@ const DataRecovery = () => {
                     <div className="text-sm text-red-200">Diagnostics</div>
                   </div>
                   <div className="bg-white/10 rounded-xl p-4 text-center">
-                    <div className="text-2xl font-bold text-orange-300">95%</div>
-                    <div className="text-sm text-orange-200">Success Rate</div>
+                    <div className="text-lg font-bold text-orange-300">Honest</div>
+                    <div className="text-sm text-orange-200">Assessment</div>
                   </div>
                 </div>
 
@@ -172,7 +172,7 @@ const DataRecovery = () => {
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className="text-white">Free evaluation</span>
+                    <span className="text-white">Detailed evaluation before you commit</span>
                   </div>
                 </div>
               </div>

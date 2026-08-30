@@ -99,7 +99,7 @@ const DataRecoveryCharlotte2025 = () => {
                 Quick Summary
               </h2>
               <p className="text-blue-700 mb-0">
-                Data recovery is possible in most scenarios with success rates of 85-95% when handled by professionals. Charlotte residents can recover data from failed hard drives, accidentally formatted drives, and even water-damaged devices. Professional data recovery services in Charlotte typically cost $300-$900 depending on the complexity, with emergency services available for critical situations.
+                Data recovery is possible in many scenarios when handled by professionals, though outcomes vary by failure type and drive condition. Charlotte residents can recover data from failed hard drives, accidentally formatted drives, and even water-damaged devices. Professional data recovery services in Charlotte typically cost $300-$900 depending on the complexity, with emergency services available for critical situations.
               </p>
             </div>
             
@@ -284,16 +284,15 @@ const DataRecoveryCharlotte2025 = () => {
             <div className="bg-green-50 rounded-xl p-6 border border-green-100 my-8">
               <h3 className="text-xl font-bold text-green-800 mb-2 flex items-center">
                 <CheckCircle className="h-5 w-5 mr-2 text-green-600" />
-                Success Rates by Scenario
+                What Affects Recovery Likelihood
               </h3>
-              <p className="text-green-700 mb-2">Based on our Charlotte data recovery cases:</p>
+              <p className="text-green-700 mb-2">Recovery odds vary by case, based on:</p>
               <ul className="text-green-700 mb-0 space-y-2">
-                <li><strong>Accidental deletion:</strong> 95-98% success rate</li>
-                <li><strong>Formatting/partition loss:</strong> 90-95% success rate</li>
-                <li><strong>Logical corruption:</strong> 85-95% success rate</li>
-                <li><strong>Mechanical failure:</strong> 70-90% success rate</li>
-                <li><strong>Fire/water damage:</strong> 50-70% success rate</li>
-                <li><strong>SSD failure:</strong> 60-80% success rate</li>
+                <li><strong>Failure type:</strong> accidental deletion and logical corruption are generally more recoverable than physical damage</li>
+                <li><strong>Physical condition:</strong> the extent of any mechanical or media damage to the drive</li>
+                <li><strong>Prior recovery attempts:</strong> DIY or other software attempts can reduce what's recoverable</li>
+                <li><strong>Continued device use:</strong> continuing to use a failing drive risks overwriting recoverable data</li>
+                <li><strong>Media damage:</strong> the severity of fire, water, or physical trauma to the storage media</li>
               </ul>
             </div>
             
@@ -418,7 +417,7 @@ const DataRecoveryCharlotte2025 = () => {
             <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 my-8">
               <h3 className="text-xl font-bold text-blue-800 mb-4">Need Data Recovery in Charlotte?</h3>
               <p className="text-blue-700 mb-4">
-                Our expert technicians provide professional data recovery services with a 95% success rate. Free evaluation and no-recovery, no-fee guarantee!
+                Our expert technicians provide professional data recovery services with an honest assessment of what's recoverable before you commit to service.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -512,7 +511,7 @@ const DataRecoveryCharlotte2025 = () => {
             Need Data Recovery in Charlotte?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Our expert technicians provide professional data recovery services with a 95% success rate. Serving Charlotte, Matthews, Mint Hill, Indian Trail, and surrounding areas.
+            Our expert technicians provide professional data recovery services. Serving Charlotte, Matthews, Mint Hill, Indian Trail, and surrounding areas.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

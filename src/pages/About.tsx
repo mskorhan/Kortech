@@ -49,13 +49,13 @@ const About = () => {
     },
     {
       icon: Award,
-      title: "Charlotte Chamber Member",
-      description: "Trusted local business since 1998",
+      title: "Serving Charlotte Since 1998",
+      description: "Trusted local business for over 25 years",
       color: "blue"
     },
     {
       icon: Users,
-      title: "100,000+ Customers Served",
+      title: "Local Charlotte Repair Shop",
       description: "Helping Charlotte residents and businesses",
       color: "green"
     },
@@ -102,12 +102,12 @@ const About = () => {
     {
       year: "2015",
       title: "Growth",
-      description: "Reached 50,000+ satisfied customers milestone"
+      description: "Continued expanding services for Charlotte-area customers"
     },
     {
       year: "Today",
       title: "Growing Strong",
-      description: "100,000+ customers served with a 4.8★ Google rating"
+      description: "Serving Charlotte-area residents and businesses with a 4.8★ Google rating"
     }
   ];
 
@@ -165,8 +165,8 @@ const About = () => {
                   repair shop has grown into a comprehensive technology service center serving Charlotte, Matthews, Mint Hill, Pineville, and Ballantyne.
                 </p>
                 <p className="text-lg text-slate-600 font-light leading-relaxed">
-                  We've helped thousands of Charlotte area residents and businesses with everything 
-                  from simple computer repairs to complex IT infrastructure setups at our convenient Sardis Road location. Our commitment 
+                  We've helped Charlotte area residents and businesses with everything
+                  from simple computer repairs to complex IT infrastructure setups at our convenient Sardis Road location. Our commitment
                   to honest pricing, quality service, and customer satisfaction has made us a 
                   cornerstone of the local Charlotte tech community.
                 </p>
@@ -178,8 +178,8 @@ const About = () => {
                   <div className="text-slate-700 font-medium">Years in Business</div>
                 </div>
                 <div className="bg-green-50 p-6 rounded-3xl shadow-lg border border-green-200">
-                  <div className="text-3xl font-bold text-green-600 mb-2">100,000+</div>
-                  <div className="text-slate-700 font-medium">Customers Served</div>
+                  <div className="text-3xl font-bold text-green-600 mb-2">{rating ? `${rating}★` : '—'}</div>
+                  <div className="text-slate-700 font-medium">Google Rating</div>
                 </div>
               </div>
             </div>
@@ -368,7 +368,7 @@ const About = () => {
               </span>
             </h2>
             <p className="text-xl text-slate-600 font-light">
-              Join thousands of satisfied Charlotte customers who trust us with their technology needs
+              Join satisfied Charlotte customers who trust us with their technology needs
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -397,7 +397,7 @@ const About = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>100,000+ Customers</span>
+                <span>Local Charlotte Repair Shop</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />

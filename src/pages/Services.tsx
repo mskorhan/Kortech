@@ -44,7 +44,7 @@ const Services = () => {
     },
     {
       question: "Can you recover data from a crashed computer?",
-      answer: "Yes, we specialize in data recovery from failed hard drives, corrupted systems, and damaged computers. We have a 95% success rate for data recovery services."
+      answer: "Yes, we specialize in data recovery from failed hard drives, corrupted systems, and damaged computers. Recovery likelihood depends on the type of failure, the drive's physical condition, and whether any prior recovery attempts have been made — we'll give you an honest assessment before you commit to service."
     }
   ];
 

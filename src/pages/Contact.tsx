@@ -486,7 +486,7 @@ const Contact = () => {
               </span>
             </h2>
             <p className="text-xl text-slate-600 font-light">
-              Join 100,000+ satisfied Charlotte area customers who trust us with their technology needs at our local shop
+              Join Charlotte area customers who trust us with their technology needs at our local shop
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
