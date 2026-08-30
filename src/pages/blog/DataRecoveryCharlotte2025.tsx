@@ -106,7 +106,7 @@ const DataRecoveryCharlotte2025 = () => {
             <h2>Common Data Loss Scenarios in Charlotte</h2>
             
             <p>
-              Based on thousands of data recovery cases we've handled in Charlotte, here are the most common ways people lose their data:
+              Based on the data recovery cases we've handled in Charlotte, here are the most common ways people lose their data:
             </p>
             
             <h3>1. Hard Drive Mechanical Failure</h3>
@@ -346,7 +346,7 @@ const DataRecoveryCharlotte2025 = () => {
                 <strong>Initial Consultation:</strong> Discuss what happened to your device and what data you need to recover
               </li>
               <li>
-                <strong>Free Evaluation:</strong> The device is examined to determine if recovery is possible
+                <strong>Initial Evaluation:</strong> The device is examined to determine if recovery is possible
               </li>
               <li>
                 <strong>Detailed Diagnosis:</strong> Technicians identify the specific issue and develop a recovery plan

@@ -119,7 +119,7 @@ const CustomGamingPCBuildGuide2025 = () => {
             </ul>
             
             <p>
-              At KorTech Service in Charlotte, we've built hundreds of custom gaming PCs for customers throughout Matthews, Mint Hill, and Indian Trail. We've refined our component recommendations based on real-world performance testing and customer feedback.
+              At KorTech Service in Charlotte, we regularly build custom gaming PCs for customers throughout Matthews, Mint Hill, and Indian Trail. We've refined our component recommendations based on real-world performance testing and customer feedback.
             </p>
             
             <h2>Best Gaming PC Components for 2025 (Under $1500)</h2>

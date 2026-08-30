@@ -124,7 +124,7 @@ const XboxHDMIRepairGuide = () => {
             <h3>Common Causes of HDMI Port Damage</h3>
             
             <p>
-              Based on hundreds of Xbox repairs we've performed for Charlotte gamers, here are the most common causes of HDMI port damage:
+              Based on the Xbox repairs we've performed for Charlotte gamers, here are the most common causes of HDMI port damage:
             </p>
             
             <ul>

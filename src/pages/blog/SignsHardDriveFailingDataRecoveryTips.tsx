@@ -280,7 +280,7 @@ const SignsHardDriveFailingDataRecoveryTips = () => {
             </ul>
             
             <p>
-              In the Charlotte metro area, including Matthews, Mint Hill, and Indian Trail, KorTech Service offers professional data recovery services with a high success rate for all types of drive failures.
+              In the Charlotte metro area, including Matthews, Mint Hill, and Indian Trail, KorTech Service offers professional data recovery services for all types of drive failures. Recoverability depends on the device's condition, the type of failure, whether any prior recovery attempts were made, continued use after the failure, and the extent of any media damage.
             </p>
             
             <h2>Data Recovery Options in Charlotte</h2>

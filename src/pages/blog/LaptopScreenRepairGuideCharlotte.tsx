@@ -106,7 +106,7 @@ const LaptopScreenRepairGuideCharlotte = () => {
             <h2>Common Laptop Screen Problems in Charlotte</h2>
             
             <p>
-              Based on thousands of laptop repairs we've performed for Charlotte residents, here are the most common screen issues we encounter:
+              Based on the laptop repairs we've performed for Charlotte residents, here are the most common screen issues we encounter:
             </p>
             
             <h3>1. Physical Damage</h3>

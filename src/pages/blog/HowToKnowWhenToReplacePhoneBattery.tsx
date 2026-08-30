@@ -110,7 +110,7 @@ const HowToKnowWhenToReplacePhoneBattery = () => {
             </p>
             
             <p>
-              In Charlotte, we see hundreds of customers each month with battery issues across all phone models - from the latest iPhones to Samsung Galaxy devices and everything in between. The good news? Battery replacement is typically a quick, affordable repair that can breathe new life into your device.
+              In Charlotte, we regularly see customers with battery issues across all phone models - from the latest iPhones to Samsung Galaxy devices and everything in between. The good news? Battery replacement is typically a quick, affordable repair that can breathe new life into your device.
             </p>
             
             <h2>7 Warning Signs You Need a New Phone Battery</h2>
