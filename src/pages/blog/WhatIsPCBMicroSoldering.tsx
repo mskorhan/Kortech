@@ -89,7 +89,7 @@ const WhatIsPCBMicroSoldering = () => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             <p className="lead text-xl text-slate-700">
-              When your smartphone, laptop, or gaming console has a serious problem that standard repairs can't fix, PCB-level micro-soldering might be the solution. This specialized repair technique can save devices that would otherwise be considered beyond repair, potentially saving you hundreds or even thousands of dollars in replacement costs.
+              When your smartphone, laptop, or gaming console has a serious problem that standard repairs can't fix, PCB-level micro-soldering might be the solution. This specialized repair technique can save devices that would otherwise be considered beyond repair, and can cost significantly less than replacing the entire device or board.
             </p>
             
             <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-100 my-8">
@@ -217,7 +217,7 @@ const WhatIsPCBMicroSoldering = () => {
             </ul>
             
             <p>
-              For many high-end smartphones, laptops, and gaming consoles, micro-soldering repairs can save hundreds of dollars compared to replacement costs.
+              For many high-end smartphones, laptops, and gaming consoles, micro-soldering repairs may be more cost-effective than full replacement.
             </p>
             
             <h2>Devices That Benefit From Micro-Soldering</h2>
