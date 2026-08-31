@@ -419,7 +419,7 @@ export default function Home() {
           <div className="space-responsive">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 border border-white/20 float tech-border">
               <Gift className="h-5 w-5 text-yellow-400" />
-              <span className="text-white font-medium text-sm sm:text-base md:text-lg">Ready to Get Started? Diagnostic Fee Waived With Repair!</span>
+              <span className="text-white font-medium text-sm sm:text-base md:text-lg">Ready to Get Started? Diagnostic Fee Waived With Hardware Repair!</span>
             </div>
 
             <h2 className="text-responsive-lg font-bold leading-tight">
