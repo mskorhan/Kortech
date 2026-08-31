@@ -219,7 +219,7 @@ const SSDUpgradesForLaptops2025 = () => {
             </ul>
             
             <p>
-              Our Charlotte technicians have performed thousands of SSD upgrades on laptops from all major manufacturers including Dell, HP, Lenovo, ASUS, Acer, and Apple MacBooks. Most installations are completed within 2-3 hours.
+              Our Charlotte technicians regularly perform SSD upgrades on laptops from all major manufacturers including Dell, HP, Lenovo, ASUS, Acer, and Apple MacBooks. Most installations are completed within 2-3 hours.
             </p>
             
             <h3>DIY Installation</h3>

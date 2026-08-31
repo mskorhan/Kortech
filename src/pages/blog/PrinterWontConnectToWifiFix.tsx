@@ -194,7 +194,7 @@ const PrinterWontConnectToWifiFix = () => {
             <div className="bg-cyan-50 rounded-xl p-6 border border-cyan-100 my-8">
               <h3 className="text-xl font-bold text-cyan-800 mb-4">Still Having Printer or Network Issues?</h3>
               <p className="text-cyan-700 mb-4">
-                Our technicians provide professional printer and router repair, network troubleshooting, and setup for homes and businesses in Charlotte. Free diagnostics available!
+                Our technicians provide professional printer and router repair, network troubleshooting, and setup for homes and businesses in Charlotte.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a

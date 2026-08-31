@@ -232,7 +232,7 @@ const HowToFixBrokenPS5HDMIPort = () => {
             <h2>Professional PS5 HDMI Port Repair in Charlotte</h2>
             
             <p>
-              At KorTech Service in Charlotte, we specialize in PS5 HDMI port repairs. Our technicians have repaired hundreds of gaming consoles with HDMI issues, with a success rate over 95%. The repair typically costs $149-$199 (significantly less than console replacement) and includes:
+              At KorTech Service in Charlotte, we specialize in PS5 HDMI port repairs and other gaming console HDMI issues. The repair typically costs $149-$199 (significantly less than console replacement) and includes:
             </p>
             
             <ul>
@@ -249,7 +249,7 @@ const HowToFixBrokenPS5HDMIPort = () => {
             <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 my-8">
               <h3 className="text-xl font-bold text-blue-800 mb-4">Need PS5 HDMI Port Repair in Charlotte?</h3>
               <p className="text-blue-700 mb-4">
-                Our expert technicians can fix your PS5 HDMI port quickly and affordably. Free diagnostics available!
+                Our expert technicians can fix your PS5 HDMI port quickly and affordably. Diagnostic Fee Waived With Hardware Repair.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -272,7 +272,7 @@ const HowToFixBrokenPS5HDMIPort = () => {
             <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 my-8">
               <h3 className="text-xl font-bold text-blue-800 mb-4">Need PS5 HDMI Port Repair in Charlotte?</h3>
               <p className="text-blue-700 mb-4">
-                Our expert technicians can fix your PS5 HDMI port quickly and affordably. Free diagnostics available!
+                Our expert technicians can fix your PS5 HDMI port quickly and affordably. Diagnostic Fee Waived With Hardware Repair.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a

@@ -31,7 +31,7 @@ const Footer = () => {
             </div>
             <p className="text-slate-200 text-sm leading-relaxed font-light">
               Professional Mac & PC repair, data recovery, mobile device repair,
-             and IT support in Charlotte, NC since 1998. Serving 100,000+ customers.
+             and IT support in Charlotte, NC since 1998.
             </p>
           </div>
 

@@ -196,7 +196,7 @@ const StepsToRemoveVirusFromWindowsPC = () => {
             </ul>
             
             <p>
-              These tools can often catch malware that your primary antivirus missed. We've successfully used these tools to clean hundreds of infected computers in Indian Trail and surrounding areas.
+              These tools can often catch malware that your primary antivirus missed. We regularly use these tools to clean infected computers in Indian Trail and surrounding areas.
             </p>
             
             <h2>Step 3: Remove Malicious Programs</h2>

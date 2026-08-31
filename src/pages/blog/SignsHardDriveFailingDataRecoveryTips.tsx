@@ -280,7 +280,7 @@ const SignsHardDriveFailingDataRecoveryTips = () => {
             </ul>
             
             <p>
-              In the Charlotte metro area, including Matthews, Mint Hill, and Indian Trail, KorTech Service offers professional data recovery services with a high success rate for all types of drive failures.
+              In the Charlotte metro area, including Matthews, Mint Hill, and Indian Trail, KorTech Service offers professional data recovery services for all types of drive failures. Recoverability depends on the device's condition, the type of failure, whether any prior recovery attempts were made, continued use after the failure, and the extent of any media damage.
             </p>
             
             <h2>Data Recovery Options in Charlotte</h2>
@@ -330,17 +330,18 @@ const SignsHardDriveFailingDataRecoveryTips = () => {
               </div>
             </div>
             
-            <h2>Data Recovery Success Rates</h2>
-            
+            <h2>What Affects Recovery Likelihood</h2>
+
             <p>
-              Based on our experience with thousands of data recovery cases in Charlotte:
+              There's no single success rate we can quote — recovery likelihood depends on several factors specific to your drive:
             </p>
-            
+
             <ul>
-              <li><strong>Logical failures:</strong> 90-95% success rate</li>
-              <li><strong>Minor mechanical issues:</strong> 80-90% success rate</li>
-              <li><strong>Severe mechanical damage:</strong> 50-70% success rate</li>
-              <li><strong>Fire or water damage:</strong> 30-60% success rate</li>
+              <li><strong>Failure type:</strong> logical failures (accidental deletion, corruption) are generally more recoverable than physical/mechanical failures</li>
+              <li><strong>Physical condition:</strong> the extent of any mechanical or media damage to the drive itself</li>
+              <li><strong>Prior recovery attempts:</strong> DIY software or other services attempted before ours can reduce what's recoverable</li>
+              <li><strong>Continued device use:</strong> continuing to use a failing drive can overwrite recoverable data</li>
+              <li><strong>Media damage:</strong> fire, water, or physical trauma to the storage media itself</li>
             </ul>
             
             <p>
@@ -373,7 +374,7 @@ const SignsHardDriveFailingDataRecoveryTips = () => {
             <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 my-8">
               <h3 className="text-xl font-bold text-blue-800 mb-4">Need Data Recovery in Charlotte?</h3>
               <p className="text-blue-700 mb-4">
-                Our expert technicians provide professional data recovery services with a 95% success rate. Free evaluation and no-recovery, no-fee guarantee!
+                Our expert technicians provide professional data recovery services with an honest assessment of what's recoverable before you commit to service.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -467,7 +468,7 @@ const SignsHardDriveFailingDataRecoveryTips = () => {
             Need Data Recovery in Charlotte?
           </h2>
           <p className="text-xl text-red-100 mb-8">
-            Our expert technicians provide professional data recovery services with a 95% success rate. Serving Charlotte, Matthews, Mint Hill, Indian Trail, and surrounding areas.
+            Our expert technicians provide professional data recovery services. Serving Charlotte, Matthews, Mint Hill, Indian Trail, and surrounding areas.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

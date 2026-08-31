@@ -106,7 +106,7 @@ const LaptopScreenRepairGuideCharlotte = () => {
             <h2>Common Laptop Screen Problems in Charlotte</h2>
             
             <p>
-              Based on thousands of laptop repairs we've performed for Charlotte residents, here are the most common screen issues we encounter:
+              Based on the laptop repairs we've performed for Charlotte residents, here are the most common screen issues we encounter:
             </p>
             
             <h3>1. Physical Damage</h3>
@@ -332,7 +332,7 @@ const LaptopScreenRepairGuideCharlotte = () => {
             </ol>
             
             <p>
-              Most reputable repair shops in Charlotte will also back their work with a warranty on both parts and labor, typically ranging from 30 to 90 days.
+              When comparing repair shops, ask whether they provide a written warranty on parts and workmanship and review the coverage terms before authorizing repair.
             </p>
             
             <h2>Preventing Future Screen Damage</h2>

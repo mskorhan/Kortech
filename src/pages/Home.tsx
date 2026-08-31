@@ -85,7 +85,7 @@ export default function Home() {
     {
       icon: HardDrive,
       title: "Data Recovery",
-      description: "Professional data recovery with 95% success rate",
+      description: "Professional data recovery for failed drives and lost files",
       features: ["Hard drive recovery", "File restoration", "Backup solutions"],
       gradient: "from-purple-500 to-pink-500",
       price: "Call/Text For Quote"
@@ -110,9 +110,9 @@ export default function Home() {
 
   const stats = [
     { number: "25+", label: "Years Experience", icon: Award },
-    { number: "100K+", label: "Customers Served", icon: Users },
-    { number: "4.8★", label: "Google Rating", icon: Star },
-    { number: "95%", label: "Success Rate", icon: Target }
+    { number: totalReviews ? `${totalReviews}` : "—", label: "Google Reviews", icon: Users },
+    { number: rating ? `${rating}★` : "—", label: "Google Rating", icon: Star },
+    { number: "Since 1998", label: "In Charlotte", icon: Target }
   ];
 
   return (
@@ -208,7 +208,7 @@ export default function Home() {
                     </div>
                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-4">Expert Computer Solutions</h3>
                     <p className="text-slate-600 text-base sm:text-lg md:text-xl">
-                      Trusted by 100,000+ Charlotte & Matthews customers since 1998
+                      Trusted by Charlotte & Matthews customers since 1998
                     </p>
                   </div>
 
@@ -419,7 +419,7 @@ export default function Home() {
           <div className="space-responsive">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 border border-white/20 float tech-border">
               <Gift className="h-5 w-5 text-yellow-400" />
-              <span className="text-white font-medium text-sm sm:text-base md:text-lg">Ready to Get Started? Diagnostic Fee Waived With Repair!</span>
+              <span className="text-white font-medium text-sm sm:text-base md:text-lg">Ready to Get Started? Diagnostic Fee Waived With Hardware Repair!</span>
             </div>
 
             <h2 className="text-responsive-lg font-bold leading-tight">

@@ -369,8 +369,8 @@ const Pricing = () => {
               <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Users className="h-8 w-8 text-green-600" />
               </div>
-              <div className="text-3xl font-bold text-green-700 mb-2">100,000+</div>
-              <div className="text-green-600 font-medium">Happy Customers</div>
+              <div className="text-3xl font-bold text-green-700 mb-2">Since 1998</div>
+              <div className="text-green-600 font-medium">Serving Charlotte</div>
             </div>
 
             <div className="bg-white rounded-3xl p-8 text-center shadow-lg">

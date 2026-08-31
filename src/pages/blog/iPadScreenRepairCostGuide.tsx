@@ -98,7 +98,7 @@ const IPadScreenRepairCostGuide = () => {
                 Quick Summary
               </h2>
               <p className="text-purple-700 mb-0">
-                Tablet and iPad screen repair typically costs less than replacing the device outright, but pricing varies significantly by model and damage type. Getting a free diagnostic before assuming the worst is the best way to know your actual repair cost and options.
+                Tablet and iPad screen repair typically costs less than replacing the device outright, but pricing varies significantly by model and damage type. Getting a diagnostic before assuming the worst is the best way to know your actual repair cost and options — the diagnostic fee is waived if you proceed with the hardware repair.
               </p>
             </div>
 
@@ -150,7 +150,7 @@ const IPadScreenRepairCostGuide = () => {
             </ul>
 
             <p>
-              A free diagnostic is the fastest way to get real numbers instead of guessing — a shop can confirm whether it's glass-only, full display, or if there's additional internal damage before you commit to a repair.
+              A diagnostic is the fastest way to get real numbers instead of guessing — a shop can confirm whether it's glass-only, full display, or if there's additional internal damage before you commit to a repair, and the diagnostic fee is typically waived if you proceed with the hardware repair.
             </p>
 
             <div className="bg-red-50 rounded-xl p-6 border border-red-100 my-4">
@@ -192,7 +192,7 @@ const IPadScreenRepairCostGuide = () => {
             <div className="bg-purple-50 rounded-xl p-6 border border-purple-100 my-8">
               <h3 className="text-xl font-bold text-purple-800 mb-4">Need Tablet or iPad Screen Repair in Charlotte?</h3>
               <p className="text-purple-700 mb-4">
-                Our technicians repair cracked screens for iPad, Samsung Galaxy Tab, Microsoft Surface, and more. Free diagnostics and same-day service available for most models.
+                Our technicians repair cracked screens for iPad, Samsung Galaxy Tab, Microsoft Surface, and more. Diagnostic Fee Waived With Hardware Repair — same-day service available for most models.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a

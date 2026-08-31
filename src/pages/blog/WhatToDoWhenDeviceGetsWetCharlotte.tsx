@@ -170,7 +170,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
             <h2>How Long Does It Take, and What Does It Cost?</h2>
 
             <p>
-              Water damage repairs typically take 2-5 business days, since proper cleaning and drying can't be rushed if you want a reliable result. Every water damage repair starts with a free diagnostic, so you'll know exactly what's involved and what it costs before any work begins — there's no guessing or surprise bill. We also stand behind the parts we install with a 14-day limited warranty covering manufacturing defects (this doesn't cover a repeat liquid or drop incident, for obvious reasons).
+              Water damage repairs typically take 2-5 business days, since proper cleaning and drying can't be rushed if you want a reliable result. Every water damage repair starts with a diagnostic, so you'll know exactly what's involved and what it costs before any work begins — the diagnostic fee is waived if you proceed with the hardware repair, so there's no guessing or surprise bill. We also stand behind the parts we install with a 14-day limited warranty covering manufacturing defects (this doesn't cover a repeat liquid or drop incident, for obvious reasons).
             </p>
 
             <div className="bg-green-50 rounded-xl p-6 border border-green-100 my-8">
@@ -183,7 +183,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
                 <li>Don't charge it, don't heat it, don't shake it.</li>
                 <li>Get it to a repair shop within 24 hours if at all possible.</li>
                 <li>The type of liquid affects urgency — salt water and sugary drinks are more time-sensitive than plain water.</li>
-                <li>A free diagnostic will tell you exactly what's recoverable before you spend anything.</li>
+                <li>A diagnostic will tell you exactly what's recoverable before you spend anything — the fee is waived if you proceed with the hardware repair.</li>
               </ul>
             </div>
 
@@ -196,7 +196,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
             <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 my-8">
               <h3 className="text-xl font-bold text-blue-800 mb-4">Just Had a Water Damage Emergency?</h3>
               <p className="text-blue-700 mb-4">
-                Power off your device now and bring it in for a free diagnostic. Time matters — the sooner we see it, the better your chances of a full recovery.
+                Power off your device now and bring it in for a diagnostic — the fee is waived if you proceed with the hardware repair. Time matters — the sooner we see it, the better your chances of a full recovery.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -290,7 +290,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
             Water Damaged Device? Don't Wait.
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Free diagnostics, fast turnaround, and technicians who see this every week in Charlotte, Matthews, Mint Hill, and Indian Trail.
+            Diagnostic Fee Waived With Hardware Repair, fast turnaround, and technicians who see this every week in Charlotte, Matthews, Mint Hill, and Indian Trail.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
