@@ -100,20 +100,22 @@ RewriteRule ^ index.html [L]
 </IfModule>
 
 # ------------------------------------------
-# ✅ Cache-Control Headers & Preloads
+# ✅ Cache-Control Headers
 # ------------------------------------------
+# Note: no Header add Link preload here. Vite content-hashes every JS/CSS
+# filename per build, so a static Link header naming one fixed filename
+# (e.g. /assets/js/index.js) always points at a file that doesn't exist —
+# it can never match the current hash. That caused every real asset
+# response to also trigger a browser preload request for a permanently
+# 404'ing legacy path. The correct per-page hashed preloads/preconnects
+# already come from the prerendered <link rel="modulepreload">/<link
+# rel="stylesheet"> tags in each page's own <head>.
 <IfModule mod_headers.c>
   <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|css|js|woff|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   <FilesMatch "\.(html)$">
     Header set Cache-Control "public, max-age=3600"
-  </FilesMatch>
-  <FilesMatch "\.(css)$">
-    Header add Link "</assets/css/index.css>; rel=preload; as=style"
-  </FilesMatch>
-  <FilesMatch "\.(js)$">
-    Header add Link "</assets/js/index.js>; rel=preload; as=script"
   </FilesMatch>
 </IfModule>
 
