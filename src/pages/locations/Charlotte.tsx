@@ -63,7 +63,7 @@ const Charlotte = () => {
     },
     {
       question: "How much does computer repair cost in Charlotte?",
-      answer: "Computer repair costs in Charlotte vary based on the issue. We provide free diagnostics ($75-$150 value, waived with repair) and transparent pricing before any work begins."
+      answer: "Computer repair costs in Charlotte vary based on the issue. We provide diagnostics with a $75-$150 fee, waived when you proceed with hardware repair, and transparent pricing before any work begins."
     },
     {
       question: "Do you offer pickup and delivery in Charlotte?",
