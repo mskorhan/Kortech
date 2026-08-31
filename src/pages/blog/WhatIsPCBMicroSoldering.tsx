@@ -276,7 +276,7 @@ const WhatIsPCBMicroSoldering = () => {
             <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-100 my-8">
               <h3 className="text-xl font-bold text-indigo-800 mb-4">Need Professional Micro-Soldering in Charlotte?</h3>
               <p className="text-indigo-700 mb-4">
-                Our expert technicians provide precision micro-soldering repairs for all electronic devices. Free diagnostics available!
+                Our expert technicians provide precision micro-soldering repairs for all electronic devices. Diagnostic Fee Waived With Hardware Repair.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a

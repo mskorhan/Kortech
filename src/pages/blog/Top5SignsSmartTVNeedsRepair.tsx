@@ -317,13 +317,13 @@ const Top5SignsSmartTVNeedsRepair = () => {
             </p>
             
             <p>
-              In Charlotte, our team at KorTech Service specializes in smart TV repair, from simple fixes to complex board-level repairs. We provide free diagnostics and transparent quotes to help you make the best decision for your situation.
+              In Charlotte, our team at KorTech Service specializes in smart TV repair, from simple fixes to complex board-level repairs. The diagnostic fee is waived if you proceed with the hardware repair, and we provide transparent quotes to help you make the best decision for your situation.
             </p>
             
             <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 my-8">
               <h3 className="text-xl font-bold text-blue-800 mb-4">Need Smart TV Repair in Charlotte?</h3>
               <p className="text-blue-700 mb-4">
-                Our expert technicians provide professional TV repair services for all major brands. Free diagnostics available!
+                Our expert technicians provide professional TV repair services for all major brands. Diagnostic Fee Waived With Hardware Repair.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
