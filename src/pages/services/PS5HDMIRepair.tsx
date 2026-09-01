@@ -58,9 +58,6 @@ const PS5HDMIRepair = () => {
       "areaServed": "Charlotte, NC",
       "offers": {
         "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "InStock",
         "description": "Diagnostic fee waived with hardware repair — Professional PS5 HDMI port repair service. A detailed quote is provided before any repair work begins."
       }
     },

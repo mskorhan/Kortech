@@ -59,9 +59,6 @@ const DataRecovery = () => {
       "areaServed": "Charlotte, NC",
       "offers": {
         "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "InStock",
         "description": "Professional data recovery services. A detailed quote is provided before any repair work begins."
       }
     }
@@ -242,9 +239,58 @@ const DataRecovery = () => {
         </div>
       </section>
 
+      {/* Diagnostic Process */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-slate-800 mb-4">
+              What a Data Recovery Diagnostic Evaluates
+            </h2>
+            <p className="text-lg text-slate-600">
+              General factors that shape a data recovery case
+            </p>
+          </div>
+
+          <ol className="space-y-6">
+            <li className="flex gap-4">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-700 font-bold flex items-center justify-center">1</span>
+              <div>
+                <h3 className="font-bold text-slate-800 mb-1">Physical vs. Logical Failure</h3>
+                <p className="text-slate-600">A data recovery diagnostic distinguishes physical damage (clicking, grinding, burnt components) from logical failure (corruption, accidental deletion, formatting) — the type of failure determines which recovery approach applies.</p>
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-700 font-bold flex items-center justify-center">2</span>
+              <div>
+                <h3 className="font-bold text-slate-800 mb-1">Readability</h3>
+                <p className="text-slate-600">A drive that still powers on and is readable may be evaluated with diagnostic and recovery software to identify what data can be recovered.</p>
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-700 font-bold flex items-center justify-center">3</span>
+              <div>
+                <h3 className="font-bold text-slate-800 mb-1">Recovery Likelihood</h3>
+                <p className="text-slate-600">Recovery likelihood depends on the failure type, the physical condition of the media, whether the device kept being used after symptoms started, and whether any recovery attempts have already been made.</p>
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-700 font-bold flex items-center justify-center">4</span>
+              <div>
+                <h3 className="font-bold text-slate-800 mb-1">Quote Before Work</h3>
+                <p className="text-slate-600">Customers receive a quote before any recovery work begins.</p>
+              </div>
+            </li>
+          </ol>
+
+          <p className="text-sm text-slate-500 mt-8">
+            General guidance for a failing drive: if you notice clicking, grinding, or repeated boot failures, powering it off and avoiding continued use can help preserve recovery options. Continued use can reduce recovery options.
+          </p>
+        </div>
+      </section>
+
       {/* Service CTA */}
-      <ServiceCTA 
-        service="Data Recovery" 
+      <ServiceCTA
+        service="Data Recovery"
         price="Call/Text For Quote"
         urgentText="Emergency Data Recovery Available"
       />

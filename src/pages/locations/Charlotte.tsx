@@ -89,9 +89,16 @@ const Charlotte = () => {
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "35.2271",
-        "longitude": "-80.8431"
+        "latitude": "35.14047",
+        "longitude": "-80.7400749"
       },
+      "foundingDate": "1998",
+      "sameAs": [
+        "https://g.page/kortechservice",
+        "https://www.facebook.com/KortechService/",
+        "https://www.instagram.com/kortechservices",
+        "https://www.linkedin.com/company/kortechservice"
+      ],
       "areaServed": [
         {
           "@type": "City",

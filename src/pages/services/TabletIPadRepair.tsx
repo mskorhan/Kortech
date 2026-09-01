@@ -59,9 +59,6 @@ const TabletIPadRepair = () => {
       "areaServed": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Monroe, NC"],
       "offers": {
         "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "InStock",
         "description": "Diagnostic fee waived with hardware repair — Professional tablet and iPad repair services. A detailed quote is provided before any repair work begins."
       }
     },
