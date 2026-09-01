@@ -27,8 +27,9 @@ const FAQSection: React.FC<FAQSectionProps> = ({
   // The Q&A pairs rendered below are real, page-authored content, so
   // marking them up as FAQPage is a genuine representation of what's on
   // the page (not the invented/fake FAQ markup the SEO guidelines warn
-  // against) - it lets Google/Bing rich results and AI answer engines
-  // extract and cite these answers directly.
+  // against). Google discontinued FAQ rich results in Google Search in
+  // May 2026, so this no longer produces a Google rich result - it's kept
+  // as valid semantic markup for other search/AI systems that consume it.
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -43,7 +44,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
   };
 
   return (
-    <section className="py-16 bg-slate-50" id={schemaId} itemScope itemType="https://schema.org/FAQPage">
+    <section className="py-16 bg-slate-50" id={schemaId}>
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
@@ -60,9 +61,6 @@ const FAQSection: React.FC<FAQSectionProps> = ({
             <div
               key={index}
               className="bg-white rounded-xl border border-slate-200 overflow-hidden"
-              itemScope
-              itemProp="mainEntity"
-              itemType="https://schema.org/Question"
             >
               <button
                 className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors"
@@ -70,7 +68,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-answer-${index}`}
               >
-                <h3 className="font-semibold text-slate-800 pr-4" itemProp="name">
+                <h3 className="font-semibold text-slate-800 pr-4">
                   {faq.question}
                 </h3>
                 {openIndex === index ? (
@@ -79,20 +77,16 @@ const FAQSection: React.FC<FAQSectionProps> = ({
                   <ChevronDown className="h-5 w-5 text-slate-500 flex-shrink-0" />
                 )}
               </button>
-              
-              {openIndex === index && (
-                <div 
-                  className="px-6 pb-4" 
-                  id={`faq-answer-${index}`}
-                  itemScope
-                  itemProp="acceptedAnswer"
-                  itemType="https://schema.org/Answer"
-                >
-                  <div className="text-slate-600 leading-relaxed" itemProp="text">
-                    {faq.answer}
-                  </div>
+
+              <div
+                className="px-6 pb-4"
+                id={`faq-answer-${index}`}
+                hidden={openIndex !== index}
+              >
+                <div className="text-slate-600 leading-relaxed">
+                  {faq.answer}
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

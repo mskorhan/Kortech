@@ -38,3 +38,11 @@ jobs:
           password: ${{ secrets.BLUEHOST_FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: ${{ secrets.BLUEHOST_FTP_REMOTE_DIR }}
+
+      - name: Notify IndexNow (Bing) of updated URLs
+        # Best-effort, runs only after a successful FTP deploy. A temporary
+        # IndexNow/network/cache-propagation issue must not fail an
+        # otherwise-successful deployment - the script retries with
+        # backoff internally, and any residual failure here only emits a
+        # workflow warning rather than failing the job.
+        run: node scripts/indexnow-ping.mjs || echo "::warning::IndexNow notification failed after retries; website deploy still succeeded. Run 'npm run indexnow-ping' manually to retry."
