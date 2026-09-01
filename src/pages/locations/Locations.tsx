@@ -120,6 +120,13 @@ const Locations = () => {
         "telephone": "704-246-7642",
         "contactType": "customer service"
       },
+      "foundingDate": "1998",
+      "sameAs": [
+        "https://g.page/kortechservice",
+        "https://www.facebook.com/KortechService/",
+        "https://www.instagram.com/kortechservices",
+        "https://www.linkedin.com/company/kortechservice"
+      ],
       "location": {
         "@type": "Place",
         "name": "KorTech Service",
@@ -133,8 +140,8 @@ const Locations = () => {
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": "35.2271",
-          "longitude": "-80.8431"
+          "latitude": "35.14047",
+          "longitude": "-80.7400749"
         }
       },
       "areaServed": locations.map((location) => ({

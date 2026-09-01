@@ -16,7 +16,8 @@
     "generate-sitemap": "node scripts/generate-sitemap.mjs",
     "prerender": "node scripts/prerender.mjs",
     "validate-seo": "node scripts/validate-seo.mjs",
-    "check-internal-links": "node scripts/check-dist-internal-links.mjs"
+    "check-internal-links": "node scripts/check-dist-internal-links.mjs",
+    "indexnow-ping": "node scripts/indexnow-ping.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",

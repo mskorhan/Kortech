@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 export interface FAQ {
@@ -12,8 +13,8 @@ interface FAQSectionProps {
   schemaId?: string;
 }
 
-const FAQSection: React.FC<FAQSectionProps> = ({ 
-  faqs, 
+const FAQSection: React.FC<FAQSectionProps> = ({
+  faqs,
   title = "Frequently Asked Questions",
   schemaId = "faq-section"
 }) => {
@@ -23,8 +24,29 @@ const FAQSection: React.FC<FAQSectionProps> = ({
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  // The Q&A pairs rendered below are real, page-authored content, so
+  // marking them up as FAQPage is a genuine representation of what's on
+  // the page (not the invented/fake FAQ markup the SEO guidelines warn
+  // against) - it lets Google/Bing rich results and AI answer engines
+  // extract and cite these answers directly.
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
-    <section className="py-16 bg-slate-50" id={schemaId}>
+    <section className="py-16 bg-slate-50" id={schemaId} itemScope itemType="https://schema.org/FAQPage">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">{title}</h2>
@@ -32,7 +54,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
             Common questions about our repair services
           </p>
         </div>
-        
+
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div

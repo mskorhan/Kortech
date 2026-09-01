@@ -59,9 +59,6 @@ const LaptopRepair = () => {
       "areaServed": ["Charlotte, NC", "Matthews, NC", "Mint Hill, NC", "Pineville, NC", "Ballantyne, NC"],
       "offers": {
         "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "InStock",
         "description": "Diagnostic fee waived with hardware repair — Professional laptop repair services. A detailed quote is provided before any repair work begins."
       }
     }

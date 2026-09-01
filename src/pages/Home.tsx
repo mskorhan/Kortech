@@ -47,9 +47,16 @@ export default function Home() {
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "35.1495",
-        "longitude": "-80.8414"
+        "latitude": "35.14047",
+        "longitude": "-80.7400749"
       },
+      "foundingDate": "1998",
+      "sameAs": [
+        "https://g.page/kortechservice",
+        "https://www.facebook.com/KortechService/",
+        "https://www.instagram.com/kortechservices",
+        "https://www.linkedin.com/company/kortechservice"
+      ],
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",

@@ -59,9 +59,6 @@ const DataRecovery = () => {
       "areaServed": "Charlotte, NC",
       "offers": {
         "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "InStock",
         "description": "Professional data recovery services. A detailed quote is provided before any repair work begins."
       }
     }
@@ -242,9 +239,58 @@ const DataRecovery = () => {
         </div>
       </section>
 
+      {/* Diagnostic Process */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-slate-800 mb-4">
+              How Our Data Recovery Diagnostic Works
+            </h2>
+            <p className="text-lg text-slate-600">
+              What to expect when you bring in a failed or inaccessible drive
+            </p>
+          </div>
+
+          <ol className="space-y-6">
+            <li className="flex gap-4">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-700 font-bold flex items-center justify-center">1</span>
+              <div>
+                <h3 className="font-bold text-slate-800 mb-1">Initial Assessment</h3>
+                <p className="text-slate-600">We inspect the drive for physical damage (clicking, grinding, burnt components) versus logical failure (corruption, accidental deletion, formatting) — the type of failure determines which recovery approach applies.</p>
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-700 font-bold flex items-center justify-center">2</span>
+              <div>
+                <h3 className="font-bold text-slate-800 mb-1">Diagnostic Scan</h3>
+                <p className="text-slate-600">For drives that power on and are readable, we run recovery software to scan for and identify recoverable files before any recovery work begins.</p>
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-700 font-bold flex items-center justify-center">3</span>
+              <div>
+                <h3 className="font-bold text-slate-800 mb-1">Honest Recovery Estimate</h3>
+                <p className="text-slate-600">Recovery likelihood isn't the same for every case — it depends on the failure type, how long the drive has been failing, and whether it was used after symptoms started. We tell you what we actually find, not a guaranteed outcome, before you commit to service.</p>
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-700 font-bold flex items-center justify-center">4</span>
+              <div>
+                <h3 className="font-bold text-slate-800 mb-1">Recovery & Transfer</h3>
+                <p className="text-slate-600">Recoverable files are copied to a destination drive of your choice. We do not modify or write to the original failing drive unless recovery specifically requires it.</p>
+              </div>
+            </li>
+          </ol>
+
+          <p className="text-sm text-slate-500 mt-8">
+            A general rule for a failing drive: the moment you notice clicking, grinding, or repeated boot failures, stop using it and power it off. Continued use after symptoms begin is one of the most common reasons recoverable data becomes unrecoverable.
+          </p>
+        </div>
+      </section>
+
       {/* Service CTA */}
-      <ServiceCTA 
-        service="Data Recovery" 
+      <ServiceCTA
+        service="Data Recovery"
         price="Call/Text For Quote"
         urgentText="Emergency Data Recovery Available"
       />

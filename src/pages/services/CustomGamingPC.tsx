@@ -56,9 +56,6 @@ const CustomGamingPC = () => {
       "areaServed": "Charlotte, NC",
       "offers": {
         "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "InStock",
         "description": "Professional custom gaming PC building service. A detailed quote is provided before any repair work begins."
       }
     }
