@@ -1,6 +1,7 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
+import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
   HardDrive,
   Shield,
@@ -46,6 +47,7 @@ const DataRecovery = () => {
       "description": "Professional data recovery services in Charlotte, NC. Recover lost data from failed hard drives, SSDs, and storage devices.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",
@@ -179,6 +181,43 @@ const DataRecovery = () => {
       </section>
 
       {/* Data Loss Scenarios */}
+      {/*
+        Direct-answer section - see the note on PS5HDMIRepair.tsx. The answer is
+        deliberately qualified: recoverability genuinely varies by case and this
+        page must not imply a success rate. No FAQPage/HowTo/Speakable markup.
+      */}
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-800 mb-4">
+            Can data be recovered from a clicking hard drive?
+          </h2>
+          <p className="text-lg text-slate-700 leading-relaxed mb-6">
+            Sometimes, but a clicking drive is the case where what you do next matters most.
+            Clicking usually means the read/write heads are failing to position correctly and
+            are repeatedly resetting - a mechanical fault inside the sealed drive, not a
+            software one. Whether the data can be retrieved depends on how far the mechanism
+            has degraded and whether the platters that hold the data have been damaged. A
+            drive that has clicked for a few seconds is in a different position from one that
+            has been powered on repeatedly over days.
+          </p>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            <strong>Stop using the drive.</strong> Every additional power-on cycle gives failing
+            heads another opportunity to contact the platter surface, and that kind of damage
+            is not reversible. Repeatedly retrying, running consumer recovery software against
+            a clicking drive, or leaving it connected and spinning all work against recovery
+            rather than toward it.
+          </p>
+          <p className="text-slate-600 leading-relaxed">
+            What that leaves is a diagnostic question rather than a software one: the drive
+            has to be evaluated to establish what is actually failing before anyone can say
+            what is recoverable. That evaluation is also where the honest answer sometimes
+            turns out to be that the data is not retrievable - which is worth knowing before
+            spending on it. The same applies to a drive that is not recognised at all, or that
+            spins up and immediately powers down.
+          </p>
+        </div>
+      </section>
+
       <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -297,6 +336,8 @@ const DataRecovery = () => {
 
       {/* FAQ Section */}
       <FAQSection faqs={faqs} title="Data Recovery FAQ" />
+
+      <ServiceAreaLinks serviceName="Data Recovery" />
 
       {/* Related Services */}
       <section className="py-16 bg-white">

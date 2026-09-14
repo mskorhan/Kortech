@@ -1,6 +1,7 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
+import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
   Laptop,
   Wrench,
@@ -46,6 +47,7 @@ const LaptopRepair = () => {
       "description": "Professional laptop repair services at our Charlotte, NC location. Screen replacement, keyboard repair, battery service, and comprehensive laptop repair for all brands.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",
@@ -171,6 +173,60 @@ const LaptopRepair = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/*
+        Direct-answer section - see the note on PS5HDMIRepair.tsx. Answers the
+        repair-vs-replace decision with the factors that actually drive it,
+        without quoting prices (this page deliberately quotes after diagnosis)
+        and without inventing turnaround times. No FAQPage/HowTo/Speakable.
+      */}
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-800 mb-4">
+            Is it worth repairing a cracked laptop screen?
+          </h2>
+          <p className="text-lg text-slate-700 leading-relaxed mb-6">
+            Usually yes, if the rest of the laptop is sound and you would otherwise keep using
+            it. A cracked screen is an isolated fault: the display panel is a replaceable part,
+            and replacing it does not touch your files, your installed software or the rest of
+            the hardware. Replacing the whole laptop means paying for a new machine and then
+            migrating everything onto it. The decision usually turns on the age and condition
+            of the machine rather than on the crack itself.
+          </p>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            The factors worth weighing:
+          </p>
+          <ul className="text-slate-600 leading-relaxed space-y-2 mb-4 list-disc pl-6">
+            <li>
+              <strong>Is the damage only the screen?</strong> If the laptop still runs normally
+              on an external monitor, the fault is contained. If it was dropped hard enough to
+              crack the screen, it is worth checking whether the hinges, chassis or internal
+              connections took damage too.
+            </li>
+            <li>
+              <strong>How old is the machine, and does it still do what you need?</strong> A
+              laptop that is otherwise fast enough for your work is worth a panel. One that was
+              already struggling before the crack is a different conversation.
+            </li>
+            <li>
+              <strong>Is the panel available?</strong> Screens for current and recent models are
+              generally straightforward. Older or unusual models can be harder to source, which
+              affects both cost and timing.
+            </li>
+            <li>
+              <strong>What is the replacement cost?</strong> The useful comparison is the repair
+              quote against what an equivalent replacement laptop would actually cost you - not
+              against what you originally paid.
+            </li>
+          </ul>
+          <p className="text-slate-600 leading-relaxed">
+            One practical note: a cracked screen that still displays an image tends to get
+            worse. Cracks spread, and pressure on a damaged panel can push it from a partial
+            fault to a dead display. If the data on the machine matters and the screen is
+            deteriorating, it is worth backing up before the display fails completely.
+          </p>
         </div>
       </section>
 
@@ -322,6 +378,8 @@ const LaptopRepair = () => {
 
       {/* FAQ Section */}
       <FAQSection faqs={faqs} title="Laptop Repair FAQ" />
+
+      <ServiceAreaLinks serviceName="Laptop Screen Repair" />
 
       {/* Related Services */}
       <section className="py-16 bg-white">

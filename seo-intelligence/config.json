@@ -1,0 +1,114 @@
+{
+  "business": {
+    "name": "KorTech Service",
+    "canonicalDomain": "https://www.kortechservice.com",
+    "gscProperty": "sc-domain:kortechservice.com",
+    "foundedYear": 1998,
+    "physicalLocations": [
+      {
+        "type": "shop",
+        "note": "The ONLY physical location. Every other city on the site is a service area, not a branch.",
+        "streetAddress": "1721 Sardis Rd N, Suite 7A",
+        "addressLocality": "Charlotte",
+        "addressRegion": "NC",
+        "postalCode": "28270",
+        "addressCountry": "US",
+        "geo": { "latitude": 35.14047, "longitude": -80.7400749 }
+      }
+    ],
+    "contact": {
+      "phone": "704-246-7642",
+      "sms": "980-888-5300",
+      "phoneFormatNote": "Always bare digits with dashes, no parentheses. Matches LOCAL_CITATIONS.md."
+    },
+    "hours": {
+      "monFri": "9AM-6PM",
+      "saturday": "11AM-4PM",
+      "sunday": "Closed"
+    },
+    "serviceAreas": [
+      "Charlotte", "Matthews", "Mint Hill", "Indian Trail", "Monroe",
+      "Pineville", "Ballantyne", "Waxhaw", "Weddington", "Stallings"
+    ],
+    "serviceAreaNote": "SERVICE AREAS ONLY. Never imply a branch, office, storefront, staff or address in any of these beyond Charlotte."
+  },
+
+  "leadGoals": {
+    "primary": ["phone calls", "SMS/text inquiries", "contact form submissions", "mail-in repair form submissions"],
+    "note": "Success is a contacted lead, not a pageview. Rank-and-CTR work should be judged against whether it plausibly produces calls/texts."
+  },
+
+  "serviceCategories": {
+    "computerLaptop": [
+      "laptop screen repair", "SSD upgrades", "no-power / dead machine",
+      "overheating", "virus & malware removal", "data recovery"
+    ],
+    "appleMobile": [
+      "smartphone screen repair", "tablet / iPad repair", "Mac / MacBook",
+      "charging port / USB-C", "liquid damage"
+    ],
+    "consoles": [
+      "PS5 HDMI repair", "Xbox HDMI repair", "Nintendo Switch repair",
+      "charging and video-output faults", "board-level console diagnostics"
+    ],
+    "boardLevel": [
+      "PCB repair", "microsoldering", "HDMI port replacement",
+      "USB-C port replacement", "power circuits", "corrosion / liquid damage"
+    ],
+    "businessIT": [
+      "workstation troubleshooting", "networking", "remote support",
+      "onsite IT", "backups and data protection"
+    ]
+  },
+
+  "constraints": {
+    "neverFabricate": [
+      "repair success rates", "customer counts", "response or turnaround times",
+      "drive times or mileages", "local reviews or testimonials",
+      "credentials, certifications or memberships", "diagnostic procedures",
+      "measurements", "branch locations", "neighbourhood or landmark specifics"
+    ],
+    "schemaPolicy": {
+      "aggregateRating": "NOT permitted in our own LocalBusiness/Organization schema. Google-sourced rating stays visible on-page with attribution only.",
+      "review": "No Review nodes in our own schema.",
+      "faqPage": "Google retired FAQ rich results in May 2026. Existing FAQPage JSON-LD is kept as semantic markup for other consumers - do not add more to chase Google rich results.",
+      "howTo": "Do not add to chase Google rich results.",
+      "speakable": "Do not add."
+    },
+    "contentPolicy": {
+      "wordCount": "No target. Google has no preferred word count. Length follows the question being answered.",
+      "keywordDensity": "No target.",
+      "filler": "Never add text purely to increase length."
+    },
+    "routingFreeze": {
+      "reason": "GSC validation for Soft 404 and Page with redirect restarted 2026-09-14 and is still recrawling.",
+      "doNotChangeWithoutProvenDefect": [
+        "redirect behaviour", "canonical architecture", "sitemap URL count (57)",
+        "404 architecture", ".htaccess known-routes whitelist"
+      ]
+    }
+  },
+
+  "dataSources": {
+    "gsc": {
+      "path": "data/gsc/",
+      "property": "sc-domain:kortechservice.com",
+      "role": "GROUND TRUTH. Real impressions/clicks/position for this site. Outranks any third-party estimate."
+    },
+    "ga4": { "path": "data/ga4/", "role": "Engagement and conversion context. Not yet populated." },
+    "semrush": { "path": "data/semrush/", "role": "Volume, KD, intent, competitor and backlink gap enrichment." },
+    "aiVisibility": {
+      "path": "data/ai-visibility/",
+      "role": "Semrush AI Visibility exports (manual drop-in).",
+      "expectedExports": [
+        "top-prompts.csv", "cited-sources.csv", "topic-opportunities.csv",
+        "competitor-ai-visibility.csv", "brand-mentions.csv", "prompt-level-rankings.csv"
+      ]
+    }
+  },
+
+  "meta": {
+    "createdAt": "2026-09-14",
+    "note": "Internal analytics workspace. Never deployed - dist/ is FTP-synced to production and this directory lies outside Vite's publicDir (verified with a canary file). Exported data files and any credentials are gitignored."
+  }
+}

@@ -43,6 +43,7 @@ const GraphicDesign = () => {
       "description": "Professional graphic design services in Charlotte, NC. Logo design, branding, print materials, digital graphics, and more for businesses of all sizes.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

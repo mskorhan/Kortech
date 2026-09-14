@@ -112,6 +112,7 @@ const Locations = () => {
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "https://www.kortechservice.com/#organization",
       "name": "KorTech Service",
       "url": "https://www.kortechservice.com/",
       "logo": "https://www.kortechservice.com/transparent-logo-1.png",

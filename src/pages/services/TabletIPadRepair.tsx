@@ -46,6 +46,7 @@ const TabletIPadRepair = () => {
       "description": "Professional tablet screen repair, iPad repair, and mobile device services in Charlotte, NC. Expert repair for iPad, Samsung Galaxy Tab, Surface, and all major tablet brands.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

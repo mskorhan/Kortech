@@ -1,6 +1,7 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
+import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
   Cpu,
   Zap,
@@ -47,6 +48,7 @@ const PCBMicroSoldering = () => {
       "description": "Professional PCB-level micro-soldering and electronics rework services in Charlotte, NC. Expert circuit board repair for smartphones, laptops, and electronic devices.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",
@@ -257,6 +259,8 @@ const PCBMicroSoldering = () => {
 
       {/* FAQ Section */}
       <FAQSection faqs={faqs} title="PCB Micro-Soldering FAQ" />
+
+      <ServiceAreaLinks serviceName="Board-Level Repair" />
 
       {/* Related Services */}
       <section className="py-16 bg-white">

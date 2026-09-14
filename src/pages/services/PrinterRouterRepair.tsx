@@ -45,6 +45,7 @@ const PrinterRouterRepair = () => {
       "description": "Professional printer repair and network troubleshooting services in Charlotte, NC. Expert router setup, Wi-Fi configuration, and printer maintenance.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

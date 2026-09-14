@@ -44,6 +44,7 @@ const SmartTVRepair = () => {
       "description": "Professional smart TV repair, television screen repair, and home theater services in Charlotte, NC. Expert repair for Samsung, LG, Sony, and all major TV brands.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

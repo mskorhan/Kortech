@@ -23,3 +23,16 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# SEO intelligence workspace - internal analytics only.
+# Never deploy: dist/ is FTP-synced to production, and this holds exported
+# analytics plus any credentials used to fetch it.
+seo-intelligence/data/**/*.csv
+seo-intelligence/data/**/*.tsv
+seo-intelligence/data/**/*.xlsx
+seo-intelligence/data/**/*.zip
+seo-intelligence/**/credentials*.json
+seo-intelligence/**/service-account*.json
+seo-intelligence/**/*secret*
+seo-intelligence/**/*token*
+seo-intelligence/**/.env*

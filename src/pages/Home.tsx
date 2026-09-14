@@ -32,6 +32,7 @@ export default function Home() {
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
+      "@id": "https://www.kortechservice.com/#organization",
       "name": "KorTech Service",
       "description": "Professional computer repair, Mac & PC repair, virus removal, data recovery, and IT support in Charlotte, Matthews, Indian Trail, Mint Hill & surrounding areas. Call 704-246-7642 — diagnostic fee waived with hardware repair!",
       "url": "https://www.kortechservice.com/",

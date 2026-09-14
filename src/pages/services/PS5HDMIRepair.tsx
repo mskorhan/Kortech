@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
+import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
   Gamepad2,
   Wrench,
@@ -45,6 +46,7 @@ const PS5HDMIRepair = () => {
       "description": "Professional PS5 HDMI port repair service in Charlotte, NC. Fast, affordable, and reliable gaming console repair.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",
@@ -182,6 +184,46 @@ const PS5HDMIRepair = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/*
+        Direct-answer section. The heading is the question as people actually
+        search it, and the first paragraph answers it in a few sentences before
+        the detail starts - so an answer engine quoting the top of this section
+        gets a complete, accurate answer rather than a fragment. Plain body
+        content: no FAQPage/HowTo/Speakable markup is added, since Google
+        retired FAQ rich results in May 2026 and the remaining value here is the
+        text itself.
+      */}
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-800 mb-4">
+            What causes a PS5 HDMI port to stop working?
+          </h2>
+          <p className="text-lg text-slate-700 leading-relaxed mb-6">
+            Most PS5 HDMI failures are physical. The port is soldered directly to the
+            mainboard, so sideways force on a plugged-in cable - a knock, a pet, moving the
+            console while it is connected - transfers straight into the port and its solder
+            joints. The usual results are bent or broken pins inside the port, cracked joints
+            where the port meets the board, or damage to the HDMI control chip that sits
+            behind it. Less often the port is intact and the fault is further back in the
+            video circuit.
+          </p>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            The distinction matters because it changes the repair. A port with bent pins or
+            failed solder joints can usually be reworked or replaced at board level. Damage
+            to the HDMI control chip is a separate component-level job. And a console that
+            powers on with no video can also be failing for reasons that have nothing to do
+            with the port at all, which is why the port is tested rather than assumed to be
+            the fault.
+          </p>
+          <p className="text-slate-600 leading-relaxed">
+            A useful check before bringing it in: try a different HDMI cable and a different
+            input or TV first. If the picture returns, the console is fine and the cable or
+            input was the problem. If it does not, and the port looks damaged or the cable
+            feels loose in the socket, the fault is likely in the port itself.
+          </p>
         </div>
       </section>
 
@@ -355,6 +397,8 @@ const PS5HDMIRepair = () => {
 
       {/* FAQ Section */}
       <FAQSection faqs={faqs} title="PS5 HDMI Repair FAQ" />
+
+      <ServiceAreaLinks serviceName="PS5 HDMI Repair" />
 
       {/* Related Services */}
       <section className="py-16 bg-white">

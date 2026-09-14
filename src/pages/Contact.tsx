@@ -75,6 +75,7 @@ const Contact = () => {
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
+      "@id": "https://www.kortechservice.com/#organization",
       "name": "KorTech Service",
       "telephone": "704-246-7642",
       "email": "info@kortechservice.com",

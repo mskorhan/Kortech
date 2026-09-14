@@ -43,6 +43,7 @@ const CustomGamingPC = () => {
       "description": "Professional custom gaming PC building service in Charlotte, NC. Expert assembly, component selection, and optimization.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",
