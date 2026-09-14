@@ -44,7 +44,13 @@ const SEOHead: React.FC<SEOHeadProps> = ({
 }) => {
   const currentLocation = useLocation();
   const fullCanonicalUrl = canonicalUrl ? canonicalizeUrl(canonicalUrl) : undefined;
-  const fullOgUrl = ogUrl || fullCanonicalUrl || canonicalizeUrl(currentLocation.pathname);
+  // A noindex page (the 404) has no real URL of its own - deriving og:url from
+  // the current pathname would mint a canonical-looking URL for whatever
+  // arbitrary path the visitor hit, which is exactly the duplicate signal the
+  // 404 is supposed to avoid emitting. Fall back to the site root instead.
+  const fullOgUrl = noindex
+    ? ogUrl || `${SITE_ORIGIN}/`
+    : ogUrl || fullCanonicalUrl || canonicalizeUrl(currentLocation.pathname);
   
   // Dynamic title and description based on page
   const dynamicTitle = title || 'KorTech Service • Computer Repair Charlotte NC';

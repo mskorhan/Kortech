@@ -1,1 +1,8 @@
-/*    /index.html   200
+# Inert on Apache (the live host); kept correct so a future move to
+# Netlify/Cloudflare Pages cannot silently reintroduce the soft-404 bug.
+#
+# The previous contents were "/*  /index.html  200", which is the exact
+# inverse of the fix in .htaccess: it returns HTTP 200 and homepage markup
+# for every unknown URL. Prerendered pages are real files, so they are served
+# directly and need no rule; anything unmatched must be a real 404.
+/*    /404.html   404

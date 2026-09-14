@@ -50,6 +50,43 @@ async function main() {
       writeFileSync(path.join(outDir, 'index.html'), html, 'utf8');
       console.log(`Prerendered ${route}`);
     }
+
+    // Prerender the NotFound page to dist/404.html for Apache's
+    // ErrorDocument. Previously ErrorDocument pointed at /index.html, so every
+    // 404 returned a body byte-for-byte identical to the homepage - carrying
+    // the homepage's rel=canonical and "index, follow". Crawlers that don't run
+    // JS never saw React Router swap in NotFound, so they read junk URLs as
+    // valid alternates of "/". This writes a real 404 document instead.
+    //
+    // Written as dist/404.html (not dist/404/index.html) so it stays outside
+    // the dist/**/index.html set that validate-seo.mjs and
+    // check-dist-internal-links.mjs walk - it is intentionally canonical-less,
+    // which those gates would otherwise flag.
+    {
+      const page = await browser.newPage();
+      // Any path that matches App.tsx's `path="*"` route and can never collide
+      // with a real route.
+      await page.goto(`${base}/__notfound__`, { waitUntil: 'networkidle0', timeout: 30000 });
+      await new Promise((r) => setTimeout(r, 150));
+      const html = await page.content();
+      await page.close();
+
+      // vite preview may not SPA-fallback an unknown path; without this guard a
+      // preview-server error page could ship as the production 404 document.
+      const problems = [];
+      if (!/Page Not Found/.test(html)) problems.push('missing the NotFound heading');
+      if (!/name="robots"[^>]*content="noindex/.test(html)) problems.push('missing noindex robots meta');
+      if (/rel="canonical"/.test(html)) problems.push('unexpectedly contains a rel=canonical tag');
+      if (problems.length > 0) {
+        throw new Error(
+          `prerender: captured 404 document is ${problems.join(', ')}. ` +
+            'Refusing to write dist/404.html.'
+        );
+      }
+
+      writeFileSync(path.join(ROOT, 'dist', '404.html'), html, 'utf8');
+      console.log('Prerendered 404 document -> dist/404.html');
+    }
   } finally {
     await browser.close();
     await new Promise((resolve, reject) => {

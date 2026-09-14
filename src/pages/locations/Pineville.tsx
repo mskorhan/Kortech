@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
-import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
 import NearbyAreas from '../../components/NearbyAreas';
 import {
@@ -19,7 +18,6 @@ import {
 } from 'lucide-react';
 
 const Pineville = () => {
-  const { rating, totalReviews } = reviewsData;
 
   const services = [
     {
@@ -98,11 +96,6 @@ const Pineville = () => {
           "addressRegion": "NC",
           "postalCode": "28270",
           "addressCountry": "US"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": String(rating ?? "4.8"),
-          "reviewCount": String(totalReviews ?? "0")
         }
       }
     },

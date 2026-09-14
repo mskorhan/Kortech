@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-sitemap.mjs && vite build && node scripts/prerender.mjs && node scripts/validate-seo.mjs && node scripts/check-dist-internal-links.mjs",
+    "build": "node scripts/generate-sitemap.mjs && vite build && node scripts/prerender.mjs && node scripts/validate-seo.mjs && node scripts/validate-routing.mjs && node scripts/check-dist-internal-links.mjs",
     "build:analyze": "vite build --mode analyze",
-    "build:production": "node scripts/generate-sitemap.mjs && vite build --mode production && node scripts/prerender.mjs && node scripts/validate-seo.mjs && node scripts/check-dist-internal-links.mjs",
+    "build:production": "node scripts/generate-sitemap.mjs && vite build --mode production && node scripts/prerender.mjs && node scripts/validate-seo.mjs && node scripts/validate-routing.mjs && node scripts/check-dist-internal-links.mjs",
     "preview": "vite preview",
     "type-check": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.node.json",
     "lint": "eslint .",
@@ -17,7 +17,8 @@
     "prerender": "node scripts/prerender.mjs",
     "validate-seo": "node scripts/validate-seo.mjs",
     "check-internal-links": "node scripts/check-dist-internal-links.mjs",
-    "indexnow-ping": "node scripts/indexnow-ping.mjs"
+    "indexnow-ping": "node scripts/indexnow-ping.mjs",
+    "validate-routing": "node scripts/validate-routing.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",

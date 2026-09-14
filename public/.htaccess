@@ -3,11 +3,41 @@
 # ------------------------------------------
 RewriteEngine On
 
+# ------------------------------------------
+# ✅ Retire the duplicate hosting-provider host
+# ------------------------------------------
+# kortechservice.pinevillecomputers.com (and its www form) served a fully
+# crawlable copy of the whole site: 200, no X-Robots-Tag, robots.txt
+# "Allow: /". Worse, the generic "force www" rule below is host-agnostic, so
+# it canonicalised that host *deeper into itself*
+# (-> www.kortechservice.pinevillecomputers.com) instead of onto the real
+# domain. This rule runs before the HTTPS/www blocks so either scheme and
+# either host form reaches the canonical production URL in a single hop,
+# preserving the path. Google treats a 301 as the strongest de-duplication
+# signal available - stronger than robots.txt blocking, which would leave
+# already-indexed URLs in place with no way to consolidate them.
+RewriteCond %{HTTP_HOST} ^(www\.)?kortechservice\.pinevillecomputers\.com$ [NC]
+RewriteRule ^(.*)$ https://www.kortechservice.com/$1 [L,R=301]
+
 # Force HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Force www
+# Force www.
+# Appends the canonical trailing slash in the same hop when the path has no
+# extension and isn't already slash-terminated. Without that, a request like
+# http://kortechservice.com/laptop-screen-repair took two hops (non-www ->
+# www, then mod_dir appending the slash); GSC logged those chains under
+# "Page with redirect" / "Soft 404". The extension guard keeps real files
+# (sitemap.xml, robots.txt, /assets/*.js|css, the IndexNow key .txt) out of
+# the slash-appending branch - appending a slash to the IndexNow key file
+# would break the post-deploy submission, which verifies the key is
+# reachable and correct before pinging.
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{2,12}$
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1/ [L,R=301]
+
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [L,R=301]
 
@@ -21,6 +51,11 @@ RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [L,R=301]
 # makes the redirect win explicitly.
 RewriteRule ^laptop-repair/?$ /laptop-screen-repair/ [R=301,L]
 RewriteRule ^it-support/?$ /business-it-support/ [R=301,L]
+# /about-us and /contact-us 404'd with real on-site referers in the access
+# log (users and crawlers following stale links), so they are genuine losses
+# rather than scanner noise.
+RewriteRule ^about-us/?$ /about/ [R=301,L]
+RewriteRule ^contact-us/?$ /contact/ [R=301,L]
 
 # ------------------------------------------
 # ✅ React Router / SPA Support
@@ -34,7 +69,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !\.(js|css|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot|ico|json|txt|xml|pdf|zip)$
 # BEGIN generated known-routes (kept in sync with scripts/routes.mjs by generate-sitemap.mjs)
-RewriteCond %{REQUEST_URI} !^/(about|services|pricing|contact|recycling|terms|privacy-policy|mail-in-form|blog(/[^/]+)?|graphic-design|remote-assistance|ps5-hdmi-repair|xbox-hdmi-repair|laptop-screen-repair|ssd-upgrades|virus-malware-removal|business-it-support|data-recovery|custom-gaming-pc|water-damage-repair|smartphone-screen-repair-charlotte|tablet-ipad-repair|smart-tv-repair|printer-router-repair|pcb-micro-soldering|appliance-electronics-repair|nintendo-switch-repair|locations|charlotte-computer-repair|matthews-computer-repair|indian-trail-computer-repair|mint-hill-computer-repair|monroe-computer-repair|ballantyne-computer-repair|pineville-computer-repair|waxhaw-computer-repair|weddington-computer-repair|stallings-computer-repair)/?$
+RewriteCond %{REQUEST_URI} !^/(about|services|pricing|contact|recycling|terms|privacy-policy|mail-in-form|blog|graphic-design|remote-assistance|ps5-hdmi-repair|xbox-hdmi-repair|laptop-screen-repair|ssd-upgrades|virus-malware-removal|business-it-support|data-recovery|custom-gaming-pc|water-damage-repair|smartphone-screen-repair-charlotte|tablet-ipad-repair|smart-tv-repair|printer-router-repair|pcb-micro-soldering|appliance-electronics-repair|nintendo-switch-repair|locations|charlotte-computer-repair|matthews-computer-repair|indian-trail-computer-repair|mint-hill-computer-repair|monroe-computer-repair|ballantyne-computer-repair|pineville-computer-repair|waxhaw-computer-repair|weddington-computer-repair|stallings-computer-repair|blog/how-to-fix-broken-ps5-hdmi-port|blog/best-ssd-upgrade-old-laptop-2025|blog/steps-to-remove-virus-from-windows-pc|blog/custom-gaming-pc-build-guide-2025|blog/signs-hard-drive-failing-data-recovery-tips|blog/how-to-know-when-to-replace-phone-battery|blog/what-is-pcb-micro-soldering|blog/top-5-signs-smart-tv-needs-repair|blog/data-recovery-charlotte-2025|blog/laptop-screen-repair-guide-charlotte|blog/nintendo-switch-repair-guide|blog/xbox-hdmi-repair-guide|blog/virus-removal-guide-charlotte|blog/what-to-do-when-device-gets-wet-charlotte|blog/signs-your-business-needs-it-support|blog/printer-wont-connect-to-wifi-fix|blog/ipad-screen-repair-cost-guide|blog/small-business-logo-design-checklist)/?$
 # END generated known-routes
 RewriteRule ^ - [R=404,L]
 
@@ -87,7 +122,16 @@ RewriteRule ^ index.html [L]
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
-  ExpiresByType text/html "access plus 1 day"
+  # Keep crawler-facing control files short. Without these two, sitemap.xml
+  # and robots.txt inherited ExpiresDefault's 1 month, delaying discovery of
+  # sitemap changes by up to a month. text/plain also covers the IndexNow key
+  # file, which the post-deploy ping verifies is live before submitting.
+  ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType text/xml "access plus 1 hour"
+  ExpiresByType text/plain "access plus 1 hour"
+  # Matches the Cache-Control max-age=3600 set for .html below; the two
+  # previously disagreed (1 day here vs 1 hour there).
+  ExpiresByType text/html "access plus 1 hour"
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 year"
@@ -140,14 +184,30 @@ Options -Indexes
 # ------------------------------------------
 # ✅ Prevent Access to Sensitive Files
 # ------------------------------------------
+# mod_authz_core (Apache 2.4) with a mod_access_compat (2.2) fallback, so the
+# deny survives either module set. The bare 2.2 syntax would 500 on a server
+# that drops mod_access_compat.
 <FilesMatch "\.(htaccess|htpasswd|env|git|gitignore|DS_Store|ini|log|conf|sql|sh)$">
-  Order Allow,Deny
-  Deny from all
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order Allow,Deny
+    Deny from all
+  </IfModule>
 </FilesMatch>
 
 # ------------------------------------------
 # ✅ Custom 404 Page
 # ------------------------------------------
-# Serves the SPA shell so React Router renders the NotFound page/copy,
-# while Apache still reports a real 404 status to crawlers.
-ErrorDocument 404 /index.html
+# Serves a dedicated prerendered 404 document (scripts/prerender.mjs writes
+# dist/404.html from the NotFound route) rather than /index.html.
+#
+# Pointing this at /index.html meant every 404 returned a body byte-for-byte
+# identical to the homepage, carrying the homepage's rel=canonical and
+# "index, follow". The HTTP status was correct, but crawlers that don't
+# execute JS never saw React Router swap in NotFound, so they read arbitrary
+# junk URLs as valid alternates of "/" - which is how legacy .shtml paths
+# ended up ranking at position 1-2 as the homepage. 404.html carries the real
+# Not Found content, "noindex, follow", and no canonical tag.
+ErrorDocument 404 /404.html

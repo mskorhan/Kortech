@@ -144,13 +144,28 @@ ${urls.join('\n')}
 }
 
 function updateHtaccessKnownRoutes() {
-  const segments = new Set();
+  // Emit every route's FULL path, never a wildcard. A previous version
+  // collapsed the 18 blog routes into `blog(/[^/]+)?`, which made any
+  // /blog/<anything>/ match the known-routes whitelist, skip the R=404 rule
+  // and fall through to index.html at HTTP 200 - an unbounded soft-404
+  // surface that served homepage markup with index,follow to crawlers that
+  // don't execute JS. Listing the real slugs closes that at the source.
+  const paths = new Set();
   for (const { path: route } of routes) {
     if (route === '/') continue;
-    const first = route.split('/').filter(Boolean)[0];
-    segments.add(first === 'blog' ? 'blog(/[^/]+)?' : first);
+    const clean = route.replace(/^\//, '');
+    // Route paths are authored as lowercase slugs ([a-z0-9-] plus "/"), which
+    // carry no regex metacharacters. Assert that rather than assume it, so a
+    // future route containing "." or "+" can't silently widen the pattern.
+    if (!/^[a-z0-9-]+(\/[a-z0-9-]+)*$/.test(clean)) {
+      throw new Error(
+        `generate-sitemap: route "${route}" is not a plain lowercase slug path; ` +
+          'it would need escaping before going into the .htaccess known-routes regex.'
+      );
+    }
+    paths.add(clean);
   }
-  const pattern = `RewriteCond %{REQUEST_URI} !^/(${[...segments].join('|')})/?$`;
+  const pattern = `RewriteCond %{REQUEST_URI} !^/(${[...paths].join('|')})/?$`;
 
   const htaccess = readFileSync(HTACCESS_PATH, 'utf8');
   const beginMarker = '# BEGIN generated known-routes (kept in sync with scripts/routes.mjs by generate-sitemap.mjs)';
@@ -165,7 +180,7 @@ function updateHtaccessKnownRoutes() {
   const after = htaccess.slice(end);
   const updated = `${before}\n${pattern}\n${after}`;
   writeFileSync(HTACCESS_PATH, updated, 'utf8');
-  console.log(`.htaccess known-routes synced (${segments.size} route segments)`);
+  console.log(`.htaccess known-routes synced (${paths.size} explicit route paths, no wildcards)`);
 }
 
 const xml = buildSitemap();

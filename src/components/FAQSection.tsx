@@ -78,13 +78,28 @@ const FAQSection: React.FC<FAQSectionProps> = ({
                 )}
               </button>
 
+              {/*
+                Collapsed with a grid-rows transition rather than `hidden` or
+                `display:none`. The answer text must stay in the ordinary text
+                layer of the prerendered HTML: AI answer engines and
+                readability-style extractors (innerText, Trafilatura, most LLM
+                crawler pipelines) drop [hidden] subtrees, so collapsing that
+                way made every answer invisible to exactly the systems this
+                content is for. Deliberately no aria-hidden on the panel -
+                several extractors honour it, which would reinstate the same
+                bug. The button keeps aria-expanded/aria-controls, so assistive
+                tech still reports the real open/closed state.
+              */}
               <div
-                className="px-6 pb-4"
                 id={`faq-answer-${index}`}
-                hidden={openIndex !== index}
+                className={`grid transition-[grid-template-rows] duration-200 ease-out ${
+                  openIndex === index ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                }`}
               >
-                <div className="text-slate-600 leading-relaxed">
-                  {faq.answer}
+                <div className="overflow-hidden">
+                  <div className="px-6 pb-4 text-slate-600 leading-relaxed">
+                    {faq.answer}
+                  </div>
                 </div>
               </div>
             </div>
