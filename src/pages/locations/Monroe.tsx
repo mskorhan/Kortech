@@ -22,29 +22,29 @@ const Monroe = () => {
   const services = [
     {
       icon: Monitor,
-      title: "Computer Repair Monroe",
-      description: "Expert Mac & PC repair services for Monroe, NC",
+      title: "Office & Workstation Repair",
+      description: "Desktop and laptop repair for Monroe offices, practices, and home workstations",
       price: "Call/Text For Quote",
       link: "/services/"
     },
     {
       icon: HardDrive,
-      title: "Data Recovery Monroe",
-      description: "Professional data recovery for Monroe residents",
+      title: "Data Recovery & Backup",
+      description: "Recovery attempts on failed drives, plus backup setup so it does not happen twice",
       price: "Call/Text For Quote",
       link: "/data-recovery/"
     },
     {
       icon: Smartphone,
-      title: "Mobile Device Repair",
-      description: "iPhone, iPad, and Android repair in Monroe",
+      title: "Phone & Tablet Repair",
+      description: "Screen and battery work on the iPhones, iPads, and Android devices your day runs on",
       price: "Call/Text For Quote",
       link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
-      title: "Network Setup Monroe",
-      description: "Business and home network installation",
+      title: "Small Business IT Support",
+      description: "Wired and Wi-Fi networks, shared printers, and multi-user setups for small offices",
       price: "Call/Text For Quote",
       link: "/business-it-support/"
     }
@@ -52,20 +52,20 @@ const Monroe = () => {
 
   const faqs = [
     {
-      question: "Do you provide computer repair services in Monroe, NC?",
-      answer: "Yes, we provide comprehensive computer repair services to Monroe, NC residents. We offer pickup and delivery services throughout Monroe for your convenience."
+      question: "Our Monroe office has one machine down. Can we send just that one in?",
+      answer: "Yes. There is no minimum and no contract required, so a single workstation is fine. Call or text a description of the symptoms first and we can tell you whether it sounds like a part, a drive, or a software issue before the machine leaves your office."
     },
     {
-      question: "How do I get my computer repaired if I live in Monroe?",
-      answer: "We offer pickup and delivery services to Monroe residents, or you can drop off your device at our Charlotte location. We make it convenient for Monroe customers to get expert computer repair."
+      question: "A drive failed and the files were not backed up. What happens next?",
+      answer: "Bring or send the drive in and stop using it, since continued power-on can make recovery harder. We evaluate the drive, tell you what looks recoverable and what does not, and quote before any recovery work starts. If it turns out to be a hardware fault we can also address, the diagnostic fee is waived with hardware repair."
     },
     {
-      question: "What types of computer issues do you fix in Monroe?",
-      answer: "We fix all types of computer issues for Monroe residents including hardware failures, software problems, virus infections, data loss, slow performance, and network connectivity issues."
+      question: "Is it worth driving from Monroe to your Charlotte shop, or should we arrange pickup?",
+      answer: "Monroe sits southeast of our Charlotte shop along the US-74 corridor, so if someone is already heading toward Charlotte, dropping the machine off is straightforward. If nobody can make the trip, ask about pickup and delivery. We are at 1721 Sardis Rd N, Suite 7A, Charlotte, and open Mon-Fri 9AM-6PM and Sat 11AM-4PM."
     },
     {
-      question: "Do you offer same-day service to Monroe?",
-      answer: "Yes, we offer same-day computer repair services to Monroe customers for many common issues. Contact us early in the day for best availability."
+      question: "How long will our machine be out of service?",
+      answer: "It depends on what is wrong and whether parts are needed, so we give you a timeframe once we have diagnosed it rather than guessing up front. If downtime is the pressing concern, contact us early in the day to ask about same-day availability, and tell us which files or applications matter most so we can prioritize."
     }
   ];
 
@@ -74,7 +74,7 @@ const Monroe = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Monroe, NC",
-      "description": "Professional computer repair, data recovery, and IT support services serving Monroe, NC. Expert technicians providing quality service with pickup and delivery.",
+      "description": "Business IT support, workstation repair, and data recovery for Monroe, NC, the Union County seat. Work is performed at the KorTech Service shop in Charlotte, reachable from Monroe along the US-74 corridor, with pickup and delivery available.",
       "url": "https://www.kortechservice.com/monroe-computer-repair/",
       "areaServed": [
         {
@@ -116,8 +116,8 @@ const Monroe = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Computer Repair Monroe NC | KorTech Service"
-        description="Professional computer repair services in Monroe, NC. Same-day Mac & PC repair, data recovery, IT support. Pickup and delivery available. Call 704-246-7642!"
+        title="Monroe NC Business IT & Data Recovery | KorTech"
+        description="Office IT support, workstation repair, and data recovery for Monroe, NC. Drop off at our Charlotte shop via US-74 or ask about pickup. Call 704-246-7642."
         canonicalUrl="/monroe-computer-repair"
         location="Monroe, NC"
         service="Computer Repair"
@@ -137,7 +137,7 @@ const Monroe = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-teal-300" />
-              <span className="text-white font-medium">Serving Monroe, NC Since 1998</span>
+              <span className="text-white font-medium">Union County Seat | Served From Our Charlotte Shop</span>
             </div>
             
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -147,14 +147,14 @@ const Monroe = () => {
             
             <div className="bg-teal-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-teal-100 mb-4">
-                <strong>Monroe Community:</strong> Serving Monroe residents via Highway 74 and easily accessible from downtown Monroe, we've been providing reliable computer repair services to Monroe families and businesses for over 25 years.
+                <strong>Monroe Community:</strong> Monroe is the Union County seat, and it sits southeast of our Charlotte shop along the US-74 corridor. That makes drop-off practical for anyone already heading toward Charlotte, and as the county seat Monroe has the offices, practices, and small businesses whose workstations and networks we handle alongside home machines.
               </p>
             </div>
             
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Professional computer repair services serving Monroe, North Carolina. Expert Mac & PC repair, 
-              data recovery, and IT support for Monroe residents and businesses. Convenient pickup and 
-              delivery services available throughout Monroe.
+              When a workstation goes down in a Monroe office or a drive stops mounting, the useful questions are
+              what failed, what is recoverable, and how long you are without the machine. We diagnose first and
+              quote before the work starts, whether you drop off in Charlotte or ask about pickup and delivery.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -199,10 +199,10 @@ const Monroe = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Computer Services for Monroe, NC
+              What We Handle for Monroe
             </h2>
             <p className="text-lg text-slate-600">
-              Professional computer repair and IT support for Monroe residents and businesses
+              Office and small-business work alongside everyday home repairs
             </p>
           </div>
 
@@ -229,10 +229,10 @@ const Monroe = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Why Monroe Residents Choose KorTech Service
+              Working With Us From Monroe
             </h2>
             <p className="text-lg text-slate-600">
-              Trusted by Monroe community for over 25 years
+              An independent Charlotte repair shop, operating since 1998, that covers Union County
             </p>
           </div>
 
@@ -241,16 +241,16 @@ const Monroe = () => {
               <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Truck className="h-8 w-8 text-teal-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">Convenient pickup and delivery services throughout Monroe for your computer repair needs</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Two Ways In</h3>
+              <p className="text-slate-600">Drop off at the Charlotte shop if US-74 already fits your route, or ask about pickup and delivery when nobody can spare the trip</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Monroe Community</h3>
-              <p className="text-slate-600">Proudly serving Monroe residents and businesses with personalized service</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Built for Small Offices</h3>
+              <p className="text-slate-600">No contract or minimum machine count. Send in one workstation, or have us look at the network it sits on</p>
             </div>
 
             <div className="text-center">
@@ -258,7 +258,7 @@ const Monroe = () => {
                 <Star className="h-8 w-8 text-yellow-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">4.8★ Google Rating</h3>
-              <p className="text-slate-600">Highly rated by Monroe customers for quality service and convenience</p>
+              <p className="text-slate-600">Our overall Google rating across everyone the Charlotte shop serves</p>
             </div>
           </div>
         </div>
@@ -272,7 +272,7 @@ const Monroe = () => {
               Monroe Computer Repair FAQ
             </h2>
             <p className="text-lg text-slate-600">
-              Common questions about computer repair services for Monroe, NC residents
+              What Monroe offices and households usually want to know before sending a machine in
             </p>
           </div>
           
@@ -291,10 +291,10 @@ const Monroe = () => {
       <section className="py-16 bg-teal-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready for Computer Repair in Monroe?
+            Machine Down in Monroe?
           </h2>
           <p className="text-xl text-teal-200 mb-8">
-            Contact us today for expert computer repair services in Monroe, NC
+            Describe the symptoms by call or text and we will tell you what the next step looks like
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -322,14 +322,14 @@ const Monroe = () => {
               <div className="text-left">
                 <p className="font-bold">KorTech Service</p>
                 <p className="text-teal-200">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</p>
-                <p className="text-teal-200">Pickup & Delivery Available in Monroe</p>
+                <p className="text-teal-200">Our only location. Monroe is southeast via the US-74 corridor</p>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-4">
               <Clock className="h-6 w-6 text-teal-300" />
               <div className="text-left">
                 <p className="font-bold">Hours: Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
-                <p className="text-teal-200">Serving Monroe and surrounding areas</p>
+                <p className="text-teal-200">Ask about pickup and delivery if the drive does not fit your day</p>
               </div>
             </div>
           </div>

@@ -93,7 +93,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
               <div
                 id={`faq-answer-${index}`}
                 className={`grid transition-[grid-template-rows] duration-200 ease-out ${
-                  openIndex === index ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                  openIndex === index ? 'grid-rows-[minmax(0,1fr)]' : 'grid-rows-[0fr]'
                 }`}
               >
                 <div className="overflow-hidden">

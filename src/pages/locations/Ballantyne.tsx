@@ -22,29 +22,29 @@ const Ballantyne = () => {
   const services = [
     {
       icon: Monitor,
-      title: "Computer Repair Ballantyne",
-      description: "Expert Mac & PC repair services for Ballantyne, NC",
+      title: "Workstation & MacBook Repair",
+      description: "Repairs for the Macs and Windows laptops people work on daily, with your files and setup kept intact",
       price: "Call/Text For Quote",
       link: "/services/"
     },
     {
       icon: HardDrive,
-      title: "Data Recovery Ballantyne",
-      description: "Professional data recovery for Ballantyne residents",
+      title: "Data Recovery for Professionals",
+      description: "Client files, archives and working documents retrieved from failed drives, dead SSDs and RAID volumes",
       price: "Call/Text For Quote",
       link: "/data-recovery/"
     },
     {
       icon: Smartphone,
-      title: "Mobile Device Repair",
-      description: "iPhone, iPad, and Android repair in Ballantyne",
+      title: "Phone & Tablet Repair",
+      description: "Screens and batteries on the iPhones, iPads and Android devices you use alongside your work machine",
       price: "Call/Text For Quote",
       link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
-      title: "Network Setup Ballantyne",
-      description: "Business and home network installation",
+      title: "Business IT & Home-Office Setup",
+      description: "Office and remote-work networking, secure Wi-Fi, backups and multi-monitor desk setups",
       price: "Call/Text For Quote",
       link: "/business-it-support/"
     }
@@ -52,20 +52,20 @@ const Ballantyne = () => {
 
   const faqs = [
     {
-      question: "Do you provide computer repair services in Ballantyne, NC?",
-      answer: "Yes, we provide comprehensive computer repair services to Ballantyne, NC residents. We offer pickup and delivery services throughout Ballantyne for your convenience."
+      question: "Do you support small businesses and professional offices in Ballantyne?",
+      answer: "Yes. We handle workstation repair, secure Wi-Fi and wired networking, shared storage, backups and general IT support for small offices and independent professionals in the Ballantyne area of south Charlotte. All bench work is done at our Charlotte workshop."
     },
     {
-      question: "How do I get my computer repaired if I live in Ballantyne?",
-      answer: "We offer pickup and delivery services to Ballantyne residents, or you can drop off your device at our Charlotte location. We make it convenient for Ballantyne customers to get expert computer repair."
+      question: "Can you set up a home office for remote and hybrid work?",
+      answer: "We set up and troubleshoot home-office equipment: multi-monitor arrangements, docking stations, printers, VPN and video-call reliability, and Wi-Fi coverage in rooms the router does not reach well. Tell us which work applications have to keep running and we will build around them."
     },
     {
-      question: "What types of computer issues do you fix in Ballantyne?",
-      answer: "We fix all types of computer issues for Ballantyne residents including hardware failures, software problems, virus infections, data loss, slow performance, and network connectivity issues."
+      question: "My drive failed and client files are on it. What are the options?",
+      answer: "Bring the machine or the drive to us before doing anything else and stop using it, because continued use can overwrite recoverable data. We evaluate the drive, tell you what looks retrievable and quote before we proceed. Do not run recovery software on a failing drive first."
     },
     {
-      question: "Do you offer same-day service to Ballantyne?",
-      answer: "Yes, we offer same-day computer repair services to Ballantyne customers for many common issues. Contact us early in the day for best availability."
+      question: "I cannot lose a day without my laptop. How do I keep downtime short?",
+      answer: "Contact us early in the day to ask about same-day availability, and mention the deadline when you call so we can tell you honestly whether the repair fits it. If you have a spare machine we can move your working files across while the main one is with us."
     }
   ];
 
@@ -74,7 +74,7 @@ const Ballantyne = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Ballantyne, NC",
-      "description": "Professional computer repair, data recovery, and IT support services serving Ballantyne, NC. Expert technicians providing quality service with pickup and delivery.",
+      "description": "Business IT support, home-office and remote-work setup, workstation repair and professional data recovery for the Ballantyne community of south Charlotte, handled at the KorTech workshop on Sardis Rd N.",
       "url": "https://www.kortechservice.com/ballantyne-computer-repair/",
       "areaServed": [
         {
@@ -116,8 +116,8 @@ const Ballantyne = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Computer Repair Ballantyne NC | KorTech Service"
-        description="Professional computer repair services in Ballantyne, NC. Same-day Mac & PC repair, data recovery, IT support. Pickup and delivery available. Call 704-246-7642!"
+        title="Ballantyne Office IT &amp; Mac Support | KorTech"
+        description="Office IT support, home-office and remote-work setup, Mac and PC repair and data recovery for Ballantyne professionals in south Charlotte. Call 704-246-7642."
         canonicalUrl="/ballantyne-computer-repair"
         location="Ballantyne, NC"
         service="Computer Repair"
@@ -137,7 +137,7 @@ const Ballantyne = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-orange-300" />
-              <span className="text-white font-medium">Serving Ballantyne, NC Since 1998</span>
+              <span className="text-white font-medium">Serving the Ballantyne Area of South Charlotte</span>
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -147,14 +147,14 @@ const Ballantyne = () => {
 
             <div className="bg-orange-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-orange-100 mb-4">
-                <strong>Ballantyne Community:</strong> Serving Ballantyne residents and businesses just off Johnston Rd and the Ballantyne Corporate Park, we've been the trusted computer repair choice for Ballantyne families and professionals for over 25 years.
+                <strong>Ballantyne Community:</strong> Ballantyne is a large community within south Charlotte rather than a separate town, and it is home to a dense mix of offices, professional practices and people working from home. KorTech Service has no Ballantyne office: our workshop has operated in Charlotte since 1998 and serves the Ballantyne area from there.
               </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Professional computer repair services serving Ballantyne, North Carolina. Expert Mac & PC repair,
-              data recovery, and IT support for Ballantyne residents and businesses. Convenient pickup and
-              delivery services available throughout Ballantyne.
+              IT support built around people who work for a living on their machines: small-office and
+              home-office setups, secure networks and backups, workstation and MacBook repair, and data
+              recovery when a drive holding client work stops responding.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -199,10 +199,10 @@ const Ballantyne = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Computer Services for Ballantyne, NC
+              IT and Repair Services for Ballantyne Professionals
             </h2>
             <p className="text-lg text-slate-600">
-              Professional computer repair and IT support for Ballantyne residents and businesses
+              Support for offices, practices and home-based professionals across the Ballantyne area
             </p>
           </div>
 
@@ -229,10 +229,10 @@ const Ballantyne = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Why Ballantyne Residents Choose KorTech Service
+              Working With Ballantyne Businesses and Home Offices
             </h2>
             <p className="text-lg text-slate-600">
-              Trusted by Ballantyne community for over 25 years
+              An independent Charlotte workshop, operating since 1998, that businesses can talk to directly
             </p>
           </div>
 
@@ -242,15 +242,15 @@ const Ballantyne = () => {
                 <Truck className="h-8 w-8 text-orange-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">Convenient pickup and delivery services throughout Ballantyne for your computer repair needs</p>
+              <p className="text-slate-600">We can collect a workstation from an office or home office and return it after the repair, so no one loses a working day to the drive across town</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Ballantyne Community</h3>
-              <p className="text-slate-600">Proudly serving Ballantyne residents and businesses with personalized service</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Business &amp; Home Office</h3>
+              <p className="text-slate-600">Networking, backups, remote-work setups and workstation repair, sized for small offices and independent professionals</p>
             </div>
 
             <div className="text-center">
@@ -258,7 +258,7 @@ const Ballantyne = () => {
                 <Star className="h-8 w-8 text-yellow-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">4.8★ Google Rating</h3>
-              <p className="text-slate-600">Highly rated by Ballantyne customers for quality service and convenience</p>
+              <p className="text-slate-600">Our overall Google rating across the work completed at the Charlotte workshop</p>
             </div>
           </div>
         </div>
@@ -269,10 +269,10 @@ const Ballantyne = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Ballantyne Computer Repair FAQ
+              Questions From Ballantyne Businesses and Remote Workers
             </h2>
             <p className="text-lg text-slate-600">
-              Common questions about computer repair services for Ballantyne, NC residents
+              Office support, home-office setup, data recovery and keeping downtime short
             </p>
           </div>
 
@@ -291,10 +291,10 @@ const Ballantyne = () => {
       <section className="py-16 bg-orange-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready for Computer Repair in Ballantyne?
+            Need IT Support in the Ballantyne Area?
           </h2>
           <p className="text-xl text-orange-200 mb-8">
-            Contact us today for expert computer repair services in Ballantyne, NC
+            Tell us what your office or home setup has to keep doing and we will tell you what it takes
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -329,7 +329,7 @@ const Ballantyne = () => {
               <Clock className="h-6 w-6 text-orange-300" />
               <div className="text-left">
                 <p className="font-bold">Hours: Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
-                <p className="text-orange-200">Serving Ballantyne and surrounding areas</p>
+                <p className="text-orange-200">Ballantyne is a service area; all bench work is done at the Charlotte workshop</p>
               </div>
             </div>
           </div>
