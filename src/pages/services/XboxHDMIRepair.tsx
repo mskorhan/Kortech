@@ -1,6 +1,7 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
+import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
   Shield,
   CheckCircle,
@@ -41,6 +42,7 @@ const XboxHDMIRepair = () => {
       "description": "Professional Xbox Series X/S and Xbox One HDMI port repair service in Charlotte, NC. Expert gaming console repair with warranty.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",
@@ -226,6 +228,8 @@ const XboxHDMIRepair = () => {
 
       {/* FAQ Section */}
       <FAQSection faqs={faqs} title="Xbox HDMI Repair FAQ" />
+
+      <ServiceAreaLinks serviceName="Xbox HDMI Repair" />
 
       {/* Related Services */}
       <section className="py-16 bg-white">

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>KorTech SEO Intelligence — Internal</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --panel: #fff; --ink: #14181f; --muted: #5a6473;
+    --line: #e3e7ec; --accent: #1f4fd8; --good: #0d7a4a; --warn: #a8630a; --bad: #b3261e;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0f1216; --panel:#171b21; --ink:#e8ecf1; --muted:#9aa5b4;
+            --line:#262c35; --accent:#7ea2ff; --good:#4ad991; --warn:#e0a94a; --bad:#ff8a80; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; padding:24px 16px 64px; }
+  .wrap { max-width:1180px; margin:0 auto; }
+  header { margin-bottom:8px; }
+  h1 { font-size:20px; margin:0 0 4px; letter-spacing:-.01em; }
+  .sub { color:var(--muted); font-size:13px; }
+  .freshness { display:inline-block; margin-top:10px; padding:4px 10px; border-radius:99px;
+               background:var(--panel); border:1px solid var(--line); font-size:12px; color:var(--muted); }
+  .warnbar { margin:16px 0 24px; padding:12px 14px; border-left:3px solid var(--warn);
+             background:var(--panel); border-radius:0 8px 8px 0; font-size:13px; }
+  h2 { font-size:15px; margin:32px 0 10px; letter-spacing:-.01em; }
+  h2 .tag { font-weight:400; color:var(--muted); font-size:12px; margin-left:8px; }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px; }
+  .kpi .label { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+  .kpi .value { font-size:24px; font-weight:650; margin-top:4px; letter-spacing:-.02em; }
+  .kpi .note { font-size:11px; color:var(--muted); margin-top:3px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); }
+  th { font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted);
+       font-weight:600; cursor:pointer; user-select:none; white-space:nowrap; }
+  th:hover { color:var(--ink); }
+  th[data-sorted]::after { content:" ▾"; }
+  th[data-sorted="asc"]::after { content:" ▴"; }
+  tbody tr:last-child td { border-bottom:none; }
+  tbody tr:hover { background:rgba(127,127,127,.06); }
+  td.num { text-align:right; font-variant-numeric:tabular-nums; font-family:var(--mono); }
+  .q { font-weight:500; }
+  .zero { color:var(--bad); font-weight:600; }
+  .ok { color:var(--good); font-weight:600; }
+  .pending { padding:22px; text-align:center; color:var(--muted); font-size:13px; }
+  .pending code { font-family:var(--mono); font-size:12px; background:var(--bg);
+                  padding:2px 6px; border-radius:4px; border:1px solid var(--line); }
+  .controls { padding:10px 12px; border-bottom:1px solid var(--line); display:flex; gap:8px; flex-wrap:wrap; }
+  input[type=search] { flex:1; min-width:180px; padding:7px 10px; border:1px solid var(--line);
+                       border-radius:7px; background:var(--bg); color:var(--ink); font-size:13px; }
+  .scroll { overflow-x:auto; }
+  .foot { margin-top:40px; padding-top:16px; border-top:1px solid var(--line);
+          color:var(--muted); font-size:12px; }
+  ul.tight { margin:6px 0 0; padding-left:18px; }
+  ul.tight li { margin:3px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>KorTech SEO Intelligence</h1>
+  <div class="sub">Internal dashboard — not deployed, not indexed.</div>
+  <div class="freshness" id="freshness">Data freshness: loading…</div>
+</header>
+
+<div class="warnbar">
+  <strong>Read this before acting on the numbers.</strong> The GSC window below
+  (≈2026-06-16 → 2026-09-11) <em>predates</em> the PR&nbsp;#20 remediation deployed
+  2026-09-14. The homepage's impression share was inflated by the
+  <code>ErrorDocument 404 /index.html</code> bug, and all 10 location pages were
+  rewritten hours after this window closed and have not been recrawled.
+  Re-measure in ~4 weeks before drawing trend conclusions.
+</div>
+
+<h2>Organic overview <span class="tag">GSC · last 3 months · Web</span></h2>
+<div class="kpis" id="kpis"></div>
+
+<h2>Device split <span class="tag">the most important cut in this dataset</span></h2>
+<div class="panel scroll"><table id="deviceTable"></table></div>
+
+<h2>Query families <span class="tag">which phrasings actually produce clicks</span></h2>
+<div class="panel scroll"><table id="familyTable"></table></div>
+
+<h2>Striking distance <span class="tag">position 4–20, ≥10 impressions · sortable</span></h2>
+<div class="panel">
+  <div class="controls"><input type="search" id="strikeFilter" placeholder="Filter queries…"></div>
+  <div class="scroll"><table id="strikeTable"></table></div>
+</div>
+
+<h2>CTR opportunities <span class="tag">page 1, zero clicks</span></h2>
+<div class="panel scroll"><table id="ctrTable"></table></div>
+
+<h2>Page targeting defect <span class="tag">Matthews cluster</span></h2>
+<div class="panel scroll"><table id="matthewsTable"></table></div>
+
+<h2>Competitor gap <span class="tag">Semrush</span></h2>
+<div class="panel"><div class="pending" id="gapPending"></div></div>
+
+<h2>Backlinks <span class="tag">Semrush</span></h2>
+<div class="panel"><div class="pending" id="blPending"></div></div>
+
+<h2>GEO / AEO <span class="tag">entity, answers, media</span></h2>
+<div class="panel scroll"><table id="geoTable"></table></div>
+
+<h2>Content performance <span class="tag">GA4 × GSC</span></h2>
+<div class="panel"><div class="pending" id="ga4Pending"></div></div>
+
+<div class="foot" id="foot"></div>
+
+</div>
+<script src="data.js"></script>
+<script>
+(function () {
+  var D = window.__SEO_DATA__;
+
+  function el(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) {
+    return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
+
+  el('freshness').textContent =
+    'Data freshness: GSC pulled ' + D.meta.gscPulled +
+    ' · window ' + D.meta.gscWindow +
+    ' · Semrush ' + D.meta.semrushStatus;
+
+  // KPIs
+  el('kpis').innerHTML = D.kpis.map(function (k) {
+    return '<div class="kpi"><div class="label">' + esc(k.label) + '</div>' +
+           '<div class="value">' + esc(k.value) + '</div>' +
+           '<div class="note">' + esc(k.note) + '</div></div>';
+  }).join('');
+
+  function table(node, cols, rows, rowFmt) {
+    var head = '<thead><tr>' + cols.map(function (c) {
+      return '<th data-key="' + c.key + '"' + (c.num ? ' class="num"' : '') + '>' + esc(c.label) + '</th>';
+    }).join('') + '</tr></thead>';
+    var body = '<tbody>' + rows.map(rowFmt).join('') + '</tbody>';
+    node.innerHTML = head + body;
+  }
+
+  // Device
+  table(el('deviceTable'),
+    [{key:'device',label:'Device'},{key:'clicks',label:'Clicks',num:1},
+     {key:'impressions',label:'Impressions',num:1},{key:'ctr',label:'CTR',num:1}],
+    D.devices,
+    function (r) {
+      var cls = r.ctr < 0.5 ? 'zero' : (r.ctr > 1 ? 'ok' : '');
+      return '<tr><td class="q">' + esc(r.device) + '</td>' +
+             '<td class="num">' + r.clicks + '</td>' +
+             '<td class="num">' + r.impressions.toLocaleString() + '</td>' +
+             '<td class="num ' + cls + '">' + r.ctr.toFixed(2) + '%</td></tr>';
+    });
+
+  // Families
+  table(el('familyTable'),
+    [{key:'label',label:'Query family'},{key:'n',label:'Queries',num:1},
+     {key:'impr',label:'Impressions',num:1},{key:'clicks',label:'Clicks',num:1},
+     {key:'ctr',label:'CTR',num:1},{key:'avgPos',label:'Avg pos',num:1}],
+    D.families,
+    function (r) {
+      var cls = r.clicks === 0 ? 'zero' : (r.ctr >= 1 ? 'ok' : '');
+      return '<tr><td class="q">' + esc(r.label) + '</td>' +
+             '<td class="num">' + r.n + '</td>' +
+             '<td class="num">' + r.impr.toLocaleString() + '</td>' +
+             '<td class="num ' + cls + '">' + r.clicks + '</td>' +
+             '<td class="num ' + cls + '">' + r.ctr.toFixed(2) + '%</td>' +
+             '<td class="num">' + r.avgPos.toFixed(1) + '</td></tr>';
+    });
+
+  // Striking distance — sortable + filterable
+  var strikeCols = [
+    {key:'q',label:'Query'},{key:'impr',label:'Impr',num:1},{key:'clicks',label:'Clicks',num:1},
+    {key:'ctr',label:'CTR',num:1},{key:'pos',label:'Pos',num:1},
+    {key:'volume',label:'Volume',num:1},{key:'kd',label:'KD',num:1},{key:'intent',label:'Intent'},
+    {key:'url',label:'Ranking URL'}
+  ];
+  function strikeRow(r) {
+    return '<tr><td class="q">' + esc(r.q) + '</td>' +
+           '<td class="num">' + r.impr + '</td>' +
+           '<td class="num' + (r.clicks === 0 ? ' zero' : ' ok') + '">' + r.clicks + '</td>' +
+           '<td class="num">' + r.ctr.toFixed(1) + '%</td>' +
+           '<td class="num">' + r.pos.toFixed(1) + '</td>' +
+           '<td class="num">' + (r.volume == null ? '—' : r.volume) + '</td>' +
+           '<td class="num">' + (r.kd == null ? '—' : r.kd) + '</td>' +
+           '<td>' + (r.intent || '—') + '</td>' +
+           '<td>' + (r.url || '—') + '</td></tr>';
+  }
+  var strikeSorted = D.striking.slice();
+  function renderStrike() {
+    var f = el('strikeFilter').value.toLowerCase();
+    table(el('strikeTable'), strikeCols,
+      strikeSorted.filter(function (r) { return !f || r.q.toLowerCase().indexOf(f) > -1; }),
+      strikeRow);
+    wireSort();
+  }
+  var sortState = {};
+  function wireSort() {
+    [].forEach.call(el('strikeTable').querySelectorAll('th'), function (th) {
+      th.onclick = function () {
+        var k = th.getAttribute('data-key');
+        var dir = sortState[k] === 'desc' ? 'asc' : 'desc';
+        sortState = {}; sortState[k] = dir;
+        strikeSorted.sort(function (a, b) {
+          var x = a[k], y = b[k];
+          if (x == null) return 1; if (y == null) return -1;
+          if (typeof x === 'string') return dir === 'asc' ? x.localeCompare(y) : y.localeCompare(x);
+          return dir === 'asc' ? x - y : y - x;
+        });
+        renderStrike();
+        var nth = el('strikeTable').querySelector('th[data-key="' + k + '"]');
+        if (nth) nth.setAttribute('data-sorted', dir);
+      };
+    });
+  }
+  el('strikeFilter').addEventListener('input', renderStrike);
+  renderStrike();
+
+  // CTR opportunities
+  table(el('ctrTable'),
+    [{key:'q',label:'Query'},{key:'impr',label:'Impr',num:1},{key:'pos',label:'Pos',num:1},
+     {key:'note',label:'Reading'}],
+    D.ctrOpportunities,
+    function (r) {
+      return '<tr><td class="q">' + esc(r.q) + '</td>' +
+             '<td class="num">' + r.impr + '</td>' +
+             '<td class="num">' + r.pos.toFixed(1) + '</td>' +
+             '<td>' + esc(r.note) + '</td></tr>';
+    });
+
+  // Matthews
+  table(el('matthewsTable'),
+    [{key:'page',label:'Page receiving "matthews" queries'},
+     {key:'impr',label:'Impressions',num:1},{key:'clicks',label:'Clicks',num:1}],
+    D.matthews,
+    function (r) {
+      return '<tr><td class="q">' + esc(r.page) + '</td>' +
+             '<td class="num' + (r.impr > 100 ? ' zero' : '') + '">' + r.impr + '</td>' +
+             '<td class="num">' + r.clicks + '</td></tr>';
+    });
+
+  // GEO/AEO
+  table(el('geoTable'),
+    [{key:'item',label:'Item'},{key:'status',label:'Status'},{key:'detail',label:'Detail'}],
+    D.geo,
+    function (r) {
+      var cls = r.status === 'Done' ? 'ok' : (r.status === 'Gap' ? 'zero' : '');
+      return '<tr><td class="q">' + esc(r.item) + '</td>' +
+             '<td class="' + cls + '">' + esc(r.status) + '</td>' +
+             '<td>' + esc(r.detail) + '</td></tr>';
+    });
+
+  function pending(node, what, path, items) {
+    node.innerHTML = '<div><strong>Awaiting import.</strong> ' + esc(what) +
+      '<div style="margin-top:8px">Drop exports in <code>' + esc(path) + '</code></div>' +
+      (items ? '<ul class="tight" style="display:inline-block;text-align:left;margin-top:10px">' +
+        items.map(function (i) { return '<li><code>' + esc(i) + '</code></li>'; }).join('') + '</ul>' : '') +
+      '</div>';
+  }
+  pending(el('gapPending'),
+    'Competitor keyword gap needs Semrush. No competitor list is shown because none has been measured — naming competitors from memory would be a guess, not evidence.',
+    'seo-intelligence/data/semrush/', ['organic-competitors.csv', 'keyword-gap.csv']);
+  pending(el('blPending'),
+    'Referring domains, Authority Score and backlink gap need Semrush.',
+    'seo-intelligence/data/semrush/', ['backlinks-referring-domains.csv', 'backlink-gap.csv']);
+  pending(el('ga4Pending'),
+    'Content performance needs a GA4 export joined to GSC pages.',
+    'seo-intelligence/data/ga4/', ['pages-engagement.csv', 'conversions.csv']);
+
+  el('foot').innerHTML = D.meta.footnote;
+})();
+</script>
+</body>
+</html>

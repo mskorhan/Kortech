@@ -48,6 +48,7 @@ const BusinessITSupport = () => {
       "description": "Professional business IT support and technical services in Charlotte, NC. On-site network setup, computer maintenance, and ongoing IT support for local businesses.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

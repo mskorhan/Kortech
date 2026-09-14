@@ -56,6 +56,7 @@ const Services = () => {
       "description": "Professional computer repair services in Charlotte, NC. Mac & PC repair, data recovery, virus removal, and IT support.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

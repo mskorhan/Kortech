@@ -1,6 +1,7 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
+import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
   Gamepad2,
   Wrench,
@@ -42,6 +43,7 @@ const NintendoSwitchRepair = () => {
       "description": "Professional Nintendo Switch repair services in Charlotte, NC. Expert Joy-Con drift fix, screen replacement, and charging port repair for all Switch models.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",
@@ -252,6 +254,8 @@ const NintendoSwitchRepair = () => {
 
       {/* FAQ Section */}
       <FAQSection faqs={faqs} title="Nintendo Switch Repair FAQ" />
+
+      <ServiceAreaLinks serviceName="Nintendo Switch Repair" />
 
       {/* Related Services */}
       <section className="py-16 bg-white">

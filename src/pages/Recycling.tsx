@@ -23,6 +23,7 @@ const Recycling = () => {
       "description": "Free electronics recycling service in Charlotte, NC. Environmentally responsible disposal of computers, phones, and electronics.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

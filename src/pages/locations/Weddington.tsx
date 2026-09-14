@@ -85,6 +85,7 @@ const Weddington = () => {
       ],
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "priceRange": "$$",
         "url": "https://www.kortechservice.com/",

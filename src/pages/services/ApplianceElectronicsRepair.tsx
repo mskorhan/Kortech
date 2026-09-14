@@ -42,6 +42,7 @@ const ApplianceElectronicsRepair = () => {
       "description": "Professional appliance electronics repair services in Charlotte, NC. Expert repair for microwaves, thermostats, smart home devices, and small appliances.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

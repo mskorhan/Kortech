@@ -45,6 +45,7 @@ const WaterDamageRepair = () => {
       "description": "Emergency water damage repair services in Charlotte, NC. Professional cleaning and restoration for water-damaged electronics.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

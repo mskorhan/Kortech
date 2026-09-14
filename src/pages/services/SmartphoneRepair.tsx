@@ -43,6 +43,7 @@ const SmartphoneRepair = () => {
       "description": "Professional smartphone screen repair, battery replacement, and mobile device repair services in Charlotte, NC. Expert repair for iPhone, Samsung, and all major brands.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

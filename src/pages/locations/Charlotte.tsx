@@ -73,6 +73,7 @@ const Charlotte = () => {
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
+      "@id": "https://www.kortechservice.com/#organization",
       "name": "KorTech Service - Charlotte Computer Repair",
       "description": "Professional computer repair, data recovery, and IT support services in Charlotte, NC. Serving Charlotte residents and businesses since 1998.",
       "url": "https://www.kortechservice.com/charlotte-computer-repair/",

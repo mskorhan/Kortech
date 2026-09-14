@@ -25,6 +25,7 @@ const About = () => {
       "url": "https://www.kortechservice.com/about/",
       "mainEntity": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "foundingDate": "1998",
         "address": {

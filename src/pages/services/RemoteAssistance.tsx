@@ -43,6 +43,7 @@ const RemoteAssistance = () => {
       "description": "Limited remote assistance available only to existing, verified customers of our Charlotte computer repair shop by appointment.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",

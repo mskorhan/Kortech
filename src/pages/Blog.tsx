@@ -235,6 +235,7 @@ const Blog = () => {
       "url": "https://www.kortechservice.com/blog/",
       "publisher": {
         "@type": "Organization",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "logo": {
           "@type": "ImageObject",

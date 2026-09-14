@@ -27,6 +27,7 @@ const Pricing = () => {
       "description": "Professional IT support plans and computer repair pricing in Charlotte, NC. Transparent pricing with no hidden fees.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service"
       }
     }

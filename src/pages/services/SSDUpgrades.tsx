@@ -44,6 +44,7 @@ const SSDUpgrades = () => {
       "description": "Professional SSD upgrade service in Charlotte, NC. Speed up your laptop with solid state drive installation and data migration.",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.kortechservice.com/#organization",
         "name": "KorTech Service",
         "address": {
           "@type": "PostalAddress",
