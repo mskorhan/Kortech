@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
-import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
 import NearbyAreas from '../../components/NearbyAreas';
 import { 
@@ -19,34 +18,33 @@ import {
 } from 'lucide-react';
 
 const IndianTrail = () => {
-  const { rating, totalReviews } = reviewsData;
 
   const services = [
     {
       icon: Monitor,
-      title: "Computer Repair Indian Trail",
-      description: "Expert Mac & PC repair services for Indian Trail, NC",
+      title: "Family Laptop & Gaming PC Repair",
+      description: "School laptops, household desktops and gaming rigs: overheating, crashes, power faults and failed upgrades",
       price: "Call/Text For Quote",
       link: "/services/"
     },
     {
       icon: HardDrive,
-      title: "Data Recovery Indian Trail",
-      description: "Professional data recovery for Indian Trail residents",
+      title: "Recovering Family Photos & Files",
+      description: "Photos, schoolwork and saved games retrieved from failed drives and computers that will not start",
       price: "Call/Text For Quote",
       link: "/data-recovery/"
     },
     {
       icon: Smartphone,
-      title: "Mobile Device Repair",
-      description: "iPhone, iPad, and Android repair in Indian Trail",
+      title: "Phone & Tablet Screen Repair",
+      description: "Cracked screens and worn batteries on the family iPhones, iPads and Android tablets",
       price: "Call/Text For Quote",
       link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
-      title: "Network Setup Indian Trail",
-      description: "Business and home network installation",
+      title: "Home Wi-Fi & Console Networking",
+      description: "Whole-house Wi-Fi, wired runs for gaming and streaming, and networking for a home-based business",
       price: "Call/Text For Quote",
       link: "/business-it-support/"
     }
@@ -54,20 +52,20 @@ const IndianTrail = () => {
 
   const faqs = [
     {
-      question: "Do you provide computer repair services in Indian Trail, NC?",
-      answer: "Yes, we provide comprehensive computer repair services to Indian Trail, NC residents. We offer pickup and delivery services throughout Indian Trail for your convenience."
+      question: "Indian Trail is in Union County. Do I have to drive into Charlotte?",
+      answer: "Not necessarily. Indian Trail sits south-east of our shop along the US-74 corridor, so it is the furthest of our regular service areas, and pickup and delivery is the option most Union County customers take. You are also welcome to drop the machine at 1721 Sardis Rd N, Suite 7A in Charlotte if you are already heading that way."
     },
     {
-      question: "How do I get my computer repaired if I live in Indian Trail?",
-      answer: "We offer pickup and delivery services to Indian Trail residents, or you can drop off your device at our Charlotte location. We make it convenient for Indian Trail customers to get expert computer repair."
+      question: "How does pickup and delivery work for a household with several devices?",
+      answer: "Call or text a list of what is wrong with each device and we will arrange a single collection rather than several trips. Everything is repaired at the Charlotte workshop and returned together, which usually makes more sense than driving a laptop back and forth up the corridor."
     },
     {
-      question: "What types of computers do you repair in Indian Trail?",
-      answer: "We repair all types of computers for Indian Trail residents including Mac, PC, laptops, desktops, and custom-built systems from all major manufacturers."
+      question: "Do you work on gaming PCs and custom-built desktops?",
+      answer: "Yes. Overheating and thermal throttling, noisy or failed fans, power supply faults, graphics cards that have stopped being detected, memory errors and builds that will not post are all routine here, including custom and self-built systems."
     },
     {
-      question: "Do you offer same-day service to Indian Trail?",
-      answer: "Yes, we offer same-day computer repair services to Indian Trail customers for many common issues. Contact us early in the day for best availability."
+      question: "Our kids' school laptops keep breaking. Can those be repaired affordably?",
+      answer: "Usually yes. Hinges, cracked screens, charging ports, keyboards and dead batteries are the common failures on school and family laptops, and repairing one is normally far cheaper than replacing it. We quote the part and labor before starting so you can decide."
     }
   ];
 
@@ -76,7 +74,7 @@ const IndianTrail = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Indian Trail, NC",
-      "description": "Professional computer repair, data recovery, and IT support services serving Indian Trail, NC. Expert technicians providing quality service with pickup and delivery.",
+      "description": "Repair for family laptops, household desktops and gaming PCs for Indian Trail, NC in Union County, with pickup and delivery along the US-74 corridor to the KorTech workshop in south-east Charlotte.",
       "url": "https://www.kortechservice.com/indian-trail-computer-repair/",
       "areaServed": [
         {
@@ -98,11 +96,6 @@ const IndianTrail = () => {
           "addressRegion": "NC",
           "postalCode": "28270",
           "addressCountry": "US"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": String(rating ?? "4.8"),
-          "reviewCount": String(totalReviews ?? "0")
         }
       }
     },
@@ -123,8 +116,8 @@ const IndianTrail = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Computer Repair Indian Trail NC | KorTech Service"
-        description="Professional computer repair in Indian Trail, NC. Same-day Mac & PC repair, data recovery, IT support, pickup and delivery. Call 704-246-7642!"
+        title="Indian Trail NC PC &amp; Laptop Repair | KorTech"
+        description="Family laptops, home desktops and gaming PCs repaired for Indian Trail, NC. Pickup and delivery from Union County to our Charlotte workshop. Call 704-246-7642."
         canonicalUrl="/indian-trail-computer-repair"
         location="Indian Trail, NC"
         service="Computer Repair"
@@ -144,7 +137,7 @@ const IndianTrail = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-orange-300" />
-              <span className="text-white font-medium">Serving Indian Trail, NC Since 1998</span>
+              <span className="text-white font-medium">Serving Indian Trail With Pickup &amp; Delivery</span>
             </div>
             
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -154,14 +147,14 @@ const IndianTrail = () => {
             
             <div className="bg-orange-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-orange-100 mb-4">
-                <strong>Indian Trail Community:</strong> Conveniently located just off Highway 74 and easily accessible from Indian Trail via Independence Boulevard, we've been serving Indian Trail families and small businesses for over 25 years.
+                <strong>Indian Trail Community:</strong> Indian Trail is an incorporated town in Union County, south-east of our shop along the US-74 corridor, and largely a commuter community. KorTech Service has no Indian Trail branch: our Charlotte workshop has operated since 1998, and because Indian Trail is the furthest area we regularly serve, pickup and delivery is usually the practical choice.
               </p>
             </div>
             
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Professional computer repair services serving Indian Trail, North Carolina. Expert Mac & PC repair, 
-              data recovery, and IT support for Indian Trail residents and businesses. Convenient pickup and 
-              delivery services available throughout Indian Trail.
+              Repairs for the devices a whole household depends on: school and work laptops, the family
+              desktop, and gaming PCs that overheat, crash or refuse to start. We can collect from Indian
+              Trail, repair at our Charlotte workshop, and bring everything back when it is done.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -206,10 +199,10 @@ const IndianTrail = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Computer Services for Indian Trail, NC
+              Household and Gaming PC Services for Indian Trail
             </h2>
             <p className="text-lg text-slate-600">
-              Professional computer repair and IT support for Indian Trail residents and businesses
+              Collected from Union County, repaired in Charlotte, and returned to your door
             </p>
           </div>
 
@@ -236,10 +229,10 @@ const IndianTrail = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Why Indian Trail Residents Choose KorTech Service
+              How We Handle Repairs for Indian Trail Households
             </h2>
             <p className="text-lg text-slate-600">
-              Trusted by Indian Trail community for over 25 years
+              An independent Charlotte workshop, running since 1998, that comes to you when the drive is long
             </p>
           </div>
 
@@ -249,15 +242,15 @@ const IndianTrail = () => {
                 <Truck className="h-8 w-8 text-orange-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">Convenient pickup and delivery services throughout Indian Trail for your computer repair needs</p>
+              <p className="text-slate-600">Indian Trail is the furthest area we regularly serve, so we can collect several household devices in one visit instead of asking you to make the trip</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Indian Trail Community</h3>
-              <p className="text-slate-600">Proudly serving Indian Trail residents and businesses with personalized service</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Family &amp; Gaming Machines</h3>
+              <p className="text-slate-600">School laptops, shared family desktops and custom gaming builds, quoted before work starts so repair-or-replace is your call</p>
             </div>
 
             <div className="text-center">
@@ -265,7 +258,7 @@ const IndianTrail = () => {
                 <Star className="h-8 w-8 text-yellow-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">4.8★ Google Rating</h3>
-              <p className="text-slate-600">Highly rated by Indian Trail customers for quality service and convenience</p>
+              <p className="text-slate-600">Our overall Google rating across the repairs completed at the Charlotte workshop</p>
             </div>
           </div>
         </div>
@@ -276,10 +269,10 @@ const IndianTrail = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Indian Trail Computer Repair FAQ
+              Indian Trail Pickup &amp; Delivery Questions
             </h2>
             <p className="text-lg text-slate-600">
-              Common questions about computer repair services for Indian Trail, NC residents
+              Getting devices from Union County to the workshop, and what we repair once they arrive
             </p>
           </div>
           
@@ -298,10 +291,10 @@ const IndianTrail = () => {
       <section className="py-16 bg-orange-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready for Computer Repair in Indian Trail?
+            Want a Device Collected From Indian Trail?
           </h2>
           <p className="text-xl text-orange-200 mb-8">
-            Contact us today for expert computer repair services in Indian Trail, NC
+            Call or text a list of what is wrong and we will arrange one pickup for the whole household
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -336,7 +329,7 @@ const IndianTrail = () => {
               <Clock className="h-6 w-6 text-orange-300" />
               <div className="text-left">
                 <p className="font-bold">Hours: Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
-                <p className="text-orange-200">Serving Indian Trail and surrounding areas</p>
+                <p className="text-orange-200">Indian Trail is a service area; repairs are carried out at the Charlotte workshop</p>
               </div>
             </div>
           </div>

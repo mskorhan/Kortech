@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
-import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
 import NearbyAreas from '../../components/NearbyAreas';
 import {
@@ -19,34 +18,33 @@ import {
 } from 'lucide-react';
 
 const Stallings = () => {
-  const { rating, totalReviews } = reviewsData;
 
   const services = [
     {
       icon: Monitor,
-      title: "Computer Repair Stallings",
-      description: "Expert Mac & PC repair services for Stallings, NC",
+      title: "Tune-Ups & Virus Removal",
+      description: "Slow startups, pop-ups, and machines that need cleaning out rather than replacing",
       price: "Call/Text For Quote",
       link: "/services/"
     },
     {
       icon: HardDrive,
-      title: "Data Recovery Stallings",
-      description: "Professional data recovery for Stallings residents",
+      title: "Drive & Data Recovery",
+      description: "Bring the drive in and we will tell you what is still readable before quoting",
       price: "Call/Text For Quote",
       link: "/data-recovery/"
     },
     {
       icon: Smartphone,
-      title: "Mobile Device Repair",
-      description: "iPhone, iPad, and Android repair in Stallings",
+      title: "Screens & Batteries",
+      description: "Cracked iPhone, iPad, and Android screens and batteries that no longer hold charge",
       price: "Call/Text For Quote",
       link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
-      title: "Network Setup Stallings",
-      description: "Business and home network installation",
+      title: "Router & Network Setup",
+      description: "New router, a connection that keeps dropping, or a small office network to sort out",
       price: "Call/Text For Quote",
       link: "/business-it-support/"
     }
@@ -54,20 +52,20 @@ const Stallings = () => {
 
   const faqs = [
     {
-      question: "Do you provide computer repair services in Stallings, NC?",
-      answer: "Yes, we provide comprehensive computer repair services to Stallings, NC residents. We offer pickup and delivery services throughout Stallings for your convenience."
+      question: "How do I drop something off from Stallings?",
+      answer: "Our hours are Mon-Fri 9AM-6PM and Sat 11AM-4PM at 1721 Sardis Rd N, Suite 7A, Charlotte, just over the Matthews line from Stallings. Call or text before you set off so we can confirm someone is ready for you and tell you what to expect, or what to bring, before you are standing at the counter."
     },
     {
-      question: "How do I get my computer repaired if I live in Stallings?",
-      answer: "We offer pickup and delivery services to Stallings residents, or you can drop off your device at our Charlotte location. We make it convenient for Stallings customers to get expert computer repair."
+      question: "What should I bring with the laptop or phone?",
+      answer: "The charger or power adapter, and the password or PIN if you want us to get past the login screen and actually test the repair. For a desktop, the tower alone is usually enough unless the fault involves the monitor or keyboard. If a specific program or file is the problem, say which one."
     },
     {
-      question: "What types of computer issues do you fix in Stallings?",
-      answer: "We fix all types of computer issues for Stallings residents including hardware failures, software problems, virus infections, data loss, slow performance, and network connectivity issues."
+      question: "Is a cracked screen or a dead battery worth repairing, or should I replace the device?",
+      answer: "That depends on the device's age and what else is failing on it, and we would rather tell you honestly that a repair is not worth the money than take the job. We diagnose first and quote before starting, and if you go ahead with a hardware repair the diagnostic fee is waived."
     },
     {
-      question: "Do you offer same-day service to Stallings?",
-      answer: "Yes, we offer same-day computer repair services to Stallings customers for many common issues. Contact us early in the day for best availability."
+      question: "My computer got slow and is showing pop-ups. Can that be cleaned up?",
+      answer: "Usually, yes, and it is one of the most common things we see. Slowdowns and pop-ups tend to come from unwanted software, a cluttered startup, or an aging drive, and which one it is determines the fix. Bring it in and we will diagnose it. Contact us early in the day to ask about same-day availability."
     }
   ];
 
@@ -76,7 +74,7 @@ const Stallings = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Stallings, NC",
-      "description": "Professional computer repair, data recovery, and IT support services serving Stallings, NC. Expert technicians providing quality service with pickup and delivery.",
+      "description": "Everyday computer, phone, and tablet repair for Stallings, NC, a Union County town on the Matthews line along US-74. Screen and battery replacement, virus removal, tune-ups, and data recovery, handled at the KorTech Service shop in Charlotte with drop-off or pickup and delivery.",
       "url": "https://www.kortechservice.com/stallings-computer-repair/",
       "areaServed": [
         {
@@ -98,11 +96,6 @@ const Stallings = () => {
           "addressRegion": "NC",
           "postalCode": "28270",
           "addressCountry": "US"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": String(rating ?? "4.8"),
-          "reviewCount": String(totalReviews ?? "0")
         }
       }
     },
@@ -123,8 +116,8 @@ const Stallings = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Computer Repair Stallings NC | KorTech Service"
-        description="Professional computer repair services in Stallings, NC. Same-day Mac & PC repair, data recovery, IT support. Pickup and delivery available. Call 704-246-7642!"
+        title="Stallings NC Drop-Off Computer Repair | KorTech"
+        description="Screen and battery replacement, virus removal, and tune-ups for Stallings, NC. Easy drop-off at our Charlotte shop near the Matthews line. Call 704-246-7642."
         canonicalUrl="/stallings-computer-repair"
         location="Stallings, NC"
         service="Computer Repair"
@@ -144,7 +137,7 @@ const Stallings = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-sky-300" />
-              <span className="text-white font-medium">Serving Stallings, NC Since 1998</span>
+              <span className="text-white font-medium">On the Matthews Line | Closest of Our Union County Areas</span>
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -154,14 +147,14 @@ const Stallings = () => {
 
             <div className="bg-sky-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-sky-100 mb-4">
-                <strong>Stallings Community:</strong> Serving Stallings residents and businesses along Highway 74 and near Stallings Rd, we've been providing reliable computer repair services to Stallings families and businesses for over 25 years.
+                <strong>Stallings Community:</strong> Stallings sits between Matthews and Indian Trail along US-74, right on the Matthews line, which makes it the closest of the Union County areas we cover to our Charlotte shop. Close enough that dropping a device off and collecting it later is genuinely easy, which suits the everyday repairs below: a screen, a battery, a virus cleanup, a machine that has slowed down.
               </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Professional computer repair services serving Stallings, North Carolina. Expert Mac & PC repair,
-              data recovery, and IT support for Stallings residents and businesses. Convenient pickup and
-              delivery services available throughout Stallings.
+              Cracked screens, batteries that no longer last, virus and pop-up cleanups, and machines that have
+              slowed to a crawl. Call or text before you set off, bring the charger, and we will diagnose it
+              and quote before any work starts. Pickup and delivery is there if a trip does not suit you.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -206,10 +199,10 @@ const Stallings = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Computer Services for Stallings, NC
+              Everyday Repairs, Quick Drop-Off
             </h2>
             <p className="text-lg text-slate-600">
-              Professional computer repair and IT support for Stallings residents and businesses
+              Straightforward everyday repairs, close enough to Stallings to drop off and collect
             </p>
           </div>
 
@@ -236,10 +229,10 @@ const Stallings = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Why Stallings Residents Choose KorTech Service
+              Why Drop-Off Makes Sense From Stallings
             </h2>
             <p className="text-lg text-slate-600">
-              Trusted by Stallings community for over 25 years
+              An independent Charlotte repair shop, operating since 1998, just over the Matthews line
             </p>
           </div>
 
@@ -248,16 +241,16 @@ const Stallings = () => {
               <div className="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Truck className="h-8 w-8 text-sky-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">Convenient pickup and delivery services throughout Stallings for your computer repair needs</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">A Short Trip Either Way</h3>
+              <p className="text-slate-600">Drop off during opening hours and collect when it is done. Pickup and delivery stays available if a trip does not suit you</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Stallings Community</h3>
-              <p className="text-slate-600">Proudly serving Stallings residents and businesses with personalized service</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Told Before It Is Done</h3>
+              <p className="text-slate-600">We diagnose and quote before starting, and we will say so plainly when a repair is not worth the cost</p>
             </div>
 
             <div className="text-center">
@@ -265,7 +258,7 @@ const Stallings = () => {
                 <Star className="h-8 w-8 text-yellow-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">4.8★ Google Rating</h3>
-              <p className="text-slate-600">Highly rated by Stallings customers for quality service and convenience</p>
+              <p className="text-slate-600">Our overall Google rating across everyone the Charlotte shop serves</p>
             </div>
           </div>
         </div>
@@ -279,7 +272,7 @@ const Stallings = () => {
               Stallings Computer Repair FAQ
             </h2>
             <p className="text-lg text-slate-600">
-              Common questions about computer repair services for Stallings, NC residents
+              What to bring, how drop-off works, and when a repair is worth doing
             </p>
           </div>
 
@@ -298,10 +291,10 @@ const Stallings = () => {
       <section className="py-16 bg-sky-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready for Computer Repair in Stallings?
+            Bring It By From Stallings
           </h2>
           <p className="text-xl text-sky-200 mb-8">
-            Contact us today for expert computer repair services in Stallings, NC
+            Call or text first for a sense of the fix, then bring it in during opening hours
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -329,14 +322,14 @@ const Stallings = () => {
               <div className="text-left">
                 <p className="font-bold">KorTech Service</p>
                 <p className="text-sky-200">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</p>
-                <p className="text-sky-200">Pickup & Delivery Available in Stallings (via Highway 74 and Stallings Rd)</p>
+                <p className="text-sky-200">Our only location, just over the Matthews line from Stallings</p>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-4">
               <Clock className="h-6 w-6 text-sky-300" />
               <div className="text-left">
                 <p className="font-bold">Hours: Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
-                <p className="text-sky-200">Serving Stallings and surrounding areas</p>
+                <p className="text-sky-200">Drop-off and collection during these hours</p>
               </div>
             </div>
           </div>

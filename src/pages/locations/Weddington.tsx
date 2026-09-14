@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
-import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
 import NearbyAreas from '../../components/NearbyAreas';
 import {
@@ -19,34 +18,33 @@ import {
 } from 'lucide-react';
 
 const Weddington = () => {
-  const { rating, totalReviews } = reviewsData;
 
   const services = [
     {
       icon: Monitor,
-      title: "Computer Repair Weddington",
-      description: "Expert Mac & PC repair services for Weddington, NC",
+      title: "Home Office Computer Repair",
+      description: "Keeping the machine you work from running, on Mac or PC",
       price: "Call/Text For Quote",
       link: "/services/"
     },
     {
       icon: HardDrive,
-      title: "Data Recovery Weddington",
-      description: "Professional data recovery for Weddington residents",
+      title: "Work File Recovery",
+      description: "Getting documents and project files back off a drive that stopped cooperating",
       price: "Call/Text For Quote",
       link: "/data-recovery/"
     },
     {
       icon: Smartphone,
-      title: "Mobile Device Repair",
-      description: "iPhone, iPad, and Android repair in Weddington",
+      title: "Tablet & Phone Repair",
+      description: "The second screen you take calls and notes on, back in working order",
       price: "Call/Text For Quote",
       link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
-      title: "Network Setup Weddington",
-      description: "Business and home network installation",
+      title: "Wi-Fi Coverage & Networking",
+      description: "Router placement, mesh or extenders, and wired runs where the signal will not reach",
       price: "Call/Text For Quote",
       link: "/business-it-support/"
     }
@@ -54,20 +52,20 @@ const Weddington = () => {
 
   const faqs = [
     {
-      question: "Do you provide computer repair services in Weddington, NC?",
-      answer: "Yes, we provide comprehensive computer repair services to Weddington, NC residents. We offer pickup and delivery services throughout Weddington for your convenience."
+      question: "The Wi-Fi drops out in my back-room office. Can that be fixed?",
+      answer: "Usually, yes. Dead spots at the far end of a house are typically a placement or coverage problem rather than a broken router, and the fix is some combination of moving the router, adding mesh units or an access point, or running a wired connection to the room that matters most. Describe the layout and where the signal fails and we can talk through the options."
     },
     {
-      question: "How do I get my computer repaired if I live in Weddington?",
-      answer: "We offer pickup and delivery services to Weddington residents, or you can drop off your device at our Charlotte location. We make it convenient for Weddington customers to get expert computer repair."
+      question: "I work from home and cannot be without this computer. What are my options?",
+      answer: "Tell us that up front. It changes how we sequence the work and what we suggest, and if you have a spare machine of your own it is worth getting you working on that while yours is with us. Contact us early in the day to ask about same-day availability. We will also give you a timeframe once the machine is diagnosed rather than before."
     },
     {
-      question: "What types of computer issues do you fix in Weddington?",
-      answer: "We fix all types of computer issues for Weddington residents including hardware failures, software problems, virus infections, data loss, slow performance, and network connectivity issues."
+      question: "Can I mail the laptop in, or do you have to come out?",
+      answer: "Both work. A laptop is easy to send or drop at our Charlotte shop, and Weddington sits south of us, so drop-off is straightforward if you are already heading that way. For a desktop, or if you would rather not handle it at all, ask about pickup and delivery instead."
     },
     {
-      question: "Do you offer same-day service to Weddington?",
-      answer: "Yes, we offer same-day computer repair services to Weddington customers for many common issues. Contact us early in the day for best availability."
+      question: "Do you set up a new home-office machine, not just repair a broken one?",
+      answer: "Yes. Setting up a new computer, moving files and settings across from the old one, getting printers and monitors connected, and making sure it talks to your network properly is standard work for us. Mention what you are moving from and what needs to carry over when you call."
     }
   ];
 
@@ -76,7 +74,7 @@ const Weddington = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Weddington, NC",
-      "description": "Professional computer repair, data recovery, and IT support services serving Weddington, NC. Expert technicians providing quality service with pickup and delivery.",
+      "description": "Home-office computer repair, new machine setup, and Wi-Fi coverage and networking help for Weddington, NC, in Union County south of Charlotte. Work is done at the KorTech Service shop in Charlotte, with mail-in, drop-off, and pickup and delivery options.",
       "url": "https://www.kortechservice.com/weddington-computer-repair/",
       "areaServed": [
         {
@@ -98,11 +96,6 @@ const Weddington = () => {
           "addressRegion": "NC",
           "postalCode": "28270",
           "addressCountry": "US"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": String(rating ?? "4.8"),
-          "reviewCount": String(totalReviews ?? "0")
         }
       }
     },
@@ -123,8 +116,8 @@ const Weddington = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Computer Repair Weddington NC | KorTech Service"
-        description="Professional computer repair services in Weddington, NC. Same-day Mac & PC repair, data recovery, IT support. Pickup and delivery available. Call 704-246-7642!"
+        title="Weddington NC Home Office & Wi-Fi Help | KorTech"
+        description="Home-office computer repair, new setups, and Wi-Fi coverage fixes for Weddington, NC. Mail-in, drop-off, or pickup and delivery. Call 704-246-7642."
         canonicalUrl="/weddington-computer-repair"
         location="Weddington, NC"
         service="Computer Repair"
@@ -144,7 +137,7 @@ const Weddington = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-indigo-300" />
-              <span className="text-white font-medium">Serving Weddington, NC Since 1998</span>
+              <span className="text-white font-medium">Union County | Mail-In, Drop-Off, or Pickup</span>
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -154,14 +147,14 @@ const Weddington = () => {
 
             <div className="bg-indigo-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-indigo-100 mb-4">
-                <strong>Weddington Community:</strong> Serving Weddington residents and businesses near Weddington Rd and Providence Rd, we've been providing reliable, professional computer repair services to Weddington families for over 25 years.
+                <strong>Weddington Community:</strong> Weddington is a largely residential Union County community south of our Charlotte shop, without the commercial corridor that a town centre brings. When the computer in question is the one you work from, two practical questions follow: how to hand it over without losing a working day, and why the signal will not reach the room the desk is in. This page is built around both.
               </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Professional computer repair services serving Weddington, North Carolina. Expert Mac & PC repair,
-              data recovery, and IT support for Weddington residents and businesses. Convenient pickup and
-              delivery services available throughout Weddington.
+              Repairs and upgrades for the computer you work from, setup when you replace it, and network
+              work when video calls stutter or a back room never gets a solid signal. Mail a laptop in, drop
+              it at the Charlotte shop, or ask about pickup and delivery, whichever costs you less time.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -206,10 +199,10 @@ const Weddington = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Computer Services for Weddington, NC
+              Home Office & Network Services
             </h2>
             <p className="text-lg text-slate-600">
-              Professional computer repair and IT support for Weddington residents and businesses
+              Built around remote work: the machine, the files on it, and the connection behind it
             </p>
           </div>
 
@@ -236,10 +229,10 @@ const Weddington = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Why Weddington Residents Choose KorTech Service
+              Getting Your Machine to Us
             </h2>
             <p className="text-lg text-slate-600">
-              Trusted by Weddington community for over 25 years
+              An independent Charlotte repair shop, operating since 1998, with options that fit a workday
             </p>
           </div>
 
@@ -248,16 +241,16 @@ const Weddington = () => {
               <div className="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Truck className="h-8 w-8 text-indigo-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">Convenient pickup and delivery services throughout Weddington for your computer repair needs</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Three Ways to Hand It Over</h3>
+              <p className="text-slate-600">Mail a laptop in, drop off at the Charlotte shop if you are heading that way, or ask about pickup and delivery for a desktop</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Weddington Community</h3>
-              <p className="text-slate-600">Proudly serving Weddington residents and businesses with personalized service</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Downtime Taken Seriously</h3>
+              <p className="text-slate-600">Say up front that you work from this machine and we will sequence the job around that rather than treating it as a spare</p>
             </div>
 
             <div className="text-center">
@@ -265,7 +258,7 @@ const Weddington = () => {
                 <Star className="h-8 w-8 text-yellow-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">4.8★ Google Rating</h3>
-              <p className="text-slate-600">Highly rated by Weddington customers for quality service and convenience</p>
+              <p className="text-slate-600">Our overall Google rating across everyone the Charlotte shop serves</p>
             </div>
           </div>
         </div>
@@ -279,7 +272,7 @@ const Weddington = () => {
               Weddington Computer Repair FAQ
             </h2>
             <p className="text-lg text-slate-600">
-              Common questions about computer repair services for Weddington, NC residents
+              Wi-Fi coverage, working-day downtime, and how to get the machine to us
             </p>
           </div>
 
@@ -298,10 +291,10 @@ const Weddington = () => {
       <section className="py-16 bg-indigo-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready for Computer Repair in Weddington?
+            Home Office Problem in Weddington?
           </h2>
           <p className="text-xl text-indigo-200 mb-8">
-            Contact us today for expert computer repair services in Weddington, NC
+            Tell us what is failing and when you need it back, and we will suggest the quickest route
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -329,14 +322,14 @@ const Weddington = () => {
               <div className="text-left">
                 <p className="font-bold">KorTech Service</p>
                 <p className="text-indigo-200">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</p>
-                <p className="text-indigo-200">Pickup & Delivery Available in Weddington (via Weddington Rd and Providence Rd)</p>
+                <p className="text-indigo-200">Our only location. Mail-in and pickup both end up here</p>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-4">
               <Clock className="h-6 w-6 text-indigo-300" />
               <div className="text-left">
                 <p className="font-bold">Hours: Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
-                <p className="text-indigo-200">Serving Weddington and surrounding areas</p>
+                <p className="text-indigo-200">Reach us by call or text outside these hours and we will reply</p>
               </div>
             </div>
           </div>

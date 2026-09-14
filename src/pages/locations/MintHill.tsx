@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
-import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
 import NearbyAreas from '../../components/NearbyAreas';
 import { 
@@ -19,34 +18,33 @@ import {
 } from 'lucide-react';
 
 const MintHill = () => {
-  const { rating, totalReviews } = reviewsData;
 
   const services = [
     {
       icon: Monitor,
-      title: "Computer Repair Mint Hill",
-      description: "Expert Mac & PC repair services for Mint Hill, NC",
+      title: "Home Computer Repair & Upgrades",
+      description: "SSD swaps, memory upgrades, fan and power supply repairs that keep an older desktop or laptop in service",
       price: "Call/Text For Quote",
       link: "/services/"
     },
     {
       icon: HardDrive,
-      title: "Data Recovery Mint Hill",
-      description: "Professional data recovery for Mint Hill residents",
+      title: "Data Recovery & Transfer",
+      description: "Years of documents and photos rescued from an aging drive, or moved onto a newer machine",
       price: "Call/Text For Quote",
       link: "/data-recovery/"
     },
     {
       icon: Smartphone,
-      title: "Mobile Device Repair",
-      description: "iPhone, iPad, and Android repair in Mint Hill",
+      title: "Phone & Tablet Repair",
+      description: "Screen and battery replacement on iPhone, iPad and Android devices, handled at the same workshop",
       price: "Call/Text For Quote",
       link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
-      title: "Network Setup Mint Hill",
-      description: "Business and home network installation",
+      title: "Home Wi-Fi & Network Setup",
+      description: "Router replacement, dead-spot coverage in larger or older houses, printers and shared home storage",
       price: "Call/Text For Quote",
       link: "/business-it-support/"
     }
@@ -54,20 +52,20 @@ const MintHill = () => {
 
   const faqs = [
     {
-      question: "Do you provide computer repair services in Mint Hill, NC?",
-      answer: "Yes, we provide comprehensive computer repair services to Mint Hill, NC residents. We offer pickup and delivery services throughout Mint Hill for your convenience."
+      question: "My desktop is several years old. Is it worth upgrading or should I replace it?",
+      answer: "We look at the machine before advising. A solid-state drive and more memory transform most computers that still have a working processor, and that is far cheaper than a new system. If the hardware really is at the end of its life we will say so rather than sell you an upgrade that will not help."
     },
     {
-      question: "How do I get my computer repaired if I live in Mint Hill?",
-      answer: "We offer pickup and delivery services to Mint Hill residents, or you can drop off your device at our Charlotte location. We make it convenient for Mint Hill customers to get expert computer repair."
+      question: "Can you add an SSD or more memory and keep everything exactly as it is?",
+      answer: "Yes. The usual approach is to clone the existing system onto the new drive so your programs, files, settings and shortcuts come across unchanged, then fit the additional memory at the same time. You get the machine back looking the same but responding much faster."
     },
     {
-      question: "What computer problems do you fix in Mint Hill?",
-      answer: "We fix all types of computer problems for Mint Hill residents including hardware failures, software issues, virus removal, data recovery, and performance optimization."
+      question: "Our Wi-Fi does not reach the whole house. What can be done?",
+      answer: "Dead spots are common in larger or older houses, especially where the router sits at one end. We can reposition or replace the router, add mesh units or a wired access point, and sort out printers and shared storage so everything stays reachable from every room."
     },
     {
-      question: "Do you offer same-day service to Mint Hill?",
-      answer: "Yes, we offer same-day computer repair services to Mint Hill customers for many common issues. Contact us early in the day for best availability."
+      question: "Where do Mint Hill customers bring a computer in?",
+      answer: "To our workshop at 1721 Sardis Rd N, Suite 7A in Charlotte. Mint Hill lies east and north-east of the shop, so it is a straightforward drop-off for most residents, and pickup and delivery is available if carrying a desktop is not practical."
     }
   ];
 
@@ -76,7 +74,7 @@ const MintHill = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Mint Hill, NC",
-      "description": "Professional computer repair, data recovery, and IT support services serving Mint Hill, NC. Expert technicians providing quality service with pickup and delivery.",
+      "description": "Home computer repair, SSD and memory upgrades, and home Wi-Fi and network setup for Mint Hill, NC, east of the KorTech workshop in south-east Charlotte, with drop-off or pickup and delivery.",
       "url": "https://www.kortechservice.com/mint-hill-computer-repair/",
       "areaServed": [
         {
@@ -98,11 +96,6 @@ const MintHill = () => {
           "addressRegion": "NC",
           "postalCode": "28270",
           "addressCountry": "US"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": String(rating ?? "4.8"),
-          "reviewCount": String(totalReviews ?? "0")
         }
       }
     },
@@ -123,8 +116,8 @@ const MintHill = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Computer Repair Mint Hill NC | KorTech Service"
-        description="Professional computer repair services in Mint Hill, NC. Same-day Mac & PC repair, data recovery, IT support. Pickup and delivery available. Call 704-246-7642!"
+        title="Mint Hill NC Computer Upgrades &amp; Repair | KorTech"
+        description="Home computer repair, SSD and memory upgrades and Wi-Fi setup for Mint Hill, NC. Drop off at our Charlotte workshop or ask about pickup. Call 704-246-7642."
         canonicalUrl="/mint-hill-computer-repair"
         location="Mint Hill, NC"
         service="Computer Repair"
@@ -144,7 +137,7 @@ const MintHill = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-purple-300" />
-              <span className="text-white font-medium">Serving Mint Hill, NC Since 1998</span>
+              <span className="text-white font-medium">Serving Mint Hill From Our Charlotte Workshop</span>
             </div>
             
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -154,14 +147,14 @@ const MintHill = () => {
             
             <div className="bg-purple-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-purple-100 mb-4">
-                <strong>Mint Hill Community:</strong> Located just minutes from Mint Hill via Highway 51 and Lawyers Road, we've been proudly serving Mint Hill residents and local businesses for over 25 years. Our convenient Charlotte location makes us easily accessible from all Mint Hill neighborhoods.
+                <strong>Mint Hill Community:</strong> Mint Hill is an established incorporated town on the east side of Mecklenburg County, sitting east and north-east of our shop. KorTech Service has no Mint Hill branch: our workshop on Sardis Rd N has operated in Charlotte since 1998, and Mint Hill is one of the east-side areas we serve from it.
               </p>
             </div>
             
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Professional computer repair services serving Mint Hill, North Carolina. Expert Mac & PC repair, 
-              data recovery, and IT support for Mint Hill residents and businesses. Convenient pickup and 
-              delivery services available throughout Mint Hill.
+              Keeping home computers going rather than replacing them: solid-state drive and memory upgrades,
+              fan and power supply repairs, data transfers to a newer machine, and home Wi-Fi that reaches
+              every room. Drop-off at the Charlotte workshop, or ask about pickup and delivery.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -206,10 +199,10 @@ const MintHill = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Computer Services for Mint Hill, NC
+              Home Computer and Network Services for Mint Hill
             </h2>
             <p className="text-lg text-slate-600">
-              Professional computer repair and IT support for Mint Hill residents and businesses
+              Repairs, upgrades and home networking aimed at machines people intend to keep
             </p>
           </div>
 
@@ -236,10 +229,10 @@ const MintHill = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Why Mint Hill Residents Choose KorTech Service
+              Repair and Upgrade Instead of Replace
             </h2>
             <p className="text-lg text-slate-600">
-              Trusted by Mint Hill community for over 25 years
+              An independent Charlotte workshop, running since 1998, on the west side of Mint Hill
             </p>
           </div>
 
@@ -249,15 +242,15 @@ const MintHill = () => {
                 <Truck className="h-8 w-8 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">Convenient pickup and delivery services throughout Mint Hill for your computer repair needs</p>
+              <p className="text-slate-600">Desktops, monitors and printers are awkward to carry, so we can collect from Mint Hill and return the equipment set up and working</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Mint Hill Community</h3>
-              <p className="text-slate-600">Proudly serving Mint Hill residents and businesses with personalized service</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Upgrades That Last</h3>
+              <p className="text-slate-600">SSDs, memory and thermal repairs that add years to a working machine, with an honest answer when a computer is genuinely finished</p>
             </div>
 
             <div className="text-center">
@@ -265,7 +258,7 @@ const MintHill = () => {
                 <Star className="h-8 w-8 text-yellow-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">4.8★ Google Rating</h3>
-              <p className="text-slate-600">Highly rated by Mint Hill customers for quality service and convenience</p>
+              <p className="text-slate-600">Our overall Google rating across the repairs and upgrades completed at the Charlotte workshop</p>
             </div>
           </div>
         </div>
@@ -276,10 +269,10 @@ const MintHill = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Mint Hill Computer Repair FAQ
+              Mint Hill Upgrade &amp; Home Network Questions
             </h2>
             <p className="text-lg text-slate-600">
-              Common questions about computer repair services for Mint Hill, NC residents
+              Whether to upgrade or replace, what a faster drive changes, and fixing Wi-Fi dead spots
             </p>
           </div>
           
@@ -298,10 +291,10 @@ const MintHill = () => {
       <section className="py-16 bg-purple-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready for Computer Repair in Mint Hill?
+            Thinking About an Upgrade in Mint Hill?
           </h2>
           <p className="text-xl text-purple-200 mb-8">
-            Contact us today for expert computer repair services in Mint Hill, NC
+            Tell us the age of the machine and what it struggles with, and we will say whether an upgrade is worth it
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -336,7 +329,7 @@ const MintHill = () => {
               <Clock className="h-6 w-6 text-purple-300" />
               <div className="text-left">
                 <p className="font-bold">Hours: Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
-                <p className="text-purple-200">Serving Mint Hill and surrounding areas</p>
+                <p className="text-purple-200">Mint Hill is a service area; all work is carried out at the Charlotte workshop</p>
               </div>
             </div>
           </div>

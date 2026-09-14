@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
-import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
 import NearbyAreas from '../../components/NearbyAreas';
 import {
@@ -19,34 +18,33 @@ import {
 } from 'lucide-react';
 
 const Waxhaw = () => {
-  const { rating, totalReviews } = reviewsData;
 
   const services = [
     {
       icon: Monitor,
-      title: "Computer Repair Waxhaw",
-      description: "Expert Mac & PC repair services for Waxhaw, NC",
+      title: "Home Computer & Laptop Repair",
+      description: "The family Mac or PC, plus gaming rigs that overheat, crash, or will not boot",
       price: "Call/Text For Quote",
       link: "/services/"
     },
     {
       icon: HardDrive,
-      title: "Data Recovery Waxhaw",
-      description: "Professional data recovery for Waxhaw residents",
+      title: "Photo & File Recovery",
+      description: "Family photos and documents off drives that died or stopped being readable",
       price: "Call/Text For Quote",
       link: "/data-recovery/"
     },
     {
       icon: Smartphone,
-      title: "Mobile Device Repair",
-      description: "iPhone, iPad, and Android repair in Waxhaw",
+      title: "Kids' Phones & Tablets",
+      description: "Cracked screens and worn-out batteries on the devices the whole family shares",
       price: "Call/Text For Quote",
       link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
-      title: "Network Setup Waxhaw",
-      description: "Business and home network installation",
+      title: "Home Wi-Fi Help",
+      description: "Router setup, dead spots, and keeping the streaming and schoolwork devices online",
       price: "Call/Text For Quote",
       link: "/business-it-support/"
     }
@@ -54,20 +52,20 @@ const Waxhaw = () => {
 
   const faqs = [
     {
-      question: "Do you provide computer repair services in Waxhaw, NC?",
-      answer: "Yes, we provide comprehensive computer repair services to Waxhaw, NC residents. We offer pickup and delivery services throughout Waxhaw for your convenience."
+      question: "I would rather not drive to Charlotte. How does pickup and delivery work from Waxhaw?",
+      answer: "Waxhaw is south of Charlotte in Union County, far enough that a round trip is a real errand, so pickup and delivery is usually the more practical option. Call or text to arrange it. We collect the machine, do the work at our Charlotte shop, and bring it back, so you are not making the drive twice."
     },
     {
-      question: "How do I get my computer repaired if I live in Waxhaw?",
-      answer: "We offer pickup and delivery services to Waxhaw residents, or you can drop off your device at our Charlotte location. We make it convenient for Waxhaw customers to get expert computer repair."
+      question: "Can you take several family devices at once, or is it one at a time?",
+      answer: "Several at once is fine, and it is usually the sensible way to do it if we are already coming out. A laptop, a desktop, and a couple of tablets can go in together. Tell us what you are sending when you call so we can quote each item rather than surprising you at the end."
     },
     {
-      question: "What types of computer issues do you fix in Waxhaw?",
-      answer: "We fix all types of computer issues for Waxhaw residents including hardware failures, software problems, virus infections, data loss, slow performance, and network connectivity issues."
+      question: "My son's gaming PC shuts off during games. Is that something you repair?",
+      answer: "Yes. Shutdowns under load usually point to heat, power supply, or a failing component rather than the game itself, and custom-built PCs are welcome. We diagnose before quoting, and if the fix turns out to be a hardware replacement, the diagnostic fee is waived with hardware repair."
     },
     {
-      question: "Do you offer same-day service to Waxhaw?",
-      answer: "Yes, we offer same-day computer repair services to Waxhaw customers for many common issues. Contact us early in the day for best availability."
+      question: "Do I need to back up the family photos before handing the computer over?",
+      answer: "Back up first if the machine still boots and you have somewhere to copy to, since that is always the safer position. If it will not start or the drive is already failing, do not force it. Bring it as is and tell us the photos are the priority, and we will tell you what looks recoverable before any recovery work begins."
     }
   ];
 
@@ -76,7 +74,7 @@ const Waxhaw = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Waxhaw, NC",
-      "description": "Professional computer repair, data recovery, and IT support services serving Waxhaw, NC. Expert technicians providing quality service with pickup and delivery.",
+      "description": "Home computer, laptop, gaming PC, and family device repair for Waxhaw, NC, in southern Union County. Repairs are carried out at the KorTech Service shop in Charlotte, with pickup and delivery available so Waxhaw households do not have to make the drive.",
       "url": "https://www.kortechservice.com/waxhaw-computer-repair/",
       "areaServed": [
         {
@@ -98,11 +96,6 @@ const Waxhaw = () => {
           "addressRegion": "NC",
           "postalCode": "28270",
           "addressCountry": "US"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": String(rating ?? "4.8"),
-          "reviewCount": String(totalReviews ?? "0")
         }
       }
     },
@@ -123,8 +116,8 @@ const Waxhaw = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Computer Repair Waxhaw NC | KorTech Service"
-        description="Professional computer repair services in Waxhaw, NC. Same-day Mac & PC repair, data recovery, IT support. Pickup and delivery available. Call 704-246-7642!"
+        title="Waxhaw NC Home & Gaming PC Repair | KorTech"
+        description="Home computer, laptop, gaming PC, and family device repair for Waxhaw, NC. Pickup and delivery so you skip the drive to Charlotte. Call 704-246-7642."
         canonicalUrl="/waxhaw-computer-repair"
         location="Waxhaw, NC"
         service="Computer Repair"
@@ -144,7 +137,7 @@ const Waxhaw = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-emerald-300" />
-              <span className="text-white font-medium">Serving Waxhaw, NC Since 1998</span>
+              <span className="text-white font-medium">Union County | Pickup & Delivery Available</span>
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -154,14 +147,14 @@ const Waxhaw = () => {
 
             <div className="bg-emerald-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-emerald-100 mb-4">
-                <strong>Waxhaw Community:</strong> Serving Waxhaw residents and businesses near historic Downtown Waxhaw and along Providence Rd South, we've been providing reliable computer repair services to Waxhaw families for over 25 years.
+                <strong>Waxhaw Community:</strong> Waxhaw sits south of our Charlotte shop, in southern Union County near the Mecklenburg line. It is a largely residential community, and at that distance a round trip to Charlotte is a real errand, which is why pickup and delivery is the practical route here: family laptops, desktops, gaming PCs, and the tablets and phones that go with them, collected and returned rather than driven in.
               </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Professional computer repair services serving Waxhaw, North Carolina. Expert Mac & PC repair,
-              data recovery, and IT support for Waxhaw residents and businesses. Convenient pickup and
-              delivery services available throughout Waxhaw.
+              A slow laptop, a desktop that will not boot, a gaming rig that shuts off mid-game, a cracked
+              phone screen. Send several at once if that is easier. We quote each item after diagnosis, and
+              arrange pickup and delivery so a Waxhaw household never makes the trip to Charlotte twice.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -206,10 +199,10 @@ const Waxhaw = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Computer Services for Waxhaw, NC
+              What We Fix for Waxhaw Families
             </h2>
             <p className="text-lg text-slate-600">
-              Professional computer repair and IT support for Waxhaw residents and businesses
+              The devices a household actually depends on, from the home office desk to the kids' rooms
             </p>
           </div>
 
@@ -236,10 +229,10 @@ const Waxhaw = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Why Waxhaw Residents Choose KorTech Service
+              How This Works From Waxhaw
             </h2>
             <p className="text-lg text-slate-600">
-              Trusted by Waxhaw community for over 25 years
+              An independent Charlotte repair shop, operating since 1998, that comes to you
             </p>
           </div>
 
@@ -248,16 +241,16 @@ const Waxhaw = () => {
               <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Truck className="h-8 w-8 text-emerald-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">Convenient pickup and delivery services throughout Waxhaw for your computer repair needs</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">We Come to You</h3>
+              <p className="text-slate-600">Given the distance from Charlotte, pickup and delivery is usually the sensible route for Waxhaw. Drop-off is still welcome if you prefer</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Waxhaw Community</h3>
-              <p className="text-slate-600">Proudly serving Waxhaw residents and businesses with personalized service</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Send the Whole Pile</h3>
+              <p className="text-slate-600">Laptops, desktops, gaming PCs, phones, and tablets can go in together, each quoted on its own after we diagnose it</p>
             </div>
 
             <div className="text-center">
@@ -265,7 +258,7 @@ const Waxhaw = () => {
                 <Star className="h-8 w-8 text-yellow-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">4.8★ Google Rating</h3>
-              <p className="text-slate-600">Highly rated by Waxhaw customers for quality service and convenience</p>
+              <p className="text-slate-600">Our overall Google rating across everyone the Charlotte shop serves</p>
             </div>
           </div>
         </div>
@@ -279,7 +272,7 @@ const Waxhaw = () => {
               Waxhaw Computer Repair FAQ
             </h2>
             <p className="text-lg text-slate-600">
-              Common questions about computer repair services for Waxhaw, NC residents
+              Pickup logistics, multiple devices, and the questions families ask first
             </p>
           </div>
 
@@ -298,10 +291,10 @@ const Waxhaw = () => {
       <section className="py-16 bg-emerald-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready for Computer Repair in Waxhaw?
+            Have Us Pick It Up in Waxhaw
           </h2>
           <p className="text-xl text-emerald-200 mb-8">
-            Contact us today for expert computer repair services in Waxhaw, NC
+            Call or text with what is wrong and how many devices, and we will arrange collection
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -329,14 +322,14 @@ const Waxhaw = () => {
               <div className="text-left">
                 <p className="font-bold">KorTech Service</p>
                 <p className="text-emerald-200">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</p>
-                <p className="text-emerald-200">Pickup & Delivery Available in Waxhaw (via Providence Rd South and Highway 16)</p>
+                <p className="text-emerald-200">Our only location. Repairs happen here and come back to you</p>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-4">
               <Clock className="h-6 w-6 text-emerald-300" />
               <div className="text-left">
                 <p className="font-bold">Hours: Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
-                <p className="text-emerald-200">Serving Waxhaw and surrounding areas</p>
+                <p className="text-emerald-200">Pickup and delivery covers Waxhaw and southern Union County</p>
               </div>
             </div>
           </div>

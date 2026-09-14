@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
-import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
 import NearbyAreas from '../../components/NearbyAreas';
 import {
@@ -19,34 +18,33 @@ import {
 } from 'lucide-react';
 
 const Pineville = () => {
-  const { rating, totalReviews } = reviewsData;
 
   const services = [
     {
       icon: Monitor,
-      title: "Computer Repair Pineville",
-      description: "Expert Mac & PC repair services for Pineville, NC",
+      title: "Everyday Laptop & Desktop Repair",
+      description: "Screen replacements, batteries, virus removal and slow-PC tune-ups you can drop off on the way through south Charlotte",
       price: "Call/Text For Quote",
       link: "/services/"
     },
     {
       icon: HardDrive,
-      title: "Data Recovery Pineville",
-      description: "Professional data recovery for Pineville residents",
+      title: "Data Recovery After a Drive Failure",
+      description: "Files pulled from failed hard drives, dead SSDs and laptops that will no longer boot",
       price: "Call/Text For Quote",
       link: "/data-recovery/"
     },
     {
       icon: Smartphone,
-      title: "Mobile Device Repair",
-      description: "iPhone, iPad, and Android repair in Pineville",
+      title: "Phone & Tablet Screen Repair",
+      description: "Cracked iPhone, iPad and Android screens handled at the same Charlotte counter as your computer drop-off",
       price: "Call/Text For Quote",
       link: "/smartphone-screen-repair-charlotte/"
     },
     {
       icon: Wifi,
-      title: "Network Setup Pineville",
-      description: "Business and home network installation",
+      title: "Wi-Fi & Small Business IT",
+      description: "Router, Wi-Fi and small-office network setup for households and shops along the retail corridor",
       price: "Call/Text For Quote",
       link: "/business-it-support/"
     }
@@ -54,20 +52,20 @@ const Pineville = () => {
 
   const faqs = [
     {
-      question: "Do you provide computer repair services in Pineville, NC?",
-      answer: "Yes, we provide comprehensive computer repair services to Pineville, NC residents. We offer pickup and delivery services throughout Pineville for your convenience."
+      question: "What will a repair cost, and is there a charge just to look at it?",
+      answer: "We quote before any work begins, so there are no surprises. Prices depend on the part and the fault, which is why we ask you to call or text with the make, model and symptom. The diagnostic fee is waived with a hardware repair."
     },
     {
-      question: "How do I get my computer repaired if I live in Pineville?",
-      answer: "We offer pickup and delivery services to Pineville residents, or you can drop off your device at our Charlotte location. We make it convenient for Pineville customers to get expert computer repair."
+      question: "Can I drop a laptop off on my commute and collect it later?",
+      answer: "Yes. Drop-off during our posted hours is the quickest way to start a repair, and the shop sits on the south-east side of Charlotte off Sardis Road North, which suits Pineville commuters already crossing the city. Contact us early in the day to ask about same-day availability."
     },
     {
-      question: "What types of computer issues do you fix in Pineville?",
-      answer: "We fix all types of computer issues for Pineville residents including hardware failures, software problems, virus infections, data loss, slow performance, and network connectivity issues."
+      question: "Do you replace cracked laptop screens and worn-out batteries?",
+      answer: "Yes. Cracked screens, swollen or dead batteries, failing charging ports and keyboards are among the most common everyday repairs we handle. Call or text with the exact model and we will quote the part and the labor before any work starts."
     },
     {
-      question: "Do you offer same-day service to Pineville?",
-      answer: "Yes, we offer same-day computer repair services to Pineville customers for many common issues. Contact us early in the day for best availability."
+      question: "My computer is crawling and full of pop-ups. Is it worth repairing?",
+      answer: "Often it is. Malware removal, a cleanup of startup programs, fan and thermal service, and a storage or memory upgrade bring most machines back to usable speed. We diagnose first and tell you plainly when the repair is not worth the value of the machine."
     }
   ];
 
@@ -76,7 +74,7 @@ const Pineville = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Pineville, NC",
-      "description": "Professional computer repair, data recovery, and IT support services serving Pineville, NC. Expert technicians providing quality service with pickup and delivery.",
+      "description": "Everyday computer, laptop and phone repair for Pineville, NC: screens, batteries, virus removal, tune-ups and data recovery. Work is carried out at the KorTech workshop in south-east Charlotte, with drop-off or pickup and delivery.",
       "url": "https://www.kortechservice.com/pineville-computer-repair/",
       "areaServed": [
         {
@@ -98,11 +96,6 @@ const Pineville = () => {
           "addressRegion": "NC",
           "postalCode": "28270",
           "addressCountry": "US"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": String(rating ?? "4.8"),
-          "reviewCount": String(totalReviews ?? "0")
         }
       }
     },
@@ -123,8 +116,8 @@ const Pineville = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Computer Repair Pineville NC | KorTech Service"
-        description="Professional computer repair services in Pineville, NC. Same-day Mac & PC repair, data recovery, IT support. Pickup and delivery available. Call 704-246-7642!"
+        title="Pineville NC Laptop &amp; PC Repair | KorTech"
+        description="Laptop screens, batteries, virus removal and tune-ups for Pineville, NC. Drop off at our south Charlotte workshop or ask about pickup. Call 704-246-7642."
         canonicalUrl="/pineville-computer-repair"
         location="Pineville, NC"
         service="Computer Repair"
@@ -144,7 +137,7 @@ const Pineville = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-rose-300" />
-              <span className="text-white font-medium">Serving Pineville, NC Since 1998</span>
+              <span className="text-white font-medium">A Pineville Service Area of Our Charlotte Workshop</span>
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -154,14 +147,14 @@ const Pineville = () => {
 
             <div className="bg-rose-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-rose-100 mb-4">
-                <strong>Pineville Community:</strong> Serving Pineville residents and businesses along Pineville-Matthews Rd and near Carolina Place Mall, we've been providing reliable computer repair services to Pineville families for over 25 years.
+                <strong>Pineville Community:</strong> Pineville is an incorporated town at the southern edge of Mecklenburg County, close to the South Carolina state line and built around a busy retail and commuter corridor. KorTech Service has no Pineville storefront: our workshop has operated in Charlotte since 1998, and Pineville is one of the south Charlotte areas we serve from it.
               </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Professional computer repair services serving Pineville, North Carolina. Expert Mac & PC repair,
-              data recovery, and IT support for Pineville residents and businesses. Convenient pickup and
-              delivery services available throughout Pineville.
+              Everyday repairs for the machines Pineville households and shops actually use: cracked laptop
+              screens, dying batteries, malware and pop-ups, and computers that have slowed to a crawl. Drop
+              the device at our Charlotte workshop while you are out, or ask about pickup and delivery.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -206,10 +199,10 @@ const Pineville = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Computer Services for Pineville, NC
+              Common Repairs for Pineville Households and Shops
             </h2>
             <p className="text-lg text-slate-600">
-              Professional computer repair and IT support for Pineville residents and businesses
+              The four things Pineville customers bring us most often, all handled at the Charlotte workshop
             </p>
           </div>
 
@@ -236,10 +229,10 @@ const Pineville = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Why Pineville Residents Choose KorTech Service
+              What Pineville Customers Get From a Charlotte Workshop
             </h2>
             <p className="text-lg text-slate-600">
-              Trusted by Pineville community for over 25 years
+              An independent repair shop that has run in Charlotte since 1998
             </p>
           </div>
 
@@ -249,15 +242,15 @@ const Pineville = () => {
                 <Truck className="h-8 w-8 text-rose-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">Convenient pickup and delivery services throughout Pineville for your computer repair needs</p>
+              <p className="text-slate-600">If the drive north does not fit your day, we can collect the device and return it once the repair is finished</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Pineville Community</h3>
-              <p className="text-slate-600">Proudly serving Pineville residents and businesses with personalized service</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Easy Drop-Off</h3>
+              <p className="text-slate-600">Our Sardis Road North workshop is a straightforward stop for Pineville commuters already crossing south Charlotte</p>
             </div>
 
             <div className="text-center">
@@ -265,7 +258,7 @@ const Pineville = () => {
                 <Star className="h-8 w-8 text-yellow-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">4.8★ Google Rating</h3>
-              <p className="text-slate-600">Highly rated by Pineville customers for quality service and convenience</p>
+              <p className="text-slate-600">Our overall Google rating across the repairs completed at the Charlotte shop</p>
             </div>
           </div>
         </div>
@@ -276,10 +269,10 @@ const Pineville = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Pineville Computer Repair FAQ
+              Pineville Drop-Off &amp; Repair Questions
             </h2>
             <p className="text-lg text-slate-600">
-              Common questions about computer repair services for Pineville, NC residents
+              Where to bring the device, what we fix, and what to expect on price
             </p>
           </div>
 
@@ -298,10 +291,10 @@ const Pineville = () => {
       <section className="py-16 bg-rose-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready for Computer Repair in Pineville?
+            Bringing a Device In From Pineville?
           </h2>
           <p className="text-xl text-rose-200 mb-8">
-            Contact us today for expert computer repair services in Pineville, NC
+            Call or text with the make, model and symptom and we will tell you what the repair involves
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -336,7 +329,7 @@ const Pineville = () => {
               <Clock className="h-6 w-6 text-rose-300" />
               <div className="text-left">
                 <p className="font-bold">Hours: Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
-                <p className="text-rose-200">Serving Pineville and surrounding areas</p>
+                <p className="text-rose-200">Pineville is a service area; all work is done at the Charlotte workshop</p>
               </div>
             </div>
           </div>

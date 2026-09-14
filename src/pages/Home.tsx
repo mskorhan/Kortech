@@ -71,12 +71,29 @@ export default function Home() {
           "closes": "16:00"
         }
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": String(rating ?? "4.8"),
-        "reviewCount": String(totalReviews ?? "0")
-      },
-      "serviceArea": ["Charlotte, NC", "Matthews, NC", "Indian Trail, NC", "Mint Hill, NC", "Surrounding Areas"]
+      // No aggregateRating here. The 4.8/112 figures are Google's, and marking
+      // up a rating about ourselves inside our own LocalBusiness schema is
+      // self-serving review markup. The real Google rating and review text stay
+      // visible on the page with attribution; they're just not re-published as
+      // our own structured data.
+      //
+      // areaServed with City objects, replacing a "serviceArea" array of bare
+      // strings. serviceArea expects GeoShape/Place/AdministrativeArea, so
+      // plain strings were not valid - this matches the shape /locations
+      // already uses.
+      "areaServed": [
+        { "@type": "City", "name": "Charlotte", "addressRegion": "NC" },
+        { "@type": "City", "name": "Matthews", "addressRegion": "NC" },
+        { "@type": "City", "name": "Indian Trail", "addressRegion": "NC" },
+        { "@type": "City", "name": "Mint Hill", "addressRegion": "NC" },
+        { "@type": "City", "name": "Pineville", "addressRegion": "NC" },
+        { "@type": "City", "name": "Ballantyne", "addressRegion": "NC" },
+        { "@type": "City", "name": "Monroe", "addressRegion": "NC" },
+        { "@type": "City", "name": "Waxhaw", "addressRegion": "NC" },
+        { "@type": "City", "name": "Weddington", "addressRegion": "NC" },
+        { "@type": "City", "name": "Stallings", "addressRegion": "NC" }
+      ],
+      "priceRange": "$$"
     }
   ];
 

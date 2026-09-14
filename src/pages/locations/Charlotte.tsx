@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
-import reviewsData from '../../data/reviews.json';
 import StickyCTA from '../../components/StickyCTA';
 import NearbyAreas from '../../components/NearbyAreas';
 import { 
@@ -19,7 +18,6 @@ import {
 } from 'lucide-react';
 
 const Charlotte = () => {
-  const { rating, totalReviews } = reviewsData;
 
   const services = [
     {
@@ -111,11 +109,6 @@ const Charlotte = () => {
         "Sa 11:00-16:00"
       ],
       "priceRange": "$$",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": String(rating ?? "4.8"),
-        "reviewCount": String(totalReviews ?? "0")
-      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Charlotte Computer Repair Services",
