@@ -1,6 +1,7 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
+import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
   Zap,
   Cpu,
@@ -253,6 +254,8 @@ const ApplianceElectronicsRepair = () => {
 
       {/* FAQ Section */}
       <FAQSection faqs={faqs} title="Appliance Electronics Repair FAQ" />
+
+      <ServiceAreaLinks serviceName="Electronics Repair" />
 
       {/* Related Services */}
       <section className="py-16 bg-white">
