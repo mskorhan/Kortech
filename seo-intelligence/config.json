@@ -96,10 +96,10 @@
       "role": "GROUND TRUTH. Real impressions/clicks/position for this site. Outranks any third-party estimate."
     },
     "ga4": { "path": "data/ga4/", "role": "Engagement and conversion context. Not yet populated." },
-    "semrush": { "path": "data/semrush/", "role": "Volume, KD, intent, competitor and backlink gap enrichment." },
+    "semrush": { "path": "data/semrush/", "role": "UNAVAILABLE - no Semrush account. Never estimate these figures; leave blank." },
     "aiVisibility": {
       "path": "data/ai-visibility/",
-      "role": "Semrush AI Visibility exports (manual drop-in).",
+      "role": "UNAVAILABLE - requires a Semrush subscription. Never estimate AI-visibility metrics.",
       "expectedExports": [
         "top-prompts.csv", "cited-sources.csv", "topic-opportunities.csv",
         "competitor-ai-visibility.csv", "brand-mentions.csv", "prompt-level-rankings.csv"
