@@ -399,74 +399,78 @@ const PS5HDMIRepair = () => {
       <FAQSection faqs={faqs} title="PS5 HDMI Repair FAQ" />
 
       {/*
-        Named failure modes. Competitor research (2026-09-23) found
-        charlottetechrepair.com ranking with headings for each distinct PS5
-        symptom - no-power, overheating, disc pairing, torn fan connector -
-        while this page described only HDMI/video faults in generic terms
-        ("No Display", "Loose Connection", "Signal Issues"). People search the
-        symptom, and answer engines quote the passage that names it.
+        Kept deliberately narrow to this page's intent: HDMI / no-picture
+        diagnosis. An earlier draft of this section covered no-power,
+        overheating, disc-drive and DIY connector damage, which broadened an
+        HDMI landing page into general PS5 repair and diluted its focus. Those
+        topics are recorded as future-content candidates in
+        seo-intelligence/reports/ instead.
 
-        Additive only: the PR #21 "What causes a PS5 HDMI port to stop working?"
-        section above is untouched. Nothing here states a price, turnaround
-        time, warranty or success rate, and no diagnostic procedure is invented
-        - each entry describes the mechanism of a well-documented failure and
-        what distinguishes it from the others.
+        Every fault below is included only because it genuinely presents as
+        "no picture on the TV" and is therefore part of diagnosing an HDMI
+        complaint. No prices, turnaround times, warranties or success rates -
+        those are business facts we do not have. No claim is made that applies
+        to only some PS5 hardware generations without saying so.
       */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">
-            PS5 symptoms that are not the HDMI port
+            When a PS5 has no picture but the HDMI port is not the cause
           </h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">
-            A PS5 that will not display an image is often assumed to have a failed HDMI port,
-            but several unrelated faults produce similar symptoms. Identifying which one you
-            are dealing with changes what the repair involves, so it is worth knowing the
-            difference before assuming the port is at fault.
+            A blank screen is the symptom, not the diagnosis. Several different faults
+            produce it, and only some of them involve the port itself. Working out which one
+            is responsible before any repair starts is what stops a working port being
+            replaced unnecessarily - or a genuine port fault being missed because the console
+            was assumed to have a different problem.
           </p>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-3">Console will not power on</h3>
+          <h3 className="text-xl font-bold text-slate-800 mb-3">The cable, the input or the TV</h3>
           <p className="text-slate-600 leading-relaxed mb-6">
-            If there is no light, no fan movement and no beep, the fault is in the power path
-            rather than the video path. This can be the power supply unit, the power button
-            board, or a fault on the mainboard itself. A console that beeps once and then goes
-            silent, or that shows a brief light before shutting down, is behaving differently
-            from one that is completely dead, and the distinction narrows down where the fault
-            sits.
+            This is the first thing to rule out and the easiest to test at home. HDMI cables
+            fail, and a TV input can stop handshaking correctly with a source. Try a different
+            cable and a different input on the TV, and if possible the console on another
+            display. If the picture comes back, the console is fine. It is worth doing before
+            bringing the console in, because it costs nothing and resolves a real share of
+            no-picture complaints.
           </p>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-3">Loud fan or overheating shutdowns</h3>
+          <h3 className="text-xl font-bold text-slate-800 mb-3">The port is intact but its solder joints are not</h3>
           <p className="text-slate-600 leading-relaxed mb-6">
-            The PS5 uses liquid metal as the thermal interface between the APU and its heatsink
-            rather than conventional paste. Combined with dust building up in the heatsink fins
-            over years of use, degraded thermal performance shows up as a fan running loudly at
-            idle, or as the console shutting itself down under load to protect the processor.
-            This is a cooling fault, not a video fault, and the HDMI port is not involved.
+            The HDMI connector is soldered to the mainboard, and those joints can crack while
+            the plastic housing and the pins inside still look perfect. The usual sign is a
+            picture that appears intermittently, or only when the cable is held at a certain
+            angle. Because the port looks undamaged, this one is frequently misread as a cable
+            fault - the difference is that swapping cables does not reliably fix it.
           </p>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-3">Disc drive not reading or not recognised</h3>
+          <h3 className="text-xl font-bold text-slate-800 mb-3">The fault is behind the port, not in it</h3>
           <p className="text-slate-600 leading-relaxed mb-6">
-            The PS5 disc drive is paired to the console it shipped in. The drive and the
-            system board exchange an authorisation check, so a drive swapped in from another
-            PS5 will not simply work, even when the hardware is identical and undamaged. That
-            is why a disc fault is not always a mechanical problem with the drive, and why
-            replacing the drive alone does not necessarily resolve it.
+            The port is one part of the video output path. The signal passes through control
+            circuitry on the mainboard before it reaches the connector, and a fault there
+            produces the same blank screen as a broken port. A console in this condition
+            typically powers on normally, shows its usual light behaviour and gives every
+            indication of running - there is simply no output. Replacing the port on a console
+            with this fault would not restore the picture, which is why the port is tested
+            rather than assumed to be responsible.
           </p>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-3">Damage from an attempted DIY repair</h3>
+          <h3 className="text-xl font-bold text-slate-800 mb-3">The console is not actually reaching the point of output</h3>
           <p className="text-slate-600 leading-relaxed mb-6">
-            The fan and Wi-Fi ribbon connectors on the PS5 mainboard are small and fragile, and
-            their retaining clips release in one specific direction. Lifting a ribbon cable at
-            the wrong angle can tear the connector's pads off the board. When that happens the
-            repair moves from a straightforward part replacement to board-level work, because
-            the pads themselves have to be rebuilt before anything will reconnect.
+            If a console is not completing startup, it will never send a picture, and from the
+            sofa that looks identical to an HDMI failure. The distinguishing evidence is what
+            the console does on its own: whether it lights up, whether the fan spins, whether
+            it makes its usual startup sound, and whether any of that stops after a few
+            seconds. Those behaviours separate a video-path problem from one that has nothing
+            to do with video at all.
           </p>
 
           <p className="text-slate-600 leading-relaxed">
-            Because these faults overlap in how they present, the console is tested to identify
-            which one is actually responsible rather than working from the symptom alone. The
-            same applies in reverse - a console with a genuinely damaged HDMI port may also
-            have a second, unrelated fault that only becomes visible once the first is
-            resolved.
+            In practice these are distinguished by testing the console rather than by
+            inspecting the port, since a damaged-looking port and a perfectly good one can
+            both accompany a blank screen. It is also possible for more than one of these to
+            be present at once, which is why a console is re-tested after a repair rather than
+            assumed fixed because the original fault was addressed.
           </p>
         </div>
       </section>
