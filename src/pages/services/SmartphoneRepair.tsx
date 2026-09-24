@@ -1,6 +1,7 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
+import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
   Smartphone,
   CheckCircle,
@@ -254,6 +255,8 @@ const SmartphoneRepair = () => {
 
       {/* FAQ Section */}
       <FAQSection faqs={faqs} title="Smartphone Repair FAQ" />
+
+      <ServiceAreaLinks serviceName="Phone Repair" />
 
       {/* Related Services */}
       <section className="py-16 bg-white">

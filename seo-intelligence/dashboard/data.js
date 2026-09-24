@@ -13,7 +13,7 @@ window.__SEO_DATA__ = {
   meta: {
     gscPulled: '2026-09-14',
     gscWindow: '≈2026-06-16 → 2026-09-11 (3 months, Web)',
-    semrushStatus: 'not connected (MCP registered, OAuth pending)',
+    semrushStatus: 'unavailable - no Semrush account. Not a pending import; these fields will stay null.',
     footnote:
       'Source: Google Search Console, property <code>sc-domain:kortechservice.com</code>, ' +
       'Web search type, 3-month window. 1,000-row query cap applies; the 997 returned rows ' +

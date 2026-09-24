@@ -1,6 +1,7 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
+import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
   Tablet,
   Monitor,
@@ -392,6 +393,8 @@ const TabletIPadRepair = () => {
 
       {/* FAQ Section */}
       <FAQSection faqs={faqs} title="Tablet & iPad Repair FAQ" />
+
+      <ServiceAreaLinks serviceName="iPad & Tablet Repair" />
 
       {/* Related Services */}
       <section className="py-16 bg-white">
