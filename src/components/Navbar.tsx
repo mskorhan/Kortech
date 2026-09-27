@@ -245,9 +245,11 @@ const Navbar: React.FC = () => {
                   />
                 </button>
 
-                {isServicesDropdownOpen && (
-                  <div
+                {/* Always rendered (hidden while closed) so the service links are in the
+                    prerendered HTML for crawlers; `hidden` keeps them out of the tab order. */}
+                <div
                     id="desktop-services-menu"
+                    hidden={!isServicesDropdownOpen}
                     ref={servicesDropdownRef}
                     onMouseDown={(e) => e.stopPropagation()}
                     className="services-dropdown absolute top-full left-0 mt-1 w-64 max-h-[80vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-100 py-3 z-50 backdrop-blur-sm"
@@ -280,7 +282,6 @@ const Navbar: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                )}
               </div>
 
               <div className="relative">
@@ -305,9 +306,10 @@ const Navbar: React.FC = () => {
                   />
                 </button>
 
-                {isLocationsDropdownOpen && (
-                  <div
+                {/* Always rendered (hidden while closed) — see services menu above. */}
+                <div
                     id="desktop-locations-menu"
+                    hidden={!isLocationsDropdownOpen}
                     ref={locationsDropdownRef}
                     onMouseDown={(e) => e.stopPropagation()}
                     className="services-dropdown absolute top-full left-0 mt-1 w-64 bg-white rounded-2xl shadow-2xl border border-slate-100 py-3 z-50 backdrop-blur-sm"
@@ -340,7 +342,6 @@ const Navbar: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                )}
               </div>
 
               {/* rest of your desktop links/buttons */}
