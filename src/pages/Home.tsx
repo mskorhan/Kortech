@@ -53,10 +53,11 @@ export default function Home() {
       },
       "foundingDate": "1998",
       "sameAs": [
-        "https://g.page/kortechservice",
+        "https://maps.google.com/?cid=2605666596941066581",
         "https://www.facebook.com/KortechService/",
         "https://www.instagram.com/kortechservices",
-        "https://www.linkedin.com/company/kortechservice"
+        "https://www.linkedin.com/company/kortechservice",
+        "https://www.youtube.com/@kortechservice"
       ],
       "openingHoursSpecification": [
         {
@@ -261,8 +262,8 @@ export default function Home() {
               {/* Floating badge */}
               <div className="absolute -top-4 -right-4 bg-gradient-to-r from-yellow-300 to-orange-400 text-slate-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg transform rotate-12 animate-bounce">
                 <div className="text-center">
-                  <div className="text-sm sm:text-base">FREE Diagnostic!</div>
-                  <div className="text-xs sm:text-sm font-normal">(with hardware repair)</div>
+                  <div className="text-sm sm:text-base">Diagnostic Fee Waived</div>
+                  <div className="text-xs sm:text-sm font-normal">(with qualifying hardware repair)</div>
                 </div>
               </div>
             </div>

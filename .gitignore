@@ -36,3 +36,8 @@ seo-intelligence/**/service-account*.json
 seo-intelligence/**/*secret*
 seo-intelligence/**/*token*
 seo-intelligence/**/.env*
+
+# Raw Search Console pulls taken from an authenticated session. Private: never
+# commit. Sanitized summaries (data/gsc/gsc-summary-*.md) and reports stay tracked.
+seo-intelligence/data/**/raw-*/
+seo-intelligence/data/**/*.tsv

@@ -49,7 +49,7 @@ const data = {
   updatedAt: new Date().toISOString(),
   rating: result.rating ?? null,
   totalReviews: result.user_ratings_total ?? null,
-  googleMapsUrl: 'https://g.page/kortechservice',
+  googleMapsUrl: 'https://maps.google.com/?cid=2605666596941066581',
   fiveStarReviews
 };
 

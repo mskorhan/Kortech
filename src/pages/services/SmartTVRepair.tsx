@@ -129,7 +129,7 @@ const SmartTVRepair = () => {
               <div className="flex items-center space-x-6 text-sm">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Free Diagnosis</span>
+                  <span>Diagnostic Fee Waived With Hardware Repair</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />

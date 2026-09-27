@@ -93,10 +93,11 @@ const Charlotte = () => {
       },
       "foundingDate": "1998",
       "sameAs": [
-        "https://g.page/kortechservice",
+        "https://maps.google.com/?cid=2605666596941066581",
         "https://www.facebook.com/KortechService/",
         "https://www.instagram.com/kortechservices",
-        "https://www.linkedin.com/company/kortechservice"
+        "https://www.linkedin.com/company/kortechservice",
+        "https://www.youtube.com/@kortechservice"
       ],
       "areaServed": [
         {
@@ -181,7 +182,7 @@ const Charlotte = () => {
             
             <div className="bg-blue-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-blue-100 mb-4">
-                <strong>Local Charlotte Landmark:</strong> Located just minutes from SouthPark Mall and easily accessible from Uptown Charlotte, our Sardis Road location has been serving the Charlotte community since 1998. We're proud to be part of the Queen City's tech community. Our convenient location near the intersection of Sardis Road and Rea Road makes us easily accessible from all Charlotte neighborhoods including Myers Park, Dilworth, South End, and NoDa.
+                <strong>Local Charlotte Landmark:</strong> Located just minutes from SouthPark Mall and easily accessible from Uptown Charlotte, our Sardis Road location has been serving the Charlotte community since 1998. We're proud to be part of the Queen City's tech community. Our shop at 1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270 is easily accessible from Charlotte neighborhoods including Myers Park, Dilworth, South End, and NoDa.
               </p>
             </div>
             

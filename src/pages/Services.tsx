@@ -287,7 +287,7 @@ const Services = () => {
     },
     {
       step: "2", 
-      title: "Free Diagnosis",
+      title: "Diagnosis",
       description: "Our technicians perform a thorough diagnostic ($75-$150, waived if HARDWARE repair is performed)",
       icon: Target
     },
