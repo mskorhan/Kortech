@@ -102,7 +102,7 @@ const PS5HDMIRepair = () => {
               </div>
               
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                PS5 HDMI Repair Charlotte NC
+                PS5 HDMI Repair{' '}
                 <span className="block text-blue-300">Charlotte NC</span>
               </h1>
               
@@ -305,9 +305,9 @@ const PS5HDMIRepair = () => {
               <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
                 1
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-2">Free Diagnosis</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-2">Diagnosis</h3>
               <p className="text-slate-600 text-sm">
-                Complete diagnostic to identify the exact HDMI issue
+                Complete diagnostic to identify the exact HDMI issue. Diagnostic fee: $75–$150, waived with qualifying hardware repair.
               </p>
             </div>
 

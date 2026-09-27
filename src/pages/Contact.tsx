@@ -452,7 +452,7 @@ const Contact = () => {
                         <span>Directions</span>
                       </a>
                       <a
-                        href="https://g.page/kortechservice"
+                        href="https://maps.google.com/?cid=2605666596941066581"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center space-x-1 border border-brand-primary text-brand-primary px-3 py-2 rounded-lg text-sm font-medium hover:bg-blue-50 transition-colors"

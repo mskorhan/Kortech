@@ -123,10 +123,11 @@ const Locations = () => {
       },
       "foundingDate": "1998",
       "sameAs": [
-        "https://g.page/kortechservice",
+        "https://maps.google.com/?cid=2605666596941066581",
         "https://www.facebook.com/KortechService/",
         "https://www.instagram.com/kortechservices",
-        "https://www.linkedin.com/company/kortechservice"
+        "https://www.linkedin.com/company/kortechservice",
+        "https://www.youtube.com/@kortechservice"
       ],
       "location": {
         "@type": "Place",
