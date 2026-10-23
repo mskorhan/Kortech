@@ -19,6 +19,7 @@ export const routes = [
   { path: '/ps5-hdmi-repair', changefreq: 'monthly', priority: 0.9 },
   { path: '/xbox-hdmi-repair', changefreq: 'monthly', priority: 0.9 },
   { path: '/laptop-screen-repair', changefreq: 'monthly', priority: 0.9 },
+  { path: '/macbook-repair', changefreq: 'monthly', priority: 0.9 },
   { path: '/ssd-upgrades', changefreq: 'monthly', priority: 0.8 },
   { path: '/virus-malware-removal', changefreq: 'monthly', priority: 0.8 },
   { path: '/business-it-support', changefreq: 'monthly', priority: 0.8 },

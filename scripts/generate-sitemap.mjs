@@ -53,6 +53,7 @@ const pageFileForRoute = (route) => {
     '/tablet-ipad-repair': 'src/pages/services/TabletIPadRepair.tsx',
     '/smart-tv-repair': 'src/pages/services/SmartTVRepair.tsx',
     '/printer-router-repair': 'src/pages/services/PrinterRouterRepair.tsx',
+    '/macbook-repair': 'src/pages/services/MacBookRepair.tsx',
     '/pcb-micro-soldering': 'src/pages/services/PCBMicroSoldering.tsx',
     '/appliance-electronics-repair': 'src/pages/services/ApplianceElectronicsRepair.tsx',
     '/nintendo-switch-repair': 'src/pages/services/NintendoSwitchRepair.tsx',
