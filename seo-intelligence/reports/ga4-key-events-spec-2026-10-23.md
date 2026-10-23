@@ -102,5 +102,16 @@ State these caveats alongside any reporting built on these key events:
 4. **20 UTM-tagged `tel:`/`sms:` links exist elsewhere on the site** that GA4 cannot attribute from
    the URL (reported previously, deliberately not fixed). The `source` dimension above is the
    reliable attribution path, not UTM.
-5. **These counts are not comparable to a call log.** Do not reconcile them against phone records;
+5. **Internal links carrying UTM parameters corrupt source attribution.** Google's own GA4 guidance
+   is not to tag internal links: a UTM on an internal link starts a new session and reassigns its
+   source. A visitor who arrives from organic search and then clicks a UTM-tagged internal CTA has
+   the resulting `form_submit` credited to that UTM (e.g. `site / contact`) instead of to search,
+   which hides the very thing you are trying to measure.
+
+   I removed the UTM from the new mail-in CTA on `/macbook-repair/` for this reason. **The existing
+   internal UTM links still have the problem** — `Contact.tsx:512`
+   (`/mail-in-form/?utm_source=site&utm_medium=contact&utm_campaign=mailin_cta`) and the ~20
+   UTM-tagged `tel:`/`sms:` links reported previously. Cleaning those up is a small, separate change
+   that would measurably improve attribution; it is **not** in PR #24 (unrelated change).
+6. **These counts are not comparable to a call log.** Do not reconcile them against phone records;
    they measure different things.

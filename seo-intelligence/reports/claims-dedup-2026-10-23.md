@@ -20,13 +20,16 @@ Raw matches are not claims. Sorting every row by reading the text:
 
 | bucket | rows | what it is |
 |---|---|---|
-| **KorTech claims about itself** | **193** | the only rows that need an owner answer |
+| **KorTech claims about itself** | **194** | the only rows that need an owner answer |
 | Generic industry education | 41 | blog/how-to copy about the trade in general, not about KorTech |
-| False positive | 1 | `MacBookRepair.tsx:35` — my own code comment listing what to avoid |
 | **total** | **235** | |
 
-Those 193 self-claims collapse to **8 distinct business claims**, which resolve into **6 questions**
+Those 194 self-claims collapse to **9 distinct business claims**, which resolve into **7 questions**
 below. One answer per question settles an entire cluster.
+
+> **Count caveat.** The scanner skips any line containing `//`, `className` or `aria-`, so **235 is a
+> minimum**, not a ceiling. The nine claim types below are the right set to decide on, but a later
+> fix pass must re-scan without that filter before claiming every occurrence has been found.
 
 ### Correction to the 10/22 audit, confirmed in this pass
 
@@ -124,6 +127,18 @@ checkable. R2 and e-Stewards are real, auditable programmes.
 specific credential, I remove the word.
 **Question (b):** is the recycling partner actually R2 or e-Stewards certified? If you cannot name
 the facility, I drop the programme names and keep the neutral "we partner with recycling facilities".
+
+### Q7 — Parts stocking · 1 occurrence, **in FAQ JSON-LD**
+
+- `LaptopScreenRepair.tsx:30` **[FAQ JSON-LD]** — "Yes, we repair all major laptop brands at our
+  Charlotte shop including Dell, HP, Lenovo, ASUS, Acer, MSI, Apple MacBook, and more. **We stock
+  parts for common models.**"
+
+Only one occurrence, but it is published as structured data, and it sets an expectation that drives
+the same-day question above: stocked parts are what make a fast repair possible.
+
+**Question:** do you hold stock for common models? ☐ TRUE ☐ FALSE ☐ PARTLY (e.g. common screens
+only). If false, the sentence is removed and the rest of the answer stands unchanged.
 
 ### Q6 — Location geography · 6 occurrences, 1 in FAQ JSON-LD
 

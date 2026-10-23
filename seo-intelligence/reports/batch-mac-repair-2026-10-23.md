@@ -15,11 +15,11 @@ and tested. Everything below is reversible by reverting the branch.
 | # | approval | why it is yours |
 |---|---|---|
 | **A1** | ✅ **APPROVED 2026-10-23** — sitemap 57 → 58 and one `.htaccess` whitelist entry, limited to the Mac repair page. All existing redirects, canonicals and routing protections preserved. | Both are inside `routingFreeze`. The freeze exists because of the 9/14 GSC validation recrawl; 10/22 found those validations closed "Failed" only on non-canonical variants, not live defects. I judged the freeze's purpose met, but the call is yours. **If you decline, the whole Mac page defers** — everything else in this batch stands on its own. |
-| **A2** | ⏳ **REVIEW REQUIRED.** 235 raw matches / 52 files → **193 KorTech self-claims** (41 generic education, 1 false positive) → **8 distinct claims** → **6 questions**. See `claims-dedup-2026-10-23.md`. | I edited none of them. One answer per question settles a whole cluster. **Does not block #24** — the PR adds no claims from any cluster. |
+| **A2** | ⏳ **REVIEW REQUIRED.** 235 raw matches / 52 files → **194 KorTech self-claims** (41 generic education) → **9 distinct claims** → **7 questions**. See `claims-dedup-2026-10-23.md`. | I edited none of them. One answer per question settles a whole cluster. **Does not block #24** — the PR adds no claims from any cluster. |
 | **A3** | ✅ **RESOLVED 2026-10-23 — disclaimer REMOVED.** The owner directed that the page neither claim nor deny Apple authorization, affiliation or endorsement. The FAQ, the disclosure section and the word "Independent" in the meta description are all gone. Naming the Apple models repaired is retained as accurate. | A `validate-routing` guard now **forbids** authorization/affiliation/endorsement language on this page (it previously required a disclaimer); negative-tested in both directions. |
 | **A4** | ✅ **CONFIRMED 2026-10-23 — mail-in covers EVERY repair category**, Macs, Mac logic-board and board-level micro-soldering included. The page now advertises it with a CTA to `/mail-in-form/`. | Shipping cost, postage responsibility, prepaid labels, insurance, return-shipping terms and any transit/repair duration are **excluded** per the owner and appear nowhere on the page. |
 | **A5** | ⏳ **APPROVED FOR PREPARATION ONLY.** Config spec to be verified (event definitions, deduplication, real tracking behaviour) before any GA4 change. | External account; **nothing in GA4 modified**. These are *click intent*, not confirmed calls or leads — see §8. |
-| **A6** | ⏳ **REVIEW SEPARATELY.** Do not merge a stale 119 when GBP shows 121; prove the updater can refresh the published count and keep one source of truth. GBP service updates prepared without saving. | PR #19 is open, mergeable, and not mine. GBP changes are external. |
+| **A6** | ✅ **DEMONSTRATED 2026-10-23 — PR #19 now carries 121, not the stale 119.** I re-dispatched `update-reviews.yml` (verified PR-only: it pushes `automation/update-reviews` and opens/edits a PR, and **never** pushes to `main`). The run fetched **121** live from the Places API — matching GBP exactly. Nothing hardcoded. **Still not merged.** | One source of truth proven: `reviews.json` is the only source (the sole other textual `112` in `src/`/`public/`/`index.html` is an explanatory comment), and building PR #19's head propagated the new count to **all 5 render sites with zero stale values**. GBP service updates prepared without saving. |
 
 ---
 
@@ -110,7 +110,7 @@ model at diagnostic. No upgrade is promised.
 | macbook screen repair (4, 16.0) | `/macbook-repair/` (links to `/laptop-screen-repair/`) | new |
 | macbook repairs / repair macbook pro / mac repair near me | `/macbook-repair/` | new |
 | macbook repair charlotte nc (1, 21.0) | `/macbook-repair/` | new |
-| apple authorized service provider (1, 3.0) | `/macbook-repair/` — answered **"No"** | deliberate |
+| apple authorized service provider (1, 3.0) | **not targeted** — the page neither claims nor denies authorization (owner decision A3) | deliberate |
 | apple watch / homepod / used macbook / sell my macbook | **none** — not offered, not targeted | deliberate |
 
 **Anti-cannibalisation.** The page targets *MacBook/Mac* intent, which no existing page claims. The
@@ -146,9 +146,10 @@ markup. Nothing here promises AI citations or rankings, and no FAQ rich-result b
 
 What this page contributes:
 
-- **Accurate identity.** It states plainly that KorTech is **not** an Apple Authorized Service Provider
-  and not affiliated with Apple. This is both the honest answer to a query the site already surfaces
-  for, and a guard against an AI system inferring an authorisation that does not exist.
+- **Accurate identity, without an authorization claim.** Per owner decision A3 the page neither
+  claims nor denies Apple Authorized Service Provider status, affiliation or endorsement. It names
+  the Apple models repaired, which is accurate, and says nothing about an official relationship.
+  A `validate-routing` guard forbids such language from reappearing.
 - **Genuine technical expertise, sourced.** The storage section rests on Apple Platform Security,
   *"The Secure Enclave"*: **"if the internal SSD storage is physically moved from one device to
   another, the files are inaccessible."** The page cites and links the source. **Quote verified
@@ -172,7 +173,7 @@ across 52 files**, of which **56 are also emitted as FAQPage JSON-LD** — the m
 assistants actually read, which is precisely why those claims come back out of AI systems. I changed
 none of them.
 
-➡ **Deduplicated to 193 KorTech self-claims → 8 distinct claims → 6 owner questions in
+➡ **Deduplicated to 194 KorTech self-claims → 9 distinct claims → 7 owner questions in
 `seo-intelligence/reports/claims-dedup-2026-10-23.md`.** Exact wording, file and line for every one of the 235 is in
 `claims-inventory-2026-10-23.md`**, grouped by claim type with a TRUE/FALSE/PARTLY column and the
 JSON-LD ones flagged. That document is the one to work through; this table is just the summary.
@@ -323,8 +324,9 @@ never production):
 
 - title/description unique; canonical self-referencing with trailing slash; exactly **one H1**
 - JSON-LD parses; types = `BreadcrumbList`, `Service`; **no FAQPage / aggregateRating / Review**
-- **zero** matches for every unverified-claim pattern; "authorized service provider" appears 3×, all
-  three being the denial
+- **zero** matches for every unverified-claim pattern and **zero** for Apple
+  authorization/affiliation/certification/endorsement language
+- **zero** matches for prepaid / shipping label / insurance / turnaround terms on the mail-in section
 - linked from **59 pages** (nav = depth 1, matching PR #23); present in sitemap; `lastmod` 2026-10-23
 - **no console errors**, **no horizontal scroll at 390px**, **no images missing alt**
 

@@ -298,10 +298,10 @@ const MacBookRepair = () => {
             <Package className="h-10 w-10 text-brand-primary flex-shrink-0" aria-hidden="true" />
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-3">
-                Mail in your Mac from anywhere
+                Mail in your Mac
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl">
-                You do not have to be in Charlotte. We accept mail-in repairs for every repair
+                You do not have to be local. We accept mail-in repairs for every repair
                 category we offer — MacBook, MacBook Air and MacBook Pro, iMac, Mac mini, Mac
                 Studio, Mac logic-board repair and board-level micro-soldering included.
               </p>
@@ -316,9 +316,13 @@ const MacBookRepair = () => {
             us first if you would rather describe the fault before shipping.
           </p>
 
+          {/* No UTM parameters on this link: it is INTERNAL, and UTMs on internal
+              links restart the GA4 session and reassign its source, so an organic
+              visitor's later form_submit would be credited to "site / service"
+              rather than to search. Page path and referrer already attribute it. */}
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="/mail-in-form/?utm_source=site&utm_medium=service&utm_campaign=macbook_mailin"
+              href="/mail-in-form/"
               className="bg-brand-primary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg inline-flex items-center justify-center gap-2 transition-colors"
             >
               <Package className="h-5 w-5" aria-hidden="true" />
