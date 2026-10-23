@@ -103,10 +103,14 @@ export default function Home() {
     {
       icon: Monitor,
       title: "Mac & PC Repair",
-      description: "Expert repair for all computer brands with same-day service",
+      description: "Expert repair for all computer brands, including Mac logic-board work",
       features: ["Hardware diagnosis", "Software troubleshooting", "Performance optimization"],
       gradient: "from-blue-500 to-cyan-500",
-      price: "Call/Text For Quote"
+      price: "Call/Text For Quote",
+      // Google already ranks the homepage ~3.7 for "macbook repair" with 0
+      // clicks; this sends that intent to the page that actually answers it.
+      link: "/macbook-repair/",
+      linkLabel: "Mac & MacBook Repair"
     },
     {
       icon: HardDrive,
@@ -310,8 +314,8 @@ export default function Home() {
                 </ul>
                 <div className="flex items-center justify-between pt-4 border-t border-slate-200">
                   <span className="text-brand-primary font-bold text-base sm:text-lg">{service.price}</span>
-                  <a href="/services/" className="text-brand-primary hover:text-brand-dark font-medium text-sm sm:text-base flex items-center space-x-2 group-hover:translate-x-1 transition-transform">
-                    <span>Learn More</span>
+                  <a href={service.link ?? "/services/"} className="text-brand-primary hover:text-brand-dark font-medium text-sm sm:text-base flex items-center space-x-2 group-hover:translate-x-1 transition-transform">
+                    <span>{service.linkLabel ?? "Learn More"}</span>
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>
