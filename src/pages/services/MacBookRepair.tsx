@@ -7,7 +7,7 @@ import {
   Shield,
   CheckCircle,
   MapPin,
-  AlertTriangle,
+  Package,
   Monitor,
   Cpu,
   Droplets,
@@ -22,17 +22,25 @@ import {
 // diagnostics, board-level micro-soldering) plus the facts already in the
 // project record: the $75-$150 diagnostic waived with hardware repair, the
 // 14-day parts-only warranty, and the Charlotte shop on Sardis Rd N.
+// Owner also confirmed on 2026-10-23 that mail-in covers EVERY repair
+// category offered, Mac logic-board and board-level work included.
 //
 // Deliberately ABSENT, because they are unconfirmed (see
 // seo-intelligence/reports/owner-confirmation-table-2026-10-22.md):
-//   - turnaround times ("1-3 business days", "same-day")
+//   - turnaround times ("1-3 business days", "same-day"), including any
+//     mail-in transit or repair duration
+//   - shipping cost, who pays postage, prepaid labels, insurance cover and
+//     return-shipping terms (explicitly excluded by the owner, 2026-10-23)
 //   - walk-in availability, pickup and delivery
 //   - certifications, cleanroom, parts sourcing / "we stock parts"
-//   - any Apple Authorized Service Provider implication
-//   - whether mail-in covers board-level work (owner question B6)
 //   - "all work is carried out at our Charlotte shop" (claim C3, unconfirmed):
 //     the ADDRESS is confirmed, "all work happens there" is not.
 // Do not reintroduce any of these without an owner confirmation.
+//
+// APPLE AUTHORIZATION: per the owner (2026-10-23), this page must NOT state
+// or deny Apple Authorized Service Provider status, affiliation or
+// endorsement. Naming the Apple models we repair is accurate and fine;
+// adding an authorization disclaimer is not. Do not reintroduce one.
 //
 // The Apple-silicon/T2 storage statement below is sourced to Apple Platform
 // Security, "The Secure Enclave": "if the internal SSD storage is physically
@@ -88,12 +96,12 @@ const MacBookRepair = () => {
     {
       q: 'Do you repair MacBooks, iMacs, Mac minis and Mac Studios?',
       a:
-        'Yes. We repair MacBook, MacBook Air, MacBook Pro, iMac, Mac mini and Mac Studio, including Mac logic-board diagnostics and board-level repair. Bring the machine to our Charlotte shop at 1721 Sardis Rd N, Suite 7A, or call or text us to describe the fault first.'
+        'Yes. We repair MacBook, MacBook Air, MacBook Pro, iMac, Mac mini and Mac Studio, including Mac logic-board diagnostics and board-level repair. Bring the machine to our Charlotte shop at 1721 Sardis Rd N, Suite 7A, or mail it in using our mail-in repair form. You can also call or text us to describe the fault first.'
     },
     {
-      q: 'Is KorTech an Apple Authorized Service Provider?',
+      q: 'Can I mail in my Mac for repair?',
       a:
-        'No. KorTech Service is an independent repair shop. We are not an Apple Authorized Service Provider, and we are not affiliated with Apple Inc. Apple and MacBook are trademarks of Apple Inc., used here only to describe the devices we repair.'
+        'Yes. We accept mail-in repairs for every repair category we offer, including MacBook, MacBook Air, MacBook Pro, iMac, Mac mini and Mac Studio, Mac logic-board repair and board-level micro-soldering. Start with our mail-in repair form, which collects the device details and the fault description so we know what is coming. If you would rather talk it through first, call or text us before you ship.'
     },
     {
       q: 'What does a Mac diagnostic cost?',
@@ -128,7 +136,7 @@ const MacBookRepair = () => {
     {
       q: 'How do I start a Mac repair?',
       a:
-        'Call 704-246-7642 or text 980-888-5300 and describe what the Mac is doing, or bring it to the shop at 1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270. We are open Monday to Friday 9AM-6PM and Saturday 11AM-4PM. If you can tell us the model and what happened before the fault appeared, that usually shortens the diagnostic.'
+        'Call 704-246-7642 or text 980-888-5300 and describe what the Mac is doing, bring it to the shop at 1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270, or fill in the mail-in repair form if you would rather ship it. We are open Monday to Friday 9AM-6PM and Saturday 11AM-4PM. If you can tell us the model and what happened before the fault appeared, that usually shortens the diagnostic.'
     }
   ];
 
@@ -183,7 +191,7 @@ const MacBookRepair = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Mac & MacBook Repair Charlotte NC | KorTech Service"
-        description="Independent Mac and MacBook repair in Charlotte, NC. MacBook Air & Pro, iMac, Mac mini, Mac Studio, logic-board diagnostics and board-level repair. Call 704-246-7642."
+        description="Mac and MacBook repair in Charlotte, NC. MacBook Air & Pro, iMac, Mac mini, Mac Studio, logic-board diagnostics and board-level repair. Drop off or mail in. Call 704-246-7642."
         canonicalUrl="/macbook-repair"
         service="Mac and MacBook Repair"
         location="Charlotte, NC"
@@ -211,9 +219,9 @@ const MacBookRepair = () => {
               </h1>
 
               <p className="text-xl text-gray-200 leading-relaxed">
-                MacBook, MacBook Air, MacBook Pro, iMac, Mac mini and Mac Studio repair at our
-                Charlotte shop — including Mac logic-board diagnostics and board-level
-                micro-soldering, the component-level work many shops refer out.
+                MacBook, MacBook Air, MacBook Pro, iMac, Mac mini and Mac Studio repair in
+                Charlotte, including Mac logic-board diagnostics and board-level micro-soldering.
+                Drop your Mac off at the shop, or mail it in from anywhere.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -242,22 +250,6 @@ const MacBookRepair = () => {
               <Laptop className="h-64 w-64 text-blue-300/40" />
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Independence disclosure — placed high deliberately: it is the honest
-          answer to the "apple authorized service provider" query and prevents
-          the page from implying a relationship that does not exist. */}
-      <section className="bg-amber-50 border-y border-amber-200 py-6">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-amber-900 flex items-start gap-3">
-            <AlertTriangle className="h-5 w-5 flex-shrink-0 mt-0.5" aria-hidden="true" />
-            <span>
-              <strong>KorTech Service is an independent repair shop.</strong> We are not an Apple
-              Authorized Service Provider and are not affiliated with Apple Inc. Apple, Mac and
-              MacBook are trademarks of Apple Inc., used here only to describe the devices we repair.
-            </span>
-          </p>
         </div>
       </section>
 
@@ -292,6 +284,54 @@ const MacBookRepair = () => {
             older machine is not possible on a newer one. We confirm what applies to your specific
             model during the diagnostic instead of assuming it carries over.
           </p>
+        </div>
+      </section>
+
+      {/* Mail-in. Owner-confirmed 2026-10-23: mail-in covers every repair
+          category we offer, Mac logic-board and board-level work included.
+          Deliberately absent: shipping cost, who pays postage, transit or
+          repair turnaround, labels, insurance and return-shipping terms —
+          none of those are confirmed. */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-start gap-4 mb-6">
+            <Package className="h-10 w-10 text-brand-primary flex-shrink-0" aria-hidden="true" />
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">
+                Mail in your Mac from anywhere
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl">
+                You do not have to be in Charlotte. We accept mail-in repairs for every repair
+                category we offer — MacBook, MacBook Air and MacBook Pro, iMac, Mac mini, Mac
+                Studio, Mac logic-board repair and board-level micro-soldering included.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-gray-600 max-w-3xl mb-8">
+            Start with the mail-in repair form. It collects your contact details, the model and a
+            description of the fault, so the Mac is identified and expected when it arrives. The
+            same diagnostic and quote process applies: $75-$150 for the diagnostic, waived when you
+            go ahead with a hardware repair, and a quote before any repair work starts. Call or text
+            us first if you would rather describe the fault before shipping.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a
+              href="/mail-in-form/?utm_source=site&utm_medium=service&utm_campaign=macbook_mailin"
+              className="bg-brand-primary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg inline-flex items-center justify-center gap-2 transition-colors"
+            >
+              <Package className="h-5 w-5" aria-hidden="true" />
+              <span>Start a mail-in repair</span>
+            </a>
+            <a
+              href="tel:704-246-7642"
+              data-track-source="service_macbook_mailin"
+              className="border-2 border-brand-primary text-brand-primary hover:bg-blue-50 px-8 py-4 rounded-xl font-bold text-lg inline-flex items-center justify-center gap-2 transition-colors"
+            >
+              <span>Call 704-246-7642</span>
+            </a>
+          </div>
         </div>
       </section>
 

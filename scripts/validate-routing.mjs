@@ -286,10 +286,25 @@ function checkMacPageClaims() {
       );
     }
   }
-  // The independence disclosure is load-bearing: it is the honest answer to
-  // the "apple authorized service provider" query and must not be dropped.
-  if (!/not an Apple Authorized Service Provider/i.test(text)) {
-    fail('mac-page-claims', 'dist/macbook-repair/ is missing the Apple-independence disclosure');
+  // Apple authorization: per the owner (2026-10-23) the page must neither
+  // claim nor deny Apple Authorized Service Provider status, affiliation or
+  // endorsement. Naming the Apple models repaired is accurate and allowed;
+  // any authorization or relationship language is not. This guard replaces an
+  // earlier one that REQUIRED an independence disclaimer.
+  for (const [re, label] of [
+    [/authorized service provider/i, 'Apple authorization status'],
+    [/\bauthorized (?:apple|service|repair)\b/i, 'Apple authorization status'],
+    [/\b(?:not )?affiliated with apple\b/i, 'Apple affiliation'],
+    [/\bapple[- ]certified\b/i, 'Apple certification'],
+    [/\bapple[- ]endorsed\b/i, 'Apple endorsement'],
+  ]) {
+    if (re.test(text)) {
+      fail(
+        'mac-page-claims',
+        `dist/macbook-repair/ mentions ${label} (matched ${re}) - the owner asked that this page ` +
+          'neither claim nor deny Apple authorization, affiliation or endorsement'
+      );
+    }
   }
 }
 

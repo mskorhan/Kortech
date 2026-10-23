@@ -14,12 +14,12 @@ and tested. Everything below is reversible by reverting the branch.
 
 | # | approval | why it is yours |
 |---|---|---|
-| **A1** | **Sitemap goes 57 → 58 URLs, and `.htaccess` gets one whitelist entry** | Both are inside `routingFreeze`. The freeze exists because of the 9/14 GSC validation recrawl; 10/22 found those validations closed "Failed" only on non-canonical variants, not live defects. I judged the freeze's purpose met, but the call is yours. **If you decline, the whole Mac page defers** — everything else in this batch stands on its own. |
-| **A2** | **The claim table (§6).** 220 matches across 52 files | I edited none of them. I need TRUE/FALSE/PARTLY per row before anything is changed. |
-| **A3** | **Apple independence wording** — the new page states KorTech is *not* an Apple Authorized Service Provider and not affiliated with Apple | This is a business fact. I believe it is right and it is the safe default, but confirm it. |
-| **A4** | **Does mail-in cover Macs and board-level work?** (owner question B6, still open) | The new page does **not** offer mail-in for Mac work, because this is unconfirmed. If it does, that is a free addition. |
-| **A5** | **GA4: mark `phone_call` and `text_message` as key events** | External account. Note these are *click intent*, not confirmed leads — see §8. |
-| **A6** | **Merge PR #19** (review count 112 → 119) and review the GBP package (§7) | PR #19 is open, mergeable, and not mine. GBP changes are external. |
+| **A1** | ✅ **APPROVED 2026-10-23** — sitemap 57 → 58 and one `.htaccess` whitelist entry, limited to the Mac repair page. All existing redirects, canonicals and routing protections preserved. | Both are inside `routingFreeze`. The freeze exists because of the 9/14 GSC validation recrawl; 10/22 found those validations closed "Failed" only on non-canonical variants, not live defects. I judged the freeze's purpose met, but the call is yours. **If you decline, the whole Mac page defers** — everything else in this batch stands on its own. |
+| **A2** | ⏳ **REVIEW REQUIRED.** 235 raw matches / 52 files → **193 KorTech self-claims** (41 generic education, 1 false positive) → **8 distinct claims** → **6 questions**. See `claims-dedup-2026-10-23.md`. | I edited none of them. One answer per question settles a whole cluster. **Does not block #24** — the PR adds no claims from any cluster. |
+| **A3** | ✅ **RESOLVED 2026-10-23 — disclaimer REMOVED.** The owner directed that the page neither claim nor deny Apple authorization, affiliation or endorsement. The FAQ, the disclosure section and the word "Independent" in the meta description are all gone. Naming the Apple models repaired is retained as accurate. | A `validate-routing` guard now **forbids** authorization/affiliation/endorsement language on this page (it previously required a disclaimer); negative-tested in both directions. |
+| **A4** | ✅ **CONFIRMED 2026-10-23 — mail-in covers EVERY repair category**, Macs, Mac logic-board and board-level micro-soldering included. The page now advertises it with a CTA to `/mail-in-form/`. | Shipping cost, postage responsibility, prepaid labels, insurance, return-shipping terms and any transit/repair duration are **excluded** per the owner and appear nowhere on the page. |
+| **A5** | ⏳ **APPROVED FOR PREPARATION ONLY.** Config spec to be verified (event definitions, deduplication, real tracking behaviour) before any GA4 change. | External account; **nothing in GA4 modified**. These are *click intent*, not confirmed calls or leads — see §8. |
+| **A6** | ⏳ **REVIEW SEPARATELY.** Do not merge a stale 119 when GBP shows 121; prove the updater can refresh the published count and keep one source of truth. GBP service updates prepared without saving. | PR #19 is open, mergeable, and not mine. GBP changes are external. |
 
 ---
 
@@ -72,7 +72,9 @@ capturing visibility you already have, not building new visibility — the cheap
 Sections on `/macbook-repair/`, all original, none copied from any competitor:
 
 1. **Hero** — models covered, board-level capability, call/text, diagnostic disclosure.
-2. **Independence disclosure** (high on the page, deliberately) — see §5.
+2. **Mail in your Mac from anywhere** — owner-confirmed 2026-10-23: mail-in covers every repair
+   category, Mac logic-board and board-level work included. CTA to `/mail-in-form/`. Carries no
+   shipping cost, postage, label, insurance, return-shipping or duration terms (all excluded).
 3. **What we repair** — the 7 confirmed capabilities + the model-variance caveat.
 4. **Common Mac symptoms** — no-power/charging, display, liquid, logic-board, storage/data, ports.
    Each explains what the symptom usually indicates and which need board-level work.
@@ -120,7 +122,7 @@ screen intent. The Mac page links out to the four overlapping pages rather than 
 ## 4. Titles, descriptions, structured data
 
 - **Title:** `Mac & MacBook Repair Charlotte NC | KorTech Service` (unique)
-- **Description:** `Independent Mac and MacBook repair in Charlotte, NC. MacBook Air & Pro, iMac, Mac mini, Mac Studio, logic-board diagnostics and board-level repair. Call 704-246-7642.` (unique)
+- **Description:** `Mac and MacBook repair in Charlotte, NC. MacBook Air & Pro, iMac, Mac mini, Mac Studio, logic-board diagnostics and board-level repair. Drop off or mail in. Call 704-246-7642.` (unique)
 - **Canonical:** `https://www.kortechservice.com/macbook-repair/` (self, trailing slash)
 - **H1:** one, `Mac & MacBook Repair Charlotte NC`. 7 H2s, correct nesting.
 - **Robots:** `index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1`
@@ -170,7 +172,8 @@ across 52 files**, of which **56 are also emitted as FAQPage JSON-LD** — the m
 assistants actually read, which is precisely why those claims come back out of AI systems. I changed
 none of them.
 
-➡ **Exact wording, file and line for every one of the 235 is in
+➡ **Deduplicated to 193 KorTech self-claims → 8 distinct claims → 6 owner questions in
+`seo-intelligence/reports/claims-dedup-2026-10-23.md`.** Exact wording, file and line for every one of the 235 is in
 `claims-inventory-2026-10-23.md`**, grouped by claim type with a TRUE/FALSE/PARTLY column and the
 JSON-LD ones flagged. That document is the one to work through; this table is just the summary.
 
@@ -339,7 +342,8 @@ never production):
 | `aggregateRating` in JSON-LD | **FAIL** (passed silently before this batch) |
 | `FAQPage` on the Mac page | **FAIL** |
 | a "same-day" claim on the Mac page | **FAIL** |
-| independence disclosure removed | **FAIL** |
+| an Apple authorization *denial* on the Mac page | **FAIL** |
+| an Apple authorization/certification *claim* on the Mac page | **FAIL** |
 
 ---
 
