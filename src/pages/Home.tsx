@@ -103,10 +103,13 @@ export default function Home() {
     {
       icon: Monitor,
       title: "Mac & PC Repair",
-      description: "Expert repair for all computer brands, including Mac logic-board work",
+      description: "Expert repair for all computer brands with same-day service",
       features: ["Hardware diagnosis", "Software troubleshooting", "Performance optimization"],
       gradient: "from-blue-500 to-cyan-500",
       price: "Call/Text For Quote",
+      // NOTE: the description above still says "with same-day service", which is
+      // an UNCONFIRMED claim (see claims-inventory-2026-10-23.md). It is left
+      // exactly as it was - claim wording is owner-approval work, not ours.
       // Google already ranks the homepage ~3.7 for "macbook repair" with 0
       // clicks; this sends that intent to the page that actually answers it.
       link: "/macbook-repair/",

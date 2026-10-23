@@ -30,6 +30,8 @@ import {
 //   - certifications, cleanroom, parts sourcing / "we stock parts"
 //   - any Apple Authorized Service Provider implication
 //   - whether mail-in covers board-level work (owner question B6)
+//   - "all work is carried out at our Charlotte shop" (claim C3, unconfirmed):
+//     the ADDRESS is confirmed, "all work happens there" is not.
 // Do not reintroduce any of these without an owner confirmation.
 //
 // The Apple-silicon/T2 storage statement below is sourced to Apple Platform
@@ -48,7 +50,7 @@ const MacBookRepair = () => {
       icon: BatteryCharging,
       title: 'No power, or no sign of charging',
       body:
-        'The Mac shows nothing on a known-good charger: no chime, no fan, no display, no charging light. On a MacBook this often sits in the power circuitry on the logic board rather than in the battery itself, which is why a battery swap does not always resolve it. Diagnosis starts by establishing whether the board is drawing power at all.'
+        'The Mac shows nothing on a known-good charger: no chime, no fan, no display, no charging light. On a MacBook this often sits in the power circuitry on the logic board rather than in the battery itself, which is why replacing the battery does not always resolve it.'
     },
     {
       icon: Monitor,
@@ -111,7 +113,7 @@ const MacBookRepair = () => {
     {
       q: 'Should I repair my Mac or replace it?',
       a:
-        'That is a cost-and-value question, and it is yours to make — our part is to give you the information. After the diagnostic you get a quote for the actual fault, so you can weigh it against the machine\'s age, its condition otherwise, and what a replacement would cost you. We will say plainly when we think a repair is not worth it. Note that replacing the machine does not by itself recover the data on it.'
+        'That is a cost-and-value question, and it is yours to make — our part is to give you the information. After the diagnostic you get a quote for the actual fault, so you can weigh it against the machine\'s age, its condition otherwise, and what a replacement would cost you. Note that replacing the machine does not by itself recover the data on it.'
     },
     {
       q: 'Do all Macs support the same repairs?',
@@ -264,7 +266,7 @@ const MacBookRepair = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">What we repair</h2>
           <p className="text-lg text-gray-600 mb-8 max-w-3xl">
-            All work is carried out at our Charlotte shop on Sardis Rd N.
+            Our shop is at 1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270.
           </p>
 
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -338,8 +340,8 @@ const MacBookRepair = () => {
               to the data at all.
             </p>
             <p>
-              If the data matters more than the machine, say so when you call. It changes the order we
-              do things in.
+              If the data matters more than the machine, say so when you call, so we can take that
+              into account.
             </p>
             <p className="text-sm text-gray-500">
               Source: Apple Platform Security,{' '}
@@ -373,11 +375,11 @@ const MacBookRepair = () => {
               },
               {
                 t: 'A quote, before any work',
-                d: 'You get the cost for the actual fault, and where there is a choice — board-level repair, module replacement, or not worth repairing — you hear the options and decide. We will tell you when we think a repair is not worth your money.'
+                d: 'You get the cost for the actual fault, and where there is a choice — board-level repair, module replacement, or replacement of the machine — you hear the options and decide.'
               },
               {
                 t: 'Repair and collection',
-                d: 'The repair is carried out at our Charlotte shop. Parts installed carry a 14-day limited warranty covering the parts themselves against manufacturing defects or failure under normal use — not accidental or liquid damage, drops or similar.'
+                d: 'Parts installed carry a 14-day limited warranty covering the parts themselves against manufacturing defects or failure under normal use — not accidental or liquid damage, drops or similar.'
               }
             ].map(({ t, d }, i) => (
               <li key={t} className="flex gap-5">

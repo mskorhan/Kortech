@@ -218,18 +218,15 @@ function checkJsonLdParses() {
 // but no page may ADD it. This pins the set of pages allowed to emit it, so a
 // new page picking up <FAQSection> (which emits FAQPage) fails the build.
 const FAQPAGE_ALLOWLIST = new Set([
-  'about', 'appliance-electronics-repair', 'ballantyne-computer-repair',
-  'business-it-support', 'charlotte-computer-repair', 'contact',
-  'custom-gaming-pc', 'data-recovery', 'graphic-design',
-  'indian-trail-computer-repair', 'laptop-screen-repair', 'locations',
-  'mail-in-form', 'matthews-computer-repair', 'mint-hill-computer-repair',
-  'monroe-computer-repair', 'nintendo-switch-repair', 'pcb-micro-soldering',
-  'pineville-computer-repair', 'pricing', 'printer-router-repair',
-  'ps5-hdmi-repair', 'recycling', 'remote-assistance', 'services',
-  'smart-tv-repair', 'smartphone-screen-repair-charlotte', 'ssd-upgrades',
-  'stallings-computer-repair', 'tablet-ipad-repair', 'virus-malware-removal',
-  'water-damage-repair', 'waxhaw-computer-repair', 'weddington-computer-repair',
-  'xbox-hdmi-repair',
+  'appliance-electronics-repair', 'ballantyne-computer-repair', 'business-it-support',
+  'charlotte-computer-repair', 'custom-gaming-pc', 'data-recovery', 'graphic-design',
+  'indian-trail-computer-repair', 'laptop-screen-repair', 'matthews-computer-repair',
+  'mint-hill-computer-repair', 'monroe-computer-repair', 'nintendo-switch-repair',
+  'pcb-micro-soldering', 'pineville-computer-repair', 'printer-router-repair',
+  'ps5-hdmi-repair', 'remote-assistance', 'services', 'smart-tv-repair',
+  'smartphone-screen-repair-charlotte', 'ssd-upgrades', 'stallings-computer-repair',
+  'tablet-ipad-repair', 'virus-malware-removal', 'water-damage-repair',
+  'waxhaw-computer-repair', 'weddington-computer-repair', 'xbox-hdmi-repair',
 ]);
 
 function routeKeyFor(file) {
@@ -255,7 +252,9 @@ function checkNoNewFaqPage() {
 
 // --- 8. the Mac page must stay free of unconfirmed claims ------------------
 // Every claim on /macbook-repair/ is limited to what the owner confirmed on
-// 2026-10-23 plus the already-approved diagnostic/warranty/address facts. The
+// 2026-10-23 plus the already-approved diagnostic/warranty/address facts. This
+// is a pattern guard, not proof of truth: it catches the known-unconfirmed
+// phrasings, it cannot verify a claim it has no pattern for. The
 // phrases below are unconfirmed as of the 2026-10-22 owner-confirmation table
 // and must not reappear - the page is built as the clean reference example.
 const UNVERIFIED_CLAIM_PATTERNS = [
@@ -317,7 +316,7 @@ function main() {
   console.log(
     'validate-routing: OK - known-routes literal and complete, 404 document distinct and noindex, ' +
       'canonical URLs clean, no staging host, FAQ answers extractable, no self-serving review markup, ' +
-      'no new FAQPage markup, Mac page free of unconfirmed claims.'
+      'no new FAQPage markup, Mac page free of the listed claim patterns.'
   );
 }
 
