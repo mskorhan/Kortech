@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import SEOHead from '../components/SEOHead';
 import FiveStarReviews from '../components/FiveStarReviews';
-import { trackFormSubmission } from '../utils/analytics';
+import { trackFormSubmission, trackFormSubmissionFailure } from '../utils/analytics';
 import { NOTIFY_ENDPOINT } from '../utils/notifyEndpoint';
 import {
   Phone,
@@ -58,6 +58,7 @@ const Contact = () => {
       setSubmitStatus('success');
       setFormData({ fullName: '', email: '', phone: '', message: '' });
     } catch {
+      trackFormSubmissionFailure('contact_page_form');
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

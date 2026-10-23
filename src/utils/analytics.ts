@@ -42,6 +42,18 @@ export const trackFormSubmission = (formType: string) => {
   });
 };
 
+// Diagnostic only. This exists so that "nobody submitted the form" can be told
+// apart from "the submit endpoint is failing" - at the 2026-10-22 checkpoint
+// GA4 had collected no form_submit at all for 28 days and the two cases were
+// indistinguishable. Do NOT mark this as a GA4 key event: it is a failure, not
+// a lead, and counting it as a conversion would inflate the lead count.
+export const trackFormSubmissionFailure = (formType: string) => {
+  trackEvent('form_submit_failed', {
+    event_category: 'Form',
+    event_label: formType
+  });
+};
+
 // Delegated click tracking for tel:/sms: links. Instead of wiring an onClick
 // handler to every call/text CTA across the site, each link just needs
 // data-track-source="some_id" and this single document-level listener
