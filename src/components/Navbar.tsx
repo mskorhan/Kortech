@@ -46,6 +46,7 @@ const Navbar: React.FC = () => {
     { name: 'Xbox HDMI Repair', path: '/xbox-hdmi-repair/' },
     { name: 'Nintendo Switch Repair', path: '/nintendo-switch-repair/' },
     { name: 'Laptop Screen Repair', path: '/laptop-screen-repair/' },
+    { name: 'Mac & MacBook Repair', path: '/macbook-repair/' },
     { name: 'SSD Upgrades', path: '/ssd-upgrades/' },
     { name: 'Virus & Malware Removal', path: '/virus-malware-removal/' },
     { name: 'IT Support', path: '/business-it-support/' },

@@ -17,6 +17,7 @@ export const checkInternalLinks = async (links: string[]): Promise<LinkCheckResu
           '/', '/about', '/services', '/pricing', '/contact', '/recycling', 
           '/terms', '/privacy-policy', '/mail-in-form', '/blog',
           '/ps5-hdmi-repair', '/xbox-hdmi-repair', '/laptop-screen-repair',
+          '/macbook-repair',
           '/ssd-upgrades', '/virus-malware-removal', '/it-support',
           '/data-recovery', '/custom-gaming-pc', '/water-damage-repair',
           '/smartphone-screen-repair-charlotte', '/tablet-ipad-repair',

@@ -417,6 +417,11 @@ const LaptopRepair = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="/macbook-repair/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+              <Laptop className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Mac &amp; MacBook Repair</h3>
+              <p className="text-slate-600">MacBook, MacBook Air and MacBook Pro repair, including logic-board work</p>
+            </a>
             <a href="/ssd-upgrades/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <Shield className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">SSD Upgrades</h3>

@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 import SEOHead from '../components/SEOHead';
-import { trackFormSubmission } from '../utils/analytics';
+import { trackFormSubmission, trackFormSubmissionFailure } from '../utils/analytics';
 import { NOTIFY_ENDPOINT } from '../utils/notifyEndpoint';
 import {
+  AlertTriangle,
   Printer,
   Package,
   CheckCircle,
@@ -113,6 +114,7 @@ const MailInForm = () => {
       setFormSubmitted(true);
       window.scrollTo(0, 0);
     } catch {
+      trackFormSubmissionFailure('mail_in_repair_form');
       setSubmitError(
         "We couldn't send your form to us automatically. Please still print it below and include it with your device, or call/text us so we know it's coming."
       );
@@ -506,13 +508,37 @@ const MailInForm = () => {
               : ''}
           </div>
           {formSubmitted ? (
-            <div className="bg-white rounded-xl shadow-lg border border-green-200 p-8">
+            <div
+              className={`bg-white rounded-xl shadow-lg p-8 ${
+                submitError ? 'border border-yellow-300' : 'border border-green-200'
+              }`}
+            >
+              {/* The heading has to match what actually happened. When the send
+                  fails we still render the printable form (the mail-in flow needs
+                  the printed copy either way), but we must not tell the customer
+                  the submission succeeded. */}
               <div className="text-center mb-8" role="status">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="h-8 w-8 text-green-600" />
+                <div
+                  className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
+                    submitError ? 'bg-yellow-100' : 'bg-green-100'
+                  }`}
+                >
+                  {submitError ? (
+                    <AlertTriangle className="h-8 w-8 text-yellow-600" />
+                  ) : (
+                    <CheckCircle className="h-8 w-8 text-green-600" />
+                  )}
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Form Completed Successfully!</h2>
-                <p className="text-gray-600">Please print this form and include it with your device.</p>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  {submitError
+                    ? "We couldn't send your form automatically"
+                    : 'Form Completed Successfully!'}
+                </h2>
+                <p className="text-gray-600">
+                  {submitError
+                    ? 'Your form is ready below. Please print it and include it with your device, and call or text us so we know it is coming.'
+                    : 'Please print this form and include it with your device.'}
+                </p>
               </div>
 
               {submitError && (

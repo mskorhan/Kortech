@@ -22,6 +22,14 @@ const DIST = path.join(ROOT, 'dist');
 const CANONICAL_ORIGIN = 'https://www.kortechservice.com';
 const STAGING_HOST = 'kortechservice.pinevillecomputers.com';
 
+// react-helmet-async emits `<script data-rh="true" type="application/ld+json">`,
+// so a pattern anchored on `<script type=` matches nothing in the prerendered
+// output. Keep this attribute-order-agnostic: an earlier strict version made
+// the aggregateRating, Review and JSON-LD-parse guards below silently vacuous.
+// Regex objects with /g carry lastIndex, so build a fresh one per use.
+const JSON_LD_RE = () => /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g;
+
+
 const failures = [];
 const fail = (check, detail) => failures.push(`${check}: ${detail}`);
 
@@ -141,7 +149,7 @@ function checkCanonicalUrls() {
         if (m[1].includes(STAGING_HOST)) fail('staging-host', `dist/${rel} emits ${m[1]}`);
       }
     }
-    for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    for (const m of html.matchAll(JSON_LD_RE())) {
       if (m[1].includes(STAGING_HOST)) fail('staging-host', `dist/${rel} references the staging host in JSON-LD`);
     }
   }
@@ -177,7 +185,7 @@ function checkNoSelfServingRatings() {
   for (const file of walkIndexHtml(DIST)) {
     const html = readFileSync(file, 'utf8');
     const rel = path.relative(DIST, file);
-    for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    for (const m of html.matchAll(JSON_LD_RE())) {
       if (/"aggregateRating"/.test(m[1])) {
         fail('review-markup', `dist/${rel} publishes aggregateRating in its own structured data`);
       }
@@ -193,12 +201,109 @@ function checkJsonLdParses() {
   for (const file of walkIndexHtml(DIST)) {
     const rel = path.relative(DIST, file);
     const html = readFileSync(file, 'utf8');
-    for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    for (const m of html.matchAll(JSON_LD_RE())) {
       try {
         JSON.parse(m[1]);
       } catch (err) {
         fail('json-ld', `dist/${rel} has unparseable JSON-LD: ${err.message}`);
       }
+    }
+  }
+}
+
+
+// --- 7. no NEW FAQPage markup ----------------------------------------------
+// config.json schemaPolicy: Google retired FAQ rich results in May 2026.
+// Existing FAQPage JSON-LD is kept as semantic markup for other consumers,
+// but no page may ADD it. This pins the set of pages allowed to emit it, so a
+// new page picking up <FAQSection> (which emits FAQPage) fails the build.
+const FAQPAGE_ALLOWLIST = new Set([
+  'appliance-electronics-repair', 'ballantyne-computer-repair', 'business-it-support',
+  'charlotte-computer-repair', 'custom-gaming-pc', 'data-recovery', 'graphic-design',
+  'indian-trail-computer-repair', 'laptop-screen-repair', 'matthews-computer-repair',
+  'mint-hill-computer-repair', 'monroe-computer-repair', 'nintendo-switch-repair',
+  'pcb-micro-soldering', 'pineville-computer-repair', 'printer-router-repair',
+  'ps5-hdmi-repair', 'remote-assistance', 'services', 'smart-tv-repair',
+  'smartphone-screen-repair-charlotte', 'ssd-upgrades', 'stallings-computer-repair',
+  'tablet-ipad-repair', 'virus-malware-removal', 'water-damage-repair',
+  'waxhaw-computer-repair', 'weddington-computer-repair', 'xbox-hdmi-repair',
+]);
+
+function routeKeyFor(file) {
+  const rel = path.relative(DIST, file).split(path.sep).join('/');
+  return rel === 'index.html' ? '' : rel.replace(/\/index\.html$/, '');
+}
+
+function checkNoNewFaqPage() {
+  for (const file of walkIndexHtml(DIST)) {
+    const html = readFileSync(file, 'utf8');
+    const key = routeKeyFor(file);
+    for (const m of html.matchAll(JSON_LD_RE())) {
+      if (/"@type"\s*:\s*"FAQPage"/.test(m[1]) && !FAQPAGE_ALLOWLIST.has(key)) {
+        fail(
+          'faq-schema',
+          `dist/${key || 'index'} emits FAQPage JSON-LD but is not on the allowlist - ` +
+            'schemaPolicy forbids adding new FAQPage markup (did a new page use <FAQSection>?)'
+        );
+      }
+    }
+  }
+}
+
+// --- 8. the Mac page must stay free of unconfirmed claims ------------------
+// Every claim on /macbook-repair/ is limited to what the owner confirmed on
+// 2026-10-23 plus the already-approved diagnostic/warranty/address facts. This
+// is a pattern guard, not proof of truth: it catches the known-unconfirmed
+// phrasings, it cannot verify a claim it has no pattern for. The
+// phrases below are unconfirmed as of the 2026-10-22 owner-confirmation table
+// and must not reappear - the page is built as the clean reference example.
+const UNVERIFIED_CLAIM_PATTERNS = [
+  [/\bbusiness days?\b/i, 'turnaround time'],
+  [/\bsame[- ]day\b/i, 'same-day availability'],
+  [/\bwalk[- ]?ins?\b/i, 'walk-in availability'],
+  [/\bcertified\b/i, 'certification'],
+  [/\bclean[- ]?room\b/i, 'cleanroom'],
+  [/\bpickup and delivery\b/i, 'pickup and delivery'],
+  [/\bminutes from\b/i, 'drive-time/landmark'],
+  [/\bwe stock\b/i, 'parts stocking'],
+  [/\bmile radius\b/i, 'service radius'],
+];
+
+function checkMacPageClaims() {
+  const file = path.join(DIST, 'macbook-repair', 'index.html');
+  if (!existsSync(file)) {
+    fail('mac-page', 'dist/macbook-repair/index.html is missing');
+    return;
+  }
+  const html = readFileSync(file, 'utf8');
+  const text = html.replace(/<[^>]+>/g, ' ');
+  for (const [re, label] of UNVERIFIED_CLAIM_PATTERNS) {
+    if (re.test(text)) {
+      fail(
+        'mac-page-claims',
+        `dist/macbook-repair/ contains an unconfirmed ${label} claim (matched ${re}) - ` +
+          'see seo-intelligence/reports/owner-confirmation-table-2026-10-22.md'
+      );
+    }
+  }
+  // Apple authorization: per the owner (2026-10-23) the page must neither
+  // claim nor deny Apple Authorized Service Provider status, affiliation or
+  // endorsement. Naming the Apple models repaired is accurate and allowed;
+  // any authorization or relationship language is not. This guard replaces an
+  // earlier one that REQUIRED an independence disclaimer.
+  for (const [re, label] of [
+    [/authorized service provider/i, 'Apple authorization status'],
+    [/\bauthorized (?:apple|service|repair)\b/i, 'Apple authorization status'],
+    [/\b(?:not )?affiliated with apple\b/i, 'Apple affiliation'],
+    [/\bapple[- ]certified\b/i, 'Apple certification'],
+    [/\bapple[- ]endorsed\b/i, 'Apple endorsement'],
+  ]) {
+    if (re.test(text)) {
+      fail(
+        'mac-page-claims',
+        `dist/macbook-repair/ mentions ${label} (matched ${re}) - the owner asked that this page ` +
+          'neither claim nor deny Apple authorization, affiliation or endorsement'
+      );
     }
   }
 }
@@ -214,6 +319,8 @@ function main() {
   checkFaqExtractable();
   checkNoSelfServingRatings();
   checkJsonLdParses();
+  checkNoNewFaqPage();
+  checkMacPageClaims();
 
   if (failures.length > 0) {
     console.error('validate-routing: FAILED\n');
@@ -223,7 +330,8 @@ function main() {
   }
   console.log(
     'validate-routing: OK - known-routes literal and complete, 404 document distinct and noindex, ' +
-      'canonical URLs clean, no staging host, FAQ answers extractable, no self-serving review markup.'
+      'canonical URLs clean, no staging host, FAQ answers extractable, no self-serving review markup, ' +
+      'no new FAQPage markup, Mac page free of the listed claim patterns.'
   );
 }
 

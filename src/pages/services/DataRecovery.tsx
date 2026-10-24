@@ -3,6 +3,7 @@ import ServiceCTA from '../../components/ServiceCTA';
 import FAQSection from '../../components/FAQSection';
 import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
+  Laptop,
   HardDrive,
   Shield,
   CheckCircle,
@@ -375,6 +376,11 @@ const DataRecovery = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="/macbook-repair/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+              <Laptop className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Mac &amp; MacBook Repair</h3>
+              <p className="text-slate-600">Mac data concerns are tied to the logic board on Apple silicon</p>
+            </a>
             <a href="/ssd-upgrades/" className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
               <HardDrive className="h-12 w-12 text-green-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-slate-800 mb-2">SSD Upgrades</h3>

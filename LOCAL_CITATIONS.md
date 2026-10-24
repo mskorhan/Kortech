@@ -48,8 +48,12 @@
 
 ### Better Business Bureau (Charlotte)
 - **URL:** https://www.bbb.org/us/nc/charlotte/profile/computer-repair/kortech-service
-- **Rating:** A+ Rating
-- **Accredited:** BBB Accredited Business
+- **Rating:** Not Rated (verified on the BBB profile, 2026-10-22)
+- **Accredited:** Not Accredited (verified on the BBB profile, 2026-10-22)
+- **Note:** this document previously asserted "A+ Rating" and "BBB Accredited
+  Business". Neither is supported by the BBB profile. The incorrect claims were
+  never published on the live site. Do not restore them, and do not use them in
+  site copy, schema or GBP, unless accreditation is actually obtained.
 
 ### Angie's List / HomeAdvisor
 - **Category:** Computer & Technology Services

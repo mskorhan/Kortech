@@ -27,6 +27,7 @@ const RemoteAssistance = lazy(() => import('./pages/services/RemoteAssistance'))
 const PS5HDMIRepair = lazy(() => import('./pages/services/PS5HDMIRepair'));
 const XboxHDMIRepair = lazy(() => import('./pages/services/XboxHDMIRepair'));
 const LaptopScreenRepair = lazy(() => import('./pages/services/LaptopScreenRepair'));
+const MacBookRepair = lazy(() => import('./pages/services/MacBookRepair'));
 const SSDUpgrades = lazy(() => import('./pages/services/SSDUpgrades'));
 const VirusMalwareRemoval = lazy(() => import('./pages/services/VirusMalwareRemoval'));
 const DataRecovery = lazy(() => import('./pages/services/DataRecovery'));
@@ -155,6 +156,7 @@ function App() {
           <Route path="/ps5-hdmi-repair" element={<PS5HDMIRepair />} />
           <Route path="/xbox-hdmi-repair" element={<XboxHDMIRepair />} />
           <Route path="/laptop-screen-repair" element={<LaptopScreenRepair />} />
+          <Route path="/macbook-repair" element={<MacBookRepair />} />
           <Route path="/ssd-upgrades" element={<SSDUpgrades />} />
           <Route path="/virus-malware-removal" element={<VirusMalwareRemoval />} />
           <Route path="/it-support" element={<Navigate to="/business-it-support/" replace />} />
