@@ -1,5 +1,6 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
+import MailInSection from '../../components/MailInSection';
 import FAQSection from '../../components/FAQSection';
 import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
@@ -370,6 +371,8 @@ const LaptopRepair = () => {
       </section>
 
       {/* Service CTA */}
+      <MailInSection deviceNoun="laptop" trackSource="service_laptopscreen_mailin" />
+
       <ServiceCTA 
         service="Laptop Repair" 
         price="Walk-In for Diagnostic"

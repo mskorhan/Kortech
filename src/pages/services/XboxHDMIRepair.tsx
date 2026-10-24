@@ -1,5 +1,6 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
+import MailInSection from '../../components/MailInSection';
 import FAQSection from '../../components/FAQSection';
 import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
@@ -220,6 +221,8 @@ const XboxHDMIRepair = () => {
       </section>
 
       {/* Service CTA */}
+      <MailInSection deviceNoun="console" trackSource="service_xbox_mailin" />
+
       <ServiceCTA 
         service="Xbox HDMI Repair" 
         price="Call/Text For Quote"

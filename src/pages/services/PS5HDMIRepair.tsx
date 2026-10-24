@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
+import MailInSection from '../../components/MailInSection';
 import FAQSection from '../../components/FAQSection';
 import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
@@ -389,6 +390,8 @@ const PS5HDMIRepair = () => {
       </section>
 
       {/* Service CTA */}
+      <MailInSection deviceNoun="console" trackSource="service_ps5_mailin" />
+
       <ServiceCTA 
         service="PS5 HDMI Repair" 
         price="Call/Text For Quote"

@@ -285,3 +285,78 @@ stale-asset regression in future checks.
 Live: **121** on `/` and `/about/` ("Based on 121+ verified customer reviews",
 "4.8/5 Google • 121 reviews"). **Zero** stale `112` in rendered text.
 Matches `src/data/reviews.json` (`totalReviews: 121`) at the deployed SHA.
+
+---
+
+# CORRECTION to item 4 (added after further checking)
+
+The earlier item-4 conclusion said the mail-in terms are consistent **and** not
+misleading. The first half stands; the second was overstated. Consistency between
+documents is not the same as each statement being supported. Two published terms
+are **unverified**, and both now receive traffic from the new Mac page CTA.
+
+**Neither is a defect introduced by this release, and neither needs a hotfix** —
+but neither can be called "verified not misleading" either.
+
+## 4a. "This form will be emailed to you" — NOT supported by the implementation
+
+`src/pages/TermsConditions.tsx:139` tells the customer:
+
+> "This form will be emailed to you once you've submitted your shipping form on our
+> website, or you can print it after clicking the submit button."
+
+`worker/src/index.ts` makes **exactly one** call to `api.resend.com` (grep count: 1):
+
+```
+from:     env.NOTIFY_FROM_EMAIL
+to:       env.NOTIFY_TO_EMAIL      <-- the OWNER
+reply_to: replyTo                  <-- the customer (reply address only)
+```
+
+There is **no second send to the customer**. The customer receives a copy only via
+the "or you can print it" path. As published, the emailed-copy half of that sentence
+is not supported by the code.
+
+**Recommended:** reword Terms to match behaviour — the print path is the copy
+mechanism. Routed to PR #25 / the claim follow-up, not hotfixed here.
+
+## 4b. "5-10 business days" — never inventoried, so not confirmed
+
+`owner-confirmation-table-2026-10-22.md` §A lists 9 turnaround claims (A1–A9) across
+`/business-it-support/`, `/ps5-hdmi-repair/`, `/data-recovery/`, `/pcb-micro-soldering/`,
+`/matthews-computer-repair/` and GBP. **The `/terms/` and `/mail-in-form/`
+"5-10 business days" figure is not among them** — it was never captured, so it is
+neither confirmed nor explicitly flagged.
+
+Owner decision **A4** separately excluded "any transit/repair duration" from the Mac
+page, which points the same way: the figure is not owner-confirmed.
+
+The Mac page itself is clean — it publishes **no** turnaround claim (verified live).
+The exposure is that its CTA now routes to `/mail-in-form/`, which does publish one.
+
+**Recommended:** add the Terms/mail-in turnaround to the seven-question claim set as
+an eighth item.
+
+## Restated item 4
+
+> The mail-in form and the published shipping/turnaround terms are **internally
+> consistent** on every material point (diagnostic fee, return shipping, turnaround,
+> shipping-damage disclaimer, post-diagnostic call). Two published statements are
+> **unconfirmed** and routed to the claim follow-up: the emailed-copy promise
+> (contradicted by the worker, which emails only the owner) and the "5-10 business
+> days" figure (never inventoried, and duration was excluded under A4).
+
+## Mail-in delivery — endpoint alive, delivery unproven
+
+A liveness probe that **sends no email** (invalid JSON is rejected with 400 *before*
+the Resend call) returned:
+
+```
+POST https://kortech-mailin-form.mskorhan.workers.dev  -> 400 {"error":"Invalid JSON"}
+```
+
+So the worker is deployed and responding. This does **not** prove Resend delivery:
+`RESEND_API_KEY` validity and the `mail.kortechservice.com` sender domain remain
+unverified. No test submission was sent, because each one reaches the owner as a
+real lead. Watch GA4 `form_submit_failed` (shipped in this release) to tell
+"nobody submitted" apart from "the endpoint is failing".

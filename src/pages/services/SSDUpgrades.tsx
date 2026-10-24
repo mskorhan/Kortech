@@ -1,5 +1,6 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
+import MailInSection from '../../components/MailInSection';
 import FAQSection from '../../components/FAQSection';
 import {
   HardDrive,
@@ -280,6 +281,8 @@ const SSDUpgrades = () => {
       </section>
 
       {/* Service CTA */}
+      <MailInSection deviceNoun="computer" trackSource="service_ssd_mailin" />
+
       <ServiceCTA 
         service="SSD Upgrade" 
         price="Call/Text For Quote"
