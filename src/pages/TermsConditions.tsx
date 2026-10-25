@@ -135,8 +135,9 @@ const TermsConditions = () => {
                 Shipping Instructions
               </h2>
               <p>
-                Please ship your device to our address at 1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270 with your shipping form enclosed in the box. 
-                This form will be emailed to you once you've submitted your shipping form on our website, or you can print it after clicking the submit button.
+                Please ship your device to our address at 1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270 with your shipping form enclosed in the box.
+                After you submit the form on our website, a printable copy appears on screen — print it there and enclose it with your device.
+                We do not email you a copy, so please print it before leaving the page.
               </p>
               
               <p>

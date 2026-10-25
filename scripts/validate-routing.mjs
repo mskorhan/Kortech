@@ -250,6 +250,37 @@ function checkNoNewFaqPage() {
   }
 }
 
+// --- 9. no promise that we email the customer a copy of their form --------
+// worker/src/index.ts makes exactly one Resend call, with to: NOTIFY_TO_EMAIL
+// (the owner) and the customer address only as reply_to. Nothing is sent to the
+// customer, so any page that promises an emailed copy is making a claim the
+// implementation does not support. The real mechanism is the printable copy the
+// form renders after submit. If a customer-copy email is ever implemented, drop
+// this guard in the same change that ships it - not before.
+const CUSTOMER_EMAIL_PROMISE_PATTERNS = [
+  /\bwill be emailed to you\b/i,
+  /\bemailed to you\b/i,
+  /\bwe(?:'ll| will) email you\b/i,
+  /\bconfirmation email\b/i,
+  /\byou will receive an email\b/i,
+  /\bsent to your email\b/i,
+];
+
+function checkNoCustomerEmailPromise() {
+  for (const file of walkIndexHtml(DIST)) {
+    const text = readFileSync(file, 'utf8').replace(/<[^>]+>/g, ' ');
+    for (const re of CUSTOMER_EMAIL_PROMISE_PATTERNS) {
+      if (re.test(text)) {
+        fail(
+          'customer-email-promise',
+          `${path.relative(DIST, file)} promises the customer an emailed copy (matched ${re}) - ` +
+            'the worker emails only the owner; the published mechanism is the printable copy'
+        );
+      }
+    }
+  }
+}
+
 // --- 8. the Mac page must stay free of unconfirmed claims ------------------
 // Every claim on /macbook-repair/ is limited to what the owner confirmed on
 // 2026-10-23 plus the already-approved diagnostic/warranty/address facts. This
@@ -321,6 +352,7 @@ function main() {
   checkJsonLdParses();
   checkNoNewFaqPage();
   checkMacPageClaims();
+  checkNoCustomerEmailPromise();
 
   if (failures.length > 0) {
     console.error('validate-routing: FAILED\n');
@@ -331,7 +363,8 @@ function main() {
   console.log(
     'validate-routing: OK - known-routes literal and complete, 404 document distinct and noindex, ' +
       'canonical URLs clean, no staging host, FAQ answers extractable, no self-serving review markup, ' +
-      'no new FAQPage markup, Mac page free of the listed claim patterns.'
+      'no new FAQPage markup, Mac page free of the listed claim patterns, ' +
+      'no promise of a customer-emailed form copy.'
   );
 }
 
