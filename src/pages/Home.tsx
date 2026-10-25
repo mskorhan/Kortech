@@ -103,13 +103,15 @@ export default function Home() {
     {
       icon: Monitor,
       title: "Mac & PC Repair",
-      description: "Expert repair for all computer brands with same-day service",
+      description: "Expert repair for all computer brands, with guaranteed same-day service on eligible repairs",
       features: ["Hardware diagnosis", "Software troubleshooting", "Performance optimization"],
       gradient: "from-blue-500 to-cyan-500",
       price: "Call/Text For Quote",
-      // NOTE: the description above still says "with same-day service", which is
-      // an UNCONFIRMED claim (see claims-inventory-2026-10-23.md). It is left
-      // exactly as it was - claim wording is owner-approval work, not ours.
+      // NOTE: the description above now reads "guaranteed same-day service on
+      // eligible repairs". Owner-confirmed 2026-10-25: same-day IS guaranteed,
+      // but only for eligible services, and eligibility is confirmed by
+      // KorTech. Do not restore an unqualified "same-day service" claim, and do
+      // not enumerate which services are eligible - no such list is confirmed.
       // Google already ranks the homepage ~3.7 for "macbook repair" with 0
       // clicks; this sends that intent to the page that actually answers it.
       link: "/macbook-repair/",
@@ -295,7 +297,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto font-light">
-              Expert computer repair and IT support services in Charlotte, Matthews, Pineville, Mint Hill with transparent pricing and same-day turnaround
+              Expert computer repair and IT support services in Charlotte, Matthews, Pineville, Mint Hill with transparent pricing and guaranteed same-day turnaround on eligible repairs
             </p>
           </div>
 
@@ -465,7 +467,7 @@ export default function Home() {
             </h2>
             
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 font-light">
-              Visit our Charlotte location for expert computer repair service with transparent pricing and same-day turnaround. Serving Charlotte, Matthews, Pineville, Mint Hill, Ballantyne with walk-in availability.
+              Visit our Charlotte location for expert computer repair service with transparent pricing and guaranteed same-day turnaround on eligible repairs. Serving Charlotte, Matthews, Pineville, Mint Hill, Ballantyne with walk-in availability.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mobile-stack mobile-space-y-4">

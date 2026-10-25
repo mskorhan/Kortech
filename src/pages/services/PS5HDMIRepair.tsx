@@ -395,7 +395,7 @@ const PS5HDMIRepair = () => {
       <ServiceCTA 
         service="PS5 HDMI Repair" 
         price="Call/Text For Quote"
-        urgentText="Same-Day Gaming Console Repair"
+        urgentText="Same-Day Gaming Console Repair Available"
       />
 
       {/* FAQ Section */}

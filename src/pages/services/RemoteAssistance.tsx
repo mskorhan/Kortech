@@ -213,7 +213,7 @@ const RemoteAssistance = () => {
               </p>
               <ul className="text-sm text-slate-600 space-y-1">
                 <li>• Walk-in diagnostics</li>
-                <li>• Same-day service</li>
+                <li>• Same-day service on eligible repairs</li>
                 <li>• All repair types</li>
               </ul>
             </div>

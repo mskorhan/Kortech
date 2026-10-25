@@ -339,6 +339,196 @@ function checkMacPageClaims() {
   }
 }
 
+// --- 10. no misleading absolute same-day / turnaround promises ------------
+// Owner-confirmed policy (2026-10-25):
+//   - same-day repairs ARE guaranteed, but only for ELIGIBLE services, and
+//     eligibility is confirmed by KorTech. So "same-day" is allowed; an
+//     ALL/EVERY/ANY-shaped same-day promise is not, and neither is a same-day
+//     claim attached to mail-in.
+//   - mail-in turnaround is an ESTIMATE of 5-10 business days. A guaranteed
+//     completion date, or a guaranteed shipping/delivery date, is not allowed.
+// This is a pattern guard: it catches the absolute phrasings we know to be
+// wrong, it cannot confirm that a hedged claim is true.
+//
+// Customer review text is EXCLUDED. reviews.json is refreshed by a monthly bot
+// (update-reviews.yml); a customer writing "fixed it same day, guaranteed!"
+// must not fail that PR. The exclusion is done by removing the exact review
+// strings, not by matching markup, so it survives restyling of the review card.
+// Sentences containing a negator are skipped before the patterns run. The
+// correct wording is itself full of same-day and turnaround vocabulary -
+// "Same-day service does not apply to mail-in repairs", "that is an estimate
+// rather than a guaranteed completion date" - and matching on proximity alone
+// flagged exactly the sentences the policy requires.
+//
+// The list is deliberately NARROW: only words that negate the claim itself.
+// An earlier version also listed "no", "without", "separate" and "estimate",
+// which made the guard nearly inert - "Mail-in repairs are completed same-day,
+// without extra fees" was skipped over an incidental "without".
+const PROMISE_NEGATORS =
+  /\b(?:not|never|does not|doesn't|do not|don't|cannot|can't|rather than)\b/i;
+
+// Wording that correctly conditions a same-day claim. A same-day claim that
+// carries none of these is an unqualified promise.
+// "usually", "common" and the like are genuine hedges, so they count. "shops"
+// and "providers" mark a sentence as being about OTHER businesses, which is not
+// our claim to qualify. "evaluation"/"diagnostic"/"response" are a different
+// promise from a same-day REPAIR and are governed by their own open questions
+// (issue #26 Q10), not by this policy.
+const ELIGIBILITY_QUALIFIERS =
+  /\b(?:eligible|eligibility|select|many|some|most|available|availability|ask|contact|confirm|depend\w*|often|typically|usually|possible|may|qualify|qualifies|common|shops?|providers?|evaluation|diagnostics?|response|can be|could|would|worth|premium)\b/i;
+
+const ABSOLUTE_PROMISE_PATTERNS = [
+  // same-day promised for all/every/any repair or device
+  [/\b(?:all|every|any)\s+(?:of\s+our\s+)?(?:repairs?|devices?|services?|brands?)\b[^.]{0,40}\bsame[- ]day\b/i,
+   'same-day claimed for all/every/any repair'],
+  [/\bsame[- ]day\b[^.]{0,40}\b(?:all|every|any)\s+(?:of\s+our\s+)?(?:repairs?|devices?|services?|brands?)\b/i,
+   'same-day claimed for all/every/any repair'],
+  [/\bsame[- ]day\s+(?:service\s+|repairs?\s+)?(?:on|for)\s+(?:all|every|any)\b/i,
+   'same-day claimed for all/every/any'],
+
+  // a guaranteed completion / shipping / delivery DATE - never allowed
+  [/\bguarantee(?:d|s)?\b[^.]{0,30}\b(?:completion|delivery|shipping)\s+dates?\b/i,
+   'guaranteed completion/shipping date'],
+
+  // same-day tied affirmatively to mail-in, either order.
+  // A LINKING WORD is required between the two terms: stripped markup collapses
+  // unrelated button labels into one pseudo-sentence (button text has no full
+  // stop), e.g. "Start a mail-in repair  Call 704-246-7642  Same-Day SSD
+  // Installation Available" - a link beside a banner, not a claim.
+  [/\b(?:mail[- ]in|mailed[- ]in)\b[^.]{0,40}\b(?:is|are|get|gets|receive|receives|qualify|qualifies|eligible|completed|finished|done|turned around|available)\b[^.]{0,30}\bsame[- ]day\b/i,
+   'same-day applied to mail-in'],
+  [/\bsame[- ]day\b[^.]{0,40}\b(?:for|on|to|applies|apply|includes|including|covers)\b[^.]{0,30}\b(?:mail[- ]in|mailed[- ]in)\b/i,
+   'same-day applied to mail-in'],
+
+  // the 5-10 business day ESTIMATE restated as a guarantee
+  [/\bguaranteed\b[^.]{0,40}\b5-10\s+business days\b/i,
+   'the 5-10 business day estimate stated as a guarantee'],
+  [/\b5-10\s+business days\b[^.]{0,30}\bguaranteed\b/i,
+   'the 5-10 business day estimate stated as a guarantee'],
+];
+
+// An unqualified same-day claim: the phrase appears with no eligibility
+// wording anywhere in its sentence. This is the rule that catches the exact
+// strings the claims PR removed - "for all computer brands with same-day
+// service", a bare "same-day turnaround", "Same-day Mac & PC repair" - none of
+// which name all/every/any and so match none of the patterns above.
+const UNQUALIFIED_SAME_DAY =
+  /\bsame[- ]day\b(?![- ]?(?:response))/i;
+
+/**
+ * Decode the handful of HTML entities the prerenderer emits, and normalise
+ * whitespace. Both sides of the review comparison must go through this: the
+ * page says `&amp;` where reviews.json says `&`, and without decoding, any
+ * review containing an ampersand silently fails to be excluded. That is not
+ * hypothetical - it is the bug this function exists to fix.
+ */
+function decodeForCompare(value) {
+  return value
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Every substring of a customer review that can appear as page text, so it can
+ * be removed before claim-scanning. reviews.json is refreshed by a monthly bot
+ * (update-reviews.yml); a customer writing "fixed it same day, guaranteed!"
+ * must NOT fail that PR.
+ *
+ * Components truncate review text at different lengths, so rather than track
+ * each one, every prefix at a plausible cut length is emitted. Cheap, and it
+ * cannot drift out of step with a component's styling.
+ */
+function reviewTextSnippets() {
+  const file = path.join(ROOT, 'src', 'data', 'reviews.json');
+  if (!existsSync(file)) return [];
+  try {
+    const data = JSON.parse(readFileSync(file, 'utf8'));
+    const out = [];
+    for (const r of data.fiveStarReviews || []) {
+      if (typeof r.text !== 'string') continue;
+      const full = decodeForCompare(r.text);
+      out.push(full);
+      for (const cut of [120, 150, 160, 180, 200, 220, 250, 280, 300]) {
+        if (full.length > cut) out.push(full.slice(0, cut));
+      }
+    }
+    // Longest first, so a full review is removed before its own prefixes.
+    return out.sort((a, b) => b.length - a.length);
+  } catch {
+    return [];
+  }
+}
+
+// Block-level tags that end a visible run of text. Replacing them with a
+// sentence boundary before the markup is stripped keeps each bullet, badge,
+// heading and button as its own unit - otherwise "Walk-in diagnostics .
+// Same-day service . All repair types" flattens into one pseudo-sentence and
+// three independent bullets look like a single compound claim.
+const BLOCK_BOUNDARY =
+  /<\/?(?:p|div|li|ul|ol|h[1-6]|br|td|th|tr|section|article|header|footer|button|a|span|strong|em|label|dt|dd|option)\b[^>]*>/gi;
+
+function checkNoAbsolutePromises() {
+  const snippets = reviewTextSnippets();
+  for (const file of walkIndexHtml(DIST)) {
+    let text = decodeForCompare(
+      readFileSync(file, 'utf8')
+        .replace(BLOCK_BOUNDARY, ' . ')
+        .replace(/<[^>]+>/g, ' ')
+    );
+    // Drop customer review prose before matching. Both sides are already
+    // entity-decoded and whitespace-normalised by decodeForCompare, which is
+    // what makes this removal actually land.
+    for (const s of snippets) {
+      if (s.length < 12) continue;
+      text = text.split(s).join(' ');
+    }
+    // Sentence-scoped so a negator in one sentence cannot excuse a promise in
+    // the next, and so a promise cannot hide behind a neighbouring disclaimer.
+    const sentences = text.split(/(?<=[.!?])\s+/);
+    for (const s of sentences) {
+      if (!UNQUALIFIED_SAME_DAY.test(s)) continue;
+      // Badge and label markup splits into fragments too short to carry their
+      // own qualifier - `<div>Same Day</div><div>Service</div>` yields
+      // "Same Day ." - and judging those flags every styled label. A claim
+      // needs a sentence to make it; the surrounding prose is judged instead.
+      // The all/every/any and mail-in patterns still cover badge text, since
+      // they match across the flattened page rather than per sentence.
+      if (s.trim().split(/\s+/).length < 7) continue;
+      if (PROMISE_NEGATORS.test(s)) continue;
+      if (ELIGIBILITY_QUALIFIERS.test(s)) continue;
+      // A question is not a claim. "Do you offer same-day service?" is a FAQ
+      // heading; its ANSWER carries the promise and is checked on its own.
+      if (/\?/.test(s) || /^\s*(?:do|does|can|is|are|will|how|what|when)/i.test(s)) continue;
+      fail(
+        'absolute-promise',
+        `${path.relative(DIST, file)} makes an UNQUALIFIED same-day claim - ` +
+          `"${s.trim().slice(0, 120)}". Same-day is guaranteed for ELIGIBLE services ` +
+          `only, so a same-day claim must carry an eligibility qualifier ` +
+          `(e.g. "on eligible repairs", "available for many issues", ` +
+          `"contact us to confirm").`
+      );
+      break;
+    }
+    for (const [re, label] of ABSOLUTE_PROMISE_PATTERNS) {
+      const hit = sentences.find((s) => re.test(s) && !PROMISE_NEGATORS.test(s));
+      if (hit) {
+        fail(
+          'absolute-promise',
+          `${path.relative(DIST, file)} makes a misleading absolute promise - ${label} ` +
+            `(matched ${re}). Same-day is guaranteed for ELIGIBLE services only; mail-in ` +
+            `turnaround is an ESTIMATE of 5-10 business days and never a guarantee.`
+        );
+      }
+    }
+  }
+}
+
 function main() {
   if (!existsSync(DIST)) {
     console.error('validate-routing: dist/ not found - run the build first.');
@@ -353,6 +543,7 @@ function main() {
   checkNoNewFaqPage();
   checkMacPageClaims();
   checkNoCustomerEmailPromise();
+  checkNoAbsolutePromises();
 
   if (failures.length > 0) {
     console.error('validate-routing: FAILED\n');
@@ -364,7 +555,8 @@ function main() {
     'validate-routing: OK - known-routes literal and complete, 404 document distinct and noindex, ' +
       'canonical URLs clean, no staging host, FAQ answers extractable, no self-serving review markup, ' +
       'no new FAQPage markup, Mac page free of the listed claim patterns, ' +
-      'no promise of a customer-emailed form copy.'
+      'no promise of a customer-emailed form copy, '  +
+      'no misleading absolute same-day or turnaround promise.'
   );
 }
 

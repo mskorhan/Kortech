@@ -117,7 +117,7 @@ const Matthews = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Computer Repair Matthews NC • KorTech Service"
-        description="Professional computer repair in Matthews, NC. Same-day Mac & PC repair, data recovery, IT support. Call 704-246-7642 or Text/Call 980-888-5300."
+        description="Professional computer repair in Matthews, NC. Same-day Mac & PC repair on eligible services, data recovery, IT support. Call 704-246-7642 or Text/Call 980-888-5300."
         canonicalUrl="/matthews-computer-repair"
         location="Matthews, NC"
         service="Computer Repair"

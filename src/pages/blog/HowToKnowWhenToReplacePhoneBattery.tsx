@@ -157,7 +157,7 @@ const HowToKnowWhenToReplacePhoneBattery = () => {
               <div className="flex items-start">
                 <AlertTriangle className="h-6 w-6 text-red-600 mr-3 mt-1 flex-shrink-0" />
                 <p className="text-red-800 mb-0">
-                  <strong>IMPORTANT SAFETY WARNING:</strong> If your battery is swollen or bulging, do not charge your phone. Bring it to a professional repair service immediately. In Charlotte, we offer same-day emergency battery replacement for these situations.
+                  <strong>IMPORTANT SAFETY WARNING:</strong> If your battery is swollen or bulging, do not charge your phone. Bring it to a professional repair service immediately. In Charlotte, we offer same-day emergency battery replacement for these situations on eligible repairs - contact us to confirm.
                 </p>
               </div>
             </div>

@@ -20,8 +20,8 @@ is false, the safe replacements are the facts already confirmed in the project r
 
 | claim type | count | of which in FAQ JSON-LD | your answer |
 |---|---|---|---|
-| same-day | 106 | 19 | ☐ TRUE ☐ FALSE ☐ PARTLY |
-| turnaround | 48 | 18 | ☐ TRUE ☐ FALSE ☐ PARTLY |
+| same-day | 106 | 19 | ☑ **ANSWERED 2026-10-25 — PARTLY** (see below) |
+| turnaround | 48 | 18 | ☑ **PARTLY — mail-in only** (see below) |
 | pickup/delivery | 42 | 11 | ☐ TRUE ☐ FALSE ☐ PARTLY |
 | walk-in | 17 | 4 | ☐ TRUE ☐ FALSE ☐ PARTLY |
 | certified | 8 | 1 | ☐ TRUE ☐ FALSE ☐ PARTLY |
@@ -611,3 +611,81 @@ Do you hold stock for common models?
 - L30 **[JSON-LD]**: `answer: "Yes, we repair all major laptop brands at our Charlotte shop including Dell, HP, Lenovo, ASUS, Acer, MSI, Apple MacBook, and more. We stock parts for common models."`
 
 ---
+
+---
+
+## Owner answers recorded 2026-10-25
+
+Two clusters are now settled. The rest of this document stands unchanged.
+
+### same-day — ANSWERED (policy, not a flat TRUE/FALSE)
+
+> **Same-day repairs are guaranteed for eligible services.** Repairs needing
+> additional diagnostics, unavailable parts, or more extensive work are not
+> eligible. Eligibility is confirmed by KorTech. Same-day does **not** apply to
+> mail-in repairs.
+
+Standard wording:
+
+> "Same-day repairs are guaranteed for eligible services. Contact KorTech to
+> confirm eligibility for your device and repair."
+
+Consequences for this inventory:
+
+- Same-day is **no longer an unverified claim** — it is a confirmed, *conditional*
+  guarantee. Hedged existing wording ("available for many issues", "on select
+  repairs", "ask about same-day availability") already matches the policy and was
+  **left as-is**: it is accurate and softening it further would understate a real
+  guarantee.
+- **Overbroad** phrasings were corrected — those that read as unconditional
+  ("for all computer brands with same-day service", bare "same-day turnaround").
+- **No list of eligible services exists.** The owner explicitly prohibited
+  inventing one. Per-service "Same Day Available" labels were therefore left
+  unchanged — "available" is the accurate word; "guaranteed" on a specific
+  service would assert eligibility nobody confirmed.
+
+### turnaround — PARTLY: the mail-in figure only
+
+> **Mail-in repairs typically have an estimated turnaround of 5-10 business
+> days, depending on diagnosis and parts availability. This is an estimate, not
+> a guarantee.** Shipping transit time is separate. No shipping or delivery date
+> is guaranteed.
+
+Standard wording:
+
+> "Mail-in repairs typically take an estimated 5-10 business days, depending on
+> diagnosis and parts availability. Actual turnaround times may vary."
+
+This settles **issue #26 Q9** (the "5-10 business days" figure on `/terms/` and
+`/mail-in-form/`) — the figure is confirmed, and is now labelled an estimate
+wherever it appears.
+
+**Still open:** every **in-shop** turnaround range (1-2 days, 1-3 days, 2-5 days,
+3-7 days, and data recovery's cleanroom 5-10 business days). These are issue #26
+**Q3** and are *not* covered by the mail-in policy. The figures resemble each
+other, which is exactly why they must not be conflated: a mail-in estimate says
+nothing about an in-shop PS5 repair. **Do not reuse the mail-in estimate for
+them.**
+
+### Still awaiting an answer
+
+Q2 pickup/delivery · Q3 in-shop turnaround ranges · Q4 walk-in · Q5 certification ·
+Q6 location geography · Q7 parts stocking.
+
+One further item surfaced while applying this policy, and needs an owner answer:
+
+- **IT support "within 2-4 hours" response time** (`/it-support/`, in FAQ
+  JSON-LD). A response-time promise, distinct from same-day repair and not
+  covered by either confirmed policy. It was left in place, with a sentence added
+  that separates same-day *response* from a same-day *repair*. Confirm or correct
+  the 2-4 hour figure.
+
+### Regression protection
+
+`scripts/validate-routing.mjs` guard 10 (`checkNoAbsolutePromises`) now fails the
+build on: same-day promised for all/every/any repair; a guaranteed
+completion/shipping/delivery date; same-day tied to mail-in; and the 5-10 day
+estimate restated as a guarantee. It is sentence-scoped and negation-aware, so
+the compliant wording above passes while the absolute forms fail. Customer review
+text is excluded by content so the monthly reviews bot cannot be broken by what a
+customer happens to write.
