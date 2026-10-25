@@ -7,10 +7,23 @@ export interface Env {
   EXTRA_ALLOWED_ORIGINS?: string;
   /**
    * Optional Cloudflare Rate Limiting binding, per-IP. Absent = no limiting.
-   * Deliberately NOT a KV counter: a KV get/put is non-atomic and eventually
-   * consistent, so concurrent requests read the same value before either
-   * writes and a burst slips through - which is the exact case a rate limit
-   * exists to stop. This binding is atomic, and free.
+   *
+   * Preferred over a KV counter, which needs a read-then-write round trip per
+   * request: KV is eventually consistent, so concurrent requests read the same
+   * value before any of them writes and a burst slips straight through.
+   *
+   * Be precise about what this binding does and does not promise. Cloudflare
+   * documents it as an APPROXIMATE limit: "Counts are eventually consistent:
+   * each check uses a local count", counts are local to the Cloudflare location
+   * the Worker runs in, and "these counts do not combine into one worldwide
+   * limit", so "requests can exceed your configured limit before those updates
+   * arrive". It is therefore NOT atomic and NOT a global cap.
+   *
+   * It is still the right tool here. The goal is to blunt sustained volume
+   * against the sending quota, not to enforce an exact count, and a per-location
+   * approximation does that at no extra cost. A strict global limit would need
+   * Durable Objects, which Cloudflare recommends for that case and which is more
+   * machinery than this endpoint warrants.
    */
   RATE_LIMIT?: RateLimit;
 }

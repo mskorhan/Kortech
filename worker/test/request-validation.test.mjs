@@ -337,3 +337,127 @@ test('a Resend failure surfaces as 502 and logs no response body', async () => {
     'no customer data in logs'
   );
 });
+
+// ------------------------------------------- the CURRENTLY DEPLOYED live site
+//
+// These cases exist because the earlier suite tested the wrong pairing. It
+// proved the CURRENT worker accepts the NEW site's payload (honeypot present
+// but empty). The release order is the other way round: the hardened worker is
+// deployed BEFORE the site change ships, so for a window the hardened worker
+// serves the site that is live right now - which sends NO honeypot key at all.
+//
+// The payload below was captured from https://www.kortechservice.com/mail-in-form/
+// on 2026-10-25 with window.fetch intercepted, so nothing was ever sent. Keys,
+// header and body type are exactly what production posts.
+const LIVE_SITE_MAIL_IN = {
+  fullName: 'Test Person',
+  email: 'test@example.com',
+  phone: '704-555-0100',
+  address: '1 Test St',
+  city: 'Testville',
+  state: 'NC',
+  zip: '28105',
+  deviceType: 'Laptop',
+  deviceBrand: 'TestBrand',
+  deviceModel: 'TestModel',
+  serialNumber: 'N/A',
+  problemDescription: 'Will not power on.',
+  hasBackedUp: true,
+  hasRemovedAccessories: true,
+  agreeToTerms: true,
+};
+
+test('live site: the deployed form payload has NO honeypot key and still sends', async () => {
+  assert.ok(
+    !('contactPreference' in LIVE_SITE_MAIL_IN),
+    'guard the premise: the live payload must not contain the honeypot key'
+  );
+  const calls = mockResend();
+  const res = await worker.fetch(post(LIVE_SITE_MAIL_IN), env);
+  assert.equal(res.status, 200);
+  assert.equal(calls.length, 1, 'an absent honeypot key must be read as human, not automated');
+});
+
+test('an absent honeypot key is not treated as automated', async () => {
+  const calls = mockResend();
+  const { contactPreference, ...withoutKey } = { ...validMailIn, contactPreference: '' };
+  assert.ok(!('contactPreference' in withoutKey));
+  const res = await worker.fetch(post(withoutKey), env);
+  assert.equal(res.status, 200);
+  assert.equal(calls.length, 1);
+});
+
+test('live site: the deployed payload is not rejected by the body cap', async () => {
+  const calls = mockResend();
+  const res = await worker.fetch(post(LIVE_SITE_MAIL_IN), env);
+  assert.equal(res.status, 200);
+  assert.equal(calls.length, 1);
+});
+
+// --------------------------------------------- CORS on refusals (readable errors)
+//
+// A refusal without Access-Control-Allow-Origin is hidden from the page by the
+// browser: the fetch rejects as a generic network error and the customer is
+// shown "something went wrong" instead of a reason they can act on. Every
+// refusal served to an ALLOWED origin must therefore carry the CORS header.
+
+test('refusals to an allowed origin carry CORS so the page can read the status', async () => {
+  mockResend();
+  // 415: wrong content type
+  const unsupported = await worker.fetch(
+    post(validMailIn, { contentType: 'text/plain' }),
+    env
+  );
+  assert.equal(unsupported.status, 415);
+  assert.equal(unsupported.headers.get('Access-Control-Allow-Origin'), ORIGIN);
+
+  // 400: malformed JSON
+  const malformed = await worker.fetch(post('{nope', {}), env);
+  assert.equal(malformed.status, 400);
+  assert.equal(malformed.headers.get('Access-Control-Allow-Origin'), ORIGIN);
+
+  // 400: missing required field
+  const incomplete = await worker.fetch(post({ fullName: 'Only' }), env);
+  assert.equal(incomplete.status, 400);
+  assert.equal(incomplete.headers.get('Access-Control-Allow-Origin'), ORIGIN);
+});
+
+test('a 429 to an allowed origin carries CORS and a readable Retry-After', async () => {
+  const calls = mockResend();
+  const limited = { ...env, RATE_LIMIT: { limit: async () => ({ success: false }) } };
+  const res = await worker.fetch(
+    post(validMailIn, { headers: { 'CF-Connecting-IP': '203.0.113.9' } }),
+    limited
+  );
+  assert.equal(res.status, 429);
+  assert.equal(res.headers.get('Access-Control-Allow-Origin'), ORIGIN);
+  assert.ok(Number(res.headers.get('Retry-After')) > 0, 'Retry-After must be a positive number');
+  assert.equal(calls.length, 0);
+});
+
+test('the rate limit is checked before field validation, so 429 can be probed without sending', async () => {
+  // This is what makes a production rate-limit test safe: an incomplete payload
+  // reaches the limiter but could never reach the email path.
+  const calls = mockResend();
+  const limited = { ...env, RATE_LIMIT: { limit: async () => ({ success: false }) } };
+  const res = await worker.fetch(
+    post({ fullName: 'Incomplete' }, { headers: { 'CF-Connecting-IP': '203.0.113.9' } }),
+    limited
+  );
+  assert.equal(res.status, 429, 'the limiter must run before validation rejects the payload');
+  assert.equal(calls.length, 0);
+});
+
+test('recovery: once the limiter allows again, a real submission succeeds', async () => {
+  const calls = mockResend();
+  let allow = false;
+  const recovering = { ...env, RATE_LIMIT: { limit: async () => ({ success: allow }) } };
+  const ip = { headers: { 'CF-Connecting-IP': '203.0.113.9' } };
+  const blocked = await worker.fetch(post(validMailIn, ip), recovering);
+  assert.equal(blocked.status, 429);
+  assert.equal(calls.length, 0);
+  allow = true;
+  const after = await worker.fetch(post(validMailIn, ip), recovering);
+  assert.equal(after.status, 200);
+  assert.equal(calls.length, 1, 'recovery must not require a redeploy or a cache clear');
+});

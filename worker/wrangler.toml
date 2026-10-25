@@ -14,11 +14,18 @@ ALLOWED_ORIGIN = "https://www.kortechservice.com"
 # is a deliberate owner step; uncommenting it and redeploying is all that is
 # needed, and the worker is inert without it.
 #
-# This is Cloudflare's own Rate Limiting binding - atomic, included at no extra
-# cost, and no third-party service. A KV counter was considered and rejected:
-# KV get/put is non-atomic and eventually consistent, so a burst of concurrent
-# requests all read the same value before any of them writes, and the limit
-# does not hold for the one case it exists to stop.
+# This is Cloudflare's own Rate Limiting binding - no extra cost, no
+# third-party service. A KV counter was considered and rejected: it needs a
+# read-then-write per request, and KV is eventually consistent, so a burst of
+# concurrent requests all read the same value before any of them writes.
+#
+# What this binding promises, stated accurately: Cloudflare documents it as an
+# APPROXIMATE limit. Counts are eventually consistent, are local to each
+# Cloudflare location, and do not combine into one worldwide limit, so requests
+# CAN exceed the configured number. It is not atomic and not a global cap - a
+# strict global limit would require Durable Objects. That is an accepted
+# trade-off here: the aim is to blunt sustained volume against the sending
+# quota, not to enforce an exact count.
 #
 # 5 submissions per 60s per IP (period accepts only 10 or 60). A real customer
 # sends one form, maybe two after a correction, so this leaves ample headroom. The worker fails OPEN if the
