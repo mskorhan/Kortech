@@ -3,6 +3,7 @@ import SEOHead from '../components/SEOHead';
 import FiveStarReviews from '../components/FiveStarReviews';
 import { trackFormSubmission, trackFormSubmissionFailure } from '../utils/analytics';
 import { NOTIFY_ENDPOINT } from '../utils/notifyEndpoint';
+import HoneypotField from '../components/HoneypotField';
 import {
   Phone,
   Mail,
@@ -18,7 +19,8 @@ import {
 } from 'lucide-react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', message: '' });
+  // contactPreference is the honeypot - see HoneypotField. Always '' for a human.
+  const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', message: '', contactPreference: '' });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -56,7 +58,7 @@ const Contact = () => {
 
       trackFormSubmission('contact_page_form');
       setSubmitStatus('success');
-      setFormData({ fullName: '', email: '', phone: '', message: '' });
+      setFormData({ fullName: '', email: '', phone: '', message: '', contactPreference: '' });
     } catch {
       trackFormSubmissionFailure('contact_page_form');
       setSubmitStatus('error');
@@ -222,7 +224,8 @@ const Contact = () => {
                 <p className="text-gray-600">We'll get back to you as soon as possible.</p>
               </div>
             ) : (
-              <form onSubmit={handleContactSubmit} className="space-y-6" noValidate>
+              <form onSubmit={handleContactSubmit} className="space-y-6 relative" noValidate>
+                <HoneypotField value={formData.contactPreference} onChange={handleChange} />
                 {submitStatus === 'error' && (
                   <div role="alert" className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
                     We couldn't send your message automatically. Please call or text us instead, or try again in a moment.

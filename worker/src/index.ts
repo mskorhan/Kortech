@@ -3,6 +3,10 @@ export interface Env {
   NOTIFY_TO_EMAIL: string;
   NOTIFY_FROM_EMAIL: string;
   ALLOWED_ORIGIN: string;
+  /** Optional comma-separated extra origins. Unset in production. */
+  EXTRA_ALLOWED_ORIGINS?: string;
+  /** Optional KV namespace for per-IP rate limiting. Absent = no limiting. */
+  RATE_LIMIT?: KVNamespace;
 }
 
 interface MailInFormPayload {
@@ -52,7 +56,117 @@ function corsHeaders(origin: string) {
     'Access-Control-Allow-Origin': origin,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
+    'Vary': 'Origin',
   };
+}
+
+/**
+ * The origins allowed to submit. The apex redirects to www, but a page loaded
+ * before that redirect can still present the apex as its origin, so both are
+ * allowed. Localhost is allowed so `wrangler dev` keeps working.
+ */
+export function allowedOrigins(env: Env): string[] {
+  const list = [env.ALLOWED_ORIGIN, 'https://kortechservice.com'];
+  if (env.EXTRA_ALLOWED_ORIGINS) {
+    for (const extra of env.EXTRA_ALLOWED_ORIGINS.split(',')) {
+      const trimmed = extra.trim();
+      if (trimmed) list.push(trimmed);
+    }
+  }
+  return list.filter((value, i, all) => value && all.indexOf(value) === i);
+}
+
+export function isAllowedOrigin(origin: string | null, env: Env): boolean {
+  if (!origin) {
+    // Non-browser clients send no Origin. We cannot attribute those to the
+    // site, so they are refused - every legitimate submission is a browser
+    // fetch() from our own pages, which always sets Origin.
+    return false;
+  }
+  if (allowedOrigins(env).includes(origin)) return true;
+  try {
+    const { hostname, protocol } = new URL(origin);
+    return (
+      (protocol === 'http:' || protocol === 'https:') &&
+      (hostname === 'localhost' || hostname === '127.0.0.1')
+    );
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Only a JSON body is accepted. Both callers already send
+ * `Content-Type: application/json`, so this changes nothing for them, while
+ * requiring that a cross-site POST be subject to a CORS preflight.
+ */
+export function hasJsonContentType(request: Request): boolean {
+  const header = request.headers.get('Content-Type');
+  if (!header) return false;
+  return header.split(';')[0].trim().toLowerCase() === 'application/json';
+}
+
+/** Reject an oversized body. A real submission is a few KB at most. */
+const MAX_BODY_BYTES = 64 * 1024;
+
+export async function readCappedJson(
+  request: Request
+): Promise<{ ok: true; value: unknown } | { ok: false; error: string; status: number }> {
+  const declared = request.headers.get('Content-Length');
+  if (declared && Number(declared) > MAX_BODY_BYTES) {
+    return { ok: false, error: 'Request body too large', status: 413 };
+  }
+  // Content-Length can be absent or wrong, so the actual bytes are counted too.
+  const raw = await request.arrayBuffer();
+  if (raw.byteLength > MAX_BODY_BYTES) {
+    return { ok: false, error: 'Request body too large', status: 413 };
+  }
+  let text: string;
+  try {
+    text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(raw);
+  } catch {
+    return { ok: false, error: 'Invalid request encoding', status: 400 };
+  }
+  try {
+    return { ok: true, value: JSON.parse(text) };
+  } catch {
+    return { ok: false, error: 'Invalid JSON', status: 400 };
+  }
+}
+
+/**
+ * A hidden field no human fills in. The form renders it off-screen; a bot that
+ * fills every input gives itself away. Silently accepted so a crawler learns
+ * nothing from the response.
+ */
+export function looksAutomated(payload: unknown): boolean {
+  if (typeof payload !== 'object' || payload === null) return false;
+  const honeypot = (payload as Record<string, unknown>).contactPreference;
+  return typeof honeypot === 'string' && honeypot.trim() !== '';
+}
+
+/**
+ * Per-IP rate limit, only when a KV namespace is bound. Fails OPEN: a KV
+ * outage must never block real customers.
+ */
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_SECONDS = 600;
+
+export async function isRateLimited(request: Request, env: Env): Promise<boolean> {
+  if (!env.RATE_LIMIT) return false;
+  const ip = request.headers.get('CF-Connecting-IP');
+  if (!ip) return false;
+  const key = `submissions:${ip}`;
+  try {
+    const current = Number((await env.RATE_LIMIT.get(key)) ?? '0');
+    if (current >= RATE_LIMIT_MAX) return true;
+    await env.RATE_LIMIT.put(key, String(current + 1), {
+      expirationTtl: RATE_LIMIT_WINDOW_SECONDS,
+    });
+    return false;
+  } catch {
+    return false;
+  }
 }
 
 function escapeHtml(value: string): string {
@@ -217,9 +331,17 @@ function buildContactEmailHtml(d: ContactFormPayload): string {
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
-    const origin = env.ALLOWED_ORIGIN;
+    const requestOrigin = request.headers.get('Origin');
+    const originAllowed = isAllowedOrigin(requestOrigin, env);
+    // Only echo an origin we actually allow; never reflect an arbitrary one.
+    const origin = originAllowed && requestOrigin ? requestOrigin : env.ALLOWED_ORIGIN;
+    const jsonHeaders = { 'Content-Type': 'application/json', ...corsHeaders(origin) };
 
     if (request.method === 'OPTIONS') {
+      if (!originAllowed) {
+        // No CORS headers: the browser then blocks the follow-up request.
+        return new Response(null, { status: 403 });
+      }
       return new Response(null, { headers: corsHeaders(origin) });
     }
 
@@ -227,14 +349,39 @@ export default {
       return new Response('Method not allowed', { status: 405, headers: corsHeaders(origin) });
     }
 
-    let payload: unknown;
-    try {
-      payload = await request.json();
-    } catch {
-      return new Response(JSON.stringify({ error: 'Invalid JSON' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
+    if (!originAllowed) {
+      return new Response(JSON.stringify({ error: 'Forbidden' }), {
+        status: 403,
+        headers: jsonHeaders,
       });
+    }
+
+    if (!hasJsonContentType(request)) {
+      return new Response(JSON.stringify({ error: 'Unsupported Media Type' }), {
+        status: 415,
+        headers: jsonHeaders,
+      });
+    }
+
+    if (await isRateLimited(request, env)) {
+      return new Response(JSON.stringify({ error: 'Too many requests' }), {
+        status: 429,
+        headers: { ...jsonHeaders, 'Retry-After': String(RATE_LIMIT_WINDOW_SECONDS) },
+      });
+    }
+
+    const body = await readCappedJson(request);
+    if (!body.ok) {
+      return new Response(JSON.stringify({ error: body.error }), {
+        status: body.status,
+        headers: jsonHeaders,
+      });
+    }
+    const payload = body.value;
+
+    if (looksAutomated(payload)) {
+      // Report success without sending, so a bot gets no signal.
+      return new Response(JSON.stringify({ ok: true }), { status: 200, headers: jsonHeaders });
     }
 
     const formType = typeof payload === 'object' && payload !== null && 'formType' in payload
@@ -285,8 +432,9 @@ export default {
     });
 
     if (!emailRes.ok) {
-      const errText = await emailRes.text();
-      console.error('Resend API error', emailRes.status, errText);
+      // Status only. The response body can echo submitted content, and this
+      // log is not a place for customer data.
+      console.error('Resend API error', emailRes.status);
       return new Response(JSON.stringify({ error: 'Failed to send notification email' }), {
         status: 502,
         headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },

@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormSubmissionFailure } from '../utils/analytics';
 import { NOTIFY_ENDPOINT } from '../utils/notifyEndpoint';
+import HoneypotField from '../components/HoneypotField';
 import {
   AlertTriangle,
   Printer,
@@ -41,6 +42,8 @@ const MailInForm = () => {
     deviceModel: '',
     serialNumber: '',
     password: '',
+    // contactPreference is the honeypot - see HoneypotField. Always '' for a human.
+    contactPreference: '',
     problemDescription: '',
     hasBackedUp: false,
     hasRemovedAccessories: false,
@@ -652,7 +655,8 @@ const MailInForm = () => {
                 </p>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+              <form onSubmit={handleSubmit} className="space-y-8 relative" noValidate>
+                <HoneypotField value={formData.contactPreference} onChange={handleChange} />
                 {/* Customer Information */}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
