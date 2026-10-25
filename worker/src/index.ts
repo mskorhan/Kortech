@@ -5,8 +5,14 @@ export interface Env {
   ALLOWED_ORIGIN: string;
   /** Optional comma-separated extra origins. Unset in production. */
   EXTRA_ALLOWED_ORIGINS?: string;
-  /** Optional KV namespace for per-IP rate limiting. Absent = no limiting. */
-  RATE_LIMIT?: KVNamespace;
+  /**
+   * Optional Cloudflare Rate Limiting binding, per-IP. Absent = no limiting.
+   * Deliberately NOT a KV counter: a KV get/put is non-atomic and eventually
+   * consistent, so concurrent requests read the same value before either
+   * writes and a burst slips through - which is the exact case a rate limit
+   * exists to stop. This binding is atomic, and free.
+   */
+  RATE_LIMIT?: RateLimit;
 }
 
 interface MailInFormPayload {
@@ -146,24 +152,22 @@ export function looksAutomated(payload: unknown): boolean {
 }
 
 /**
- * Per-IP rate limit, only when a KV namespace is bound. Fails OPEN: a KV
- * outage must never block real customers.
+ * Per-IP rate limit, only when the binding is configured. The rate and period
+ * live in wrangler.toml, not here.
+ *
+ * Fails OPEN: if the binding errors, a submission is allowed through. Losing a
+ * real customer's repair enquiry is a worse outcome than admitting some
+ * unsolicited volume, and the other checks still apply.
  */
-const RATE_LIMIT_MAX = 5;
-const RATE_LIMIT_WINDOW_SECONDS = 600;
+const RATE_LIMIT_RETRY_AFTER_SECONDS = 60;
 
 export async function isRateLimited(request: Request, env: Env): Promise<boolean> {
   if (!env.RATE_LIMIT) return false;
   const ip = request.headers.get('CF-Connecting-IP');
   if (!ip) return false;
-  const key = `submissions:${ip}`;
   try {
-    const current = Number((await env.RATE_LIMIT.get(key)) ?? '0');
-    if (current >= RATE_LIMIT_MAX) return true;
-    await env.RATE_LIMIT.put(key, String(current + 1), {
-      expirationTtl: RATE_LIMIT_WINDOW_SECONDS,
-    });
-    return false;
+    const { success } = await env.RATE_LIMIT.limit({ key: `submissions:${ip}` });
+    return !success;
   } catch {
     return false;
   }
@@ -366,7 +370,7 @@ export default {
     if (await isRateLimited(request, env)) {
       return new Response(JSON.stringify({ error: 'Too many requests' }), {
         status: 429,
-        headers: { ...jsonHeaders, 'Retry-After': String(RATE_LIMIT_WINDOW_SECONDS) },
+        headers: { ...jsonHeaders, 'Retry-After': String(RATE_LIMIT_RETRY_AFTER_SECONDS) },
       });
     }
 

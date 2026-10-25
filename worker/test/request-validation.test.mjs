@@ -211,13 +211,21 @@ test('an empty honeypot is ignored', async () => {
 
 // ---------------------------------------------------------------- rate limit
 
-test('the rate limit blocks a burst once a KV namespace is bound', async () => {
-  const store = new Map();
+// The binding is stubbed, not reimplemented: Cloudflare's Rate Limiting
+// binding is atomic, and the worker's only job is to honour its verdict. These
+// tests assert that the verdict is honoured and that a failure is survivable -
+// deliberately NOT that counting is correct, which is Cloudflare's side.
+
+test('a limited verdict is honoured and sends nothing', async () => {
+  let callCount = 0;
   const limited = {
     ...env,
+    // Allow the first 5, then refuse - what the real binding does for a burst.
     RATE_LIMIT: {
-      get: async (k) => store.get(k) ?? null,
-      put: async (k, v) => void store.set(k, v),
+      limit: async () => {
+        callCount += 1;
+        return { success: callCount <= 5 };
+      },
     },
   };
   const calls = mockResend();
@@ -229,20 +237,28 @@ test('the rate limit blocks a burst once a KV namespace is bound', async () => {
     );
     statuses.push(res.status);
   }
-  assert.deepEqual(statuses.slice(0, 5), [200, 200, 200, 200, 200], 'first five allowed');
-  assert.deepEqual(statuses.slice(5), [429, 429], 'the rest are limited');
+  assert.deepEqual(statuses.slice(0, 5), [200, 200, 200, 200, 200], 'allowed ones pass');
+  assert.deepEqual(statuses.slice(5), [429, 429], 'refused ones are limited');
   assert.equal(calls.length, 5, 'only the allowed ones sent');
 });
 
-test('a KV outage fails open so real customers are never blocked', async () => {
+test('a 429 carries Retry-After', async () => {
+  mockResend();
+  const limited = { ...env, RATE_LIMIT: { limit: async () => ({ success: false }) } };
+  const res = await worker.fetch(
+    post(validMailIn, { headers: { 'CF-Connecting-IP': '203.0.113.9' } }),
+    limited
+  );
+  assert.equal(res.status, 429);
+  assert.ok(Number(res.headers.get('Retry-After')) > 0);
+});
+
+test('a rate-limiter outage fails open so real customers are never blocked', async () => {
   const broken = {
     ...env,
     RATE_LIMIT: {
-      get: async () => {
-        throw new Error('KV unavailable');
-      },
-      put: async () => {
-        throw new Error('KV unavailable');
+      limit: async () => {
+        throw new Error('rate limiter unavailable');
       },
     },
   };
@@ -255,7 +271,7 @@ test('a KV outage fails open so real customers are never blocked', async () => {
   assert.equal(calls.length, 1);
 });
 
-test('rate limiting is inert when no KV namespace is bound', async () => {
+test('rate limiting is inert when no binding is configured', async () => {
   const calls = mockResend();
   for (let i = 0; i < 8; i += 1) {
     const res = await worker.fetch(
