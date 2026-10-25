@@ -385,6 +385,14 @@ export default {
 
     if (looksAutomated(payload)) {
       // Report success without sending, so a bot gets no signal.
+      //
+      // Logged because this path is otherwise INVISIBLE: a false positive - say
+      // a browser autofilling the decoy field - silently discards a real
+      // customer enquiry and still reports success to the page, so it also
+      // counts as a GA4 form_submit. If this line appears at any volume, treat
+      // the honeypot as suspect rather than assume it is working. No request
+      // content is logged.
+      console.log('notify: submission skipped by honeypot');
       return new Response(JSON.stringify({ ok: true }), { status: 200, headers: jsonHeaders });
     }
 

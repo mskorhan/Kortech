@@ -202,6 +202,27 @@ test('a filled honeypot reports success but sends nothing', async () => {
   assert.equal(calls.length, 0, 'no send attempted');
 });
 
+test('the honeypot skip is logged, with no customer data', async () => {
+  const calls = mockResend();
+  const logged = [];
+  const realLog = console.log;
+  console.log = (...a) => logged.push(a.map(String).join(' '));
+  try {
+    const res = await worker.fetch(
+      post({ ...validMailIn, contactPreference: 'bot' }), env);
+    assert.equal(res.status, 200);
+  } finally {
+    console.log = realLog;
+  }
+  assert.equal(calls.length, 0);
+  assert.equal(logged.length, 1, 'the skip is visible in logs');
+  // A false positive silently discards a real enquiry, so this path must be
+  // observable - but it must not leak what was submitted.
+  for (const secret of ['test@example.com', 'Test Person', '704-555-0100', 'Will not power on']) {
+    assert.ok(!logged.join(' ').includes(secret), 'log must not contain ' + secret);
+  }
+});
+
 test('an empty honeypot is ignored', async () => {
   const calls = mockResend();
   const res = await worker.fetch(post({ ...validMailIn, contactPreference: '' }), env);
