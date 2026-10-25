@@ -128,25 +128,32 @@ Owner can close this without sending anything:
 If a real test send is wanted, **approval is required first** — each submission is a real lead in
 the owner's inbox.
 
-### Abuse surface — proposal only, NOT deployed
+### Input-validation hardening — proposal only, NOT deployed
 
-Not an open relay: `to:` is pinned to `NOTIFY_TO_EMAIL`, so an attacker cannot mail third parties.
-The exposure is **inbox spam and Resend quota exhaustion** — and once quota is gone, genuine
-submissions get 502.
+The notify endpoint is **not** an open relay: the recipient is pinned to `NOTIFY_TO_EMAIL`, so
+it cannot be used to mail third parties. The residual risk is ordinary unsolicited-submission
+volume, which consumes the Resend sending quota; once quota is exhausted, genuine customer
+submissions fail. So this is a **lead-loss and deliverability** concern, not a data-exposure one.
 
-`worker/src/index.ts:220` does `const origin = env.ALLOWED_ORIGIN` — the worker **never reads the
-request's `Origin` header**, it only echoes its configured value. Two vectors:
+Review of `worker/src/index.ts` found the request-validation layer thinner than it should be for
+a public, unauthenticated endpoint. Specific mechanics are deliberately omitted here because this
+repository is public — they are recorded in the remediation PR's implementation and tests instead.
 
-1. **Cross-site browser POST.** `request.json()` ignores `Content-Type`, so a `text/plain` POST
-   is a CORS *simple* request — no preflight — and mail is sent. The attacker cannot read the
-   response, but does not need to.
-2. **Scripted POST.** No rate limit, no honeypot, no challenge.
+Planned hardening, all available at no additional cost:
 
-Suggested mitigations (all free, none applied): validate the request `Origin` against
-`ALLOWED_ORIGIN`; require `Content-Type: application/json`; add a honeypot field; add Cloudflare
-rate limiting or Turnstile.
+- validate the inbound request origin against the configured allowed origin;
+- constrain the accepted request content type;
+- cap the request body size;
+- tighten field-level input validation;
+- add a hidden decoy form field to absorb automated submissions;
+- add Cloudflare-native rate limiting (or Turnstile) in front of the endpoint;
+- keep logs free of customer data.
 
-Not deployed because wrangler is unauthenticated here and the worker is production.
+Legitimate customer submissions must keep working unchanged — the frontend already sends the
+correct content type, so the origin and content-type checks are backward compatible.
+
+Not deployed from here: wrangler is unauthenticated in this environment and the worker is
+production. Deployment is an owner step, listed in the remediation PR.
 
 ---
 
@@ -310,11 +317,16 @@ is advisory for any admin, including automation acting as one. Narrowing it to
 
 ### The repository is PUBLIC
 
-`gh repo view mskorhan/Kortech --json visibility` → `PUBLIC`. The worker abuse analysis in
-section 3 is therefore **publicly readable before a fix exists**, which raises the priority of
-the hardening proposal. The analysis contains no secrets — but it does describe the
-`text/plain`-skips-preflight vector. Recommend applying the Origin + Content-Type checks
-(both small, no new services) sooner rather than later.
+`gh repo view mskorhan/Kortech --json visibility` → `PUBLIC`. Any endpoint-hardening gap
+described here is therefore **publicly readable before a fix exists**, which raises the priority
+of the remediation PR. No secrets were ever committed.
+
+An earlier revision of this report (commit `6f795f3`, now on `main`) spelled out the specific
+request-validation gap in reproducible detail. **That text has been redacted from section 3 by
+this PR, but it remains in the git history of a public repository and cannot be removed without
+rewriting published history.** Treat the hardening PR as time-sensitive for that reason: the fix,
+not the redaction, is what closes the exposure. This is the mistake to avoid repeating —
+remediation detail for a public repo belongs in the fix, not in a committed report.
 
 ### Other disclosures
 
