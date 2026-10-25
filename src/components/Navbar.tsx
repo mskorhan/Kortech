@@ -354,14 +354,19 @@ const Navbar: React.FC = () => {
               >
                 Plans
               </button>
-              <button
-                onClick={() => handleNavigation('/recycling/')}
+              <Link
+                to="/recycling/"
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsServicesDropdownOpen(false);
+                  setIsServicesDropdownClicked(false);
+                }}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
                   isActive('/recycling/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Recycling
-              </button>
+              </Link>
               <button
                 onClick={() => handleNavigation('/contact/')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
@@ -536,12 +541,16 @@ const Navbar: React.FC = () => {
             >
               Plans
             </button>
-            <button
-              onClick={() => handleNavigation('/recycling/')}
+            <Link
+              to="/recycling/"
+              onClick={() => {
+                setIsOpen(false);
+                window.scrollTo(0, 0);
+              }}
               className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
             >
               Free Recycling
-            </button>
+            </Link>
             <button
               onClick={() => handleNavigation('/contact/')}
               className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
