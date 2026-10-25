@@ -4,6 +4,23 @@ on:
   pull_request:
     branches:
       - main
+  # Allows a run to be requested for a specific branch. This exists because a
+  # pull_request event raised by GITHUB_TOKEN creates its run in an
+  # "approval-required" state that never executes, so the required "build"
+  # check never reports and the PR can never merge. Per GitHub's docs,
+  # "workflow_dispatch and repository_dispatch events always create workflow
+  # runs" - so update-reviews.yml dispatches this workflow explicitly after it
+  # pushes its branch. See .github/workflows/update-reviews.yml.
+  #
+  # This is not a protection bypass: the dispatched run executes this same
+  # workflow file, at the same ref, with the same steps that a pull_request run
+  # would. It restores the check; it does not skip it.
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Why this run was requested
+        required: false
+        default: automated-dispatch
 
 permissions:
   contents: read

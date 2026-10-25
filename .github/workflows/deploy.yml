@@ -8,6 +8,20 @@ on:
 permissions:
   contents: read
 
+# This workflow uploads the built site to Bluehost over FTP. Two runs at once
+# would interleave their uploads into the same directory, so a slower earlier
+# run could overwrite files from a newer commit and leave production serving a
+# mix of two builds. Until now merges had to be serialized by hand.
+#
+# cancel-in-progress is deliberately false: an in-flight run is already writing
+# files to the live host, and killing it mid-upload is what leaves production
+# half-updated. Queued runs wait instead. Note that while several runs are
+# queued, GitHub keeps only the most recent pending one - which is correct here,
+# since each deploy uploads the whole site from the latest main.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

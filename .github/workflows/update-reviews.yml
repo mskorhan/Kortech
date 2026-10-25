@@ -8,12 +8,14 @@ on:
 
 # contents: write - commit/push the automation branch
 # pull-requests: write - open or update the PR into main
+# actions: write - dispatch PR checks for the pushed branch (see below)
 # main is ruleset-protected (no direct pushes), so this workflow never
 # pushes to main itself; it only pushes to automation/update-reviews and
 # lets the normal PR/merge path bring the change into main.
 permissions:
   contents: write
   pull-requests: write
+  actions: write
 
 jobs:
   update-reviews:
@@ -88,3 +90,27 @@ jobs:
               --title "chore: update Google reviews data" \
               --body "Automated monthly refresh of five-star Google reviews. Updated $(date -u +%Y-%m-%d)."
           fi
+
+      # Without this the PR can never merge. The push and PR above are made with
+      # GITHUB_TOKEN, and GitHub creates the resulting pull_request run in an
+      # "approval-required" state that never executes - so the required "build"
+      # status never reports and the PR sits BLOCKED. That happened to PR #19
+      # (run of 2026-10-01 recorded conclusion "action_required") and would
+      # otherwise recur every month.
+      #
+      # workflow_dispatch is the documented exception: "workflow_dispatch and
+      # repository_dispatch events always create workflow runs". Dispatching
+      # pr-checks.yml for this branch produces a real, executing "build" run on
+      # the same head commit, which satisfies the ruleset's required check.
+      #
+      # This needs no PAT and no GitHub App: it uses the same GITHUB_TOKEN,
+      # with actions: write added above.
+      - name: Request PR checks for the pushed branch
+        if: env.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: automation/update-reviews
+        run: |
+          gh workflow run pr-checks.yml \
+            --ref "$BRANCH" \
+            -f reason="dispatched by update-reviews.yml (GITHUB_TOKEN pull_request runs require approval)"
