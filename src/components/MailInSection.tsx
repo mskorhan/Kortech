@@ -6,12 +6,19 @@ import { Package } from 'lucide-react';
 // Owner-confirmed 2026-10-23 (decision A4): mail-in covers EVERY repair category
 // KorTech offers. That is the only availability claim made here.
 //
-// Deliberately ABSENT, because they are NOT owner-confirmed:
-//   - any turnaround or transit duration ("5-10 business days", "1-3 days",
-//     "same-day"). Turnaround figures are on the neverFabricate list and the
-//     open A2 claim question set.
+// Owner-confirmed 2026-10-25: mail-in repair turnaround is an ESTIMATE of
+// 5-10 business days, depending on diagnosis and parts availability. It is NOT
+// a guaranteed completion date, it excludes carrier transit, and mail-in does
+// NOT qualify for same-day service. That is stated once, below.
+//
+// Still deliberately ABSENT, because they are NOT owner-confirmed:
+//   - any shipping or delivery DATE guarantee, and any transit duration. The
+//     5-10 day estimate covers the repair only.
 //   - shipping cost, who pays postage, prepaid labels, insurance, packaging and
 //     return-shipping terms - all excluded under A4.
+//   - any in-shop turnaround figure (1-3 days, 3-7 days). Those are a separate,
+//     still-unconfirmed claim cluster (issue #26 Q3) - do not borrow this
+//     estimate for them.
 //
 // The $75-$150 diagnostic waived with hardware repair IS safe: it is already
 // published on /terms/, /mail-in-form/ and /macbook-repair/ and is confirmed in
@@ -51,6 +58,14 @@ const MailInSection: React.FC<MailInSectionProps> = ({ deviceNoun, trackSource }
         when you go ahead with a hardware repair, and a quote before any repair work
         starts. Call or text us first if you would rather describe the fault before
         shipping.
+      </p>
+
+      <p className="text-gray-600 max-w-3xl mb-8">
+        Mail-in repairs typically take an estimated 5-10 business days once your{' '}
+        {deviceNoun} reaches us, depending on diagnosis and parts availability. That is an
+        estimate rather than a guaranteed completion date, and actual turnaround times may
+        vary. Carrier shipping time in each direction is separate from it. Same-day service
+        does not apply to mail-in repairs.
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4">

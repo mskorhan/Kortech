@@ -218,12 +218,23 @@ const TermsConditions = () => {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold text-slate-800 mb-2">Turnaround Time</h3>
+                  <p className="mb-2">
+                    The timeframes below are <strong>estimates, not guaranteed completion
+                    dates</strong>. Complex repairs, additional diagnostics and parts
+                    availability can all affect timing, and actual turnaround times may vary.
+                  </p>
                   <ul className="list-disc pl-5 space-y-1">
-                    <li>Computers: 5-10 business days from when we receive the device</li>
-                    <li>iPad & iPhones (screen and battery replacements): 5-10 business days from when we receive the device</li>
+                    <li>Computers: an estimated 5-10 business days from when we receive the device</li>
+                    <li>iPad & iPhones (screen and battery replacements): an estimated 5-10 business days from when we receive the device</li>
                     <li>If your iPad or iPhone has motherboard issues, it may take more time to diagnose. We will inform you over the phone if this is the case.</li>
                     <li>Other devices vary</li>
                   </ul>
+                  <p className="mt-2">
+                    These estimates cover the repair itself. Carrier shipping and transit time
+                    to and from us is separate and is not included, and we do not guarantee
+                    shipping or delivery dates. Same-day service does not apply to mail-in
+                    repairs.
+                  </p>
                 </div>
                 
                 <div>

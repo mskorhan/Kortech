@@ -418,7 +418,7 @@ const MailInForm = () => {
           <div style="font-size: 11px; line-height: 1.5;">
             <p style="margin: 2px 0"><strong>Diagnostic Fee:</strong> $75-$150 (waived with HARDWARE repair)</p>
             <p style="margin: 2px 0"><strong>Return Shipping:</strong> Fee applies if paid return shipping label isn't attached</p>
-            <p style="margin: 2px 0"><strong>Turnaround:</strong> 5-10 business days</p>
+            <p style="margin: 2px 0"><strong>Turnaround (estimate):</strong> 5-10 business days after we receive the device, depending on diagnosis and parts availability. Not a guaranteed completion date. Shipping transit time is separate.</p>
             <p style="margin: 2px 0"><strong>Contact:</strong> We'll call after diagnostics to discuss options</p>
           </div>
         </div>
