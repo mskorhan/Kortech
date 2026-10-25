@@ -28,7 +28,7 @@ const BusinessITSupport = () => {
     },
     {
       question: "What are your business IT support response times?",
-      answer: "We offer same-day response for urgent business issues and typically respond to support requests within 2-4 hours during business hours for our local Charlotte area clients. Same-day response means we make contact and begin triage that day; a same-day repair is guaranteed only for eligible services, which we confirm with you."
+      answer: "We offer same-day response for urgent business issues and typically respond to support requests within 2-4 hours during business hours for our local Charlotte area clients."
     },
     {
       question: "Do you support both Windows and Mac business environments?",

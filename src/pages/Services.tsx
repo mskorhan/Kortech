@@ -32,7 +32,7 @@ const Services = () => {
     },
     {
       question: "Do you offer same-day computer repair service?",
-      answer: "Same-day repairs are guaranteed for eligible services. Repairs that need additional diagnostics, parts we do not have on hand, or more extensive work are not eligible, so contact KorTech to confirm eligibility for your device and repair. Same-day service does not apply to mail-in repairs."
+      answer: "Same-day repairs are guaranteed for eligible services. Repairs that require additional diagnostics, unavailable parts, or more extensive work are not eligible, so contact KorTech to confirm eligibility for your device and repair. Same-day service does not apply to mail-in repairs. Walk-ins welcome or call ahead to ensure availability."
     },
     {
       question: "What computer brands do you repair?",
@@ -615,7 +615,7 @@ const Services = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-200 font-light">
-              Visit our Charlotte shop for expert computer repair service with transparent pricing and same-day turnaround
+              Visit our Charlotte shop for expert computer repair service with transparent pricing and guaranteed same-day turnaround on eligible repairs
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">

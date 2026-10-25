@@ -12,6 +12,10 @@ import { Package } from 'lucide-react';
 // NOT qualify for same-day service. That is stated once, below.
 //
 // Still deliberately ABSENT, because they are NOT owner-confirmed:
+//   - the point the estimate counts FROM. /terms/ says "from when we receive
+//     the device", but that clause was itself part of the unconfirmed Q9 text,
+//     so it is not repeated here. Do not add a start point until the owner
+//     confirms one.
 //   - any shipping or delivery DATE guarantee, and any transit duration. The
 //     5-10 day estimate covers the repair only.
 //   - shipping cost, who pays postage, prepaid labels, insurance, packaging and
@@ -61,11 +65,10 @@ const MailInSection: React.FC<MailInSectionProps> = ({ deviceNoun, trackSource }
       </p>
 
       <p className="text-gray-600 max-w-3xl mb-8">
-        Mail-in repairs typically take an estimated 5-10 business days once your{' '}
-        {deviceNoun} reaches us, depending on diagnosis and parts availability. That is an
-        estimate rather than a guaranteed completion date, and actual turnaround times may
-        vary. Carrier shipping time in each direction is separate from it. Same-day service
-        does not apply to mail-in repairs.
+        Mail-in repairs typically take an estimated 5-10 business days, depending on
+        diagnosis and parts availability. That is an estimate rather than a guaranteed
+        completion date, and actual turnaround times may vary. Carrier shipping time in each
+        direction is separate from it. Same-day service does not apply to mail-in repairs.
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4">

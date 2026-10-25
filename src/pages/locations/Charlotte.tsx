@@ -152,7 +152,7 @@ const Charlotte = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Computer Repair Charlotte NC • KorTech Service"
-        description="Professional computer repair in Charlotte, NC. Same-day Mac & PC repair on eligible services, data recovery, IT support. Call 704-246-7642."
+        description="Professional computer repair in Charlotte, NC. Same-day Mac & PC repair on eligible services, data recovery, IT support. Call 704-246-7642 or Text/Call 980-888-5300."
         canonicalUrl="/charlotte-computer-repair"
         location="Charlotte, NC"
         service="Computer Repair"

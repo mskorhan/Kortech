@@ -66,7 +66,7 @@ const XboxHDMIRepair = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Xbox HDMI Repair Charlotte NC - Series X/S & Xbox One HDMI Fix"
-        description="Professional Xbox HDMI port repair in Charlotte, NC. Xbox Series X/S and Xbox One HDMI repair. Same-day service on eligible repairs, 14-day limited warranty."
+        description="Professional Xbox HDMI port repair in Charlotte, NC. Xbox Series X/S and Xbox One HDMI repair. Same-day service on eligible repairs, 14-day limited warranty. Call 704-246-7642!"
         keywords="Xbox HDMI repair Charlotte, Xbox Series X repair, Xbox One HDMI fix, gaming console repair Charlotte NC"
         canonicalUrl="/xbox-hdmi-repair"
         schema={schema}
