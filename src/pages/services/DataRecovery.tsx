@@ -1,5 +1,6 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
+import MailInSection from '../../components/MailInSection';
 import FAQSection from '../../components/FAQSection';
 import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
@@ -329,6 +330,8 @@ const DataRecovery = () => {
       </section>
 
       {/* Service CTA */}
+      <MailInSection deviceNoun="device" trackSource="service_datarecovery_mailin" />
+
       <ServiceCTA
         service="Data Recovery"
         price="Call/Text For Quote"

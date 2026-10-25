@@ -1,5 +1,6 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
+import MailInSection from '../../components/MailInSection';
 import FAQSection from '../../components/FAQSection';
 import ServiceAreaLinks from '../../components/ServiceAreaLinks';
 import {
@@ -246,6 +247,8 @@ const NintendoSwitchRepair = () => {
       </section>
 
       {/* Service CTA */}
+      <MailInSection deviceNoun="console" trackSource="service_switch_mailin" />
+
       <ServiceCTA 
         service="Nintendo Switch Repair" 
         price="Call/Text For Quote"

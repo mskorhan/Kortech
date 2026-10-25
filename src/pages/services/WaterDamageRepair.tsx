@@ -1,5 +1,6 @@
 import SEOHead from '../../components/SEOHead';
 import ServiceCTA from '../../components/ServiceCTA';
+import MailInSection from '../../components/MailInSection';
 import FAQSection from '../../components/FAQSection';
 import {
   Laptop,
@@ -304,6 +305,8 @@ const WaterDamageRepair = () => {
       </section>
 
       {/* Service CTA */}
+      <MailInSection deviceNoun="device" trackSource="service_waterdamage_mailin" />
+
       <ServiceCTA 
         service="Water Damage Repair" 
         price="Call/Text For Quote"
