@@ -52,3 +52,69 @@ jobs:
 
       - name: Build site
         run: npm run build
+
+  # Behavioural tests that need a built site and a real browser.
+  #
+  # DELIBERATELY A SEPARATE JOB, not extra steps inside `build`. The ruleset
+  # requires the `build` check, so folding these in would silently make them
+  # required too - and update-reviews.yml opens automated PRs that must not be
+  # blocked by a browser flake. Making this job required is a ruleset change
+  # and therefore an owner decision, not something a workflow edit should do by
+  # stealth.
+  #
+  # Cost: the repo is public, so GitHub Actions minutes are free. The visual
+  # sweep runs in --quick mode (8 widths including the nav breakpoint, ~18s
+  # locally) rather than the full 21-width sweep (~3m20s), which is reserved
+  # for the scheduled production run below.
+  behaviour:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install worker dependencies
+        run: npm ci --prefix worker
+
+      - name: Worker request-validation tests
+        run: npm run test:worker
+
+      - name: Install Chrome for prerendering
+        run: npx puppeteer browsers install chrome
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Build site
+        run: npm run build
+
+      # Positive AND negative business-policy assertions against dist/.
+      - name: Verify business policies
+        run: npm run verify-policies
+
+      # Form validation, spam protection, error handling and a11y. Every
+      # request to the notification worker is intercepted, so no test
+      # submission can ever reach info@kortechservice.com.
+      - name: Form behaviour tests
+        run: npm run test:forms
+
+      - name: Navigation and responsive overflow (quick sweep)
+        run: npm run test:visual:quick
+
+      - name: Upload reports on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-reports
+          path: |
+            visual-qa-report.json
+          if-no-files-found: ignore
+          retention-days: 7

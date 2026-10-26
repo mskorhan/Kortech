@@ -57,8 +57,14 @@ const SHOT_DIR = arg('shot-dir', 'visual-qa-shots');
 // is exactly the regression that caused the dead zone.
 const NAV_BP = 1180;
 
+// --quick is what CI runs on every PR, so it MUST include the nav breakpoint
+// and its neighbours. Without them the 1024-1279px no-navigation dead zone
+// (the worst defect PR #36 found) could reappear and a PR would still pass:
+// 1024 alone was inside that dead zone and 1280 alone was outside it, so
+// neither width would have caught it. 1024 is kept because it was the old
+// broken boundary, and 1179/1180/1181 pin the switch itself.
 const WIDTHS = QUICK
-  ? [375, 768, 1024, 1280, 1440]
+  ? [375, 768, 1024, NAV_BP - 1, NAV_BP, NAV_BP + 1, 1280, 1440]
   : [
       320, 375, 390, 430, 768, 820,
       910, 960, // == 1366@150%, 1920@200%
