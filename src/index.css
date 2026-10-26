@@ -6,8 +6,28 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* The header is `sticky top-0` and h-16 (64px). Without this, every
+       in-page anchor (#how-we-work, #getting-your-device-to-us, FAQ links)
+       scrolls its target underneath the header. */
+    scroll-padding-top: 5rem;
   }
-  
+
+  /* Respect the OS "reduce motion" setting (WCAG 2.3.3 / 2.2.2). */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   body {
     font-display: swap;
   }

@@ -2,6 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, MessageSquare, ChevronDown, ChevronRight } from 'lucide-react';
 
+// Shared visible focus style. The hamburger previously used
+// `focus:outline-none` with no replacement, which removes the only
+// keyboard affordance (WCAG 2.4.7).
+const FOCUS_RING =
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2';
+
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
@@ -24,11 +30,17 @@ const Navbar: React.FC = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  const handleNavigation = (path: string) => {
-    navigate(path);
+  const closeAllMenus = () => {
     setIsOpen(false);
     setIsServicesDropdownOpen(false);
     setIsServicesDropdownClicked(false);
+    setIsLocationsDropdownOpen(false);
+    setIsLocationsDropdownClicked(false);
+  };
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    closeAllMenus();
   };
 
   const toggleServicesDropdown = () => {
@@ -108,6 +120,19 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
+
+  // Keep `isOpen` in sync with the breakpoint. Without this, opening the menu
+  // and then widening the window leaves the panel display:none while the body
+  // stays scroll-locked and every sibling stays `inert`.
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1180px)');
+    const sync = (e: MediaQueryList | MediaQueryListEvent) => {
+      if (e.matches) setIsOpen(false);
+    };
+    sync(mq);
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -204,25 +229,47 @@ const Navbar: React.FC = () => {
     <div ref={navRootRef}>
       <nav className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-3">
-              <img
-                src="/transparent-logo-1.png"
-                alt="KorTech Service Logo - Professional Computer Repair Charlotte NC Since 1998"
-                className="w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 object-contain flex-shrink-0"
-              />
+          <div className="flex justify-between items-center gap-2 h-16">
+            {/* The logo is sized by HEIGHT so it can never overhang the h-16 bar.
+                It previously rendered a 160px box inside a 64px header, which
+                overflowed 48px above and below and made the home link cover the
+                top of the hero (elementFromPoint 100px down hit this img).
+                The source PNG is 4000x4000 and is also referenced by JSON-LD on
+                every blog post, so it is resized here, never replaced. */}
+            <Link
+              to="/"
+              className="flex items-center flex-shrink-0 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
+              aria-label="KorTech Service - home"
+            >
+              {/* The source PNG is 4000x4000 but its visible mark fills only
+                  ~59% of the width and ~29.5% of the height - the rest is
+                  transparent padding. Scaling the image to ~3.4x the wrapper
+                  and clipping with overflow-hidden renders a ~40px-tall mark
+                  in a 64px bar, without the old 160px box that overhung the
+                  header by 48px and made the home link cover the hero. */}
+              <span className="block h-14 w-[132px] overflow-hidden flex-shrink-0">
+                <img
+                  src="/transparent-logo-1.png"
+                  alt="KorTech Service Logo - Professional Computer Repair Charlotte NC Since 1998"
+                  width={160}
+                  height={160}
+                  className="w-[200px] h-[200px] max-w-none object-contain -ml-[34px] -mt-[64px]"
+                />
+              </span>
             </Link>
 
             {/* Desktop */}
-            <div className="hidden xl:flex items-center space-x-1">
-              <button
-                onClick={() => handleNavigation('/')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
+            <div className="hidden nav:flex items-center gap-0.5 min-w-0">
+              <Link
+                to="/"
+                onClick={closeAllMenus}
+                aria-current={isActive('/') ? 'page' : undefined}
+                className={`px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                   isActive('/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Home
-              </button>
+              </Link>
 
               <div className="relative">
                 <button
@@ -232,7 +279,7 @@ const Navbar: React.FC = () => {
                   aria-expanded={isServicesDropdownOpen}
                   aria-controls="desktop-services-menu"
                   aria-haspopup="true"
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-1 ${
+                  className={`px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors duration-200 flex items-center space-x-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                     isActive('/services/') || servicePages.some(s => isActive(s.path))
                       ? 'text-brand-primary bg-blue-50'
                       : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
@@ -253,7 +300,7 @@ const Navbar: React.FC = () => {
                     hidden={!isServicesDropdownOpen}
                     ref={servicesDropdownRef}
                     onMouseDown={(e) => e.stopPropagation()}
-                    className="services-dropdown absolute top-full left-0 mt-1 w-64 max-h-[80vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-100 py-3 z-50 backdrop-blur-sm"
+                    className="services-dropdown absolute top-full left-0 mt-1 w-64 max-w-[calc(100vw-2rem)] max-h-[80vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-100 py-3 z-50 backdrop-blur-sm"
                   >
                     <div className="px-6 py-3 border-b border-slate-100 bg-gradient-to-r from-blue-50 to-slate-50 rounded-t-2xl">
                       <button
@@ -293,7 +340,7 @@ const Navbar: React.FC = () => {
                   aria-expanded={isLocationsDropdownOpen}
                   aria-controls="desktop-locations-menu"
                   aria-haspopup="true"
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-1 ${
+                  className={`px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors duration-200 flex items-center space-x-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                     isActive('/locations/') || locationPages.some(l => isActive(l.path))
                       ? 'text-brand-primary bg-blue-50'
                       : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
@@ -313,7 +360,7 @@ const Navbar: React.FC = () => {
                     hidden={!isLocationsDropdownOpen}
                     ref={locationsDropdownRef}
                     onMouseDown={(e) => e.stopPropagation()}
-                    className="services-dropdown absolute top-full left-0 mt-1 w-64 bg-white rounded-2xl shadow-2xl border border-slate-100 py-3 z-50 backdrop-blur-sm"
+                    className="services-dropdown absolute top-full right-0 mt-1 w-64 max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl border border-slate-100 py-3 z-50 backdrop-blur-sm"
                   >
                     <div className="px-6 py-3 border-b border-slate-100 bg-gradient-to-r from-blue-50 to-slate-50 rounded-t-2xl">
                       <button
@@ -346,14 +393,16 @@ const Navbar: React.FC = () => {
               </div>
 
               {/* rest of your desktop links/buttons */}
-              <button
-                onClick={() => handleNavigation('/pricing/')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
+              <Link
+                to="/pricing/"
+                onClick={closeAllMenus}
+                aria-current={isActive('/pricing/') ? 'page' : undefined}
+                className={`px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                   isActive('/pricing/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Plans
-              </button>
+              </Link>
               <Link
                 to="/recycling/"
                 onClick={() => {
@@ -361,74 +410,97 @@ const Navbar: React.FC = () => {
                   setIsServicesDropdownOpen(false);
                   setIsServicesDropdownClicked(false);
                 }}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
+                aria-current={isActive('/recycling/') ? 'page' : undefined}
+                className={`px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                   isActive('/recycling/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Recycling
               </Link>
-              <button
-                onClick={() => handleNavigation('/contact/')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
+              <Link
+                to="/contact/"
+                onClick={closeAllMenus}
+                aria-current={isActive('/contact/') ? 'page' : undefined}
+                className={`px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                   isActive('/contact/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Contact
-              </button>
-              <button
-                onClick={() => handleNavigation('/about/')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
+              </Link>
+              <Link
+                to="/about/"
+                onClick={closeAllMenus}
+                aria-current={isActive('/about/') ? 'page' : undefined}
+                className={`px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                   isActive('/about/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 About
-              </button>
-              <button
-                onClick={() => handleNavigation('/blog/')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
+              </Link>
+              <Link
+                to="/blog/"
+                onClick={closeAllMenus}
+                aria-current={isActive('/blog/') ? 'page' : undefined}
+                className={`px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                   isActive('/blog/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Blog
-              </button>
-              <button
-                onClick={() => handleNavigation('/mail-in-form/')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
+              </Link>
+              <Link
+                to="/mail-in-form/"
+                onClick={closeAllMenus}
+                aria-current={isActive('/mail-in-form/') ? 'page' : undefined}
+                className={`px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                   isActive('/mail-in-form/') ? 'text-brand-primary bg-blue-50' : 'text-slate-600 hover:text-brand-primary hover:bg-slate-50'
                 }`}
               >
                 Mail-In Repair Form
-              </button>
+              </Link>
 
-              <div className="flex items-center space-x-2 ml-4 pl-4 border-l border-slate-200">
+              {/* The full phone numbers need 360px, which does not fit beside the
+                  links until ~1440px. Below that the numbers are hidden VISUALLY
+                  only - they stay in the accessible name via aria-label and in
+                  the DOM via sr-only, so screen readers and crawlers still read
+                  them. href and data-track-source are unchanged: analytics.ts
+                  tracks tel:/sms: clicks by those exact attributes. */}
+              <div className="flex items-center gap-2 ml-2 pl-2 border-l border-slate-200 flex-shrink-0">
                 <a
                   href="tel:704-246-7642"
                   data-track-source="navbar_desktop"
-                  className="bg-brand-dark hover:bg-slate-900 text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center space-x-1 whitespace-nowrap tech-glow"
+                  aria-label="Call KorTech Service at 704-246-7642"
+                  className={`bg-brand-dark hover:bg-slate-900 text-white px-3 py-2.5 rounded-xl font-semibold text-sm transition-colors duration-200 shadow-md hover:shadow-lg flex items-center gap-1 whitespace-nowrap flex-shrink-0 tech-glow ${FOCUS_RING}`}
                 >
-                  <Phone className="h-3 w-3" />
-                  <span>Call 704-246-7642</span>
+                  <Phone className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
+                  <span>Call</span>
+                  <span className="hidden 2xl:inline">&nbsp;704-246-7642</span>
+                  <span className="sr-only 2xl:hidden">704-246-7642</span>
                 </a>
                 <a
                   href="sms:980-888-5300"
                   data-track-source="navbar_desktop"
-                  className="border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center space-x-1 whitespace-nowrap tech-border"
+                  aria-label="Text KorTech Service at 980-888-5300"
+                  className={`border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-3 py-2.5 rounded-xl font-semibold text-sm transition-colors duration-200 flex items-center gap-1 whitespace-nowrap flex-shrink-0 tech-border ${FOCUS_RING}`}
                 >
-                  <MessageSquare className="h-3 w-3" />
-                  <span>Text 980-888-5300</span>
+                  <MessageSquare className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
+                  <span>Text</span>
+                  <span className="hidden 2xl:inline">&nbsp;980-888-5300</span>
+                  <span className="sr-only 2xl:hidden">980-888-5300</span>
                 </a>
               </div>
             </div>
 
-            {/* Mobile toggle */}
-            <div className="lg:hidden">
+            {/* Mobile toggle - MUST use the same `nav:` breakpoint as the
+                desktop nav and the panel below, or a width range renders
+                neither. */}
+            <div className="nav:hidden flex-shrink-0">
               <button
                 ref={mobileMenuButtonRef}
                 onClick={() => setIsOpen(o => !o)}
                 aria-expanded={isOpen}
                 aria-controls="mobile-menu"
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
-                className="text-slate-600 hover:text-brand-primary focus:outline-none p-2"
+                className={`text-slate-600 hover:text-brand-primary p-2.5 -mr-1 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center ${FOCUS_RING}`}
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
@@ -445,18 +517,18 @@ const Navbar: React.FC = () => {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation menu"
-          className="lg:hidden fixed top-16 right-0 bottom-0 left-0 z-40 bg-white overflow-y-auto overscroll-contain"
+          className="nav:hidden fixed top-16 right-0 bottom-0 left-0 z-40 bg-white overflow-y-auto overscroll-contain"
         >
           <div className="px-4 pt-2 pb-6 space-y-1 border-t border-slate-200">
             <button
               onClick={() => handleNavigation('/')}
-              className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
+              className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium min-h-[44px] text-slate-600 hover:text-brand-primary hover:bg-slate-50 ${FOCUS_RING}`}
             >
               Home
             </button>
             <button
               onClick={() => handleNavigation('/about/')}
-              className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
+              className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium min-h-[44px] text-slate-600 hover:text-brand-primary hover:bg-slate-50 ${FOCUS_RING}`}
             >
               About
             </button>
@@ -537,7 +609,7 @@ const Navbar: React.FC = () => {
 
             <button
               onClick={() => handleNavigation('/pricing/')}
-              className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
+              className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium min-h-[44px] text-slate-600 hover:text-brand-primary hover:bg-slate-50 ${FOCUS_RING}`}
             >
               Plans
             </button>
@@ -547,25 +619,25 @@ const Navbar: React.FC = () => {
                 setIsOpen(false);
                 window.scrollTo(0, 0);
               }}
-              className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
+              className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium min-h-[44px] text-slate-600 hover:text-brand-primary hover:bg-slate-50 ${FOCUS_RING}`}
             >
               Free Recycling
             </Link>
             <button
               onClick={() => handleNavigation('/contact/')}
-              className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
+              className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium min-h-[44px] text-slate-600 hover:text-brand-primary hover:bg-slate-50 ${FOCUS_RING}`}
             >
               Contact
             </button>
             <button
               onClick={() => handleNavigation('/blog/')}
-              className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
+              className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium min-h-[44px] text-slate-600 hover:text-brand-primary hover:bg-slate-50 ${FOCUS_RING}`}
             >
               Blog
             </button>
             <button
               onClick={() => handleNavigation('/mail-in-form/')}
-              className="block px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-brand-primary hover:bg-slate-50"
+              className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium min-h-[44px] text-slate-600 hover:text-brand-primary hover:bg-slate-50 ${FOCUS_RING}`}
             >
               Mail-In Repair Form
             </button>

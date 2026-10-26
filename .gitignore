@@ -41,3 +41,8 @@ seo-intelligence/**/.env*
 # commit. Sanitized summaries (data/gsc/gsc-summary-*.md) and reports stay tracked.
 seo-intelligence/data/**/raw-*/
 seo-intelligence/data/**/*.tsv
+
+# visual QA artifacts (generated)
+visual-qa-report.json
+visual-qa-shots/
+.playwright-mcp/

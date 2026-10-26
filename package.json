@@ -19,7 +19,9 @@
     "check-internal-links": "node scripts/check-dist-internal-links.mjs",
     "indexnow-ping": "node scripts/indexnow-ping.mjs",
     "validate-routing": "node scripts/validate-routing.mjs",
-    "verify-production": "node scripts/verify-production.mjs"
+    "verify-production": "node scripts/verify-production.mjs",
+    "test:visual": "node scripts/visual-qa.mjs",
+    "test:visual:prod": "node scripts/visual-qa.mjs --base=https://www.kortechservice.com"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
@@ -39,6 +41,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.26",
     "globals": "^15.15.0",
+    "playwright": "^1.56.0",
     "postcss": "^8.5.23",
     "puppeteer": "^25.3.0",
     "sharp": "^0.35.3",
