@@ -38,7 +38,50 @@
  */
 import { chromium } from 'playwright';
 import { mkdirSync, writeFileSync } from 'node:fs';
+import { readFile, stat } from 'node:fs/promises';
+import { createServer } from 'node:http';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+/**
+ * Serve dist/ ourselves when no --base was given.
+ *
+ * This used to require a separately-started preview server on port 4319. That
+ * is an invisible prerequisite: CI ran the sweep with nothing listening and
+ * got ERR_CONNECTION_REFUSED, which looks identical to "the site is broken".
+ * Serving dist/ in-process makes the default mode self-contained, so the
+ * command cannot pass or fail for reasons unrelated to the pages.
+ */
+async function serveDist(distDir) {
+  const types = {
+    '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css',
+    '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.json': 'application/json',
+    '.ico': 'image/x-icon', '.xml': 'application/xml', '.txt': 'text/plain',
+    '.woff': 'font/woff', '.woff2': 'font/woff2', '.avif': 'image/avif',
+  };
+  const server = createServer(async (req, res) => {
+    try {
+      const rel = decodeURIComponent((req.url || '/').split('?')[0]);
+      let file = path.join(distDir, rel);
+      try {
+        if ((await stat(file)).isDirectory()) file = path.join(file, 'index.html');
+      } catch {
+        file = path.join(distDir, '404.html');
+      }
+      const body = await readFile(file);
+      res.writeHead(200, { 'Content-Type': types[path.extname(file)] ?? 'application/octet-stream' });
+      res.end(body);
+    } catch {
+      res.writeHead(404, { 'Content-Type': 'text/html' });
+      res.end('not found');
+    }
+  });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  return { server, origin: `http://127.0.0.1:${server.address().port}` };
+}
 
 const args = process.argv.slice(2);
 const arg = (name, dflt) => {
@@ -47,7 +90,11 @@ const arg = (name, dflt) => {
 };
 const has = (name) => args.includes(`--${name}`);
 
-const BASE = (arg('base', 'http://localhost:4319')).replace(/\/$/, '');
+// An explicit --base targets a running site (e.g. production). With no
+// --base we serve dist/ in-process and point BASE at that, so the default
+// mode needs no external server. Assigned once in run(), before first use.
+const EXPLICIT_BASE = arg('base', null);
+let BASE = EXPLICIT_BASE ? EXPLICIT_BASE.replace(/\/$/, '') : '';
 const QUICK = has('quick');
 const SHOTS = has('shots');
 const SHOT_DIR = arg('shot-dir', 'visual-qa-shots');
@@ -260,6 +307,10 @@ const PROBE = ({ navBp }) => {
 };
 
 async function run() {
+  // Start the built-in server first: every BASE consumer below runs after this.
+  const local = EXPLICIT_BASE ? null : await serveDist(path.resolve(ROOT_DIR, 'dist'));
+  if (local) BASE = local.origin;
+
   const paths = QUICK ? QUICK_PAGES : await getSitemapPaths();
   console.log(`visual-qa: ${paths.length} page(s) x ${WIDTHS.length} width(s) against ${BASE}\n`);
   if (SHOTS) mkdirSync(SHOT_DIR, { recursive: true });
@@ -515,6 +566,7 @@ async function run() {
   });
 
   await browser.close();
+  if (local) local.server.close();
 
   // ---------------------------------------------------------------- report
   const byKind = failures.reduce((m, f) => ((m[f.kind] = (m[f.kind] || 0) + 1), m), {});
