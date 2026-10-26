@@ -259,7 +259,7 @@ const WhatIsPCBMicroSoldering = () => {
               <li><strong>Experience:</strong> How long have they been performing micro-soldering repairs?</li>
               <li><strong>Equipment:</strong> Do they have professional-grade microscopes and soldering stations?</li>
               <li><strong>Reviews:</strong> Look for reviews specifically mentioning component-level repairs</li>
-              <li><strong>Warranty:</strong> Reputable shops offer warranties on their micro-soldering work</li>
+              <li><strong>Written terms:</strong> Ask what a shop puts in writing about its micro-soldering work</li>
               <li><strong>Transparency:</strong> They should explain the specific issue and repair process</li>
             </ul>
             

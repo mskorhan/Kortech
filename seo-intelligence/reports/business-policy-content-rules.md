@@ -90,7 +90,66 @@ allowlist or the build will fail.
 
 ---
 
-## 2. Turnaround and response times
+## 2. KorTech does NOT provide warranties
+
+**Confirmed 2026-10-26. Guard 12 (`warranty-claim`).**
+
+KorTech Service does **not** offer voluntary repair or service warranties.
+Until 2026-10-26 this site advertised a **14-day limited parts warranty**
+across 20 pages. **That warranty does not exist.** It was removed and must
+never reappear.
+
+**Never publish**, in any wording: a 30-day, 90-day, one-year or lifetime
+warranty; a parts-and-labor or workmanship warranty; "warranty protection",
+"warranty included", "warranty-backed", "guaranteed warranty coverage";
+a satisfaction guarantee; a money-back guarantee; a no-fix-no-fee promise;
+a free re-repair period; or "we stand behind the parts/our work".
+
+**Do not replace a removed warranty claim with a softer one.** Remove the
+claim, the FAQ, the badge or the section. If a sentence mixes a warranty claim
+with accurate service information, keep the accurate part and drop the
+warranty part.
+
+**Do not add warranty disclaimers either.** No "no warranties, express or
+implied", no "as-is". Implied warranties under state law do not disappear
+because a website is silent, and drafting a valid disclaimer is a lawyer's
+job. The policy is **silence**, not a disclaimer.
+
+### What is NOT a violation — do not "fix" these
+
+| Wording | Why it is fine |
+|---|---|
+| Blog: "5-year warranty" (SSD), "10-year warranty" (PSU) | **Manufacturer/component** warranty information about other companies |
+| "The manufacturer's warranty has expired", "out of warranty", "under warranty", "voids warranty" | Consumer information about a **third party's** warranty |
+| "Extended warranties or protection plans often cover accidental damage" | Describes insurance/retail products, not KorTech |
+| Privacy Policy: "service records and warranty information", "parts suppliers for warranty claims", "7 years for warranty and legal purposes" | **Data-processing disclosures**, not an offer of coverage. Flagged, not removed. |
+
+So **never add a bare `/warranty/` or `/\d+-year warranty/` guard pattern** —
+it would flag every row above.
+
+### Terms clauses pending owner/counsel review — DO NOT EDIT
+
+Four clauses in the `/terms/` **signed acknowledgment** block still mention a
+warranty. They **limit liability** rather than promise coverage, so they were
+left exactly as written and are allowlisted by exact phrase in guard 12:
+
+1. "…may void manufacturer warranties, especially in the case of Apple device
+   repairs… do not assume any liability or warranty in the event that the
+   manufacturer warranties are voided"
+2. "…customer provided parts… will not include a warranty on parts and labor."
+3. "…water damaged devices… will not include parts and labor warranty of any
+   kind."
+4. "…the KorTech Service limited warranty does not cover accidental damage…"
+
+**Clause 4 references a warranty that no longer exists.** That is the owner's
+decision with counsel, not a content edit. Removing an exclusion is not the
+same as removing a promise — deleting these could *widen* liability.
+
+**Repairs completed before 2026-10-26** were performed under the published
+14-day terms and may still carry that coverage until their window closes. How
+to honour those is the owner's call.
+
+## 3. Turnaround and response times
 
 **Guard 10 (`absolute-promise`).**
 
@@ -109,26 +168,26 @@ allowlist or the build will fail.
 - **IT support response times are not guaranteed.** "We aim to respond
   promptly during business hours." No hour figures.
 
-## 3. Apple
+## 4. Apple
 
 **Guard 8 (`mac-page-claims`).** `/macbook-repair/` must **neither claim nor
 deny** Apple authorization, affiliation, certification or endorsement. Naming
 the Apple models repaired is fine. No "Apple Authorized Service Provider", no
 "not affiliated with Apple" disclaimer either.
 
-## 4. Reviews and ratings
+## 5. Reviews and ratings
 
 **Guard 5 (`self-serving-ratings`).** No `AggregateRating` or `Review` markup on
 pages about our own business. The site's visible review count must match the
 Google Business Profile; they have diverged before.
 
-## 5. The form emails the owner, not the customer
+## 6. The form emails the owner, not the customer
 
 **Guard 7 (`customer-email-promise`).** The mail-in worker notifies
 `info@kortechservice.com`. It sends the customer **nothing**. Never promise a
 confirmation email; the published mechanism is the printable copy.
 
-## 6. Still unconfirmed — do not publish
+## 7. Still unconfirmed — do not publish
 
 Open items in Issue #26. Until the owner confirms, **omit** rather than guess:
 
@@ -136,9 +195,9 @@ Open items in Issue #26. Until the owner confirms, **omit** rather than guess:
 - **Q6** service-area geography and drive-time/"minutes from" claims
 - **Q7** parts stocking ("we stock…")
 
-Also never add, without confirmation: certifications, warranty terms beyond
-what `/terms/` already states, service radii, technician counts, or years of
-experience beyond the confirmed 1998 founding.
+Also never add, without confirmation: certifications, service radii, technician
+counts, or years of experience beyond the confirmed 1998 founding. **Warranty
+terms are not merely unconfirmed — they are confirmed as NOT offered (section 2).**
 
 ---
 
@@ -158,5 +217,5 @@ review.
 
 ---
 
-*Last updated 2026-10-26. Related: `dns-and-tls-investigation-2026-10-26.md`,
+*Last updated 2026-10-26 (warranty policy added). Related: `dns-and-tls-investigation-2026-10-26.md`,
 `owner-confirmation-table-2026-10-22.md`.*

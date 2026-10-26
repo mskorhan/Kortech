@@ -21,7 +21,9 @@ import {
 // 2026-10-23 (Mac/MacBook/iMac/Mac mini/Mac Studio repair, logic-board
 // diagnostics, board-level micro-soldering) plus the facts already in the
 // project record: the $75-$150 diagnostic waived with hardware repair, the
-// 14-day parts-only warranty, and the Charlotte shop on Sardis Rd N.
+// and the Charlotte shop on Sardis Rd N. NOTE: the 14-day parts warranty
+// that used to be listed here was REMOVED on 2026-10-26 - the owner
+// confirmed KorTech does NOT provide warranties. Do not reintroduce it.
 // Owner also confirmed on 2026-10-23 that mail-in covers EVERY repair
 // category offered, Mac logic-board and board-level work included.
 //
@@ -127,11 +129,6 @@ const MacBookRepair = () => {
       q: 'Do all Macs support the same repairs?',
       a:
         'No, and this is worth knowing before you plan around a repair. What can be replaced or repaired varies by model and year — on many current Macs the storage and memory are soldered to the logic board and are not user-upgradeable, and the internal layout differs substantially between a MacBook Air, an iMac and a Mac Studio. We confirm what applies to your specific model during the diagnostic rather than assuming.'
-    },
-    {
-      q: 'Is there a warranty on the repair?',
-      a:
-        'We provide a 14-day limited warranty on all parts installed, covering only the parts themselves. It covers manufacturing defects or faulty parts that fail under normal use. It does not cover accidental damage, liquid damage, drops or similar incidents.'
     },
     {
       q: 'How do I start a Mac repair?',
@@ -423,7 +420,7 @@ const MacBookRepair = () => {
               },
               {
                 t: 'Repair and collection',
-                d: 'Parts installed carry a 14-day limited warranty covering the parts themselves against manufacturing defects or failure under normal use — not accidental or liquid damage, drops or similar.'
+                d: 'Every repair starts with a diagnostic so you know what is involved and what it costs before any work begins. The diagnostic fee is waived if you proceed with the hardware repair.'
               }
             ].map(({ t, d }, i) => (
               <li key={t} className="flex gap-5">

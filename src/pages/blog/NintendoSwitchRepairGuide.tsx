@@ -238,7 +238,6 @@ const NintendoSwitchRepairGuide = () => {
             <ul>
               <li><strong>Quick turnaround:</strong> Most repairs completed in 1-3 days</li>
               <li><strong>Expertise:</strong> Technicians familiar with common Switch issues</li>
-              <li><strong>Warranty:</strong> Typically 30-90 days on repairs</li>
               <li><strong>Convenience:</strong> No need to ship your device</li>
             </ul>
             
@@ -375,7 +374,7 @@ const NintendoSwitchRepairGuide = () => {
             <ul>
               <li><strong>Experience:</strong> How long have they been repairing Nintendo devices?</li>
               <li><strong>Reviews:</strong> Check Google reviews from other Charlotte customers</li>
-              <li><strong>Warranty:</strong> What guarantee do they offer on their repairs?</li>
+              <li><strong>Written terms:</strong> Ask what the shop puts in writing about the repair</li>
               <li><strong>Turnaround time:</strong> How quickly can they complete the repair?</li>
               <li><strong>Parts quality:</strong> Do they use OEM or high-quality compatible parts?</li>
             </ul>

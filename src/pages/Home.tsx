@@ -226,10 +226,6 @@ export default function Home() {
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   <span>Diagnostic Fee Waived With Hardware Repair</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>14-Day Limited Warranty</span>
-                </div>
               </div>
             </div>
 
@@ -504,10 +500,6 @@ export default function Home() {
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
                 <span>Diagnostic Fee Waived With Hardware Repair</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>14-Day Limited Warranty</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />

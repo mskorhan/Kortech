@@ -170,7 +170,7 @@ const WhatToDoWhenDeviceGetsWetCharlotte = () => {
             <h2>How Long Does It Take, and What Does It Cost?</h2>
 
             <p>
-              Water damage repairs typically take 2-5 business days, since proper cleaning and drying can't be rushed if you want a reliable result. Every water damage repair starts with a diagnostic, so you'll know exactly what's involved and what it costs before any work begins — the diagnostic fee is waived if you proceed with the hardware repair, so there's no guessing or surprise bill. We also stand behind the parts we install with a 14-day limited warranty covering manufacturing defects (this doesn't cover a repeat liquid or drop incident, for obvious reasons).
+              Water damage repairs typically take 2-5 business days, since proper cleaning and drying can't be rushed if you want a reliable result. Every water damage repair starts with a diagnostic, so you'll know exactly what's involved and what it costs before any work begins — the diagnostic fee is waived if you proceed with the hardware repair, so there's no guessing or surprise bill.
             </p>
 
             <div className="bg-green-50 rounded-xl p-6 border border-green-100 my-8">

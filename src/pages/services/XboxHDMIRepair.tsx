@@ -28,10 +28,6 @@ const XboxHDMIRepair = () => {
     {
       question: "How long does Xbox HDMI repair take?",
       answer: "Most Xbox HDMI repairs are completed within 1-3 business days. Same-day service may be available depending on our current workload."
-    },
-    {
-      question: "Is there a warranty on Xbox HDMI repairs?",
-      answer: "Yes, we provide a 14-day limited warranty on all parts installed, covering only the parts themselves. This warranty does not include accidental damage, liquid damage, drops, or any similar incidents. The warranty covers only manufacturing defects or faulty parts that fail under normal use conditions."
     }
   ];
 
@@ -40,7 +36,7 @@ const XboxHDMIRepair = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Xbox HDMI Port Repair",
-      "description": "Professional Xbox Series X/S and Xbox One HDMI port repair service in Charlotte, NC. Expert gaming console repair with warranty.",
+      "description": "Professional Xbox Series X/S and Xbox One HDMI port repair service in Charlotte, NC. Expert gaming console repair.",
       "provider": {
         "@type": "LocalBusiness",
         "@id": "https://www.kortechservice.com/#organization",
@@ -66,7 +62,7 @@ const XboxHDMIRepair = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Xbox HDMI Repair Charlotte NC - Series X/S & Xbox One HDMI Fix"
-        description="Professional Xbox HDMI port repair in Charlotte, NC. Xbox Series X/S and Xbox One HDMI repair. Same-day service on eligible repairs, 14-day limited warranty. Call 704-246-7642!"
+        description="Professional Xbox HDMI port repair in Charlotte, NC. Xbox Series X/S and Xbox One HDMI repair. Same-day service on eligible repairs. Call 704-246-7642!"
         keywords="Xbox HDMI repair Charlotte, Xbox Series X repair, Xbox One HDMI fix, gaming console repair Charlotte NC"
         canonicalUrl="/xbox-hdmi-repair"
         schema={schema}
@@ -117,10 +113,6 @@ const XboxHDMIRepair = () => {
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   <span>All Xbox Models</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>14-Day Warranty</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />

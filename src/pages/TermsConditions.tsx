@@ -163,8 +163,8 @@ const TermsConditions = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-red-800 mb-2">Important Disclaimer</h3>
                     <p className="text-red-700 mb-0">
-                      Once the device is shipped back to you, KorTech Service provides a limited warranty as outlined in our warranty terms. 
-                      If there are any issues, please call/text us within 14 days, and we will work to resolve any warranty-covered concerns.
+                      Once the device is shipped back to you, please inspect it promptly. If there are
+                      any issues with the work performed, call or text us and we will discuss the options available.
                     </p>
                   </div>
                 </div>
@@ -402,33 +402,14 @@ const TermsConditions = () => {
                   I understand that the KorTech Service limited warranty does not cover accidental damage like a cracked screen or any physical damage done to the device once the repair has been completed.
                 </p>
                 
-                <div className="bg-green-50 rounded-xl p-6 border border-green-200 my-6">
-                  <h4 className="text-lg font-semibold text-green-800 mb-2">Warranty Details</h4>
-                  <p className="text-green-700 mb-2">
-                    <strong>14-Day Limited Warranty:</strong> Covers defects in parts and workmanship for repairs performed by KorTech Service.
-                  </p>
-                  <ul className="list-disc pl-5 text-green-700 text-sm">
-                    <li>Warranty applies only to the specific part/service performed</li>
-                    <li>Does not cover accidental damage, misuse, or normal wear</li>
-                    <li>Customer must be original owner listed on service form</li>
-                    <li>Warranty void if device opened by unauthorized parties</li>
-                    <li>Water damage repairs have limited warranty coverage</li>
-                  </ul>
-                </div>
               </div>
             </div>
             
             <div className="bg-white rounded-xl shadow-md border border-slate-100 p-8">
               <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center">
                 <Shield className="h-6 w-6 text-blue-600 mr-3" />
-                Warranty Information
+                Dispute Resolution and Legal Compliance
               </h2>
-              
-              <p className="text-slate-600 mb-4">
-                KorTech Service 14-day limited warranty is valid on the date of purchase, for as long as you (name on this form) are the original owner of the device(s) and the limited warranty only applies to faulty parts installed by KorTech Service. This warranty does not include accidental damage, liquid damage, drops, or any similar incidents. The warranty covers only manufacturing defects or faulty parts that fail under normal use conditions.
-              </p>
-              
-              <h3 className="text-xl font-semibold text-slate-800 mb-4">Dispute Resolution and Legal Compliance</h3>
               
               <p className="mb-4">
                 Any disputes arising from our services will be resolved through binding arbitration in Charlotte, NC, 

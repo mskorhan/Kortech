@@ -32,10 +32,6 @@ const WaterDamageRepair = () => {
     {
       question: "What should I do immediately after water damage?",
       answer: "Turn off the device immediately, remove the battery if possible, do not try to charge it, and bring it to us as soon as possible. Do not use rice or heat sources."
-    },
-    {
-      question: "Do you offer warranty on water damage repairs?",
-      answer: "Yes, we provide a 14-day limited warranty on all parts installed, covering only the parts themselves. This warranty does not include accidental damage, liquid damage, drops, or any similar incidents. The warranty covers only manufacturing defects or faulty parts that fail under normal use conditions."
     }
   ];
 

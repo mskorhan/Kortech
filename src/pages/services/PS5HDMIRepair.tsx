@@ -30,10 +30,6 @@ const PS5HDMIRepair = () => {
       answer: "Common causes include forceful cable insertion/removal, bent HDMI cables, power surges, liquid spills, and general wear from frequent use."
     },
     {
-      question: "Do you offer warranty on PS5 HDMI repairs?",
-      answer: "Yes, we provide a 14-day limited warranty on all parts installed, covering only the parts themselves. This warranty does not include accidental damage, liquid damage, drops, or any similar incidents. The warranty covers only manufacturing defects or faulty parts that fail under normal use conditions."
-    },
-    {
       question: "Can you repair other PS5 issues besides HDMI?",
       answer: "Absolutely! We repair overheating, disc drive issues, controller problems, power issues, and more. Contact us for a complete diagnostic."
     }
@@ -133,10 +129,6 @@ const PS5HDMIRepair = () => {
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   <span>Ask About Same-Day Service</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>14-Day Warranty</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
