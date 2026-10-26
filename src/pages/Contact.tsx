@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SEOHead from '../components/SEOHead';
 import FiveStarReviews from '../components/FiveStarReviews';
 import { trackFormSubmission, trackFormSubmissionFailure } from '../utils/analytics';
-import { NOTIFY_ENDPOINT, RateLimitedError, retryAfterPhrase } from '../utils/notifyEndpoint';
+import { NOTIFY_ENDPOINT, RateLimitedError, retryAfterPhrase, isValidEmail } from '../utils/notifyEndpoint';
 import HoneypotField from '../components/HoneypotField';
 import {
   Phone,
@@ -36,6 +36,7 @@ const Contact = () => {
     const newErrors: { [key: string]: string } = {};
     if (!formData.fullName.trim()) newErrors.fullName = 'Name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!isValidEmail(formData.email)) newErrors.email = 'Please enter a valid email address';
     if (!formData.message.trim()) newErrors.message = 'Message is required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;

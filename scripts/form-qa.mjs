@@ -172,6 +172,44 @@ async function submit(page) {
   await btn.click();
 }
 
+/**
+ * Text present on the page BEFORE submitting.
+ *
+ * Searching whole-page text for words like "call", "error" or the phone
+ * number is useless: /contact/ already contains "704", "call", "email" and
+ * "couldn't" in its static chrome, so those assertions matched whether or not
+ * any error UI appeared. The first run of this suite proved it — four checks
+ * reported `message=true` while `requests=0`, i.e. nothing had been submitted
+ * and no error could possibly have rendered.
+ *
+ * So every message assertion below compares against this snapshot and tests
+ * only text that is NEW after the attempt.
+ */
+async function textSnapshot(page) {
+  return (await page.locator('body').innerText()).toLowerCase();
+}
+
+/** Text that appeared after the action, with the pre-existing text removed. */
+async function newText(page, before) {
+  const after = (await page.locator('body').innerText()).toLowerCase();
+  const seen = new Set(before.split('\n').map((l) => l.trim()).filter(Boolean));
+  return after.split('\n').map((l) => l.trim())
+    .filter((l) => l && !seen.has(l)).join(' | ');
+}
+
+/**
+ * The accessible status/alert region's text, which is what a screen-reader
+ * user is actually told. Both pages ship an EMPTY role="status" in static
+ * HTML, so "a populated live region exists" must mean populated with text
+ * that was not there before.
+ */
+async function liveRegionText(page) {
+  return (await page.evaluate(() =>
+    [...document.querySelectorAll('[role="status"],[role="alert"],[aria-live]')]
+      .map((r) => (r.innerText || '').trim()).filter(Boolean).join(' | ')
+  )).toLowerCase();
+}
+
 /** The submit button, for in-flight-state assertions. */
 function submitButton(page) {
   return page.locator('form button[type="submit"]:visible').first();
@@ -298,20 +336,31 @@ async function run() {
       await fillForm(page, f.which);
       await emailField.fill('not-an-email');
       scenario = '400';
+      const before400 = await textSnapshot(page);
       await submit(page).catch(() => {});
       await page.waitForTimeout(900);
-      // KNOWN GAP (low severity, not a data-integrity hole): neither form
-      // checks email FORMAT client-side — validate() only tests non-empty. The
-      // worker does enforce it (EMAIL_RE -> 400 "Invalid email address"), so a
-      // malformed address never reaches the inbox; the customer just finds out
-      // one round-trip later via the generic error instead of an inline one.
-      // This asserts the customer is at least TOLD, so a silent failure fails.
-      const t400 = (await page.locator('body').innerText()).toLowerCase();
-      const told = /error|sorry|wrong|try again|couldn'?t|unable|call|704|email/.test(t400);
-      record(`${f.label} a malformed email is surfaced to the customer`, told,
-        intercepted === 0
-          ? 'rejected client-side before any request'
-          : `no client-side format check (worker returns 400); customer informed=${told}`);
+      // Both forms now check email FORMAT client-side with the same pattern
+      // the worker uses (isValidEmail in utils/notifyEndpoint.ts mirrors the
+      // worker's EMAIL_RE). So a malformed address must be caught BEFORE any
+      // request: requests=0, with an inline error the customer can act on.
+      //
+      // Asserting requests===0 is what makes this a real test. Previously the
+      // request went out, the worker returned 400, and the customer saw only
+      // the generic "we couldn't send" message - on /mail-in-form/ that lost
+      // the lead notification and printed the unusable address on the form.
+      const t400 = await newText(page, before400);
+      const live400 = await liveRegionText(page);
+      const inlineErr = await page.evaluate(() => {
+        const el = document.querySelector('form [aria-invalid="true"]');
+        if (!el) return null;
+        const id = el.getAttribute('aria-describedby');
+        const msg = id ? document.getElementById(id) : null;
+        return { name: el.getAttribute('name'), msg: (msg?.innerText || '').trim() };
+      });
+      const told = /invalid|valid/.test(t400 + ' ' + live400 + ' ' + (inlineErr?.msg ?? ''));
+      record(`${f.label} a malformed email is rejected before any request`,
+        intercepted === 0 && told && inlineErr?.name === 'email',
+        `requests=${intercepted}, aria-invalid=${inlineErr?.name ?? 'none'}, message="${inlineErr?.msg ?? ''}"`);
       scenario = 'abort';
     }
 
@@ -321,20 +370,22 @@ async function run() {
     await page.reload({ waitUntil: 'domcontentloaded' });
     await page.waitForSelector('form');
     await fillForm(page, f.which);
+    const beforeOk = await textSnapshot(page);
     await submit(page);
     await page.waitForTimeout(1500);
-    const okText = (await page.locator('body').innerText()).toLowerCase();
+    const okText = await newText(page, beforeOk);
     const sawSuccess = /thank|success|received|we'?ll be in touch|got your|submitted/.test(okText);
     record(`${f.label} success shows a confirmation message`, sawSuccess && intercepted === 1,
       `requests=${intercepted}, confirmation=${sawSuccess}`);
 
     // --- the success message is announced to assistive tech --------------
-    const liveOk = await page.evaluate(() => {
-      const regions = [...document.querySelectorAll('[role="status"],[role="alert"],[aria-live]')];
-      return regions.some((r) => (r.innerText || '').trim().length > 0);
-    });
-    record(`${f.label} confirmation sits in a live region`, liveOk,
-      liveOk ? 'aria-live/role=status present and populated' : 'no populated live region — screen readers may miss it');
+    // Both pages ship an EMPTY role="status" in static HTML, so "a region
+    // exists and has text" was matching chrome. Require the confirmation
+    // wording itself to be inside the live region.
+    const liveText = await liveRegionText(page);
+    const liveOk = /thank|success|received|we'?ll be in touch|got your|submitted/.test(liveText);
+    record(`${f.label} the confirmation text is inside a live region`, liveOk,
+      liveOk ? `announced: "${liveText.slice(0, 60)}"` : `live region text was "${liveText.slice(0, 60)}" — screen readers may miss the confirmation`);
 
     // --- rate limited (429) ----------------------------------------------
     intercepted = 0;
@@ -342,10 +393,11 @@ async function run() {
     await page.reload({ waitUntil: 'domcontentloaded' });
     await page.waitForSelector('form');
     await fillForm(page, f.which);
+    const before429 = await textSnapshot(page);
     await submit(page);
     await page.waitForTimeout(1500);
-    const t429 = (await page.locator('body').innerText()).toLowerCase();
-    const sawWait = /moment|wait|too many|try again|second|minute/.test(t429);
+    const t429 = (await newText(page, before429)) + ' ' + (await liveRegionText(page));
+    const sawWait = /moment|wait|too many|didn'?t go through|try again|second|minute/.test(t429);
     record(`${f.label} 429 tells the customer to retry shortly`, sawWait && intercepted === 1,
       `requests=${intercepted}, actionable=${sawWait}`);
 
@@ -355,10 +407,12 @@ async function run() {
     await page.reload({ waitUntil: 'domcontentloaded' });
     await page.waitForSelector('form');
     await fillForm(page, f.which);
+    const before500 = await textSnapshot(page);
     await submit(page);
     await page.waitForTimeout(1500);
-    const t500 = (await page.locator('body').innerText()).toLowerCase();
-    const sawErr = /error|sorry|wrong|try again|couldn'?t|unable|call|704/.test(t500);
+    const t500 = (await newText(page, before500)) + ' ' + (await liveRegionText(page));
+    // No "call"/"704" here: they are in the page chrome on every page.
+    const sawErr = /error|sorry|wrong|try again|couldn'?t|unable|automatically/.test(t500);
     // The customer must be left with SOME way to proceed. The two forms do
     // this differently on purpose and both are valid:
     //   /contact/      keeps the form so they can retry.
@@ -380,10 +434,11 @@ async function run() {
     await page.reload({ waitUntil: 'domcontentloaded' });
     await page.waitForSelector('form');
     await fillForm(page, f.which);
+    const beforeNet = await textSnapshot(page);
     await submit(page);
     await page.waitForTimeout(1500);
-    const tNet = (await page.locator('body').innerText()).toLowerCase();
-    const sawNet = /error|sorry|wrong|try again|couldn'?t|unable|call|704/.test(tNet);
+    const tNet = (await newText(page, beforeNet)) + ' ' + (await liveRegionText(page));
+    const sawNet = /error|sorry|wrong|try again|couldn'?t|unable|automatically/.test(tNet);
     record(`${f.label} a dropped connection surfaces an error (no silent failure)`, sawNet && intercepted === 1,
       `requests=${intercepted}, message=${sawNet}`);
 

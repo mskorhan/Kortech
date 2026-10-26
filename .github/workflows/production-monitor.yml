@@ -47,8 +47,12 @@ jobs:
         run: npm run verify-production
 
       # The owner-confirmed policies, asserted against live HTML rather than
-      # dist/. This is the only check that would catch a policy claim
-      # reappearing in production without a commit.
+      # dist/, iterating the live sitemap so coverage cannot drift from the
+      # real page set (58 pages, including the blog and the Matthews page).
+      # This is the only check that would catch a policy claim reappearing in
+      # production without a commit - e.g. a partial FTP upload leaving an old
+      # page in place. A page that cannot be fetched counts as a FAILURE, not
+      # a skip.
       - name: Verify business policies (live)
         run: npm run verify-policies:prod
 

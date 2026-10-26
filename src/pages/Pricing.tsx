@@ -333,19 +333,25 @@ const Pricing = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {additionalServices.map((service, index) => (
-              <div key={index} className="bg-white rounded-3xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 group relative">
-                <div className="flex items-start space-x-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl flex items-center justify-center group-hover:from-purple-200 group-hover:to-pink-200 transition-colors">
+              <div key={index} className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 group relative">
+                <div className="flex items-start gap-4">
+                  {/* flex-shrink-0 so the icon keeps its size, and min-w-0 on the
+                      text column so it may shrink instead of forcing the card
+                      wider than the viewport. At 320px, p-8 (64px) + a 64px
+                      icon left too little room for the title and price side by
+                      side, which pushed the card to 332px and scrolled the
+                      page. The title/price row also stacks until sm. */}
+                  <div className="w-16 h-16 flex-shrink-0 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl flex items-center justify-center group-hover:from-purple-200 group-hover:to-pink-200 transition-colors">
                     <service.icon className="h-8 w-8 text-purple-600" />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-xl font-bold text-slate-800">{service.service}</h3>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-purple-600">{service.price}</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3 mb-3">
+                      <h3 className="text-xl font-bold text-slate-800 break-words">{service.service}</h3>
+                      <div className="min-w-0 sm:text-right">
+                        <div className="text-2xl font-bold text-purple-600 break-words">{service.price}</div>
                       </div>
                     </div>
-                    <p className="text-slate-600 mb-3 font-light">{service.description}</p>
+                    <p className="text-slate-600 mb-3 font-light break-words">{service.description}</p>
                   </div>
                 </div>
               </div>

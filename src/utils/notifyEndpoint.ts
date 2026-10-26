@@ -28,3 +28,15 @@ export function retryAfterPhrase(response: Response): string {
   if (!Number.isFinite(seconds) || seconds <= 0) return 'a minute';
   return `about ${seconds} second${seconds === 1 ? '' : 's'}`;
 }
+
+// Mirrors EMAIL_RE in worker/src/index.ts EXACTLY. The worker already rejects
+// a malformed address with 400, so without this check the customer only finds
+// out after a round-trip, via the generic "we couldn't send" message - and on
+// /mail-in-form/ that means the lead notification is lost AND the printed form
+// they're told to enclose carries the unusable address. Keep the two patterns
+// identical: a client check stricter than the server would block valid mail,
+// and one looser than the server would hand back a confusing generic error.
+export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export const isValidEmail = (value: string): boolean =>
+  EMAIL_RE.test(value.trim());

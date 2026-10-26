@@ -115,6 +115,16 @@ async function listDistPages() {
   return out;
 }
 
+/** Every path in the live sitemap, as slugs (no leading/trailing slash). */
+async function listSitemapSlugs() {
+  const res = await fetch(`${BASE}/sitemap.xml`);
+  if (!res.ok) throw new Error(`${BASE}/sitemap.xml -> HTTP ${res.status}`);
+  const xml = await res.text();
+  const slugs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map((m) => m[1].replace(/^https?:\/\/[^/]+/, '').replace(/^\/|\/$/g, ''));
+  return [...new Set(slugs)];
+}
+
 async function fetchPage(slug) {
   if (BASE) {
     const url = `${BASE}/${slug ? slug + '/' : ''}`;
@@ -161,16 +171,26 @@ async function run() {
   }
 
   console.log('\nNegative assertions (the claim must not appear anywhere):');
-  const slugs = BASE
-    ? [...new Set([...MAILIN_PAGES, 'terms', 'services', 'contact', 'mail-in-form',
-        'privacy-policy', 'remote-assistance', '', 'computer-repair-charlotte'])]
-    : await listDistPages();
+  // In --base mode, iterate the LIVE sitemap rather than a hand-written list.
+  // The hand-written list was both incomplete and wrong: it missed
+  // /matthews-computer-repair/ (where the iframe-title pickup claim lived),
+  // /macbook-repair/, /business-it-support/ and every blog post, and it
+  // included 'computer-repair-charlotte', which 404s. A fetch failure was
+  // swallowed by `continue`, so that dead page was still counted as "clear".
+  const slugs = BASE ? await listSitemapSlugs() : await listDistPages();
 
   for (const n of MUST_NOT_STATE) {
     const hits = [];
     for (const slug of slugs) {
       let html;
-      try { html = normalize(await fetchPage(slug)); } catch { continue; }
+      try {
+        html = normalize(await fetchPage(slug));
+      } catch (e) {
+        // A page that cannot be fetched is NOT "clear" - it is unverified.
+        // Silently skipping it is how a 404 got counted as passing.
+        hits.push(`${slug || '/'} (UNVERIFIABLE: ${e.message})`);
+        continue;
+      }
       // Remove allowlisted phrases before testing, so an approved clause can
       // never mask a NEW violation elsewhere on the same page.
       let probe = html;
