@@ -75,7 +75,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # Node 22, not 20 like the build job. The worker's tests import
+          # `../src/index.ts` directly and rely on --experimental-strip-types,
+          # which does not exist before 22.6 - on Node 20 the suite fails to
+          # load rather than failing an assertion. The build job stays on 20
+          # because that is what the deploy workflow uses, and the two must
+          # agree about the artifact they produce.
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
