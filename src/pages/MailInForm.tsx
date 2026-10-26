@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormSubmissionFailure } from '../utils/analytics';
-import { NOTIFY_ENDPOINT, RateLimitedError, retryAfterPhrase } from '../utils/notifyEndpoint';
+import { NOTIFY_ENDPOINT, RateLimitedError, retryAfterPhrase, isValidEmail } from '../utils/notifyEndpoint';
 import HoneypotField from '../components/HoneypotField';
 import {
   AlertTriangle,
@@ -79,6 +79,7 @@ const MailInForm = () => {
     
     if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!isValidEmail(formData.email)) newErrors.email = 'Please enter a valid email address';
     if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
     if (!formData.deviceType) newErrors.deviceType = 'Device type is required';
     if (!formData.problemDescription.trim()) newErrors.problemDescription = 'Problem description is required';

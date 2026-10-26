@@ -279,12 +279,12 @@ const TermsConditions = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-slate-800 mb-2">Before You Ship Your Mac</h3>
                   <ul className="list-disc pl-5 space-y-1">
-                    <li>Backup your data: <a href="https://support.apple.com/mac-backup" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">support.apple.com/mac-backup</a></li>
-                    <li>Remove your Mac from Find My (and leave it removed while your Mac is with us): <a href="https://support.apple.com/guide/findmy-mac/remove-a-device-fmm2832fb8f0/mac" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">support.apple.com/guide/findmy-mac/remove-a-device</a></li>
-                    <li>Turn off your firmware password: <a href="https://support.apple.com/HT204455" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">support.apple.com/HT204455</a></li>
-                    <li>Deauthorize your computer from content purchases: <a href="https://support.apple.com/HT201251" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">support.apple.com/HT201251</a></li>
+                    <li>Backup your data: <a href="https://support.apple.com/mac-backup" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 break-words">support.apple.com/mac-backup</a></li>
+                    <li>Remove your Mac from Find My (and leave it removed while your Mac is with us): <a href="https://support.apple.com/guide/findmy-mac/remove-a-device-fmm2832fb8f0/mac" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 break-words">support.apple.com/guide/findmy-mac/remove-a-device</a></li>
+                    <li>Turn off your firmware password: <a href="https://support.apple.com/HT204455" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 break-words">support.apple.com/HT204455</a></li>
+                    <li>Deauthorize your computer from content purchases: <a href="https://support.apple.com/HT201251" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 break-words">support.apple.com/HT201251</a></li>
                     <li>Disable or turn off third-party security software if you're using it</li>
-                    <li>If you're concerned about the security of your data, erase your hard disk before sending in your Mac: <a href="https://support.apple.com/HT208496" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">support.apple.com/HT208496</a></li>
+                    <li>If you're concerned about the security of your data, erase your hard disk before sending in your Mac: <a href="https://support.apple.com/HT208496" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 break-words">support.apple.com/HT208496</a></li>
                   </ul>
                   <p className="text-red-600 font-medium mt-2">*KorTech Service is not responsible for lost data</p>
                 </div>
@@ -293,7 +293,7 @@ const TermsConditions = () => {
                   <h3 className="text-lg font-semibold text-slate-800 mb-2">Before You Ship Your iPhone or iPad</h3>
                   <ul className="list-disc pl-5 space-y-1">
                     <li>If you need to send in an iPhone that's paired with an Apple Watch, unpair your devices. When you unpair, your iPhone will create a new backup of your Apple Watch.</li>
-                    <li>Backup your iOS device: <a href="https://support.apple.com/HT203977" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">support.apple.com/HT203977</a></li>
+                    <li>Backup your iOS device: <a href="https://support.apple.com/HT203977" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 break-words">support.apple.com/HT203977</a></li>
                     <li>Go to Settings &gt; Messages and turn off iMessage</li>
                     <li>Go to Settings &gt; [your name] &gt; Find My &gt; Turn off Find My iPhone or iPad to disable Activation Lock. Enter your Apple ID password, and tap Turn Off (and leave it turned off while your device is with us).</li>
                     <li>If you're concerned about the security of your data, erase your device before sending it in. Go to Settings &gt; General &gt; Reset &gt; Erase All Content and Settings.</li>

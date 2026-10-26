@@ -62,10 +62,22 @@ jobs:
   # and therefore an owner decision, not something a workflow edit should do by
   # stealth.
   #
-  # Cost: the repo is public, so GitHub Actions minutes are free. The visual
-  # sweep runs in --quick mode (8 widths including the nav breakpoint, ~18s
-  # locally) rather than the full 21-width sweep (~3m20s), which is reserved
-  # for the scheduled production run below.
+  # Cost, stated plainly: the repo is public, so Actions minutes are free, and
+  # the two jobs run in PARALLEL so wall-clock time is set by the slower one
+  # (~4m20s), not the sum.
+  #
+  # This job DOES repeat `npm run build`, which the build job also runs. That
+  # duplication is deliberate rather than overlooked: passing dist/ between
+  # jobs needs an upload-artifact + download-artifact pair, which costs
+  # storage, adds two steps that can fail on their own, and would make the
+  # required `build` check depend on this job's plumbing. Rebuilding is ~90s
+  # of free compute; coupling the required check to an artifact handoff is a
+  # permanent maintenance cost. If minutes ever start mattering, the artifact
+  # handoff is the change to make.
+  #
+  # The visual sweep runs in --quick mode (8 widths including the nav
+  # breakpoint, ~18s locally) rather than the full 21-width sweep (~3m20s),
+  # which is reserved for the weekly production-monitor workflow.
   behaviour:
     runs-on: ubuntu-latest
     steps:
