@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormSubmissionFailure } from '../utils/analytics';
-import { NOTIFY_ENDPOINT } from '../utils/notifyEndpoint';
+import { NOTIFY_ENDPOINT, RateLimitedError, retryAfterPhrase } from '../utils/notifyEndpoint';
+import HoneypotField from '../components/HoneypotField';
 import {
   AlertTriangle,
   Printer,
@@ -41,6 +42,8 @@ const MailInForm = () => {
     deviceModel: '',
     serialNumber: '',
     password: '',
+    // contactPreference is the honeypot - see HoneypotField. Always '' for a human.
+    contactPreference: '',
     problemDescription: '',
     hasBackedUp: false,
     hasRemovedAccessories: false,
@@ -106,6 +109,14 @@ const MailInForm = () => {
         body: JSON.stringify(notificationPayload)
       });
 
+      // 429 is the one refusal a customer can act on themselves: the per-IP
+      // submission limit was hit, and retrying shortly works. Anything else is
+      // not something they can fix, so it falls through to the generic message
+      // with the print/call fallback. Both paths keep the printable form.
+      if (response.status === 429) {
+        throw new RateLimitedError(retryAfterPhrase(response));
+      }
+
       if (!response.ok) {
         throw new Error('Notification request failed');
       }
@@ -113,10 +124,12 @@ const MailInForm = () => {
       trackFormSubmission('mail_in_repair_form');
       setFormSubmitted(true);
       window.scrollTo(0, 0);
-    } catch {
+    } catch (err) {
       trackFormSubmissionFailure('mail_in_repair_form');
       setSubmitError(
-        "We couldn't send your form to us automatically. Please still print it below and include it with your device, or call/text us so we know it's coming."
+        err instanceof RateLimitedError
+          ? `We've received a lot of submissions from your network just now, so this one didn't go through. Please wait ${err.wait} and submit again — or print the form below and include it with your device, or call/text us.`
+          : "We couldn't send your form to us automatically. Please still print it below and include it with your device, or call/text us so we know it's coming."
       );
       setFormSubmitted(true);
       window.scrollTo(0, 0);
@@ -652,7 +665,8 @@ const MailInForm = () => {
                 </p>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+              <form onSubmit={handleSubmit} className="space-y-8 relative" noValidate>
+                <HoneypotField value={formData.contactPreference} onChange={handleChange} />
                 {/* Customer Information */}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">

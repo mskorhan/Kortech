@@ -9,3 +9,38 @@ ALLOWED_ORIGIN = "https://www.kortechservice.com"
 
 # RESEND_API_KEY is set as a secret, not here:
 #   npx wrangler secret put RESEND_API_KEY
+
+# Optional per-IP rate limit on submissions. Commented out so that applying it
+# is a deliberate owner step; uncommenting it and redeploying is all that is
+# needed, and the worker is inert without it.
+#
+# This is Cloudflare's own Rate Limiting binding, so no third-party service is
+# involved. A KV counter was considered and rejected: it needs a read-then-write
+# per request, and KV is eventually consistent, so a burst of concurrent
+# requests all read the same value before any of them writes.
+#
+# COST IS UNVERIFIED - confirm before enabling. Cloudflare's rate-limit binding
+# page states no price, and neither the Workers pricing page nor the Workers
+# limits page mentions this binding at all. So nothing published says it costs
+# extra, and nothing published says it is free. Check the account's own plan and
+# billing page first. It stays commented out until that is a deliberate choice.
+#
+# What this binding promises, stated accurately: Cloudflare documents it as an
+# APPROXIMATE limit. Counts are eventually consistent, are local to each
+# Cloudflare location, and do not combine into one worldwide limit, so requests
+# CAN exceed the configured number. It is not atomic and not a global cap - a
+# strict global limit would require Durable Objects. That is an accepted
+# trade-off here: the aim is to blunt sustained volume against the sending
+# quota, not to enforce an exact count.
+#
+# 5 submissions per 60s per IP (period accepts only 10 or 60). A real customer
+# sends one form, maybe two after a correction, so this leaves ample headroom. The worker fails OPEN if the
+# binding errors - a lost repair enquiry is worse than some extra volume.
+#
+# [[ratelimits]]
+# name = "RATE_LIMIT"
+# namespace_id = "1001"
+# simple = { limit = 5, period = 60 }
+#
+# namespace_id is any number you choose, unique within this Worker; it names
+# the counter, it is not a secret. `period` accepts only 10 or 60.

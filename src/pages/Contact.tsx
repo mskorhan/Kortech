@@ -2,7 +2,8 @@ import { useState } from 'react';
 import SEOHead from '../components/SEOHead';
 import FiveStarReviews from '../components/FiveStarReviews';
 import { trackFormSubmission, trackFormSubmissionFailure } from '../utils/analytics';
-import { NOTIFY_ENDPOINT } from '../utils/notifyEndpoint';
+import { NOTIFY_ENDPOINT, RateLimitedError, retryAfterPhrase } from '../utils/notifyEndpoint';
+import HoneypotField from '../components/HoneypotField';
 import {
   Phone,
   Mail,
@@ -18,10 +19,12 @@ import {
 } from 'lucide-react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', message: '' });
+  // contactPreference is the honeypot - see HoneypotField. Always '' for a human.
+  const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', message: '', contactPreference: '' });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'rate_limited'>('idle');
+  const [rateLimitWait, setRateLimitWait] = useState('a minute');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -52,14 +55,24 @@ const Contact = () => {
         body: JSON.stringify({ formType: 'contact', ...formData })
       });
 
+      // A 429 means the per-IP submission limit was hit; retrying shortly
+      // works, so the customer gets a message they can act on rather than a
+      // generic failure.
+      if (response.status === 429) throw new RateLimitedError(retryAfterPhrase(response));
+
       if (!response.ok) throw new Error('Contact form request failed');
 
       trackFormSubmission('contact_page_form');
       setSubmitStatus('success');
-      setFormData({ fullName: '', email: '', phone: '', message: '' });
-    } catch {
+      setFormData({ fullName: '', email: '', phone: '', message: '', contactPreference: '' });
+    } catch (err) {
       trackFormSubmissionFailure('contact_page_form');
-      setSubmitStatus('error');
+      if (err instanceof RateLimitedError) {
+        setRateLimitWait(err.wait);
+        setSubmitStatus('rate_limited');
+      } else {
+        setSubmitStatus('error');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -209,6 +222,8 @@ const Contact = () => {
                 ? 'Sending your message…'
                 : submitStatus === 'success'
                 ? 'Message sent successfully.'
+                : submitStatus === 'rate_limited'
+                ? `Too many submissions from your network just now. Please wait ${rateLimitWait} and try again, or call or text us.`
                 : submitStatus === 'error'
                 ? "We couldn't send your message automatically. Please call or text us instead, or try again."
                 : ''}
@@ -222,7 +237,14 @@ const Contact = () => {
                 <p className="text-gray-600">We'll get back to you as soon as possible.</p>
               </div>
             ) : (
-              <form onSubmit={handleContactSubmit} className="space-y-6" noValidate>
+              <form onSubmit={handleContactSubmit} className="space-y-6 relative" noValidate>
+                <HoneypotField value={formData.contactPreference} onChange={handleChange} />
+                {submitStatus === 'rate_limited' && (
+                  <div role="alert" className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
+                    We've received a lot of submissions from your network just now, so this one didn't go through.
+                    Please wait {rateLimitWait} and try again &mdash; or call or text us and we'll pick it up straight away.
+                  </div>
+                )}
                 {submitStatus === 'error' && (
                   <div role="alert" className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
                     We couldn't send your message automatically. Please call or text us instead, or try again in a moment.
