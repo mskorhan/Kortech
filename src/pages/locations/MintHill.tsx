@@ -65,7 +65,7 @@ const MintHill = () => {
     },
     {
       question: "Where do Mint Hill customers bring a computer in?",
-      answer: "To our workshop at 1721 Sardis Rd N, Suite 7A in Charlotte. Mint Hill lies east and north-east of the shop, so it is a straightforward drop-off for most residents, and pickup and delivery is available if carrying a desktop is not practical."
+      answer: "To our workshop at 1721 Sardis Rd N, Suite 7A in Charlotte. Mint Hill lies east and north-east of the shop, so it is a straightforward drop-off for most residents. If carrying a desktop is not practical, you can ship it to us using a paid shipping label at your own expense."
     }
   ];
 
@@ -74,7 +74,7 @@ const MintHill = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Mint Hill, NC",
-      "description": "Home computer repair, SSD and memory upgrades, and home Wi-Fi and network setup for Mint Hill, NC, east of the KorTech workshop in south-east Charlotte, with drop-off or pickup and delivery.",
+      "description": "Home computer repair, SSD and memory upgrades, and home Wi-Fi and network setup for Mint Hill, NC, east of the KorTech workshop in south-east Charlotte, with shop drop-off or paid mail-in.",
       "url": "https://www.kortechservice.com/mint-hill-computer-repair/",
       "areaServed": [
         {
@@ -155,7 +155,7 @@ const MintHill = () => {
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               Keeping home computers going rather than replacing them: solid-state drive and memory upgrades,
               fan and power supply repairs, data transfers to a newer machine, and home Wi-Fi that reaches
-              every room. Drop-off at the Charlotte workshop, or ask about pickup and delivery.
+              every room. Drop off at the Charlotte workshop, or ship your device to us.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -188,7 +188,7 @@ const MintHill = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Pickup & Delivery</span>
+                <span>Drop-Off Or Mail-In</span>
               </div>
             </div>
           </div>
@@ -242,8 +242,8 @@ const MintHill = () => {
               <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Truck className="h-8 w-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">Desktops, monitors and printers are awkward to carry, so we can collect from Mint Hill and return the equipment set up and working</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Drop Off Or Ship</h3>
+              <p className="text-slate-600">Desktops, monitors and printers are awkward to carry, so bring them to the Charlotte shop when it suits you, or ship them to us at your own expense</p>
             </div>
 
             <div className="text-center">
@@ -323,7 +323,7 @@ const MintHill = () => {
               <div className="text-left">
                 <p className="font-bold">KorTech Service</p>
                 <p className="text-purple-200">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</p>
-                <p className="text-purple-200">Pickup & Delivery Available in Mint Hill</p>
+                <p className="text-purple-200">Mint Hill: Drop Off At Our Charlotte Shop Or Ship To Us</p>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-4">

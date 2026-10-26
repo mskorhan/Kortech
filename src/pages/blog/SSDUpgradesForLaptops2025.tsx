@@ -287,7 +287,7 @@ const SSDUpgradesForLaptops2025 = () => {
             </ul>
             
             <p>
-              We offer both in-shop service at our Charlotte location and pickup/delivery options for customers throughout the metro area.
+              All work is carried out at our Charlotte location. You can drop your device off in person, or ship it to us at your own expense.
             </p>
             
             <h2>Conclusion: Is an SSD Upgrade Worth It in 2025?</h2>

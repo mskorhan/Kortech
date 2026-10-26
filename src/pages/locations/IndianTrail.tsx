@@ -53,10 +53,10 @@ const IndianTrail = () => {
   const faqs = [
     {
       question: "Indian Trail is in Union County. Do I have to drive into Charlotte?",
-      answer: "Not necessarily. Indian Trail sits south-east of our shop along the US-74 corridor, so it is the furthest of our regular service areas, and pickup and delivery is the option most Union County customers take. You are also welcome to drop the machine at 1721 Sardis Rd N, Suite 7A in Charlotte if you are already heading that way."
+      answer: "Indian Trail sits south-east of our shop along the US-74 corridor, so it is the furthest of our regular service areas. KorTech does not collect devices, so there are two options: drop the machine at 1721 Sardis Rd N, Suite 7A in Charlotte, or ship it to us using a paid shipping label at your own expense."
     },
     {
-      question: "How does pickup and delivery work for a household with several devices?",
+      question: "We have several devices that need work. How do we get them to you?",
       answer: "Call or text a list of what is wrong with each device and we will arrange a single collection rather than several trips. Everything is repaired at the Charlotte workshop and returned together, which usually makes more sense than driving a laptop back and forth up the corridor."
     },
     {
@@ -74,7 +74,7 @@ const IndianTrail = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Indian Trail, NC",
-      "description": "Repair for family laptops, household desktops and gaming PCs for Indian Trail, NC in Union County, with pickup and delivery along the US-74 corridor to the KorTech workshop in south-east Charlotte.",
+      "description": "Repair for family laptops, household desktops and gaming PCs for Indian Trail, NC in Union County. Work is carried out at the KorTech workshop in south-east Charlotte, reachable along the US-74 corridor, with shop drop-off or paid mail-in.",
       "url": "https://www.kortechservice.com/indian-trail-computer-repair/",
       "areaServed": [
         {
@@ -118,7 +118,7 @@ const IndianTrail = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Indian Trail NC PC &amp; Laptop Repair | KorTech"
-        description="Family laptops, home desktops and gaming PCs repaired for Indian Trail, NC. Pickup and delivery from Union County to our Charlotte workshop. Call 704-246-7642."
+        description="Family laptops, home desktops and gaming PCs repaired for Indian Trail, NC. Drop off at our Charlotte workshop or ship your device to us. Call 704-246-7642."
         canonicalUrl="/indian-trail-computer-repair"
         location="Indian Trail, NC"
         service="Computer Repair"
@@ -138,7 +138,7 @@ const IndianTrail = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-orange-300" />
-              <span className="text-white font-medium">Serving Indian Trail With Pickup &amp; Delivery</span>
+              <span className="text-white font-medium">Serving Indian Trail From Our Charlotte Shop</span>
             </div>
             
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -148,7 +148,7 @@ const IndianTrail = () => {
             
             <div className="bg-orange-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-orange-100 mb-4">
-                <strong>Indian Trail Community:</strong> Indian Trail is an incorporated town in Union County, south-east of our shop along the US-74 corridor, and largely a commuter community. KorTech Service has no Indian Trail branch: our Charlotte workshop has operated since 1998, and because Indian Trail is the furthest area we regularly serve, pickup and delivery is usually the practical choice.
+                <strong>Indian Trail Community:</strong> Indian Trail is an incorporated town in Union County, south-east of our shop along the US-74 corridor, and largely a commuter community. KorTech Service has no Indian Trail branch: all work is carried out at our Charlotte workshop, which has operated since 1998. Many Indian Trail customers drop a device off while already heading along US-74; others ship theirs to us instead.
               </p>
             </div>
             
@@ -188,7 +188,7 @@ const IndianTrail = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Pickup & Delivery</span>
+                <span>Drop-Off Or Mail-In</span>
               </div>
             </div>
           </div>
@@ -242,8 +242,8 @@ const IndianTrail = () => {
               <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Truck className="h-8 w-8 text-orange-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">Indian Trail is the furthest area we regularly serve, so we can collect several household devices in one visit instead of asking you to make the trip</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Drop Off Or Ship</h3>
+              <p className="text-slate-600">Indian Trail is the furthest area we regularly serve, so bring several household devices in together on one trip, or ship them to us at your own expense</p>
             </div>
 
             <div className="text-center">
@@ -270,7 +270,7 @@ const IndianTrail = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Indian Trail Pickup &amp; Delivery Questions
+              Indian Trail Drop-Off And Mail-In Questions
             </h2>
             <p className="text-lg text-slate-600">
               Getting devices from Union County to the workshop, and what we repair once they arrive
@@ -323,7 +323,7 @@ const IndianTrail = () => {
               <div className="text-left">
                 <p className="font-bold">KorTech Service</p>
                 <p className="text-orange-200">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</p>
-                <p className="text-orange-200">Pickup & Delivery Available in Indian Trail</p>
+                <p className="text-orange-200">Indian Trail: Drop Off At Our Charlotte Shop Or Ship To Us</p>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-4">

@@ -204,7 +204,8 @@ const TermsConditions = () => {
                 <li>Surrounding areas within 30 miles of Charlotte</li>
               </ul>
               <p>
-                Pickup and delivery services are available throughout our service area. 
+                KorTech does not collect or deliver devices. Customers are welcome to drop
+                their device off at our Charlotte shop, or ship it to us at their own expense.
                 Mail-in repair services are available nationwide.
               </p>
             </div>

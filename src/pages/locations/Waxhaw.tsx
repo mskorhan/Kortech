@@ -52,8 +52,8 @@ const Waxhaw = () => {
 
   const faqs = [
     {
-      question: "I would rather not drive to Charlotte. How does pickup and delivery work from Waxhaw?",
-      answer: "Waxhaw is south of Charlotte in Union County, far enough that a round trip is a real errand, so pickup and delivery is usually the more practical option. Call or text to arrange it. We collect the machine, do the work at our Charlotte shop, and bring it back, so you are not making the drive twice."
+      question: "I would rather not drive to Charlotte. What are my options from Waxhaw?",
+      answer: "KorTech does not collect or deliver devices, so there are two options. You can drop the device at our Charlotte shop at 1721 Sardis Rd N, Suite 7A, or you can ship it to us using a paid shipping label at your own expense. Shipping costs are the customer's responsibility, and our nationwide mail-in service covers all supported repair categories."
     },
     {
       question: "Can you take several family devices at once, or is it one at a time?",
@@ -74,7 +74,7 @@ const Waxhaw = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Waxhaw, NC",
-      "description": "Home computer, laptop, gaming PC, and family device repair for Waxhaw, NC, in southern Union County. Repairs are carried out at the KorTech Service shop in Charlotte, with pickup and delivery available so Waxhaw households do not have to make the drive.",
+      "description": "Home computer, laptop, gaming PC, and family device repair for Waxhaw, NC, in southern Union County. Repairs are carried out at the KorTech Service shop in Charlotte, with shop drop-off or paid mail-in shipping for Waxhaw households.",
       "url": "https://www.kortechservice.com/waxhaw-computer-repair/",
       "areaServed": [
         {
@@ -118,7 +118,7 @@ const Waxhaw = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Waxhaw NC Home & Gaming PC Repair | KorTech"
-        description="Home computer, laptop, gaming PC, and family device repair for Waxhaw, NC. Pickup and delivery so you skip the drive to Charlotte. Call 704-246-7642."
+        description="Home computer, laptop, gaming PC, and family device repair for Waxhaw, NC. Drop off at our Charlotte shop or ship your device to us. Call 704-246-7642."
         canonicalUrl="/waxhaw-computer-repair"
         location="Waxhaw, NC"
         service="Computer Repair"
@@ -138,7 +138,7 @@ const Waxhaw = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-emerald-300" />
-              <span className="text-white font-medium">Union County | Pickup & Delivery Available</span>
+              <span className="text-white font-medium">Union County | Shop Drop-Off Or Mail-In</span>
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -148,14 +148,14 @@ const Waxhaw = () => {
 
             <div className="bg-emerald-800/50 rounded-xl p-6 mb-6">
               <p className="text-lg text-emerald-100 mb-4">
-                <strong>Waxhaw Community:</strong> Waxhaw sits south of our Charlotte shop, in southern Union County near the Mecklenburg line. It is a largely residential community, and at that distance a round trip to Charlotte is a real errand, which is why pickup and delivery is the practical route here: family laptops, desktops, gaming PCs, and the tablets and phones that go with them, collected and returned rather than driven in.
+                <strong>Waxhaw Community:</strong> Waxhaw sits south of our Charlotte shop, in southern Union County near the Mecklenburg line. It is a largely residential community, and at that distance a round trip to Charlotte is a real errand. KorTech does not collect devices, so Waxhaw households usually either combine a drop-off with a trip they are already making, or ship the device to us instead: family laptops, desktops, gaming PCs, and the tablets and phones that go with them.
               </p>
             </div>
 
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               A slow laptop, a desktop that will not boot, a gaming rig that shuts off mid-game, a cracked
               phone screen. Send several at once if that is easier. We quote each item after diagnosis, and
-              arrange pickup and delivery so a Waxhaw household never makes the trip to Charlotte twice.
+              explain which option suits each device, whether that is a shop drop-off or shipping it to us.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -188,7 +188,7 @@ const Waxhaw = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Pickup & Delivery</span>
+                <span>Drop-Off Or Mail-In</span>
               </div>
             </div>
           </div>
@@ -242,8 +242,8 @@ const Waxhaw = () => {
               <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Truck className="h-8 w-8 text-emerald-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">We Come to You</h3>
-              <p className="text-slate-600">Given the distance from Charlotte, pickup and delivery is usually the sensible route for Waxhaw. Drop-off is still welcome if you prefer</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Drop Off Or Ship</h3>
+              <p className="text-slate-600">Given the distance from Charlotte, many Waxhaw customers ship the device to us using a paid shipping label. Drop-off at our Charlotte shop is welcome too</p>
             </div>
 
             <div className="text-center">
@@ -330,7 +330,7 @@ const Waxhaw = () => {
               <Clock className="h-6 w-6 text-emerald-300" />
               <div className="text-left">
                 <p className="font-bold">Hours: Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
-                <p className="text-emerald-200">Pickup and delivery covers Waxhaw and southern Union County</p>
+                <p className="text-emerald-200">Waxhaw and southern Union County: drop off at our Charlotte shop or ship to us</p>
               </div>
             </div>
           </div>

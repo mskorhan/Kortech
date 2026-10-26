@@ -61,7 +61,7 @@ const Monroe = () => {
     },
     {
       question: "Is it worth driving from Monroe to your Charlotte shop, or should we arrange pickup?",
-      answer: "Monroe sits southeast of our Charlotte shop along the US-74 corridor, so if someone is already heading toward Charlotte, dropping the machine off is straightforward. If nobody can make the trip, ask about pickup and delivery. We are at 1721 Sardis Rd N, Suite 7A, Charlotte, and open Mon-Fri 9AM-6PM and Sat 11AM-4PM."
+      answer: "Monroe sits southeast of our Charlotte shop along the US-74 corridor, so if someone is already heading toward Charlotte, dropping the machine off is straightforward. If nobody can make the trip, you can ship the device to us using a paid shipping label at your own expense. We are at 1721 Sardis Rd N, Suite 7A, Charlotte, and open Mon-Fri 9AM-6PM and Sat 11AM-4PM."
     },
     {
       question: "How long will our machine be out of service?",
@@ -74,7 +74,7 @@ const Monroe = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Monroe, NC",
-      "description": "Business IT support, workstation repair, and data recovery for Monroe, NC, the Union County seat. Work is performed at the KorTech Service shop in Charlotte, reachable from Monroe along the US-74 corridor, with pickup and delivery available.",
+      "description": "Business IT support, workstation repair, and data recovery for Monroe, NC, the Union County seat. Work is performed at the KorTech Service shop in Charlotte, reachable from Monroe along the US-74 corridor, with shop drop-off or paid mail-in.",
       "url": "https://www.kortechservice.com/monroe-computer-repair/",
       "areaServed": [
         {
@@ -155,7 +155,7 @@ const Monroe = () => {
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               When a workstation goes down in a Monroe office or a drive stops mounting, the useful questions are
               what failed, what is recoverable, and how long you are without the machine. We diagnose first and
-              quote before the work starts, whether you drop off in Charlotte or ask about pickup and delivery.
+              quote before the work starts, whether you drop off in Charlotte or ship the device to us.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -188,7 +188,7 @@ const Monroe = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Pickup & Delivery</span>
+                <span>Drop-Off Or Mail-In</span>
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@ const Monroe = () => {
                 <Truck className="h-8 w-8 text-teal-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">Two Ways In</h3>
-              <p className="text-slate-600">Drop off at the Charlotte shop if US-74 already fits your route, or ask about pickup and delivery when nobody can spare the trip</p>
+              <p className="text-slate-600">Drop off at the Charlotte shop if US-74 already fits your route, or ship the device to us when nobody can spare the trip</p>
             </div>
 
             <div className="text-center">
@@ -330,7 +330,7 @@ const Monroe = () => {
               <Clock className="h-6 w-6 text-teal-300" />
               <div className="text-left">
                 <p className="font-bold">Hours: Mon-Fri 9AM-6PM, Sat 11AM-4PM</p>
-                <p className="text-teal-200">Ask about pickup and delivery if the drive does not fit your day</p>
+                <p className="text-teal-200">Ship your device to us if the drive does not fit your day</p>
               </div>
             </div>
           </div>

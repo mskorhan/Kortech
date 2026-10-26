@@ -64,8 +64,8 @@ const Charlotte = () => {
       answer: "Computer repair costs in Charlotte vary based on the issue. We provide diagnostics with a $75-$150 fee, waived when you proceed with hardware repair, and transparent pricing before any work begins."
     },
     {
-      question: "Do you offer pickup and delivery in Charlotte?",
-      answer: "Yes, we offer pickup and delivery services throughout Charlotte for your convenience. Contact us to schedule pickup of your device."
+      question: "Does KorTech pick up or deliver devices in Charlotte?",
+      answer: "No. KorTech does not collect or deliver devices. Customers are welcome to drop their device off at our Charlotte shop at 1721 Sardis Rd N, Suite 7A, and if you cannot visit us in person you can ship it to us using a paid shipping label at your own expense."
     }
   ];
 

@@ -74,7 +74,7 @@ const Stallings = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Stallings, NC",
-      "description": "Everyday computer, phone, and tablet repair for Stallings, NC, a Union County town on the Matthews line along US-74. Screen and battery replacement, virus removal, tune-ups, and data recovery, handled at the KorTech Service shop in Charlotte with drop-off or pickup and delivery.",
+      "description": "Everyday computer, phone, and tablet repair for Stallings, NC, a Union County town on the Matthews line along US-74. Screen and battery replacement, virus removal, tune-ups, and data recovery, handled at the KorTech Service shop in Charlotte with shop drop-off or paid mail-in.",
       "url": "https://www.kortechservice.com/stallings-computer-repair/",
       "areaServed": [
         {
@@ -155,7 +155,7 @@ const Stallings = () => {
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               Cracked screens, batteries that no longer last, virus and pop-up cleanups, and machines that have
               slowed to a crawl. Call or text before you set off, bring the charger, and we will diagnose it
-              and quote before any work starts. Pickup and delivery is there if a trip does not suit you.
+              and quote before any work starts. You can ship the device to us if a trip does not suit you.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -188,7 +188,7 @@ const Stallings = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Pickup & Delivery</span>
+                <span>Drop-Off Or Mail-In</span>
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@ const Stallings = () => {
                 <Truck className="h-8 w-8 text-sky-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">A Short Trip Either Way</h3>
-              <p className="text-slate-600">Drop off during opening hours and collect when it is done. Pickup and delivery stays available if a trip does not suit you</p>
+              <p className="text-slate-600">Drop off during opening hours and collect when it is done. You can also ship the device to us if a trip does not suit you</p>
             </div>
 
             <div className="text-center">

@@ -52,11 +52,11 @@ const Matthews = () => {
   const faqs = [
     {
       question: "Do you provide computer repair services in Matthews, NC?",
-      answer: "Yes, we provide comprehensive computer repair services to Matthews, NC residents. We're located nearby in Charlotte and serve the entire Matthews area with pickup and delivery available."
+      answer: "Yes, we provide comprehensive computer repair services to Matthews, NC residents. We're located nearby in Charlotte, and Matthews customers are welcome to drop their device off at our shop or ship it to us at their own expense."
     },
     {
       question: "How close are you to Matthews?",
-      answer: "Our Charlotte location is just minutes from Matthews, making us easily accessible for all Matthews residents. We also offer pickup and delivery services throughout Matthews."
+      answer: "Our Charlotte location is just minutes from Matthews, making us easily accessible for all Matthews residents. Bring your device to the shop during opening hours, or ship it to us if that is easier."
     },
     {
       question: "What computer brands do you repair in Matthews?",
@@ -154,7 +154,7 @@ const Matthews = () => {
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               Professional computer repair services serving Matthews, North Carolina. Expert Mac & PC repair, 
               data recovery, and IT support for Matthews residents and businesses. Conveniently located 
-              minutes from Matthews with pickup and delivery available.
+              minutes from Matthews. Drop your device off at the shop, or ship it to us.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -187,7 +187,7 @@ const Matthews = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Pickup & Delivery</span>
+                <span>Drop-Off Or Mail-In</span>
               </div>
             </div>
           </div>
@@ -242,7 +242,7 @@ const Matthews = () => {
                 <MapPin className="h-8 w-8 text-green-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">Close to Matthews</h3>
-              <p className="text-slate-600">Conveniently located minutes from Matthews with pickup and delivery services available</p>
+              <p className="text-slate-600">Conveniently located minutes from Matthews - drop off at the shop or ship your device to us</p>
             </div>
 
             <div className="text-center">
@@ -308,7 +308,7 @@ const Matthews = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="KorTech Service location map for Matthews NC residents - Computer repair pickup delivery service available"
+              title="KorTech Service location map for Matthews NC residents - Computer repair shop drop-off location"
             />
           </div>
         </div>
@@ -349,7 +349,7 @@ const Matthews = () => {
               <div className="text-left">
                 <p className="font-bold">KorTech Service</p>
                 <p className="text-green-200">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</p>
-                <p className="text-green-200">Minutes from Matthews - Pickup & Delivery Available</p>
+                <p className="text-green-200">Minutes from Matthews - Drop Off Or Ship Your Device</p>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-4">
