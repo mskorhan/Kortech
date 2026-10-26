@@ -219,3 +219,66 @@ review.
 
 *Last updated 2026-10-26 (warranty policy added). Related: `dns-and-tls-investigation-2026-10-26.md`,
 `owner-confirmation-table-2026-10-22.md`.*
+
+---
+
+## Running the visual / responsive QA harness
+
+`npm run build` validates HTML and content claims. It validates **no layout at
+all** — the navigation bug fixed on 2026-10-26 (a nav 148px wider than its
+container, crushing "Mail-In Repair Form" to 72px) shipped through a green
+build. `scripts/visual-qa.mjs` checks rendered **geometry**.
+
+```bash
+# 1. build, then serve the built output
+npm run build
+npx vite preview --port 4319 --strictPort
+
+# 2. in another terminal
+npm run test:visual              # all 58 pages x 21 widths (~1200 checks)
+npm run test:visual -- --quick   # 11 key pages x 5 widths, for a fast loop
+npm run test:visual -- --shots   # also write screenshots
+npm run test:visual:prod         # against live production
+```
+
+Exit code is non-zero on any failure; details land in `visual-qa-report.json`.
+
+**What it asserts, per page per width**
+
+- no horizontal overflow — measured by *actually scrolling* the page, not by
+  `scrollWidth > clientWidth`, which false-positives on the scrollbar gutter
+- exactly ONE of {desktop nav, hamburger} is visible — never zero (1024–1279px
+  previously rendered **neither**), never both
+- every header item sits inside the header box and inside the viewport
+- no nav label has wrapped (counts the text's own client rects)
+- the Mail-In Repair Form link is present, inside the header, unwrapped, and at
+  least 120px wide
+- dropdowns open inside the viewport; Escape closes and restores focus
+- the mobile menu opens/closes, contains the mail-in link, and does not leave
+  the page scroll-locked when the viewport is widened past the breakpoint
+- Tab reaches the mail-in link; focus indicators are visible
+- mail-in form fields are in-viewport and every field has an accessible label
+- touch targets ≥ 24×24 CSS px (WCAG 2.2 AA 2.5.8; 44px is AAA)
+
+**It is kept out of the `build` chain on purpose** — it needs a running server.
+
+**Zoom is covered by equivalent widths.** Browser zoom shrinks the CSS
+viewport: 1920px @150% is 1280 CSS px. The width list includes 910, 960, 1092,
+1280 and 1536 for exactly this reason, and the run prints the mapping.
+
+**Determinism:** consent is pre-set to `declined` (never "accept"), analytics
+hosts are blocked at the network layer so a sweep cannot inject pageviews into
+GA4, and `prefers-reduced-motion` is forced.
+
+**Validate the harness itself before trusting a pass.** Running it against the
+pre-fix build produced 100 failures naming every real defect
+(`mail-link-crushed w=72px`, `nav-dead-zone`, `nav-item-outside`). A harness
+that only ever reports zero is a test that passes for the wrong reason.
+
+### The `nav:` breakpoint
+
+`tailwind.config.js` defines `nav: '1180px'` as the single source of truth for
+the header's desktop/mobile switch. The desktop nav, the hamburger button and
+the mobile panel **must all key off it**. They previously disagreed (`xl:flex`
+vs `lg:hidden`), which is what produced the no-navigation dead zone.
+`visual-qa.mjs` hard-codes 1180 so that changing one without the other fails.

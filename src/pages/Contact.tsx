@@ -198,7 +198,11 @@ const Contact = () => {
                   <method.icon className={`h-10 w-10 text-${method.color}-600`} />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-800 mb-2">{method.title}</h3>
-                <p className={`text-xl text-${method.color}-600 font-semibold mb-2`}>{method.value}</p>
+                {/* `info@kortechservice.com` has no break opportunity, so at the
+                    md:grid-cols-3 breakpoint it rendered 230px wide inside a
+                    146px column and pushed the page into horizontal scroll at
+                    768-820px. break-words lets it wrap inside its card. */}
+                <p className={`text-xl text-${method.color}-600 font-semibold mb-2 break-words`}>{method.value}</p>
                 <p className="text-slate-600 font-light">{method.description}</p>
               </a>
             ))}

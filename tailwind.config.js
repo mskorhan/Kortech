@@ -14,6 +14,16 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        // Single source of truth for the header's desktop/mobile switch.
+        // The desktop nav needs ~1024px for its links plus ~150px for the
+        // compact CTAs; below this the hamburger takes over. The desktop nav,
+        // the hamburger button AND the mobile panel must all key off this one
+        // name - when they disagreed (xl: vs lg:) widths 1024-1279 rendered
+        // NO navigation at all. See scripts/visual-qa.mjs, which asserts that
+        // exactly one of the two is visible at every tested width.
+        nav: '1180px',
+      },
       colors: {
         'brand-primary': '#0077CC',
         'brand-dark': '#071930',
