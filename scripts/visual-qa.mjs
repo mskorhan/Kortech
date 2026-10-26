@@ -38,7 +38,50 @@
  */
 import { chromium } from 'playwright';
 import { mkdirSync, writeFileSync } from 'node:fs';
+import { readFile, stat } from 'node:fs/promises';
+import { createServer } from 'node:http';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+/**
+ * Serve dist/ ourselves when no --base was given.
+ *
+ * This used to require a separately-started preview server on port 4319. That
+ * is an invisible prerequisite: CI ran the sweep with nothing listening and
+ * got ERR_CONNECTION_REFUSED, which looks identical to "the site is broken".
+ * Serving dist/ in-process makes the default mode self-contained, so the
+ * command cannot pass or fail for reasons unrelated to the pages.
+ */
+async function serveDist(distDir) {
+  const types = {
+    '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css',
+    '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.json': 'application/json',
+    '.ico': 'image/x-icon', '.xml': 'application/xml', '.txt': 'text/plain',
+    '.woff': 'font/woff', '.woff2': 'font/woff2', '.avif': 'image/avif',
+  };
+  const server = createServer(async (req, res) => {
+    try {
+      const rel = decodeURIComponent((req.url || '/').split('?')[0]);
+      let file = path.join(distDir, rel);
+      try {
+        if ((await stat(file)).isDirectory()) file = path.join(file, 'index.html');
+      } catch {
+        file = path.join(distDir, '404.html');
+      }
+      const body = await readFile(file);
+      res.writeHead(200, { 'Content-Type': types[path.extname(file)] ?? 'application/octet-stream' });
+      res.end(body);
+    } catch {
+      res.writeHead(404, { 'Content-Type': 'text/html' });
+      res.end('not found');
+    }
+  });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  return { server, origin: `http://127.0.0.1:${server.address().port}` };
+}
 
 const args = process.argv.slice(2);
 const arg = (name, dflt) => {
@@ -47,7 +90,11 @@ const arg = (name, dflt) => {
 };
 const has = (name) => args.includes(`--${name}`);
 
-const BASE = (arg('base', 'http://localhost:4319')).replace(/\/$/, '');
+// An explicit --base targets a running site (e.g. production). With no
+// --base we serve dist/ in-process and point BASE at that, so the default
+// mode needs no external server. Assigned once in run(), before first use.
+const EXPLICIT_BASE = arg('base', null);
+let BASE = EXPLICIT_BASE ? EXPLICIT_BASE.replace(/\/$/, '') : '';
 const QUICK = has('quick');
 const SHOTS = has('shots');
 const SHOT_DIR = arg('shot-dir', 'visual-qa-shots');
@@ -57,8 +104,14 @@ const SHOT_DIR = arg('shot-dir', 'visual-qa-shots');
 // is exactly the regression that caused the dead zone.
 const NAV_BP = 1180;
 
+// --quick is what CI runs on every PR, so it MUST include the nav breakpoint
+// and its neighbours. Without them the 1024-1279px no-navigation dead zone
+// (the worst defect PR #36 found) could reappear and a PR would still pass:
+// 1024 alone was inside that dead zone and 1280 alone was outside it, so
+// neither width would have caught it. 1024 is kept because it was the old
+// broken boundary, and 1179/1180/1181 pin the switch itself.
 const WIDTHS = QUICK
-  ? [375, 768, 1024, 1280, 1440]
+  ? [375, 768, 1024, NAV_BP - 1, NAV_BP, NAV_BP + 1, 1280, 1440]
   : [
       320, 375, 390, 430, 768, 820,
       910, 960, // == 1366@150%, 1920@200%
@@ -254,6 +307,10 @@ const PROBE = ({ navBp }) => {
 };
 
 async function run() {
+  // Start the built-in server first: every BASE consumer below runs after this.
+  const local = EXPLICIT_BASE ? null : await serveDist(path.resolve(ROOT_DIR, 'dist'));
+  if (local) BASE = local.origin;
+
   const paths = QUICK ? QUICK_PAGES : await getSitemapPaths();
   console.log(`visual-qa: ${paths.length} page(s) x ${WIDTHS.length} width(s) against ${BASE}\n`);
   if (SHOTS) mkdirSync(SHOT_DIR, { recursive: true });
@@ -454,18 +511,64 @@ async function run() {
   await inter('keyboard: focus is visible on nav items', async () => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`${BASE}/`, { waitUntil: 'domcontentloaded' });
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    const ring = await page.evaluate(() => {
-      const el = document.activeElement;
-      if (!el) return null;
+
+    // Tab a fixed number of times and inspect whatever lands is NOT reliable:
+    // the second Tab can land on BODY (outlineStyle "none", outlineWidth
+    // "3px" - the UA default on a non-focusable element), so the test read a
+    // real element's ring on one machine and BODY's on another. It passed
+    // locally and failed on CI for that reason alone, which is a test defect,
+    // not a site defect.
+    //
+    // Tab until focus is actually inside the header nav, then assert on THAT.
+    // The ring is defined with `focus-visible:` (see FOCUS_RING in
+    // Navbar.tsx). A programmatic el.focus() does NOT match :focus-visible,
+    // so reading styles after .focus() measures the UNFOCUSED element and the
+    // check passes even with the ring deleted - verified by stripping
+    // FOCUS_RING and watching it still pass. It must be driven by a real key
+    // press, and compared against the same element's resting style.
+    //
+    // The navbar is a top-level <nav>; there is no <header> element.
+    const target = page.locator('nav a').filter({ hasText: /\S/ }).first();
+    if (await target.count() === 0) return 'no visible nav links';
+
+    const before = await target.evaluate((el) => {
       const s = getComputedStyle(el);
-      return { outline: s.outlineStyle, width: s.outlineWidth, shadow: s.boxShadow };
+      return { outline: s.outlineStyle, width: s.outlineWidth,
+               color: s.outlineColor, shadow: s.boxShadow };
     });
-    if (!ring) return 'no active element';
-    const visible = (ring.outline !== 'none' && parseFloat(ring.width) > 0)
-      || (ring.shadow && ring.shadow !== 'none');
-    return visible ? null : `no visible focus indicator (${JSON.stringify(ring)})`;
+
+    // Tab from the document start until this element is the active one, so
+    // the browser sets :focus-visible exactly as it would for a real user.
+    await page.evaluate(() => document.body.focus());
+    let focused = false;
+    for (let i = 0; i < 30 && !focused; i++) {
+      await page.keyboard.press('Tab');
+      focused = await target.evaluate((el) => document.activeElement === el);
+    }
+    if (!focused) return 'could not reach a nav link with Tab within 30 presses';
+
+    const after = await target.evaluate((el) => {
+      const s = getComputedStyle(el);
+      return { outline: s.outlineStyle, width: s.outlineWidth,
+               color: s.outlineColor, shadow: s.boxShadow };
+    });
+
+    // Something must CHANGE on keyboard focus, and it must be a real
+    // indicator. Comparing against `before` is what makes deleting the ring
+    // fail: an inherited shadow present in both states no longer counts.
+    // A TRANSPARENT outline is not an indicator. With the ring classes
+    // removed the browser still reports `solid 2px`, but with
+    // outline-color rgba(0,0,0,0) - invisible to a sighted keyboard user.
+    // Treating that as a pass is what let a stripped ring go undetected.
+    const transparent = (c) => /^(transparent$|rgba\(.*,\s*0\s*\)$)/.test(c || '');
+    const gainedOutline = after.outline !== 'none' && parseFloat(after.width) > 0
+      && !transparent(after.color)
+      && (before.outline === 'none' || after.outline !== before.outline
+          || after.width !== before.width || after.color !== before.color);
+    const gainedShadow = !!after.shadow && after.shadow !== 'none' && after.shadow !== before.shadow;
+    return (gainedOutline || gainedShadow)
+      ? null
+      : `no visible focus indicator on keyboard focus (before=${JSON.stringify(before)} after=${JSON.stringify(after)})`;
   });
 
   await inter('mail-in form: fields and submit are inside the viewport (390px)', async () => {
@@ -509,6 +612,7 @@ async function run() {
   });
 
   await browser.close();
+  if (local) local.server.close();
 
   // ---------------------------------------------------------------- report
   const byKind = failures.reduce((m, f) => ((m[f.kind] = (m[f.kind] || 0) + 1), m), {});

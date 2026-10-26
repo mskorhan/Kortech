@@ -21,6 +21,12 @@
     "validate-routing": "node scripts/validate-routing.mjs",
     "verify-production": "node scripts/verify-production.mjs",
     "test:visual": "node scripts/visual-qa.mjs",
+    "test:visual:quick": "node scripts/visual-qa.mjs --quick",
+    "test:forms": "node scripts/form-qa.mjs",
+    "test:forms:prod": "node scripts/form-qa.mjs --base=https://www.kortechservice.com",
+    "verify-policies": "node scripts/verify-business-policies.mjs",
+    "verify-policies:prod": "node scripts/verify-business-policies.mjs --base=https://www.kortechservice.com",
+    "test:worker": "npm --prefix worker test",
     "test:visual:prod": "node scripts/visual-qa.mjs --base=https://www.kortechservice.com"
   },
   "dependencies": {

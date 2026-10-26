@@ -1,0 +1,100 @@
+name: Production monitor
+
+# Checks the LIVE site, which PR checks cannot do. PR checks validate dist/
+# before upload; this catches what happens after: a partial FTP deploy that
+# leaves production serving a mix of two builds, a page that stops responding,
+# or a business-policy claim reintroduced by any route other than this repo.
+#
+# Weekly rather than daily, on purpose. Nothing here changes automatically
+# between deploys, a deploy already runs the full build chain, and a noisy
+# schedule trains people to ignore the failure mail. The repo is public so the
+# minutes are free, but attention is not.
+on:
+  schedule:
+    # Mondays 11:00 UTC (07:00 America/New_York in EDT, 06:00 in EST).
+    - cron: '0 11 * * 1'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Why this run was requested
+        required: false
+        default: manual
+
+permissions:
+  contents: read
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      # Reachability, canonicals, sitemap and SEO tags on the live site.
+      - name: Verify production pages
+        run: npm run verify-production
+
+      # The owner-confirmed policies, asserted against live HTML rather than
+      # dist/. This is the only check that would catch a policy claim
+      # reappearing in production without a commit.
+      - name: Verify business policies (live)
+        run: npm run verify-policies:prod
+
+      # Full 21-width sweep, including every zoom-equivalent width. Slow
+      # (~3m20s locally), which is why PRs run --quick and this runs weekly.
+      - name: Navigation and responsive sweep (live, full)
+        run: npm run test:visual:prod
+
+      # Submissions are intercepted and aborted; nothing is delivered to
+      # info@kortechservice.com. See the safety net in scripts/form-qa.mjs.
+      - name: Form behaviour tests (live)
+        run: npm run test:forms:prod
+
+      # The certificate the browser actually gets. The apex and www names
+      # validate today; mail./autodiscover./ftp. do not, and that is a known
+      # open item with Bluehost rather than something this repo can fix - so
+      # only the two customer-facing names are asserted here.
+      - name: TLS hostname validation (apex and www)
+        run: |
+          set -e
+          for h in kortechservice.com www.kortechservice.com; do
+            echo "--- $h"
+            out=$(echo | openssl s_client -connect "$h:443" -servername "$h" \
+                    -verify_hostname "$h" 2>&1 | grep -m1 "Verify return code" || true)
+            echo "$out"
+            case "$out" in
+              *"Verify return code: 0"*) ;;
+              *) echo "::error::$h failed TLS hostname validation: $out"; exit 1 ;;
+            esac
+          done
+          # Warn well before expiry rather than failing on the day.
+          end=$(echo | openssl s_client -connect www.kortechservice.com:443 \
+                  -servername www.kortechservice.com 2>/dev/null \
+                | openssl x509 -noout -enddate | cut -d= -f2)
+          echo "certificate expires: $end"
+          if ! openssl s_client -connect www.kortechservice.com:443 \
+                 -servername www.kortechservice.com 2>/dev/null </dev/null \
+               | openssl x509 -noout -checkend 1209600 >/dev/null; then
+            echo "::warning::certificate for www.kortechservice.com expires within 14 days ($end)"
+          fi
+
+      - name: Upload reports on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-monitor-reports
+          path: visual-qa-report.json
+          if-no-files-found: ignore
+          retention-days: 14
