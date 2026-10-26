@@ -328,7 +328,7 @@ const LaptopScreenRepairGuideCharlotte = () => {
               <li><strong>Parts ordering:</strong> If the screen isn't in stock, it may need to be ordered</li>
               <li><strong>Repair process:</strong> Typically takes 1-2 hours of actual work time</li>
               <li><strong>Testing:</strong> The repaired laptop is tested to ensure everything works properly</li>
-              <li><strong>Pickup/delivery:</strong> Many Charlotte shops offer delivery options within the metro area</li>
+              <li><strong>How you get it there:</strong> Check whether a shop expects in-person drop-off or accepts mail-in, and who pays the shipping</li>
             </ol>
             
             <p>

@@ -61,7 +61,7 @@ const Weddington = () => {
     },
     {
       question: "Can I mail the laptop in, or do you have to come out?",
-      answer: "Both work. A laptop is easy to send or drop at our Charlotte shop, and Weddington sits south of us, so drop-off is straightforward if you are already heading that way. For a desktop, or if you would rather not handle it at all, ask about pickup and delivery instead."
+      answer: "Both work. A laptop is easy to send or drop at our Charlotte shop, and Weddington sits south of us, so drop-off is straightforward if you are already heading that way. For a desktop, shipping it to us with a paid shipping label is often the easier route."
     },
     {
       question: "Do you set up a new home-office machine, not just repair a broken one?",
@@ -74,7 +74,7 @@ const Weddington = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Weddington, NC",
-      "description": "Home-office computer repair, new machine setup, and Wi-Fi coverage and networking help for Weddington, NC, in Union County south of Charlotte. Work is done at the KorTech Service shop in Charlotte, with mail-in, drop-off, and pickup and delivery options.",
+      "description": "Home-office computer repair, new machine setup, and Wi-Fi coverage and networking help for Weddington, NC, in Union County south of Charlotte. Work is done at the KorTech Service shop in Charlotte, with shop drop-off or paid mail-in options.",
       "url": "https://www.kortechservice.com/weddington-computer-repair/",
       "areaServed": [
         {
@@ -118,7 +118,7 @@ const Weddington = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Weddington NC Home Office & Wi-Fi Help | KorTech"
-        description="Home-office computer repair, new setups, and Wi-Fi coverage fixes for Weddington, NC. Mail-in, drop-off, or pickup and delivery. Call 704-246-7642."
+        description="Home-office computer repair, new setups, and Wi-Fi coverage fixes for Weddington, NC. Drop off at our Charlotte shop or ship your device to us. Call 704-246-7642."
         canonicalUrl="/weddington-computer-repair"
         location="Weddington, NC"
         service="Computer Repair"
@@ -155,7 +155,7 @@ const Weddington = () => {
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               Repairs and upgrades for the computer you work from, setup when you replace it, and network
               work when video calls stutter or a back room never gets a solid signal. Mail a laptop in, drop
-              it at the Charlotte shop, or ask about pickup and delivery, whichever costs you less time.
+              it at the Charlotte shop, or ship it to us, whichever costs you less time.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -188,7 +188,7 @@ const Weddington = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Pickup & Delivery</span>
+                <span>Drop-Off Or Mail-In</span>
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@ const Weddington = () => {
                 <Truck className="h-8 w-8 text-indigo-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">Three Ways to Hand It Over</h3>
-              <p className="text-slate-600">Mail a laptop in, drop off at the Charlotte shop if you are heading that way, or ask about pickup and delivery for a desktop</p>
+              <p className="text-slate-600">Mail a laptop in, drop off at the Charlotte shop if you are heading that way, or ship a desktop to us</p>
             </div>
 
             <div className="text-center">

@@ -18,8 +18,11 @@ import { Package } from 'lucide-react';
 //     confirms one.
 //   - any shipping or delivery DATE guarantee, and any transit duration. The
 //     5-10 day estimate covers the repair only.
-//   - shipping cost, who pays postage, prepaid labels, insurance, packaging and
-//     return-shipping terms - all excluded under A4.
+//   - insurance, packaging and detailed return-shipping terms - excluded under A4.
+//     WHO PAYS POSTAGE IS NOW CONFIRMED (2026-10-26): the CUSTOMER pays. KorTech
+//     does NOT provide a label, does not provide a free or prepaid label, and does
+//     NOT collect or deliver devices. Never imply otherwise. The exact label
+//     purchasing/issuance process is still undocumented - do not invent one.
 //   - any in-shop turnaround figure (1-3 days, 3-7 days). Those are a separate,
 //     still-unconfirmed claim cluster (issue #26 Q3) - do not borrow this
 //     estimate for them.

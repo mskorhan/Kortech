@@ -188,7 +188,7 @@ const Ballantyne = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Pickup & Delivery</span>
+                <span>Drop-Off Or Mail-In</span>
               </div>
             </div>
           </div>
@@ -242,8 +242,8 @@ const Ballantyne = () => {
               <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Truck className="h-8 w-8 text-orange-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">We can collect a workstation from an office or home office and return it after the repair, so no one loses a working day to the drive across town</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Drop Off Or Ship</h3>
+              <p className="text-slate-600">Bring a workstation to our Charlotte shop, or ship it to us at your own expense if a drive across town does not fit the working day</p>
             </div>
 
             <div className="text-center">
@@ -323,7 +323,7 @@ const Ballantyne = () => {
               <div className="text-left">
                 <p className="font-bold">KorTech Service</p>
                 <p className="text-orange-200">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</p>
-                <p className="text-orange-200">Pickup & Delivery Available in Ballantyne (via Johnston Rd and Ballantyne Commons Pkwy)</p>
+                <p className="text-orange-200">Ballantyne: Drop Off At Our Charlotte Shop (via Johnston Rd and Ballantyne Commons Pkwy) Or Ship To Us</p>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-4">

@@ -74,7 +74,7 @@ const Pineville = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Computer Repair in Pineville, NC",
-      "description": "Everyday computer, laptop and phone repair for Pineville, NC: screens, batteries, virus removal, tune-ups and data recovery. Work is carried out at the KorTech workshop in south-east Charlotte, with drop-off or pickup and delivery.",
+      "description": "Everyday computer, laptop and phone repair for Pineville, NC: screens, batteries, virus removal, tune-ups and data recovery. Work is carried out at the KorTech workshop in south-east Charlotte, with shop drop-off or paid mail-in.",
       "url": "https://www.kortechservice.com/pineville-computer-repair/",
       "areaServed": [
         {
@@ -155,7 +155,7 @@ const Pineville = () => {
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               Everyday repairs for the machines Pineville households and shops actually use: cracked laptop
               screens, dying batteries, malware and pop-ups, and computers that have slowed to a crawl. Drop
-              the device at our Charlotte workshop while you are out, or ask about pickup and delivery.
+              the device at our Charlotte workshop while you are out, or ship it to us instead.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -188,7 +188,7 @@ const Pineville = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Pickup & Delivery</span>
+                <span>Drop-Off Or Mail-In</span>
               </div>
             </div>
           </div>
@@ -242,8 +242,8 @@ const Pineville = () => {
               <div className="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Truck className="h-8 w-8 text-rose-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Pickup & Delivery</h3>
-              <p className="text-slate-600">If the drive north does not fit your day, we can collect the device and return it once the repair is finished</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Drop Off Or Ship</h3>
+              <p className="text-slate-600">If the drive north does not fit your day, you can ship the device to us using a paid shipping label at your own expense</p>
             </div>
 
             <div className="text-center">
@@ -323,7 +323,7 @@ const Pineville = () => {
               <div className="text-left">
                 <p className="font-bold">KorTech Service</p>
                 <p className="text-rose-200">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</p>
-                <p className="text-rose-200">Pickup & Delivery Available in Pineville (via Pineville-Matthews Rd and I-485)</p>
+                <p className="text-rose-200">Pineville: Drop Off At Our Charlotte Shop (via Pineville-Matthews Rd and I-485) Or Ship To Us</p>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-4">

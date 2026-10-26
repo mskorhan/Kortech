@@ -294,7 +294,7 @@ const UNVERIFIED_CLAIM_PATTERNS = [
   [/\bwalk[- ]?ins?\b/i, 'walk-in availability'],
   [/\bcertified\b/i, 'certification'],
   [/\bclean[- ]?room\b/i, 'cleanroom'],
-  [/\bpickup and delivery\b/i, 'pickup and delivery'],
+  [/\bpickup and delivery\b/i, 'pickup and delivery (owner-confirmed 2026-10-26: NOT offered)'],
   [/\bminutes from\b/i, 'drive-time/landmark'],
   [/\bwe stock\b/i, 'parts stocking'],
   [/\bmile radius\b/i, 'service radius'],
@@ -529,6 +529,88 @@ function checkNoAbsolutePromises() {
   }
 }
 
+
+// --- 11. no device pickup / delivery / courier claims ---------------------
+// Owner-confirmed policy (2026-10-26): KorTech does NOT offer device pickup,
+// delivery, local collection, courier collection or return delivery. Customers
+// bring devices to the Charlotte shop, or ship them AT THEIR OWN EXPENSE.
+// Nationwide mail-in remains available for all supported repair categories.
+//
+// This guard scans the RAW HTML with entities decoded, NOT tag-stripped text.
+// Every other guard here strips tags, which deletes attribute values - and the
+// 2026-10-26 audit found pickup claims inside meta descriptions, og:description
+// and an iframe title attribute. Stripping tags would have missed all of them.
+//
+// What is deliberately ALLOWED, and must keep passing:
+//   - the customer dropping a device off at, or collecting it from, the shop
+//   - the customer arranging their OWN carrier pickup for a mail-in shipment
+//     (/terms/ step: "schedule a pickup or find a drop-off location")
+//   - the customer paying a return-shipping fee
+//   - ONSITE IT SERVICE / technician visits ("we come to you" on
+//     /remote-assistance/, "on-site" on /about/) - we travel to fix systems in
+//     place; we do not transport customer devices. These are different claims.
+// So the patterns below are deliberately specific. Do NOT add a bare
+// /pickup/ or /courier/ pattern: it would flag the legitimate cases above.
+const PICKUP_CLAIM_PATTERNS = [
+  [/pickup[\s-]*(?:&|and|\/)[\s-]*(?:delivery|drop-?off|return)/i, 'pickup-and-delivery service'],
+  // bare juxtaposition, no connector: 'computer repair pickup delivery service
+  // available' was the live Matthews iframe title attribute on 2026-10-26.
+  [/pickup\s+delivery/i, 'pickup delivery (no connector)'],
+  [/(?:we|kortech)(?:'ll| will| can)?\s+(?:also\s+)?(?:pick\s*up|collect)\s+(?:your|the|several|a)\s+(?:device|machine|computer|laptop|desktop|workstation|equipment|household)/i, 'we collect your device'],
+  [/(?:we|kortech)(?:'ll| will| can)?\s+deliver\s+(?:your|the)\s+(?:device|machine|computer|laptop)/i, 'we deliver your device'],
+  [/courier\s+(?:pickup|collection)\s+service/i, 'courier collection service'],
+  [/(?:free|complimentary|prepaid|pre-paid|no[\s-]cost)\s+(?:return\s+)?(?:shipping|shipping\s+label|label|postage)/i, 'free or prepaid shipping'],
+  [/we\s+(?:provide|supply|send|issue|include)\s+(?:a\s+|the\s+)?(?:return\s+)?shipping\s+label/i, 'KorTech-provided shipping label'],
+  [/local\s+(?:pickup|delivery|collection)\s+(?:service|available|option)/i, 'local pickup or delivery'],
+  [/door[\s-]to[\s-]door/i, 'door-to-door service'],
+  [/collected\s+and\s+returned/i, 'device collected and returned'],
+  [/schedule\s+(?:a\s+)?pickup\s+of\s+your\s+device/i, 'scheduled device pickup'],
+  [/(?:pickup|delivery)\s+service\s+(?:is\s+)?available\s+in/i, 'pickup/delivery available in an area'],
+];
+
+// The ONE sanctioned negation. /charlotte-computer-repair/ used to answer
+// "Yes, we offer pickup and delivery", so an explicit "No" is published to
+// correct anything that cached the old answer. It necessarily contains the
+// words, so it is allowlisted by exact phrase.
+const PICKUP_NEGATION_ALLOWLIST = [
+  'Does KorTech pick up or deliver devices in Charlotte?',
+  'KorTech does not collect or deliver devices',
+  'KorTech does not pick up or deliver devices',
+];
+
+function decodeEntities(s) {
+  return s
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ');
+}
+
+function checkNoPickupDeliveryClaims() {
+  for (const file of walkIndexHtml(DIST)) {
+    // RAW html, entities decoded - attribute values included on purpose.
+    let text = decodeEntities(readFileSync(file, 'utf8'));
+    // Remove the sanctioned negation sentences before matching.
+    for (const allowed of PICKUP_NEGATION_ALLOWLIST) {
+      text = text.split(allowed).join(' ');
+    }
+    for (const [re, label] of PICKUP_CLAIM_PATTERNS) {
+      const m = re.exec(text);
+      if (m) {
+        fail(
+          'pickup-delivery-claim',
+          `${path.relative(DIST, file)} claims ${label} (matched ${re} at "${m[0]}") - ` +
+            'owner-confirmed 2026-10-26: KorTech does NOT pick up, collect or deliver ' +
+            'devices. Customers drop off at the Charlotte shop or ship at their own ' +
+            'expense. See seo-intelligence/reports/business-policy-content-rules.md'
+        );
+      }
+    }
+  }
+}
+
 function main() {
   if (!existsSync(DIST)) {
     console.error('validate-routing: dist/ not found - run the build first.');
@@ -544,6 +626,7 @@ function main() {
   checkMacPageClaims();
   checkNoCustomerEmailPromise();
   checkNoAbsolutePromises();
+  checkNoPickupDeliveryClaims();
 
   if (failures.length > 0) {
     console.error('validate-routing: FAILED\n');
@@ -556,7 +639,8 @@ function main() {
       'canonical URLs clean, no staging host, FAQ answers extractable, no self-serving review markup, ' +
       'no new FAQPage markup, Mac page free of the listed claim patterns, ' +
       'no promise of a customer-emailed form copy, '  +
-      'no misleading absolute same-day or turnaround promise.'
+      'no misleading absolute same-day or turnaround promise, ' +
+      'no device pickup/delivery/courier claim.'
   );
 }
 

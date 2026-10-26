@@ -23,63 +23,63 @@ const Locations = () => {
     },
     {
       city: "Matthews",
-      description: "Serving Matthews with pickup and delivery services.",
+      description: "Serving Matthews from our Charlotte shop - drop off or ship your device.",
       services: ["Computer Repair", "Laptop Screen Repair", "Virus Removal", "IT Support"],
       path: "/matthews-computer-repair/",
       image: "/images/locations/service-area-repair"
     },
     {
       city: "Indian Trail",
-      description: "Serving Indian Trail with pickup and delivery services.",
+      description: "Serving Indian Trail from our Charlotte shop - drop off or ship your device.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Network Setup"],
       path: "/indian-trail-computer-repair/",
       image: "/images/locations/service-area-repair"
     },
     {
       city: "Mint Hill",
-      description: "Serving Mint Hill with pickup and delivery services.",
+      description: "Serving Mint Hill from our Charlotte shop - drop off or ship your device.",
       services: ["Computer Repair", "Laptop Screen Repair", "Gaming Console Repair", "IT Support"],
       path: "/mint-hill-computer-repair/",
       image: "/images/locations/service-area-repair"
     },
     {
       city: "Monroe",
-      description: "Serving Monroe with pickup and delivery services.",
+      description: "Serving Monroe from our Charlotte shop - drop off or ship your device.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Virus Removal"],
       path: "/monroe-computer-repair/",
       image: "/images/locations/service-area-repair"
     },
     {
       city: "Ballantyne",
-      description: "Serving Ballantyne with pickup and delivery services.",
+      description: "Serving Ballantyne from our Charlotte shop - drop off or ship your device.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Network Setup"],
       path: "/ballantyne-computer-repair/",
       image: "/images/locations/service-area-repair"
     },
     {
       city: "Pineville",
-      description: "Serving Pineville with pickup and delivery services.",
+      description: "Serving Pineville from our Charlotte shop - drop off or ship your device.",
       services: ["Computer Repair", "Laptop Screen Repair", "Virus Removal", "IT Support"],
       path: "/pineville-computer-repair/",
       image: "/images/locations/service-area-repair"
     },
     {
       city: "Waxhaw",
-      description: "Serving Waxhaw with pickup and delivery services.",
+      description: "Serving Waxhaw from our Charlotte shop - drop off or ship your device.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "IT Support"],
       path: "/waxhaw-computer-repair/",
       image: "/images/locations/service-area-repair"
     },
     {
       city: "Weddington",
-      description: "Serving Weddington with pickup and delivery services.",
+      description: "Serving Weddington from our Charlotte shop - drop off or ship your device.",
       services: ["Computer Repair", "Laptop Screen Repair", "Data Recovery", "Network Setup"],
       path: "/weddington-computer-repair/",
       image: "/images/locations/service-area-repair"
     },
     {
       city: "Stallings",
-      description: "Serving Stallings with pickup and delivery services.",
+      description: "Serving Stallings from our Charlotte shop - drop off or ship your device.",
       services: ["Computer Repair", "Data Recovery", "Smartphone Repair", "Virus Removal"],
       path: "/stallings-computer-repair/",
       image: "/images/locations/service-area-repair"
@@ -290,7 +290,7 @@ const Locations = () => {
               Areas We Serve
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              We provide computer repair and IT support services throughout Charlotte and surrounding areas with convenient pickup and delivery options.
+              We provide computer repair and IT support services for customers throughout Charlotte and the surrounding areas. All repair work is carried out at our Charlotte shop.
             </p>
           </div>
 
@@ -344,8 +344,8 @@ const Locations = () => {
         </div>
       </section>
 
-      {/* Pickup & Delivery */}
-      <section className="py-16 bg-white" id="pickup-delivery">
+      {/* How to get your device to us */}
+      <section className="py-16 bg-white" id="getting-your-device-to-us">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-blue-50 rounded-2xl p-8 border border-blue-100 shadow-lg">
             <div className="text-center mb-8">
@@ -353,34 +353,34 @@ const Locations = () => {
                 <Truck className="h-8 w-8 text-blue-600" />
               </div>
               <h2 className="text-2xl font-bold text-slate-800 mb-2">
-                Pickup & Delivery Service
+                Getting Your Device To Us
               </h2>
               <p className="text-slate-600">
-                Can't make it to our Charlotte location? We offer convenient pickup and delivery!
+                KorTech does not pick up or deliver devices. There are two ways to get your device to us.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white rounded-xl p-6 shadow-md">
                 <h3 className="text-lg font-bold text-slate-800 mb-3 flex items-center">
-                  <Truck className="h-5 w-5 text-blue-600 mr-2" />
-                  Pickup Service
+                  <MapPin className="h-5 w-5 text-blue-600 mr-2" />
+                  Drop Off At Our Shop
                 </h3>
                 <p className="text-slate-600 text-sm mb-4">
-                  We'll pick up your device from your home or business in Charlotte, Matthews, Indian Trail, Mint Hill, Monroe, Ballantyne, Pineville, Waxhaw, Weddington, or Stallings.
+                  Bring your device to 1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270 during opening hours. This is the quickest way to get a diagnosis started.
                 </p>
                 <ul className="space-y-2 text-sm text-slate-600">
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                    <span>Convenient scheduled pickup</span>
+                    <span>Mon-Fri 9AM-6PM, Sat 11AM-4PM</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                    <span>Professional handling</span>
+                    <span>Diagnosis and quote before any work starts</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                    <span>Call/text for availability</span>
+                    <span>Call or text ahead if you have questions</span>
                   </li>
                 </ul>
               </div>
@@ -388,10 +388,10 @@ const Locations = () => {
               <div className="bg-white rounded-xl p-6 shadow-md">
                 <h3 className="text-lg font-bold text-slate-800 mb-3 flex items-center">
                   <Truck className="h-5 w-5 text-blue-600 mr-2" />
-                  Delivery Service
+                  Ship It To Us
                 </h3>
                 <p className="text-slate-600 text-sm mb-4">
-                  Once your repair is complete, we'll deliver your device back to your location.
+                  If you cannot visit in person, you can ship your device to us using a paid shipping label. Shipping costs are the customer's responsibility.
                 </p>
                 <ul className="space-y-2 text-sm text-slate-600">
                   <li className="flex items-center space-x-2">

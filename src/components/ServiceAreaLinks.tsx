@@ -53,8 +53,8 @@ const ServiceAreaLinks = ({ serviceName, areas = DEFAULT_AREAS }: ServiceAreaLin
         </h2>
         <p className="text-slate-600 mb-5">
           All work is carried out at our Charlotte shop on Sardis Rd N. These pages cover what
-          getting here looks like from each area, including drop-off and pickup-and-delivery
-          options.
+          getting here looks like from each area. You are welcome to drop your device off in
+          person, or ship it to us at your own expense.
         </p>
         <ul className="flex flex-wrap gap-3">
           {areas.map((area) => (
