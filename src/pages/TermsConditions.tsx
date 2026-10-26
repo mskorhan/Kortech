@@ -240,7 +240,7 @@ const TermsConditions = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-slate-800 mb-2">Diagnosis</h3>
                   <ul className="list-disc pl-5 space-y-1">
-                    <li>We will begin diagnostics within 48 hours of receiving your device</li>
+                    <li>We make reasonable efforts to begin diagnostics promptly during business hours after receiving your device. The exact start time depends on current workload, so no fixed deadline is guaranteed.</li>
                     <li>Once we have completed the diagnostics, we will call you to discuss the repair and pricing</li>
                     <li>We can only speak to the person responsible for payment to speed up the service</li>
                   </ul>

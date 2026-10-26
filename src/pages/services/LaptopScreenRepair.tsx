@@ -24,7 +24,7 @@ const LaptopRepair = () => {
     },
     {
       question: "How long does laptop repair take at your shop?",
-      answer: "Most laptop repairs are completed within 1-2 business days at our Charlotte location. Walk-in diagnostics are available, and same-day service is often possible for common issues."
+      answer: "Most laptop repairs are completed within an estimated 1-2 business days at our Charlotte location, depending on diagnosis, current workload and parts availability. This is an estimate rather than a guaranteed completion date. Walk-in diagnostics are available, and same-day service is often possible for common issues."
     },
     {
       question: "Do you repair all laptop brands in Charlotte?",

@@ -24,7 +24,7 @@ const SmartTVRepair = () => {
     },
     {
       question: "How long does TV repair take?",
-      answer: "Most TV repairs are completed within 2-5 business days depending on parts availability and complexity of the repair."
+      answer: "Most TV repairs are completed within an estimated 2-5 business days, depending on diagnosis, current workload, parts availability and the complexity of the repair. This is an estimate rather than a guaranteed completion date."
     },
     {
       question: "Do you repair all TV brands?",

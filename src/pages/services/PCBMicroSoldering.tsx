@@ -30,7 +30,7 @@ const PCBMicroSoldering = () => {
     },
     {
       question: "How long does micro-soldering take?",
-      answer: "Micro-soldering repairs typically take 3-7 business days depending on the complexity of the repair and parts availability."
+      answer: "Micro-soldering repairs typically take an estimated 3-7 business days, depending on diagnosis, the complexity of the repair, current workload and parts availability. This is an estimate rather than a guaranteed completion date."
     },
     {
       question: "Is micro-soldering worth it for older devices?",

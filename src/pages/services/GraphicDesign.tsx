@@ -27,7 +27,7 @@ const GraphicDesign = () => {
     },
     {
       question: "How long do graphic design projects take?",
-      answer: "Project timelines vary based on complexity. Simple projects like business cards may take 3-5 business days, while comprehensive branding packages might take 2-4 weeks. We'll provide a specific timeline during our initial consultation."
+      answer: "Project timelines vary based on complexity and current workload. Simple projects like business cards may take an estimated 3-5 business days, while comprehensive branding packages might take an estimated 2-4 weeks. These are estimates rather than guaranteed completion dates. We'll provide a specific timeline during our initial consultation."
     },
     {
       question: "Do you offer rush graphic design services?",

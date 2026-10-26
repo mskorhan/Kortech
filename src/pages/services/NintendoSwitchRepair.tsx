@@ -24,7 +24,7 @@ const NintendoSwitchRepair = () => {
     },
     {
       question: "How long does Nintendo Switch repair take?",
-      answer: "Most Nintendo Switch repairs are completed within 1-3 business days. Simple repairs like Joy-Con replacement may be completed same-day."
+      answer: "Most Nintendo Switch repairs are completed within an estimated 1-3 business days, depending on diagnosis, current workload and parts availability. This is an estimate rather than a guaranteed completion date. Simple repairs like Joy-Con replacement may be completed same-day."
     },
     {
       question: "Do you repair Nintendo Switch Lite and OLED models?",

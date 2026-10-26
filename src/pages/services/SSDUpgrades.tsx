@@ -29,7 +29,7 @@ const SSDUpgrades = () => {
     },
     {
       question: "How long does an SSD upgrade take?",
-      answer: "Most SSD upgrades are completed within 1-2 business days, including data migration and testing to ensure everything works perfectly."
+      answer: "Most SSD upgrades are completed within an estimated 1-2 business days, including data migration and testing. This is an estimate rather than a guaranteed completion date and depends on diagnosis, current workload and parts availability."
     },
     {
       question: "What size SSD should I choose?",

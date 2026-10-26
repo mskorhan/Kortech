@@ -23,7 +23,7 @@ const PS5HDMIRepair = () => {
     },
     {
       question: "How long does PS5 HDMI repair take?",
-      answer: "Most PS5 HDMI repairs are completed within 1-3 business days. Same-day service may be available for urgent repairs depending on our current workload."
+      answer: "Most PS5 HDMI repairs are completed within an estimated 1-3 business days, depending on diagnosis, current workload and parts availability. This is an estimate rather than a guaranteed completion date. Same-day service may be available for urgent repairs depending on our current workload."
     },
     {
       question: "What causes PS5 HDMI port damage?",

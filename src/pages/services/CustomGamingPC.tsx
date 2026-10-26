@@ -19,7 +19,7 @@ const CustomGamingPC = () => {
     },
     {
       question: "How long does it take to build a custom gaming PC?",
-      answer: "Most custom gaming PC builds are completed within 3-5 business days after parts arrive. Complex builds with custom cooling may take up to a week."
+      answer: "Most custom gaming PC builds are completed within an estimated 3-5 business days after parts arrive, depending on current workload and parts availability. This is an estimate rather than a guaranteed completion date. Complex builds with custom cooling may take longer."
     },
     {
       question: "Do you provide warranty on custom gaming PCs?",
