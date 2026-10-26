@@ -29,7 +29,7 @@ const DataRecovery = () => {
     },
     {
       question: "How long does data recovery take?",
-      answer: "Simple software-based recoveries take 1-3 days. Complex hardware recoveries requiring cleanroom work can take 5-10 business days depending on the extent of damage."
+      answer: "Simple software-based recoveries take an estimated 1-3 days. Complex hardware recoveries requiring cleanroom work can take an estimated 5-10 business days, depending on the extent of damage, current workload and parts availability. These are estimates rather than guaranteed completion dates, and are separate from our mail-in repair turnaround."
     },
     {
       question: "What is your success rate for data recovery?",

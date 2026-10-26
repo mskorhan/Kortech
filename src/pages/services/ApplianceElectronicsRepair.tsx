@@ -27,7 +27,7 @@ const ApplianceElectronicsRepair = () => {
     },
     {
       question: "How long does appliance electronics repair take?",
-      answer: "Most appliance electronics repairs are completed within 3-7 business days depending on parts availability and complexity."
+      answer: "Most appliance electronics repairs are completed within an estimated 3-7 business days, depending on diagnosis, current workload, parts availability and complexity. This is an estimate rather than a guaranteed completion date."
     },
     {
       question: "Do you offer warranty on appliance electronics repair?",

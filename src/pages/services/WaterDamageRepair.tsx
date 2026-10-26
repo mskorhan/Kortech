@@ -27,7 +27,7 @@ const WaterDamageRepair = () => {
     },
     {
       question: "How long does water damage repair take?",
-      answer: "Water damage repairs typically take 2-5 business days. We need time for thorough cleaning, drying, and testing to ensure all components function properly."
+      answer: "Water damage repairs typically take an estimated 2-5 business days, depending on diagnosis, current workload and parts availability. This is an estimate rather than a guaranteed completion date, because we need time for thorough cleaning, drying and testing to ensure all components function properly."
     },
     {
       question: "What should I do immediately after water damage?",

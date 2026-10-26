@@ -28,7 +28,7 @@ const BusinessITSupport = () => {
     },
     {
       question: "What are your business IT support response times?",
-      answer: "We offer same-day response for urgent business issues and typically respond to support requests within 2-4 hours during business hours for our local Charlotte area clients."
+      answer: "We aim to respond promptly to support requests during business hours, and we prioritize urgent business issues. Response times are not guaranteed and depend on current workload. Contact KorTech to discuss the response times your business needs."
     },
     {
       question: "Do you support both Windows and Mac business environments?",
