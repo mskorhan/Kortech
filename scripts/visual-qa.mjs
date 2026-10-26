@@ -511,18 +511,64 @@ async function run() {
   await inter('keyboard: focus is visible on nav items', async () => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`${BASE}/`, { waitUntil: 'domcontentloaded' });
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    const ring = await page.evaluate(() => {
-      const el = document.activeElement;
-      if (!el) return null;
+
+    // Tab a fixed number of times and inspect whatever lands is NOT reliable:
+    // the second Tab can land on BODY (outlineStyle "none", outlineWidth
+    // "3px" - the UA default on a non-focusable element), so the test read a
+    // real element's ring on one machine and BODY's on another. It passed
+    // locally and failed on CI for that reason alone, which is a test defect,
+    // not a site defect.
+    //
+    // Tab until focus is actually inside the header nav, then assert on THAT.
+    // The ring is defined with `focus-visible:` (see FOCUS_RING in
+    // Navbar.tsx). A programmatic el.focus() does NOT match :focus-visible,
+    // so reading styles after .focus() measures the UNFOCUSED element and the
+    // check passes even with the ring deleted - verified by stripping
+    // FOCUS_RING and watching it still pass. It must be driven by a real key
+    // press, and compared against the same element's resting style.
+    //
+    // The navbar is a top-level <nav>; there is no <header> element.
+    const target = page.locator('nav a').filter({ hasText: /\S/ }).first();
+    if (await target.count() === 0) return 'no visible nav links';
+
+    const before = await target.evaluate((el) => {
       const s = getComputedStyle(el);
-      return { outline: s.outlineStyle, width: s.outlineWidth, shadow: s.boxShadow };
+      return { outline: s.outlineStyle, width: s.outlineWidth,
+               color: s.outlineColor, shadow: s.boxShadow };
     });
-    if (!ring) return 'no active element';
-    const visible = (ring.outline !== 'none' && parseFloat(ring.width) > 0)
-      || (ring.shadow && ring.shadow !== 'none');
-    return visible ? null : `no visible focus indicator (${JSON.stringify(ring)})`;
+
+    // Tab from the document start until this element is the active one, so
+    // the browser sets :focus-visible exactly as it would for a real user.
+    await page.evaluate(() => document.body.focus());
+    let focused = false;
+    for (let i = 0; i < 30 && !focused; i++) {
+      await page.keyboard.press('Tab');
+      focused = await target.evaluate((el) => document.activeElement === el);
+    }
+    if (!focused) return 'could not reach a nav link with Tab within 30 presses';
+
+    const after = await target.evaluate((el) => {
+      const s = getComputedStyle(el);
+      return { outline: s.outlineStyle, width: s.outlineWidth,
+               color: s.outlineColor, shadow: s.boxShadow };
+    });
+
+    // Something must CHANGE on keyboard focus, and it must be a real
+    // indicator. Comparing against `before` is what makes deleting the ring
+    // fail: an inherited shadow present in both states no longer counts.
+    // A TRANSPARENT outline is not an indicator. With the ring classes
+    // removed the browser still reports `solid 2px`, but with
+    // outline-color rgba(0,0,0,0) - invisible to a sighted keyboard user.
+    // Treating that as a pass is what let a stripped ring go undetected.
+    const transparent = (c) => /^(transparent$|rgba\(.*,\s*0\s*\)$)/.test(c || '');
+    const gainedOutline = after.outline !== 'none' && parseFloat(after.width) > 0
+      && !transparent(after.color)
+      && (before.outline === 'none' || after.outline !== before.outline
+          || after.width !== before.width || after.color !== before.color);
+    const gainedShadow = !!after.shadow && after.shadow !== 'none' && after.shadow !== before.shadow;
+    return (gainedOutline || gainedShadow)
+      ? null
+      : `no visible focus indicator on keyboard focus (before=${JSON.stringify(before)} after=${JSON.stringify(after)})`;
   });
 
   await inter('mail-in form: fields and submit are inside the viewport (390px)', async () => {
