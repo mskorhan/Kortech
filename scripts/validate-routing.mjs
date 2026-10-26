@@ -283,7 +283,9 @@ function checkNoCustomerEmailPromise() {
 
 // --- 8. the Mac page must stay free of unconfirmed claims ------------------
 // Every claim on /macbook-repair/ is limited to what the owner confirmed on
-// 2026-10-23 plus the already-approved diagnostic/warranty/address facts. This
+// 2026-10-23 plus the already-approved diagnostic and address facts. (The 14-day
+// warranty was listed here until 2026-10-26, when the owner confirmed KorTech
+// provides NO warranties - see guard 12.) This
 // is a pattern guard, not proof of truth: it catches the known-unconfirmed
 // phrasings, it cannot verify a claim it has no pattern for. The
 // phrases below are unconfirmed as of the 2026-10-22 owner-confirmation table
@@ -611,6 +613,93 @@ function checkNoPickupDeliveryClaims() {
   }
 }
 
+
+// --- 12. no KorTech warranty claims --------------------------------------
+// Owner-confirmed policy (2026-10-26): KorTech Service does NOT provide
+// warranties. The 14-day limited parts warranty that this site advertised
+// until 2026-10-26 does not exist and must never reappear - not as a 30/90
+// day warranty, a one-year or lifetime warranty, a parts-and-labour warranty,
+// "warranty protection", "warranty included", a satisfaction guarantee, a
+// money-back guarantee, a no-fix-no-fee promise or a free re-repair period.
+//
+// Like guard 11 this scans RAW HTML with entities decoded, so meta
+// descriptions, og: tags, JSON-LD and alt/title/aria-label attribute text are
+// all covered. Tag-stripping would delete exactly those.
+//
+// WHAT MUST KEEP PASSING - the patterns are narrow on purpose:
+//   - MANUFACTURER / THIRD-PARTY warranty INFORMATION. The blog buying guides
+//     legitimately say a Samsung SSD has a "5-year warranty", a PSU a
+//     "10-year warranty", that a device is "out of warranty", "under
+//     warranty", or that DIY "voids warranty". That is consumer information
+//     about OTHER companies, not a KorTech promise. So do NOT add a bare
+//     /warranty/ or /\d+-year warranty/ pattern.
+//   - The APPROVED SAME-DAY ELIGIBILITY GUARANTEE. Same-day repairs ARE
+//     guaranteed for eligible services. So do NOT add a bare /guarantee/
+//     pattern - it would also hit the Q3/Q10/Q11 "not guaranteed" negations,
+//     which exist precisely to DENY a guarantee, and "Wi-Fi coverage".
+//   - The Privacy Policy's data-processing lines (service records, parts
+//     suppliers, retention periods).
+//   - Four clauses in the /terms/ signed-acknowledgment block, which LIMIT
+//     liability rather than promise coverage. They are allowlisted by exact
+//     phrase below, so any NEW warranty text on /terms/ still fails.
+const WARRANTY_CLAIM_PATTERNS = [
+  [/\b\d+\s*-?\s*day\s+(?:limited\s+)?warrant/i, 'an N-day warranty'],
+  [/\blimited\s+warrant(?:y|ies)\b/i, 'a limited warranty'],
+  [/\b(?:one|1|two|2|three|3|five|5)\s*-?\s*year\s+warranty\s+on\s+(?:our|all|the|every|repairs|parts|labor|labour|work)/i, 'a multi-year warranty on our work'],
+  [/\blifetime\s+warrant/i, 'a lifetime warranty'],
+  [/\bwarranty\s+protection\b/i, 'warranty protection'],
+  [/\bwarranty\s+included\b/i, 'warranty included'],
+  [/\bwarranty-backed\b/i, 'warranty-backed repairs'],
+  [/\bguaranteed\s+warranty\b/i, 'guaranteed warranty coverage'],
+  [/\bparts\s*(?:&|and)\s*(?:labor|labour|workmanship)\s+warrant/i, 'a parts-and-labor warranty'],
+  [/\bwarrant(?:y|ies)\s+on\s+(?:all\s+)?(?:parts|repairs|labor|labour|workmanship|our\s+work)/i, 'a warranty on parts/repairs/labor'],
+  [/\b(?:we|kortech)\s+(?:provide|offer|include|give|honor)s?\s+[^.<]{0,40}\bwarrant/i, 'that KorTech provides a warranty'],
+  [/\bcomes?\s+with\s+a\s+[^.<]{0,30}\bwarrant/i, 'that the work comes with a warranty'],
+  [/\b(?:do|does)\s+(?:you|kortech)\s+(?:offer|provide|have)\b[^?<]{0,40}\bwarrant/i, 'a "do you offer a warranty" FAQ'],
+  [/\bis\s+there\s+a\s+warranty\b/i, 'an "is there a warranty" FAQ'],
+  [/\bwith\s+warranty\b/i, 'service "with warranty"'],
+  [/\bsatisfaction\s+guarantee/i, 'a satisfaction guarantee'],
+  [/\bmoney\s*-?\s*back\s+guarantee/i, 'a money-back guarantee'],
+  [/\bno\s+fix\W{0,3}no\s+fee\b/i, 'a no-fix-no-fee promise'],
+  [/\bfree\s+re-?repair/i, 'a free re-repair period'],
+  [/\bstand\s+behind\s+(?:the\s+)?(?:parts|repairs|our\s+work)/i, 'that KorTech stands behind the parts/work'],
+  [/\bservice\s+guarantees\b/i, 'service guarantees'],
+];
+
+// Clauses in the /terms/ signed-acknowledgment block. These LIMIT liability
+// (customer-supplied parts, water damage, voided manufacturer warranties)
+// rather than promise coverage, and are pending owner/counsel review. They are
+// matched and removed before scanning so the rest of /terms/ is still checked.
+const WARRANTY_LEGAL_ALLOWLIST = [
+  'may void manufacturer warranties, especially in the case of Apple device repairs',
+  'do not assume any liability or warranty in the event that the manufacturer warranties are voided',
+  'will not include a warranty on parts and labor',
+  'will not include parts and labor warranty of any kind',
+  'the KorTech Service limited warranty does not cover accidental damage',
+];
+
+function checkNoWarrantyClaims() {
+  for (const file of walkIndexHtml(DIST)) {
+    let text = decodeEntities(readFileSync(file, 'utf8'));
+    for (const allowed of WARRANTY_LEGAL_ALLOWLIST) {
+      text = text.split(allowed).join(' ');
+    }
+    for (const [re, label] of WARRANTY_CLAIM_PATTERNS) {
+      const m = re.exec(text);
+      if (m) {
+        fail(
+          'warranty-claim',
+          `${path.relative(DIST, file)} advertises ${label} (matched ${re} at "${m[0]}") - ` +
+            'owner-confirmed 2026-10-26: KorTech does NOT provide warranties. Do not ' +
+            'replace it with another warranty, a satisfaction guarantee or a free-repair ' +
+            'period. Manufacturer warranty INFORMATION is still allowed. ' +
+            'See seo-intelligence/reports/business-policy-content-rules.md'
+        );
+      }
+    }
+  }
+}
+
 function main() {
   if (!existsSync(DIST)) {
     console.error('validate-routing: dist/ not found - run the build first.');
@@ -627,6 +716,7 @@ function main() {
   checkNoCustomerEmailPromise();
   checkNoAbsolutePromises();
   checkNoPickupDeliveryClaims();
+  checkNoWarrantyClaims();
 
   if (failures.length > 0) {
     console.error('validate-routing: FAILED\n');
@@ -640,7 +730,8 @@ function main() {
       'no new FAQPage markup, Mac page free of the listed claim patterns, ' +
       'no promise of a customer-emailed form copy, '  +
       'no misleading absolute same-day or turnaround promise, ' +
-      'no device pickup/delivery/courier claim.'
+      'no device pickup/delivery/courier claim, ' +
+      'no KorTech warranty claim.'
   );
 }
 

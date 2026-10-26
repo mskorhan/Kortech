@@ -234,7 +234,7 @@ const HowToKnowWhenToReplacePhoneBattery = () => {
             </ul>
             
             <p>
-              At KorTech Service in Charlotte, we use high-quality batteries that meet or exceed OEM specifications. Our battery replacements typically take under 1 hour for most phone models, and all work comes with a 14-day limited warranty.
+              At KorTech Service in Charlotte, we use high-quality batteries that meet or exceed OEM specifications. Our battery replacements typically take under 1 hour for most phone models.
             </p>
             
             <h2>Extending Your New Battery's Lifespan</h2>

@@ -29,10 +29,6 @@ const NintendoSwitchRepair = () => {
     {
       question: "Do you repair Nintendo Switch Lite and OLED models?",
       answer: "Yes, we repair all Nintendo Switch models including the original Switch, Switch Lite, and Switch OLED."
-    },
-    {
-      question: "Is there a warranty on Nintendo Switch repairs?",
-      answer: "Yes, we provide a 14-day limited warranty on all parts installed, covering only the parts themselves. This warranty does not include accidental damage, liquid damage, drops, or any similar incidents. The warranty covers only manufacturing defects or faulty parts that fail under normal use conditions."
     }
   ];
 
@@ -130,10 +126,6 @@ const NintendoSwitchRepair = () => {
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   <span>Ask About Same-Day Service</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>14-Day Warranty</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />

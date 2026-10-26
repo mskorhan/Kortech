@@ -39,10 +39,6 @@ const Services = () => {
       answer: "We repair all major computer brands including Apple Mac, Dell, HP, Lenovo, ASUS, Acer, and custom-built PCs. Our technicians are experienced with all operating systems."
     },
     {
-      question: "Do you provide warranty on computer repairs?",
-      answer: "Yes, we provide a 14-day limited warranty on all parts installed, covering only the parts themselves. This warranty does not include accidental damage, liquid damage, drops, or any similar incidents. The warranty covers only manufacturing defects or faulty parts that fail under normal use conditions."
-    },
-    {
       question: "Can you recover data from a crashed computer?",
       answer: "Yes, we specialize in data recovery from failed hard drives, corrupted systems, and damaged computers. Recovery likelihood depends on the type of failure, the drive's physical condition, and whether any prior recovery attempts have been made — we'll give you an honest assessment before you commit to service."
     }
@@ -135,7 +131,7 @@ const Services = () => {
     {
       icon: Smartphone,
       title: "Smartphone Repair",
-      description: "Expert repair services for iPhones and Android smartphones with quality parts and warranties.",
+      description: "Expert repair services for iPhones and Android smartphones with quality parts.",
       features: [
         "Screen & display repair",
         "Battery replacement",
@@ -519,13 +515,16 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Guarantees */}
-      <section className="py-24 bg-slate-50" id="service-guarantees">
+      {/* How we work - renamed from 'Service Guarantees' on 2026-10-26.
+          KorTech provides no warranties, and 'guarantees' framed these four
+          non-warranty facts as promised coverage. No page links to the old
+          anchor, so renaming the id breaks nothing. */}
+      <section className="py-24 bg-slate-50" id="how-we-work">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6 mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold">
               <span className="text-[#071930]">
-                Service Guarantees
+                How We Work
               </span>
             </h2>
             <p className="text-xl text-slate-600 font-light">
@@ -548,7 +547,7 @@ const Services = () => {
               <div className="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Shield className="h-8 w-8 text-[#0099FF]" />
               </div>
-              <h3 className="font-bold text-slate-800 mb-3">14-Day Limited Parts &amp; Workmanship Warranty</h3>
+              <h3 className="font-bold text-slate-800 mb-3">Quality Parts</h3>
               <p className="text-sm text-slate-600 font-light">
                 All work performed at our Charlotte shop with quality parts
               </p>
@@ -645,10 +644,6 @@ const Services = () => {
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
                 <span>Same-Day Service Available on Select Repairs</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>14-Day Limited Warranty</span>
               </div>
             </div>
           </div>

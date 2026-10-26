@@ -35,10 +35,6 @@ const PCBMicroSoldering = () => {
     {
       question: "Is micro-soldering worth it for older devices?",
       answer: "We'll provide an honest assessment of repair costs versus replacement value to help you make the best decision for your specific device and situation."
-    },
-    {
-      question: "Do you offer warranty on micro-soldering repairs?",
-      answer: "Yes, we provide a 14-day limited warranty on all parts installed, covering only the parts themselves. This warranty does not include accidental damage, liquid damage, drops, or any similar incidents. The warranty covers only manufacturing defects or faulty parts that fail under normal use conditions."
     }
   ];
 
@@ -140,10 +136,6 @@ const PCBMicroSoldering = () => {
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   <span>Precision Equipment</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>14-Day Limited Warranty</span>
                 </div>
               </div>
             </div>

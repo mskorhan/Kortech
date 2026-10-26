@@ -33,10 +33,6 @@ const LaptopRepair = () => {
     {
       question: "Can I walk in without an appointment?",
       answer: "Yes! Walk-ins are welcome at our Charlotte location. We provide diagnostics ($75-$150, waived with hardware repair) and can often begin repairs the same day for most laptop issues."
-    },
-    {
-      question: "Do you offer warranty on laptop repairs?",
-      answer: "Yes, we provide a 14-day limited warranty on all parts installed, covering only the parts themselves. This warranty does not include accidental damage, liquid damage, drops, or any similar incidents. The warranty covers only manufacturing defects or faulty parts that fail under normal use conditions."
     }
   ];
 

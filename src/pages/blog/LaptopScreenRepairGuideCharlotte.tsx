@@ -163,7 +163,6 @@ const LaptopScreenRepairGuideCharlotte = () => {
             <ul>
               <li><strong>Quick turnaround:</strong> Many offer same-day service</li>
               <li><strong>Quality parts:</strong> Reputable shops use OEM or high-quality compatible screens</li>
-              <li><strong>Warranty:</strong> Typically 30-90 days on parts and labor</li>
               <li><strong>Expertise:</strong> Technicians experienced with various laptop models</li>
               <li><strong>Additional diagnostics:</strong> Can identify other potential issues</li>
             </ul>
@@ -257,7 +256,7 @@ const LaptopScreenRepairGuideCharlotte = () => {
                 <li>Many local Charlotte repair shops offer student discounts (10-15%) with valid ID</li>
                 <li>Some shops offer discounts if you're willing to use compatible (non-OEM) screens</li>
                 <li>Ask about refurbished screen options for older laptop models</li>
-                <li>Check if your credit card offers extended warranty protection</li>
+                <li>Check whether your credit card provides any extended coverage on purchases</li>
                 <li>For business users, check if your business insurance covers device repairs</li>
               </ul>
             </div>
@@ -332,7 +331,7 @@ const LaptopScreenRepairGuideCharlotte = () => {
             </ol>
             
             <p>
-              When comparing repair shops, ask whether they provide a written warranty on parts and workmanship and review the coverage terms before authorizing repair.
+              When comparing repair shops, ask what each one puts in writing about the parts and the work before authorizing a repair.
             </p>
             
             <h2>Preventing Future Screen Damage</h2>

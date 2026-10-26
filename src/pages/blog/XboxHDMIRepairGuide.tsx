@@ -98,7 +98,7 @@ const XboxHDMIRepairGuide = () => {
                 Quick Summary
               </h2>
               <p className="text-green-700 mb-0">
-                Xbox HDMI port repair typically costs $129-$179 in Charlotte repair shops. Professional repair is recommended for most cases due to the complexity of the repair, which requires micro-soldering skills. DIY attempts often result in further damage. Most repairs can be completed within 1-3 business days with a 30-90 day warranty.
+                Xbox HDMI port repair typically costs $129-$179 in Charlotte repair shops. Professional repair is recommended for most cases due to the complexity of the repair, which requires micro-soldering skills. DIY attempts often result in further damage. Most repairs can be completed within 1-3 business days.
               </p>
             </div>
             
@@ -202,7 +202,6 @@ const XboxHDMIRepairGuide = () => {
             <ul>
               <li><strong>Expertise:</strong> Technicians with micro-soldering skills and proper equipment</li>
               <li><strong>Quality assurance:</strong> Reputable shops use high-quality replacement ports</li>
-              <li><strong>Warranty:</strong> Most Charlotte repair shops offer 30-90 day warranties</li>
               <li><strong>Additional diagnostics:</strong> Technicians can identify other potential issues</li>
               <li><strong>Convenience:</strong> Quick turnaround (typically 1-3 business days)</li>
             </ul>
@@ -280,7 +279,7 @@ const XboxHDMIRepairGuide = () => {
             <ul>
               <li><strong>Experience:</strong> How many Xbox consoles have they repaired?</li>
               <li><strong>Reviews:</strong> Check Google reviews from other Charlotte gamers</li>
-              <li><strong>Warranty:</strong> What guarantee do they offer on their work?</li>
+              <li><strong>Written terms:</strong> Ask what the shop puts in writing about the work performed</li>
               <li><strong>Turnaround time:</strong> How quickly can they complete the repair?</li>
               <li><strong>Price:</strong> Is the cost competitive with other local options?</li>
             </ul>

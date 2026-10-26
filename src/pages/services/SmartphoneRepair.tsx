@@ -27,10 +27,6 @@ const SmartphoneRepair = () => {
       answer: "We repair all major smartphone brands including iPhone, Samsung Galaxy, Google Pixel, OnePlus, LG, and more."
     },
     {
-      question: "Do you offer warranty on smartphone repairs?",
-      answer: "Yes, we provide a 14-day limited warranty on all parts installed, covering only the parts themselves. This warranty does not include accidental damage, liquid damage, drops, or any similar incidents. The warranty covers only manufacturing defects or faulty parts that fail under normal use conditions."
-    },
-    {
       question: "Can you repair water-damaged smartphones?",
       answer: "Yes, we specialize in water damage repair for smartphones. Bring your device in immediately for the best chance of recovery."
     }
@@ -130,10 +126,6 @@ const SmartphoneRepair = () => {
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   <span>Ask About Same-Day Service</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>14-Day Warranty</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />

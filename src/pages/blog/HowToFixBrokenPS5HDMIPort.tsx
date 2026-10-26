@@ -239,7 +239,6 @@ const HowToFixBrokenPS5HDMIPort = () => {
               <li>Complete diagnostic assessment</li>
               <li>HDMI port replacement with high-quality parts</li>
               <li>Full testing to ensure proper functionality</li>
-              <li>14-day warranty on the repair</li>
             </ul>
             
             <p>
@@ -315,7 +314,7 @@ const HowToFixBrokenPS5HDMIPort = () => {
             </p>
             
             <p>
-              If you're in Charlotte, Matthews, Mint Hill, Indian Trail, or surrounding areas and need PS5 HDMI port repair, contact KorTech Service for fast, reliable service with a 14-day limited warranty.
+              If you're in Charlotte, Matthews, Mint Hill, Indian Trail, or surrounding areas and need PS5 HDMI port repair, contact KorTech Service for fast, reliable repair work.
             </p>
           </div>
         </div>
@@ -391,7 +390,7 @@ const HowToFixBrokenPS5HDMIPort = () => {
             Need Professional PS5 Repair in Charlotte?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Our expert technicians provide fast, reliable PS5 HDMI port repair with a 14-day limited warranty. Serving Charlotte, Matthews, Mint Hill, Indian Trail, and surrounding areas.
+            Our expert technicians provide fast, reliable PS5 HDMI port repair. Serving Charlotte, Matthews, Mint Hill, Indian Trail, and surrounding areas.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

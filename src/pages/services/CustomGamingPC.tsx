@@ -22,10 +22,6 @@ const CustomGamingPC = () => {
       answer: "Most custom gaming PC builds are completed within an estimated 3-5 business days after parts arrive, depending on current workload and parts availability. This is an estimate rather than a guaranteed completion date. Complex builds with custom cooling may take longer."
     },
     {
-      question: "Do you provide warranty on custom gaming PCs?",
-      answer: "Yes, we provide a 14-day limited warranty on all parts installed, covering only the parts themselves. This warranty does not include accidental damage, liquid damage, drops, or any similar incidents. The warranty covers only manufacturing defects or faulty parts that fail under normal use conditions."
-    },
-    {
       question: "Can you help me choose the right components?",
       answer: "Absolutely! Our experts will recommend the best components for your gaming needs, budget, and preferred games. We stay current with the latest hardware releases."
     },
@@ -121,10 +117,6 @@ const CustomGamingPC = () => {
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   <span>Component Selection</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>14-Day Warranty</span>
                 </div>
               </div>
             </div>

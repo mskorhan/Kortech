@@ -306,7 +306,7 @@ const Top5SignsSmartTVNeedsRepair = () => {
               <li><strong>Accurate Diagnosis:</strong> Identifying the exact component causing the issue</li>
               <li><strong>Component-Level Repair:</strong> Fixing specific parts rather than replacing entire boards</li>
               <li><strong>Cost Effectiveness:</strong> Often much cheaper than replacement</li>
-              <li><strong>Warranty Protection:</strong> Quality repairs come with service guarantees</li>
+              <li><strong>Quality Parts:</strong> Professional repairs use parts suited to your model</li>
               <li><strong>Environmental Benefits:</strong> Reduces electronic waste</li>
             </ul>
             
