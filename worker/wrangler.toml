@@ -14,10 +14,16 @@ ALLOWED_ORIGIN = "https://www.kortechservice.com"
 # is a deliberate owner step; uncommenting it and redeploying is all that is
 # needed, and the worker is inert without it.
 #
-# This is Cloudflare's own Rate Limiting binding - no extra cost, no
-# third-party service. A KV counter was considered and rejected: it needs a
-# read-then-write per request, and KV is eventually consistent, so a burst of
-# concurrent requests all read the same value before any of them writes.
+# This is Cloudflare's own Rate Limiting binding, so no third-party service is
+# involved. A KV counter was considered and rejected: it needs a read-then-write
+# per request, and KV is eventually consistent, so a burst of concurrent
+# requests all read the same value before any of them writes.
+#
+# COST IS UNVERIFIED - confirm before enabling. Cloudflare's rate-limit binding
+# page states no price, and neither the Workers pricing page nor the Workers
+# limits page mentions this binding at all. So nothing published says it costs
+# extra, and nothing published says it is free. Check the account's own plan and
+# billing page first. It stays commented out until that is a deliberate choice.
 #
 # What this binding promises, stated accurately: Cloudflare documents it as an
 # APPROXIMATE limit. Counts are eventually consistent, are local to each

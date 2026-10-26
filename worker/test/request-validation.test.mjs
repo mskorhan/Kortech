@@ -461,3 +461,25 @@ test('recovery: once the limiter allows again, a real submission succeeds', asyn
   assert.equal(after.status, 200);
   assert.equal(calls.length, 1, 'recovery must not require a redeploy or a cache clear');
 });
+
+// The live CONTACT form, captured the same way on 2026-10-25 from
+// https://www.kortechservice.com/contact/ with window.fetch intercepted. It
+// sends formType plus four fields and, like the mail-in form, NO honeypot key.
+const LIVE_SITE_CONTACT = {
+  formType: 'contact',
+  fullName: 'Test Person',
+  email: 'test@example.com',
+  phone: '704-555-0100',
+  message: 'Checking availability for a laptop repair.',
+};
+
+test('live site: the deployed contact payload has NO honeypot key and still sends', async () => {
+  assert.ok(
+    !('contactPreference' in LIVE_SITE_CONTACT),
+    'guard the premise: the live contact payload must not contain the honeypot key'
+  );
+  const calls = mockResend();
+  const res = await worker.fetch(post(LIVE_SITE_CONTACT), env);
+  assert.equal(res.status, 200);
+  assert.equal(calls.length, 1, 'an absent honeypot key must be read as human');
+});

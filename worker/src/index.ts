@@ -20,10 +20,14 @@ export interface Env {
    * arrive". It is therefore NOT atomic and NOT a global cap.
    *
    * It is still the right tool here. The goal is to blunt sustained volume
-   * against the sending quota, not to enforce an exact count, and a per-location
-   * approximation does that at no extra cost. A strict global limit would need
-   * Durable Objects, which Cloudflare recommends for that case and which is more
-   * machinery than this endpoint warrants.
+   * against the sending quota, not to enforce an exact count, and a
+   * per-location approximation does that without a third-party service. A
+   * strict global limit would need Durable Objects, which Cloudflare recommends
+   * for that case and which is more machinery than this endpoint warrants.
+   *
+   * COST IS UNVERIFIED: no Cloudflare page I could reach states a price for
+   * this binding, and none states it is free either. Confirm against the
+   * account's plan before enabling it in wrangler.toml.
    */
   RATE_LIMIT?: RateLimit;
 }
