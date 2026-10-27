@@ -719,6 +719,32 @@ function checkNoWarrantyClaims() {
   }
 }
 
+// The cookie-consent banner reveals itself on a 1s timer after mount. If the
+// prerender snapshot is taken after that timer fires, the banner is baked into
+// the static HTML and every visitor to that page sees a dead banner flash -
+// the buttons do nothing until the JS bundle loads, and it shows even to
+// someone who already made a choice. Whether a given route loses that race
+// depends on how long it takes to reach networkidle0, so the set of affected
+// pages shifts between builds. scripts/prerender.mjs now sets a window flag
+// that keeps the component unmounted during the snapshot; this guard makes a
+// regression a build failure rather than something noticed on production.
+function checkNoPrerenderedCookieBanner() {
+  const files = [...walkIndexHtml(DIST)];
+  const notFound = path.join(DIST, '404.html');
+  if (existsSync(notFound)) files.push(notFound);
+  for (const file of files) {
+    const rel = path.relative(DIST, file);
+    const html = readFileSync(file, 'utf8');
+    if (/website uses cookies for analytics/i.test(html) || /kortech:open-cookie-settings/.test(html)) {
+      fail(
+        'cookie-banner',
+        `dist/${rel} has the cookie-consent banner baked into its prerendered HTML - ` +
+          'the 1s reveal timer beat the snapshot; prerender must set __KORTECH_PRERENDER__'
+      );
+    }
+  }
+}
+
 function main() {
   if (!existsSync(DIST)) {
     console.error('validate-routing: dist/ not found - run the build first.');
@@ -736,6 +762,7 @@ function main() {
   checkNoAbsolutePromises();
   checkNoPickupDeliveryClaims();
   checkNoWarrantyClaims();
+  checkNoPrerenderedCookieBanner();
 
   if (failures.length > 0) {
     console.error('validate-routing: FAILED\n');
@@ -750,7 +777,8 @@ function main() {
       'no promise of a customer-emailed form copy, '  +
       'no misleading absolute same-day or turnaround promise, ' +
       'no device pickup/delivery/courier claim, ' +
-      'no KorTech warranty claim.'
+      'no KorTech warranty claim, ' +
+      'no cookie banner baked into prerendered HTML.'
   );
 }
 

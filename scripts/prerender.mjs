@@ -22,6 +22,20 @@ import { routes } from './routes.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 
+// Tell the app it is being snapshotted, before any of its code runs, so that
+// UI revealed on a timer stays out of the static HTML. The cookie banner
+// reveals itself 1s after mount; `networkidle0` plus the 150ms pad below lands
+// either side of that depending on how long the route takes to settle, so
+// without this flag the banner was baked into the slower routes' HTML and not
+// the faster ones - and which routes those are shifts between builds.
+// Deliberately a window flag rather than a seeded `localStorage` consent
+// value: seeding 'accepted' would run grantAnalyticsConsent() at build time,
+// injecting the gtag script into every page and firing GA4 hits from CI.
+const markAsPrerender = (page) =>
+  page.evaluateOnNewDocument(() => {
+    window.__KORTECH_PRERENDER__ = true;
+  });
+
 async function main() {
   const server = await preview({
     root: ROOT,
@@ -37,6 +51,7 @@ async function main() {
   try {
     for (const { path: route } of routes) {
       const page = await browser.newPage();
+      await markAsPrerender(page);
       const url = `${base}${route}`;
       await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
       // Give react-helmet-async's effect a tick to commit title/meta tags.
@@ -64,6 +79,7 @@ async function main() {
     // which those gates would otherwise flag.
     {
       const page = await browser.newPage();
+      await markAsPrerender(page);
       // Any path that matches App.tsx's `path="*"` route and can never collide
       // with a real route.
       await page.goto(`${base}/__notfound__`, { waitUntil: 'networkidle0', timeout: 30000 });
