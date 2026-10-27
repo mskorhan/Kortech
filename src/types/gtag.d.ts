@@ -28,6 +28,10 @@ declare global {
       ): void;
     };
     dataLayer: unknown[];
+    // Set only by scripts/prerender.mjs, via evaluateOnNewDocument, so that
+    // timer-revealed UI (the cookie banner) stays out of the static snapshot.
+    // Never defined in a real browser.
+    __KORTECH_PRERENDER__?: boolean;
   }
 }
 

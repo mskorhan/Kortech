@@ -4,10 +4,20 @@ import { getStoredConsent, setConsentChoice } from '../utils/consent';
 
 export const OPEN_COOKIE_SETTINGS_EVENT = 'kortech:open-cookie-settings';
 
+// The prerender step (scripts/prerender.mjs) sets this flag before the app
+// boots. Without it the 1s reveal timer below races the snapshot: on slower
+// routes the timer fires first and the banner is baked into the static HTML,
+// so every visitor to those pages - including ones who already chose - sees a
+// dead banner flash before the JS bundle loads and removes it. Which routes
+// win that race varies per build, so the defect is nondeterministic.
+const isPrerender = (): boolean =>
+  typeof window !== 'undefined' && window.__KORTECH_PRERENDER__ === true;
+
 const CookieConsent: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    if (isPrerender()) return;
     if (!getStoredConsent()) {
       const timer = setTimeout(() => {
         setIsVisible(true);
@@ -28,7 +38,7 @@ const CookieConsent: React.FC = () => {
     setIsVisible(false);
   };
 
-  if (!isVisible) return null;
+  if (!isVisible || isPrerender()) return null;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-slate-800 text-white p-4 z-50 shadow-lg">
