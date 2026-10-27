@@ -587,6 +587,9 @@ function decodeEntities(s) {
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
+    // Hex form too - the prerenderer emits &#x27; for an apostrophe, which
+    // appears in the approved /terms/ "manufacturer's warranty" clause.
+    .replace(/&#x27;/gi, "'")
     .replace(/&nbsp;/g, ' ');
 }
 
@@ -666,23 +669,39 @@ const WARRANTY_CLAIM_PATTERNS = [
   [/\bservice\s+guarantees\b/i, 'service guarantees'],
 ];
 
-// Clauses in the /terms/ signed-acknowledgment block. These LIMIT liability
-// (customer-supplied parts, water damage, voided manufacturer warranties)
-// rather than promise coverage, and are pending owner/counsel review. They are
-// matched and removed before scanning so the rest of /terms/ is still checked.
+// Clauses in the /terms/ signed-acknowledgment block. These state the
+// no-voluntary-warranty policy and disclaim liability for a voided
+// MANUFACTURER warranty, rather than promising coverage. They are matched and
+// removed before scanning so the rest of /terms/ is still checked.
+//
+// Scoped to terms/index.html ONLY (see checkNoWarrantyClaims). The same
+// sentence appearing on any other page is a warranty claim and must fail -
+// the owner's policy is no warranty marketing anywhere else on the site.
+//
+// Owner-approved wording, published 2026-10-27. The three previous entries
+// ("will not include a warranty on parts and labor", "will not include parts
+// and labor warranty of any kind", "the KorTech Service limited warranty does
+// not cover accidental damage") were DELETED, not kept alongside these, so
+// that the old coverage-implying wording cannot silently return.
 const WARRANTY_LEGAL_ALLOWLIST = [
   'may void manufacturer warranties, especially in the case of Apple device repairs',
   'do not assume any liability or warranty in the event that the manufacturer warranties are voided',
-  'will not include a warranty on parts and labor',
-  'will not include parts and labor warranty of any kind',
-  'the KorTech Service limited warranty does not cover accidental damage',
+  'KorTech Service does not provide its own voluntary warranty on repairs, replacement parts, or labor.',
+  "Certain devices or replacement parts may be covered by a manufacturer's warranty. Any such coverage is provided by the manufacturer, subject to its terms and conditions, and is not a warranty provided by KorTech Service.",
 ];
+
+// The /terms/ page, relative to DIST, whose allowlist above applies.
+const TERMS_INDEX = path.join('terms', 'index.html');
 
 function checkNoWarrantyClaims() {
   for (const file of walkIndexHtml(DIST)) {
     let text = decodeEntities(readFileSync(file, 'utf8'));
-    for (const allowed of WARRANTY_LEGAL_ALLOWLIST) {
-      text = text.split(allowed).join(' ');
+    // Only /terms/ may carry the approved legal clauses. Every other page is
+    // scanned with the FULL pattern set and no allowlist.
+    if (path.relative(DIST, file) === TERMS_INDEX) {
+      for (const allowed of WARRANTY_LEGAL_ALLOWLIST) {
+        text = text.split(allowed).join(' ');
+      }
     }
     for (const [re, label] of WARRANTY_CLAIM_PATTERNS) {
       const m = re.exec(text);

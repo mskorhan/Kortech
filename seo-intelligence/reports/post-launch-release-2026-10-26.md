@@ -14,79 +14,17 @@ as proposed text awaiting approval.
 
 ## 1. Legal wording needing your approval
 
-Full text: `legal-warranty-wording-decision-2026-10-26.md`.
+Resolved. The owner approved the no-voluntary-warranty Terms wording on
+2026-10-27; it was published the same day and verified in production.
 
-### The correction that matters
+The drafting notes and risk analysis that previously appeared in this section
+were **removed from this repository** at the owner's request, because this
+repository is public. They are retained privately outside the repo.
 
-My earlier proposal said only one clause needed a decision because the other
-two are "literally true". **Literal truth was the wrong test.** All three
-`/terms/` sentences carve an **exception** out of a warranty, and **an
-exception implies a rule**:
-
-| line | excludes coverage for | what a customer infers |
-|---|---|---|
-| L402 | accidental damage after repair | other damage **is** covered |
-| L397 | **customer-supplied** parts | KorTech parts **are** covered |
-| L398 | **water-damaged** devices | dry devices **are** covered |
-
-So it is one decision about one paragraph group, not three.
-
-### Recommended: Option 1 — state the rule once, keep every limitation
-
-> I understand that KorTech Service does not provide its own warranty on parts
-> or labor, and that any warranty on a part is provided by that part's
-> manufacturer rather than by KorTech Service.
->
-> I understand that this includes, without limitation, repairs made with parts
-> I supply rather than parts supplied by KorTech Service, and devices that have
-> water damage either before or after the repair.
->
-> I understand that KorTech Service is not responsible for accidental damage,
-> such as a cracked screen, or any other physical damage that occurs to the
-> device after a repair has been completed.
-
-*"this includes, without limitation"* reads as **examples of the rule**, not
-exceptions to a warranty. Nothing is given up — every limitation survives.
-
-**The first sentence is deliberately scoped to "its own" warranty**, because
-the site still carries genuine **manufacturer** warranty information (5-year
-SSD, 10-year PSU). A flat "no warranty on parts or labor is included" would
-contradict that and the manufacturer-warranty clause at L389.
-
-**Three caveats I am not qualified to resolve:**
-- This states the no-warranty position **affirmatively**, whereas standing
-  policy has been **silence**. A signed acknowledgment is the one place that is
-  normal, but it is a change of posture.
-- **Implied warranties under NC law are not disclaimed by this** and may not be
-  disclaimable. Nothing resembling "no warranties, express or implied" was
-  drafted.
-- **Timing is counsel's call, not a protective delay.** The last pre-change
-  14-day window closes **2026-11-09**, but changing the website does not alter
-  what past customers signed — and every *new* customer before then signs
-  wording that implies coverage. Those pull in opposite directions.
-
-### Two things that travel with any approved change
-
-1. **The paper / in-store form must match.** This is a *signed
-   acknowledgment*; editing the website changes the website only. I cannot see
-   the paper form and have assumed nothing about it.
-2. **`/terms/` line 447 still reads "Last updated: January 2025."**
-
-### A question only you can answer
-
-`/terms/` L389: *"may, at its sole discretion, use the devices insurance
-claim"* — **whose** insurance, and what does "use" mean? If it means claiming
-against the **customer's** policy, that needs informed consent. **No wording
-proposed, because drafting it would mean inventing a practice.**
-
-### No change proposed
-
-Manufacturer-warranty disclosure (L389) and the three Privacy Policy data lines
-— a third party's warranty, and accurate descriptions of real data practice.
-
-> ⚠️ **This repository is public.** That means this liability analysis is
-> publicly readable. Tell me if you would rather this document live outside the
-> repo, and I will move it.
+**Two items remain open and are tracked with the owner directly, not here:**
+the physical in-store acknowledgment form (unverified against the published
+wording) and the `/terms/` insurance-claim sentence (ambiguous; no wording
+proposed).
 
 ---
 
@@ -297,8 +235,8 @@ My first `/pricing/` fix added `whitespace-nowrap` and **broke 768px and
 
 ## 6. Remaining owner decisions
 
-1. **Approve the `/terms/` wording** (Option 1, or tell me otherwise) — and
-   decide the timing question, which is counsel's call.
+1. ~~Approve the `/terms/` wording~~ — **done 2026-10-27**, published and
+   verified in production.
 2. **Answer the insurance-claim question** — whose policy, and what "use" means.
 3. **Update the paper / in-store form** to match whatever is approved.
 4. **Review the GBP services banner** — P1 above. Do not add "Pickup And
@@ -321,7 +259,7 @@ My first `/pricing/` fix added `whitespace-nowrap` and **broke 768px and
 1. GBP services banner (P1).
 2. GA4 key events for calls and texts (P2).
 3. Resend dashboard check; decide on one authorized test email.
-4. Legal: review Option 1 with counsel.
+4. Confirm the in-store acknowledgment form matches the published wording.
 
 **Week 2 — decisions landing**
 5. Apply approved `/terms/` wording — **in one PR with the guard-12 and

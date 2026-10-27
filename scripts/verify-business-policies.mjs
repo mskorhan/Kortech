@@ -57,6 +57,47 @@ const MUST_STATE = [
     pages: ['terms'],
     re: /does\s+not\s+(collect\s+or\s+deliver|pick\s*up\s+or\s+deliver)/i,
   },
+  // Owner-approved no-voluntary-warranty policy, published 2026-10-27. These
+  // are POSITIVE assertions: the policy must be STATED, not merely unviolated.
+  // A negative-only test would pass on a /terms/ page that had lost the clause
+  // entirely, which is the failure mode that matters here.
+  {
+    name: 'Terms state KorTech provides no voluntary warranty on repairs, parts or labor',
+    pages: ['terms'],
+    re: /does\s+not\s+provide\s+its\s+own\s+voluntary\s+warranty\s+on\s+repairs,\s+replacement\s+parts,\s+or\s+labor/i,
+  },
+  {
+    name: 'Terms attribute any part/device coverage to the MANUFACTURER, not KorTech',
+    pages: ['terms'],
+    // normalize() decodes &#x27;/&#39; to a straight apostrophe before this runs.
+    re: /covered\s+by\s+a\s+manufacturer's\s+warranty[\s\S]{0,200}?not\s+a\s+warranty\s+provided\s+by\s+KorTech\s+Service/i,
+  },
+  {
+    name: 'Terms preserve non-waivable rights and pre-existing commitments',
+    pages: ['terms'],
+    re: /cannot\s+legally\s+be\s+waived\s+or\s+restricted[\s\S]{0,240}?in\s+effect\s+when\s+they\s+were\s+accepted/i,
+  },
+];
+
+/**
+ * Wording RETIRED on 2026-10-27. Each of these carved an exception out of a
+ * warranty, which implied a warranty existed. They must never come back, on
+ * /terms/ or anywhere else, so they are asserted ABSENT site-wide rather than
+ * merely removed from the source.
+ */
+const MUST_NOT_RETURN = [
+  {
+    name: 'retired: "limited warranty" reference (named a warranty that does not exist)',
+    re: /KorTech\s+Service\s+limited\s+warranty/i,
+  },
+  {
+    name: 'retired: customer-supplied-parts warranty exception',
+    re: /will\s+not\s+include\s+a\s+warranty\s+on\s+parts\s+and\s+labor/i,
+  },
+  {
+    name: 'retired: water-damage warranty exception',
+    re: /will\s+not\s+include\s+parts\s+and\s+labor\s+warranty\s+of\s+any\s+kind/i,
+  },
 ];
 
 /**
@@ -71,11 +112,12 @@ const MUST_NOT_STATE = [
     // /terms/ liability clauses, which are legitimate and owner-approved.
     re: /\b(\d+[-\s]?(day|year)|lifetime|limited)\s+warranty\b|warranty[-\s]backed|parts\s+and\s+labor\s+warranty\s+included/i,
     allow: [
-      // /terms/ liability limitations - approved, see
-      // legal-warranty-wording-proposal-2026-10-26.md
-      /will not include a warranty on parts and labor/i,
-      /will not include parts and labor warranty of any kind/i,
-      /the KorTech Service limited warranty does not cover/i,
+      // /terms/ no-voluntary-warranty policy - owner-approved, published
+      // 2026-10-27. "voluntary warranty on repairs, replacement parts, or
+      // labor" trips the generic pattern above; it is a DENIAL of coverage.
+      // The three pre-2026-10-27 clauses that used to sit here were deleted,
+      // and are now asserted ABSENT by MUST_NOT_RETURN.
+      /does not provide its own voluntary warranty on repairs, replacement parts, or labor/i,
       // Component/manufacturer warranty INFORMATION is kept on purpose
       // (PR #35 preserved it deliberately). These appear inside hardware spec
       // lists on blog posts — e.g. an SSD's own "5-year warranty" bullet — and
@@ -200,6 +242,25 @@ async function run() {
     }
     check(hits.length === 0, n.name,
       hits.length ? `FOUND on: ${hits.join('; ')}` : `clear across ${slugs.length} page(s)`);
+  }
+
+  console.log('\nRetired wording (must not reappear anywhere):');
+  for (const r of MUST_NOT_RETURN) {
+    const hits = [];
+    for (const slug of slugs) {
+      let html;
+      try {
+        html = normalize(await fetchPage(slug));
+      } catch (e) {
+        hits.push(`${slug || '/'} (UNVERIFIABLE: ${e.message})`);
+        continue;
+      }
+      // No allowlist on purpose: retired wording has no legitimate home.
+      const m = html.match(r.re);
+      if (m) hits.push(`${slug || '/'} ("${m[0].slice(0, 60)}")`);
+    }
+    check(hits.length === 0, r.name,
+      hits.length ? `REAPPEARED on: ${hits.join('; ')}` : `absent across ${slugs.length} page(s)`);
   }
 
   console.log(`\n${passes.length + failures.length} assertions, ${failures.length} failure(s)`);
