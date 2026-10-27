@@ -59,8 +59,9 @@ Replace all three sentences with the following. It **keeps every protection**
 in the originals, drops the three implications, and says the policy plainly
 once instead of three times by implication.
 
-> I understand that KorTech Service does not provide a repair or service
-> warranty, and that no warranty on parts or labor is included with any repair.
+> I understand that KorTech Service does not provide its own warranty on parts
+> or labor, and that any warranty on a part is provided by that part's
+> manufacturer rather than by KorTech Service.
 >
 > I understand that this includes, without limitation, repairs made with parts
 > I supply rather than parts supplied by KorTech Service, and devices that have
@@ -69,6 +70,12 @@ once instead of three times by implication.
 > I understand that KorTech Service is not responsible for accidental damage,
 > such as a cracked screen, or any other physical damage that occurs to the
 > device after a repair has been completed.
+
+**Why "its own":** the site still carries genuine **manufacturer** warranty
+information (5-year SSD, 10-year PSU) and the manufacturer-warranty clause at
+L389. A flat "no warranty on parts or labor is included with any repair" would
+contradict both. Scoping the sentence to KorTech's **own** warranty states the
+policy without denying a manufacturer's coverage that really does exist.
 
 **Why this shape:** the first sentence is the general rule, so the second
 cannot imply a carve-out — "this includes, without limitation" reads as
@@ -121,9 +128,13 @@ terms. **The last of those windows closes on 2026-11-09** (14 days from
 exclusions still apply to repairs that may still be covered, and revisits after
 that date.
 
-This is the most conservative option and it costs two weeks. Note the wording
-in your instruction — *no new voluntary repair warranties* — reads as intending
-to honour commitments already made, which this option protects most directly.
+**This is counsel's call, not a protective delay, and the two directions
+conflict:** changing the website does not alter what past customers already
+signed, so waiting protects nothing for them — while every *new* customer
+before 2026-11-09 signs wording that implies coverage exists. Your instruction
+said no *new* voluntary warranties, which reads as intending to honour
+commitments already made; how that balances against continuing to publish a
+misleading implication is a legal judgement, not a content one.
 
 ---
 
@@ -202,6 +213,9 @@ wording until you do.**
 with the paper form updated at the same time — unless you tell me no repairs
 performed under the old terms are still outstanding, in which case Option 1 can
 go ahead now.
+
+> ⚠️ **This repository is PUBLIC**, so this liability analysis is publicly
+> readable. Say the word and I will move it out of the repo.
 
 *Prepared 2026-10-26. Supersedes `legal-warranty-wording-proposal-2026-10-26.md`.
 Related: `business-policy-content-rules.md` §2.*
