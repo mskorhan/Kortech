@@ -80,22 +80,21 @@ const MUST_STATE = [
 ];
 
 /**
- * Wording RETIRED on 2026-10-27. Each of these carved an exception out of a
- * warranty, which implied a warranty existed. They must never come back, on
- * /terms/ or anywhere else, so they are asserted ABSENT site-wide rather than
- * merely removed from the source.
+ * Wording RETIRED on 2026-10-27 and replaced by the owner-approved /terms/
+ * policy text. It must not come back, on /terms/ or anywhere else, so it is
+ * asserted ABSENT site-wide rather than merely removed from the source.
  */
 const MUST_NOT_RETURN = [
   {
-    name: 'retired: "limited warranty" reference (named a warranty that does not exist)',
+    name: 'retired 2026-10-27 wording: "limited warranty" reference',
     re: /KorTech\s+Service\s+limited\s+warranty/i,
   },
   {
-    name: 'retired: customer-supplied-parts warranty exception',
+    name: 'retired 2026-10-27 wording: customer-supplied-parts clause',
     re: /will\s+not\s+include\s+a\s+warranty\s+on\s+parts\s+and\s+labor/i,
   },
   {
-    name: 'retired: water-damage warranty exception',
+    name: 'retired 2026-10-27 wording: water-damage clause',
     re: /will\s+not\s+include\s+parts\s+and\s+labor\s+warranty\s+of\s+any\s+kind/i,
   },
 ];

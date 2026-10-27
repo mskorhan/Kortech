@@ -682,7 +682,7 @@ const WARRANTY_CLAIM_PATTERNS = [
 // ("will not include a warranty on parts and labor", "will not include parts
 // and labor warranty of any kind", "the KorTech Service limited warranty does
 // not cover accidental damage") were DELETED, not kept alongside these, so
-// that the old coverage-implying wording cannot silently return.
+// that the retired wording cannot silently return.
 const WARRANTY_LEGAL_ALLOWLIST = [
   'may void manufacturer warranties, especially in the case of Apple device repairs',
   'do not assume any liability or warranty in the event that the manufacturer warranties are voided',
