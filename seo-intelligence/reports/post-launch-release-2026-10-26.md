@@ -23,8 +23,8 @@ repository is public. They are retained privately outside the repo.
 
 **Two items remain open and are tracked with the owner directly, not here:**
 the physical in-store acknowledgment form (unverified against the published
-wording) and the `/terms/` insurance-claim sentence (ambiguous; no wording
-proposed).
+wording) and the `/terms/` insurance-claim sentence. Both are tracked with the
+owner directly.
 
 ---
 
