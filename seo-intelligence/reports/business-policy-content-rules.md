@@ -111,9 +111,9 @@ with accurate service information, keep the accurate part and drop the
 warranty part.
 
 **Do not add warranty disclaimers either.** No "no warranties, express or
-implied", no "as-is". Implied warranties under state law do not disappear
-because a website is silent, and drafting a valid disclaimer is a lawyer's
-job. The policy is **silence**, not a disclaimer.
+implied", no "as-is". Drafting disclaimer language is the owner's decision with
+their lawyer, not a content edit. Outside the owner-approved `/terms/` wording
+below, the policy is **silence**, not a disclaimer.
 
 ### What is NOT a violation — do not "fix" these
 
@@ -127,27 +127,30 @@ job. The policy is **silence**, not a disclaimer.
 So **never add a bare `/warranty/` or `/\d+-year warranty/` guard pattern** —
 it would flag every row above.
 
-### Terms clauses pending owner/counsel review — DO NOT EDIT
+### The `/terms/` warranty clauses — owner-approved, DO NOT EDIT
 
-Four clauses in the `/terms/` **signed acknowledgment** block still mention a
-warranty. They **limit liability** rather than promise coverage, so they were
-left exactly as written and are allowlisted by exact phrase in guard 12:
+The `/terms/` **signed acknowledgment** block states the no-voluntary-warranty
+policy in wording the owner approved and published on **2026-10-27**. Guard 12
+allowlists it by exact sentence, **scoped to `terms/index.html` only**:
 
 1. "…may void manufacturer warranties, especially in the case of Apple device
    repairs… do not assume any liability or warranty in the event that the
    manufacturer warranties are voided"
-2. "…customer provided parts… will not include a warranty on parts and labor."
-3. "…water damaged devices… will not include parts and labor warranty of any
-   kind."
-4. "…the KorTech Service limited warranty does not cover accidental damage…"
+2. "KorTech Service does not provide its own voluntary warranty on repairs,
+   replacement parts, or labor."
+3. "Certain devices or replacement parts may be covered by a manufacturer's
+   warranty… not a warranty provided by KorTech Service."
 
-**Clause 4 references a warranty that no longer exists.** That is the owner's
-decision with counsel, not a content edit. Removing an exclusion is not the
-same as removing a promise — deleting these could *widen* liability.
+Three earlier clauses (a "KorTech Service limited warranty", and warranty
+exceptions for customer-supplied parts and water damage) were **retired** on
+2026-10-27 and removed from the allowlist. `verify-business-policies` asserts
+them **absent site-wide** via `MUST_NOT_RETURN`, so they cannot return
+unnoticed.
 
-**Repairs completed before 2026-10-26** were performed under the published
-14-day terms and may still carry that coverage until their window closes. How
-to honour those is the owner's call.
+**Do not change this wording.** It is owner-approved legal language; any edit
+needs the owner's approval first. The same sentences are a warranty claim on
+**any other page** and guard 12 will fail them there — that scoping is
+deliberate and verified by a negative control.
 
 ## 3. Turnaround and response times
 

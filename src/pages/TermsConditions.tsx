@@ -394,12 +394,19 @@ const TermsConditions = () => {
                 </p>
                 
                 <p>
-                  I understand repairs made by KorTech Service with customer provided parts instead of KorTech Service parts will not include a warranty on parts and labor.
-                  I understand that water damaged devices either before or after being repaired will not include parts and labor warranty of any kind.
+                  KorTech Service does not provide its own voluntary warranty on repairs, replacement parts, or labor.
                 </p>
 
                 <p>
-                  I understand that the KorTech Service limited warranty does not cover accidental damage like a cracked screen or any physical damage done to the device once the repair has been completed.
+                  Certain devices or replacement parts may be covered by a manufacturer's warranty. Any such coverage is provided by the manufacturer, subject to its terms and conditions, and is not a warranty provided by KorTech Service.
+                </p>
+
+                <p>
+                  KorTech Service is not responsible for new accidental damage or damage caused by misuse, liquid exposure, or other events occurring after a completed repair, except to the extent responsibility is imposed by applicable law or an existing agreement.
+                </p>
+
+                <p>
+                  Nothing in this policy limits any rights or remedies that cannot legally be waived or restricted. Repairs accepted before the effective date of this policy remain subject to any applicable terms and commitments in effect when they were accepted.
                 </p>
                 
               </div>
@@ -444,7 +451,7 @@ const TermsConditions = () => {
             </div>
             
             <p className="text-sm text-slate-600 mt-8">
-              Last updated: January 2025. These terms and conditions are subject to change. 
+              Last updated: October 27, 2026. These terms and conditions are subject to change.
               Current version is always available at https://www.kortechservice.com/terms
             </p>
           </div>
