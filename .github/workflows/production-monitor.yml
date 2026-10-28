@@ -67,19 +67,22 @@ jobs:
         run: npm run test:forms:prod
 
       # The certificate the browser actually gets, asserted the way a browser
-      # would. Two notes on how this is written, both learned from a check that
-      # passed for the wrong reason:
+      # would. Two notes on how the verdict is read, because this step uses
+      # -verify_return_error and that changes openssl's output:
       #
-      #  * The verdict comes from "Verification: OK" / "Verification error:",
-      #    NOT from "Verify return code". When -verify_return_error aborts a
-      #    handshake openssl still prints a trailing "Verify return code: 0
-      #    (ok)" from its session summary, so grepping that line reports a
-      #    broken certificate as healthy. It can also appear in a page body.
-      #  * -CAfile is passed explicitly so the check cannot silently validate
-      #    against an empty trust store on a host where openssl has none.
+      #  * With -verify_return_error a failed handshake is aborted, and openssl
+      #    then prints a trailing "Verify return code: 0 (ok)" from a session
+      #    summary that was never populated. So with this flag the verdict must
+      #    come from "Verification: OK" / "Verification error:" instead. (The
+      #    previous version of this step did not pass the flag and read the
+      #    return code correctly; this is a constraint introduced by the flag,
+      #    not a bug being fixed.) The string can also appear in a page body.
+      #  * -CAfile is passed explicitly so the trust store in use is the
+      #    runner's known bundle rather than whatever openssl defaults to.
       #
       # Validated before merge against expired, self-signed, wrong-host and
-      # untrusted-root targets: each fails here with its specific reason.
+      # untrusted-root targets: each fails here with its specific reason, and
+      # the apex and www still pass.
       - name: TLS and HTTPS health (apex and www)
         env:
           # Fails the job if HSTS is weakened as well as if it is dropped.
