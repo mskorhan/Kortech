@@ -66,33 +66,155 @@ jobs:
       - name: Form behaviour tests (live)
         run: npm run test:forms:prod
 
-      # The certificate the browser actually gets. The apex and www names
-      # validate today; mail./autodiscover./ftp. do not, and that is a known
-      # open item with Bluehost rather than something this repo can fix - so
-      # only the two customer-facing names are asserted here.
-      - name: TLS hostname validation (apex and www)
+      # The certificate the browser actually gets, asserted the way a browser
+      # would. Two notes on how the verdict is read, because this step uses
+      # -verify_return_error and that changes openssl's output:
+      #
+      #  * With -verify_return_error a failed handshake is aborted, and openssl
+      #    then prints a trailing "Verify return code: 0 (ok)" from a session
+      #    summary that was never populated. So with this flag the verdict must
+      #    come from "Verification: OK" / "Verification error:" instead. (The
+      #    previous version of this step did not pass the flag and read the
+      #    return code correctly; this is a constraint introduced by the flag,
+      #    not a bug being fixed.) The string can also appear in a page body.
+      #  * -CAfile is passed explicitly so the trust store in use is the
+      #    runner's known bundle rather than whatever openssl defaults to.
+      #
+      # Validated before merge against expired, self-signed, wrong-host and
+      # untrusted-root targets: each fails here with its specific reason, and
+      # the apex and www still pass.
+      - name: TLS and HTTPS health (apex and www)
+        env:
+          # Fails the job if HSTS is weakened as well as if it is dropped.
+          # Exact match, so a shortened max-age cannot slip through.
+          EXPECT_HSTS: 'max-age=31536000; includeSubDomains'
         run: |
-          set -e
+          set -u
+          fail=0
+          CA=/etc/ssl/certs/ca-certificates.crt
+          [ -r "$CA" ] || { echo "::error::no CA bundle at $CA"; exit 1; }
+
+          verify_host() {  # host port [starttls] -> verdict line
+            h=$1; p=$2; st=${3:-}
+            set -- -connect "$h:$p" -servername "$h" -CAfile "$CA" \
+                   -verify_hostname "$h" -verify_return_error
+            [ -n "$st" ] && set -- "$@" -starttls "$st"
+            out=$(echo | timeout 30 openssl s_client "$@" 2>&1)
+            if printf '%s' "$out" | grep -q '^Verification error:'; then
+              printf '%s' "$out" | grep -m1 '^Verification error:'
+            elif printf '%s' "$out" | grep -q '^Verification: OK'; then
+              echo 'Verification: OK'
+            else
+              echo 'no completed verification (handshake failed or no certificate)'
+            fi
+          }
+          cert_end() {  # host port [starttls] -> notAfter, or empty
+            h=$1; p=$2; st=${3:-}
+            set -- -connect "$h:$p" -servername "$h"
+            [ -n "$st" ] && set -- "$@" -starttls "$st"
+            echo | timeout 30 openssl s_client "$@" 2>/dev/null \
+              | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2
+          }
+          days_until() {  # notAfter -> whole days, 999 when unparseable
+            [ -z "$1" ] && { echo 999; return; }
+            e=$(date -u -d "$1" +%s 2>/dev/null) || { echo 999; return; }
+            echo $(( (e - $(date -u +%s)) / 86400 ))
+          }
+
+          echo "::group::Customer-facing HTTPS (hard failures)"
           for h in kortechservice.com www.kortechservice.com; do
-            echo "--- $h"
-            out=$(echo | openssl s_client -connect "$h:443" -servername "$h" \
-                    -verify_hostname "$h" 2>&1 | grep -m1 "Verify return code" || true)
-            echo "$out"
-            case "$out" in
-              *"Verify return code: 0"*) ;;
-              *) echo "::error::$h failed TLS hostname validation: $out"; exit 1 ;;
-            esac
+            v=$(verify_host "$h" 443)
+            echo "$h -> $v"
+            if [ "$v" != 'Verification: OK' ]; then
+              echo "::error::$h failed TLS validation: $v"; fail=1
+            fi
           done
-          # Warn well before expiry rather than failing on the day.
-          end=$(echo | openssl s_client -connect www.kortechservice.com:443 \
-                  -servername www.kortechservice.com 2>/dev/null \
-                | openssl x509 -noout -enddate | cut -d= -f2)
-          echo "certificate expires: $end"
-          if ! openssl s_client -connect www.kortechservice.com:443 \
-                 -servername www.kortechservice.com 2>/dev/null </dev/null \
-               | openssl x509 -noout -checkend 1209600 >/dev/null; then
-            echo "::warning::certificate for www.kortechservice.com expires within 14 days ($end)"
+
+          # Positive verification: a real response, not merely "no error".
+          # HTTP 200 AND a sane body size AND the expected page marker, so a
+          # failed fetch returning zero bytes can never read as a pass.
+          body=$(mktemp)
+          code=$(curl -sS --max-time 45 -o "$body" -w '%{http_code}' \
+                   https://www.kortechservice.com/ || echo 000)
+          bytes=$(wc -c < "$body")
+          echo "www.kortechservice.com/ -> HTTP $code, $bytes bytes"
+          if [ "$code" != "200" ] || [ "$bytes" -lt 10000 ]; then
+            echo "::error::www.kortechservice.com/ returned HTTP $code with $bytes bytes"
+            fail=1
+          elif ! grep -qi 'KorTech' "$body"; then
+            echo "::error::www.kortechservice.com/ served $bytes bytes without the expected page marker"
+            fail=1
           fi
+          rm -f "$body"
+
+          # The apex must still reach www in exactly one hop.
+          redir=$(curl -sS --max-time 45 -o /dev/null -L \
+                    -w '%{num_redirects} %{url_effective}' \
+                    https://kortechservice.com/ || echo 'ERR ERR')
+          echo "apex redirect -> $redir"
+          if [ "$redir" != "1 https://www.kortechservice.com/" ]; then
+            echo "::error::apex->www redirect changed: $redir"; fail=1
+          fi
+
+          hsts=$(curl -sSI --max-time 45 https://www.kortechservice.com/ \
+                  | tr -d '\r' \
+                  | awk -F': ' 'tolower($1)=="strict-transport-security"{print $2}')
+          echo "HSTS -> '$hsts'"
+          if [ "$hsts" != "$EXPECT_HSTS" ]; then
+            echo "::error::HSTS changed. expected '$EXPECT_HSTS' got '$hsts'"; fail=1
+          fi
+
+          # 30 days rather than 14: a weekly schedule must warn several times
+          # before a certificate actually lapses.
+          wend=$(cert_end www.kortechservice.com 443)
+          wdays=$(days_until "$wend")
+          echo "web certificate expires ${wend:-unknown} ($wdays days)"
+          if [ "$wdays" -lt 30 ]; then
+            echo "::warning::web certificate expires in $wdays days ($wend)"
+          fi
+          echo "::endgroup::"
+
+          echo "::group::Known-gap hostnames (warnings only)"
+          # These resolve to the same host but are absent from the web
+          # certificate's SANs. That is an open hosting-side item rather than
+          # something this repo can fix, so it must not turn the monitor
+          # permanently red. An unexpected PASS warns too, so the expectation
+          # here gets updated once the names are added.
+          for h in mail.kortechservice.com ftp.kortechservice.com \
+                   autodiscover.kortechservice.com; do
+            v=$(verify_host "$h" 443)
+            if [ "$v" = 'Verification: OK' ]; then
+              echo "::warning::$h:443 now passes hostname validation - the known SAN gap looks fixed; update this monitor"
+            else
+              echo "$h:443 still failing as expected ($v)"
+            fi
+          done
+          echo "::endgroup::"
+
+          echo "::group::Mail and FTP service certificate (warnings only)"
+          # Mail and FTP do not use the web certificate: those ports ignore SNI
+          # and serve the shared server certificate, whose expiry is
+          # independent of the web one. Tracked so neither lapses unnoticed.
+          # Port 25 is omitted because runners block outbound SMTP.
+          for spec in '993:' '465:' '587:smtp'; do
+            p=${spec%%:*}; st=${spec#*:}
+            v=$(verify_host host2075.hostmonster.com "$p" "$st")
+            mend=$(cert_end host2075.hostmonster.com "$p" "$st")
+            mdays=$(days_until "$mend")
+            echo "host2075.hostmonster.com:$p -> $v (expires ${mend:-unknown}, $mdays days)"
+            if [ "$v" != 'Verification: OK' ]; then
+              echo "::warning::host2075.hostmonster.com:$p failed hostname validation: $v"
+            fi
+            if [ "$mdays" -lt 30 ]; then
+              echo "::warning::mail/FTP certificate expires in $mdays days ($mend)"
+            fi
+          done
+          echo "::endgroup::"
+
+          if [ "$fail" -ne 0 ]; then
+            echo 'TLS/HTTPS health checks FAILED.'; exit 1
+          fi
+          echo 'All TLS/HTTPS health checks passed.'
 
       - name: Upload reports on failure
         if: failure()
