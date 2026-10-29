@@ -44,12 +44,60 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Deploy to Bluehost via FTP
+      # Fail before uploading anything if the configured server does not offer
+      # FTPS or its certificate does not validate for that exact hostname.
+      # Without this, a hostname that fails strict validation would surface as
+      # a mid-upload error, after the deploy had already started.
+      #
+      # The hostname is a secret, so it is never echoed. Only the verdict is
+      # printed. openssl reads no credentials here; it only completes a TLS
+      # handshake on port 21 via AUTH TLS.
+      - name: Pre-flight - FTPS available and certificate valid
+        env:
+          FTP_HOST: ${{ secrets.BLUEHOST_FTP_HOST }}
+        run: |
+          set -u
+          if [ -z "${FTP_HOST}" ]; then
+            echo "::error::BLUEHOST_FTP_HOST is not set"; exit 1
+          fi
+          out=$(echo | timeout 30 openssl s_client -connect "${FTP_HOST}:21" \
+                  -starttls ftp -servername "${FTP_HOST}" \
+                  -CAfile /etc/ssl/certs/ca-certificates.crt \
+                  -verify_hostname "${FTP_HOST}" -verify_return_error 2>&1)
+          if printf '%s' "$out" | grep -q '^Verification error:'; then
+            reason=$(printf '%s' "$out" | grep -m1 '^Verification error:')
+            echo "::error::the configured FTP host failed strict TLS validation ($reason). The certificate on port 21 is *.hostmonster.com, so BLUEHOST_FTP_HOST must be the server hostname (host2075.hostmonster.com) rather than ftp.kortechservice.com. Not deploying."
+            exit 1
+          fi
+          if ! printf '%s' "$out" | grep -q '^Verification: OK'; then
+            echo "::error::could not complete an FTPS handshake on port 21 for the configured host. Not deploying."
+            exit 1
+          fi
+          echo "FTPS available on port 21 and the certificate validates for the configured hostname."
+          echo | timeout 30 openssl s_client -connect "${FTP_HOST}:21" -starttls ftp \
+                   -servername "${FTP_HOST}" 2>/dev/null \
+            | openssl x509 -noout -enddate 2>/dev/null \
+            | sed 's/^/certificate /'
+
+      # Explicit FTPS (AUTH TLS on port 21) with strict certificate
+      # validation. In this action, protocol: ftps sets the ftp client's
+      # secure=true, and security: strict sets rejectUnauthorized=true, so a
+      # mismatched or untrusted certificate aborts the connection instead of
+      # being accepted. Both defaults are the insecure ones - protocol
+      # defaults to "ftp" (plaintext) and security to loose verification - so
+      # both are set explicitly here and must stay set.
+      #
+      # server must be the hostname the certificate is valid for. The port 21
+      # certificate is *.hostmonster.com, which covers the server hostname but
+      # NOT ftp.kortechservice.com; the latter fails strict validation.
+      - name: Deploy to Bluehost via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.BLUEHOST_FTP_HOST }}
           username: ${{ secrets.BLUEHOST_FTP_USER }}
           password: ${{ secrets.BLUEHOST_FTP_PASSWORD }}
+          protocol: ftps
+          security: strict
           local-dir: ./dist/
           server-dir: ${{ secrets.BLUEHOST_FTP_REMOTE_DIR }}
 
