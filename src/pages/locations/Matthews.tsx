@@ -64,7 +64,7 @@ const Matthews = () => {
     },
     {
       question: "Do you offer same-day service to Matthews customers?",
-      answer: "Yes, we offer same-day computer repair services to Matthews customers for most common issues. Contact us early in the day for best availability."
+      answer: "Same-day computer repair is available to Matthews customers on eligible repairs, and we confirm eligibility once we know what is wrong with the machine. Contact us early in the day and tell us the symptoms so we can tell you whether yours qualifies before you make the trip."
     }
   ];
 

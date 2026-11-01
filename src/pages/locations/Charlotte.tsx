@@ -53,7 +53,7 @@ const Charlotte = () => {
   const faqs = [
     {
       question: "Do you provide same-day computer repair in Charlotte?",
-      answer: "Yes, we offer same-day computer repair services in Charlotte for most common issues. Our technicians can often complete repairs within a few hours."
+      answer: "Same-day computer repair is available in Charlotte on eligible repairs, and we confirm eligibility once we know what is wrong with the machine. Many common issues can be completed within a few hours. Contact us early in the day and tell us the symptoms so we can tell you whether yours qualifies."
     },
     {
       question: "What areas of Charlotte do you serve?",
