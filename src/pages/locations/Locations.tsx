@@ -111,7 +111,11 @@ const Locations = () => {
     },
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      // LocalBusiness, not Organization: this @id is defined as a LocalBusiness
+      // on every other page, and one @id must not carry two @types.
+      // LocalBusiness is the more specific of the two and is what local search
+      // uses.
+      "@type": "LocalBusiness",
       "@id": "https://www.kortechservice.com/#organization",
       "name": "KorTech Service",
       "url": "https://www.kortechservice.com/",

@@ -188,7 +188,7 @@ const MacBookRepair = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Mac & MacBook Repair Charlotte NC | KorTech Service"
-        description="Mac and MacBook repair in Charlotte, NC. MacBook Air & Pro, iMac, Mac mini, Mac Studio, logic-board diagnostics and board-level repair. Drop off or mail in. Call 704-246-7642."
+        description="Mac and MacBook repair in Charlotte, NC. MacBook Air & Pro, iMac, Mac mini and Mac Studio, including board-level repair. Drop off or mail in. Call 704-246-7642."
         canonicalUrl="/macbook-repair"
         service="Mac and MacBook Repair"
         location="Charlotte, NC"
