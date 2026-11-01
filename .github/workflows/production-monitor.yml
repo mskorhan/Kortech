@@ -225,10 +225,32 @@ jobs:
           done
           echo "::endgroup::"
 
-          echo "::group::Mail and FTP service certificate (warnings only)"
-          # Mail and FTP do not use the web certificate: those ports ignore SNI
-          # and serve the shared server certificate, whose expiry is
-          # independent of the web one. Tracked so neither lapses unnoticed.
+          # Port 21 is a HARD failure, unlike the mail ports below, because
+          # deploying now depends on it: the deploy workflow uses explicit FTPS
+          # with strict validation and refuses to upload if this exact check
+          # fails. If the server's certificate or hostname changes, deploys
+          # stop, and this should say so before the next merge discovers it.
+          echo "::group::Deploy transport - FTPS on port 21 (hard failure)"
+          v=$(verify_host host2075.hostmonster.com 21 ftp)
+          fend=$(cert_end host2075.hostmonster.com 21 ftp)
+          fdays=$(days_until "$fend")
+          echo "host2075.hostmonster.com:21 -> $v (expires ${fend:-unknown}, $fdays days)"
+          if [ "$v" != 'Verification: OK' ]; then
+            echo "::error::FTPS on port 21 failed strict validation ($v). Deploys will refuse to upload until this is fixed."
+            fail=1
+          fi
+          if [ "$fdays" = unknown ]; then
+            echo "::warning::could not read the port 21 certificate's expiry, so expiry is unchecked"
+          elif [ "$fdays" -lt 30 ]; then
+            echo "::warning::the port 21 certificate expires in $fdays days ($fend) - deploys fail closed when it lapses"
+          fi
+          echo "::endgroup::"
+
+          echo "::group::Mail service certificate (warnings only)"
+          # Mail does not use the web certificate: these ports ignore SNI and
+          # serve the shared server certificate, whose expiry is independent of
+          # the web one. Tracked so neither lapses unnoticed. Warn-only, since
+          # nothing in this repository breaks when mail TLS does.
           # Port 25 is omitted because runners block outbound SMTP.
           for spec in '993:' '465:' '587:smtp'; do
             p=${spec%%:*}; st=${spec#*:}

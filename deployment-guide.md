@@ -28,7 +28,12 @@ visitor browsers, no hosting changes required.
    Add each of the following:
    - `GOOGLE_PLACES_API_KEY` — the API key from step 1
    - `GOOGLE_PLACE_ID` — the Place ID from step 2
-   - `BLUEHOST_FTP_HOST` — your Bluehost FTP hostname (e.g. `ftp.kortechservice.com`)
+   - `BLUEHOST_FTP_HOST` — the Bluehost **server** hostname, e.g. `host2075.hostmonster.com`.
+     It must be a name the port 21 certificate is valid for, because the deploy uses
+     explicit FTPS with strict certificate validation. That certificate is
+     `*.hostmonster.com`, so a `kortechservice.com` name — the apex or `ftp.` — fails
+     hostname validation and the deploy stops before uploading anything. Find the server
+     name in cPanel, and re-check it after any server migration.
    - `BLUEHOST_FTP_USER` — your Bluehost FTP username
    - `BLUEHOST_FTP_PASSWORD` — your Bluehost FTP password
    - `BLUEHOST_FTP_REMOTE_DIR` — the remote directory to upload into (typically `/public_html/`)
