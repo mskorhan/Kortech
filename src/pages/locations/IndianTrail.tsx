@@ -57,7 +57,7 @@ const IndianTrail = () => {
     },
     {
       question: "We have several devices that need work. How do we get them to you?",
-      answer: "Call or text a list of what is wrong with each device and we will arrange a single collection rather than several trips. Everything is repaired at the Charlotte workshop and returned together, which usually makes more sense than driving a laptop back and forth up the corridor."
+      answer: "Call or text a list of what is wrong with each device and we will tell you what to expect before you set out, so you can bring everything in one trip rather than several. Everything is repaired at the Charlotte workshop and is ready to collect together. KorTech does not pick up or deliver devices: bring them to the Charlotte shop, or ship them to us at your own expense."
     },
     {
       question: "Do you work on gaming PCs and custom-built desktops?",
@@ -203,7 +203,7 @@ const IndianTrail = () => {
               Household and Gaming PC Services for Indian Trail
             </h2>
             <p className="text-lg text-slate-600">
-              Collected from Union County, repaired in Charlotte, and returned to your door
+              Brought in from Union County, repaired in Charlotte, and ready to collect
             </p>
           </div>
 
@@ -292,10 +292,10 @@ const IndianTrail = () => {
       <section className="py-16 bg-orange-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Want a Device Collected From Indian Trail?
+            Bringing a Device In From Indian Trail?
           </h2>
           <p className="text-xl text-orange-200 mb-8">
-            Call or text a list of what is wrong and we will arrange one pickup for the whole household
+            Call or text a list of what is wrong and we will tell you what to expect, so the whole household can come in one trip
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

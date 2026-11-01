@@ -60,7 +60,7 @@ const Monroe = () => {
       answer: "Bring or send the drive in and stop using it, since continued power-on can make recovery harder. We evaluate the drive, tell you what looks recoverable and what does not, and quote before any recovery work starts. If it turns out to be a hardware fault we can also address, the diagnostic fee is waived with hardware repair."
     },
     {
-      question: "Is it worth driving from Monroe to your Charlotte shop, or should we arrange pickup?",
+      question: "Is it worth driving from Monroe to your Charlotte shop, or should I ship the device instead?",
       answer: "Monroe sits southeast of our Charlotte shop along the US-74 corridor, so if someone is already heading toward Charlotte, dropping the machine off is straightforward. If nobody can make the trip, you can ship the device to us using a paid shipping label at your own expense. We are at 1721 Sardis Rd N, Suite 7A, Charlotte, and open Mon-Fri 9AM-6PM and Sat 11AM-4PM."
     },
     {
@@ -118,7 +118,7 @@ const Monroe = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Monroe NC Business IT & Data Recovery | KorTech"
-        description="Office IT support, workstation repair, and data recovery for Monroe, NC. Drop off at our Charlotte shop via US-74 or ask about pickup. Call 704-246-7642."
+        description="Office IT support, workstation repair, and data recovery for Monroe, NC. Drop off at our Charlotte shop via US-74 or ship it to us. Call 704-246-7642."
         canonicalUrl="/monroe-computer-repair"
         location="Monroe, NC"
         service="Computer Repair"

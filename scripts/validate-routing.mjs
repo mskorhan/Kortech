@@ -568,6 +568,34 @@ const PICKUP_CLAIM_PATTERNS = [
   [/collected\s+and\s+returned/i, 'device collected and returned'],
   [/schedule\s+(?:a\s+)?pickup\s+of\s+your\s+device/i, 'scheduled device pickup'],
   [/(?:pickup|delivery)\s+service\s+(?:is\s+)?available\s+in/i, 'pickup/delivery available in an area'],
+
+  // --- added 2026-11-01 -----------------------------------------------------
+  // The patterns above all PASSED while five location pages shipped pickup
+  // offers to production for ~6 days. Re-tested every one of them against the
+  // exact live strings: 0 of 9 matched. The gaps were specific:
+  //
+  //   * "ask about pickup" (3 meta descriptions - the text Google DISPLAYS)
+  //     was matched by nothing at all.
+  //   * the pickup/drop-off pattern requires "pickup" FIRST, so Weddington's
+  //     "Drop-Off, or Pickup" escaped on WORD ORDER alone.
+  //   * "we collect your device" requires a direct object, so "we will arrange
+  //     collection", "we will arrange one pickup" and the imperative
+  //     "Have Us Pick It Up" all evaded it.
+  //   * nothing covered "Collected from ...", "Device Collected" or
+  //     "returned to your door" ("door-to-door" above does not match it).
+  //
+  // Still deliberately specific - a bare /pickup/ would flag the legitimate
+  // customer-side cases listed in the comment above, which the negative
+  // controls at the end of this block verify still pass.
+  [/\bask\s+(?:us\s+)?about\s+pickup\b/i, 'invitation to ask about pickup'],
+  [/\barrange\s+(?:a\s+|one\s+|the\s+|single\s+)*(?:single\s+)?(?:pickup|collection)\b/i, 'we arrange a pickup or collection'],
+  [/\bhave\s+us\s+pick\s+it\s+up\b/i, 'imperative: have us pick it up'],
+  [/\breturned\s+to\s+your\s+door\b/i, 'device returned to your door'],
+  [/\bdevice\s+collected\b/i, 'device collected'],
+  [/\bcollected\s+from\s+(?:union|mecklenburg|charlotte|matthews|monroe|waxhaw|weddington|pineville|mint\s+hill|indian\s+trail|your\s+home|your\s+address)/i, 'device collected from a place'],
+  // order-independent pickup + drop-off/delivery juxtaposition, so
+  // "Drop-Off, or Pickup" is caught as well as "Pickup & Drop-Off".
+  [/\b(?:drop-?off|delivery|mail-?in)\s*(?:,|&|and|or|\/)\s*(?:or\s+)?pickup\b/i, 'drop-off/delivery or pickup (reverse order)'],
 ];
 
 // The ONE sanctioned negation. /charlotte-computer-repair/ used to answer

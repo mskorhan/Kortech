@@ -118,7 +118,7 @@ const Pineville = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Pineville NC Laptop &amp; PC Repair | KorTech"
-        description="Laptop screens, batteries, virus removal and tune-ups for Pineville, NC. Drop off at our south Charlotte workshop or ask about pickup. Call 704-246-7642."
+        description="Laptop screens, batteries, virus removal and tune-ups for Pineville, NC. Drop off at our south Charlotte workshop or ship it to us. Call 704-246-7642."
         canonicalUrl="/pineville-computer-repair"
         location="Pineville, NC"
         service="Computer Repair"
