@@ -74,9 +74,13 @@ const Charlotte = () => {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "@id": "https://www.kortechservice.com/#organization",
-      "name": "KorTech Service - Charlotte Computer Repair",
+      // name and url identify the BUSINESS ENTITY, not this page. They must be
+      // byte-identical everywhere this @id is defined, or the same @id
+      // describes several different businesses and Google picks one at random.
+      // The page's own identity lives in its canonical and its WebPage node.
+      "name": "KorTech Service",
       "description": "Professional computer repair, data recovery, and IT support services in Charlotte, NC. Serving Charlotte residents and businesses since 1998.",
-      "url": "https://www.kortechservice.com/charlotte-computer-repair/",
+      "url": "https://www.kortechservice.com/",
       "telephone": "704-246-7642",
       "address": {
         "@type": "PostalAddress",
@@ -152,7 +156,7 @@ const Charlotte = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Computer Repair Charlotte NC • KorTech Service"
-        description="Professional computer repair in Charlotte, NC. Same-day Mac & PC repair on eligible services, data recovery, IT support. Call 704-246-7642 or Text/Call 980-888-5300."
+        description="Computer repair in Charlotte, NC. Same-day Mac & PC repair on eligible services, data recovery and IT support. Call 704-246-7642 or text 980-888-5300."
         canonicalUrl="/charlotte-computer-repair"
         location="Charlotte, NC"
         service="Computer Repair"

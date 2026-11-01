@@ -154,7 +154,7 @@ export default function Home() {
     <div className="min-h-screen bg-white overflow-hidden pb-20">
       <SEOHead
         title="KorTech Service • Computer Repair Charlotte NC"
-        description="Professional computer repair, Mac & PC repair, virus removal, data recovery & IT support in Charlotte, NC. Call 704-246-7642 — diagnostic fee waived with hardware repair!"
+        description="Computer repair in Charlotte, NC: Mac & PC repair, virus removal, data recovery and IT support. Call 704-246-7642 — diagnostic fee waived with hardware repair."
         canonicalUrl="/"
         schema={schema}
       />

@@ -94,7 +94,9 @@ const Contact = () => {
       "name": "KorTech Service",
       "telephone": "704-246-7642",
       "email": "info@kortechservice.com",
-      "url": "https://www.kortechservice.com/contact/",
+      // The entity URL, not this page's URL - see the note in
+      // locations/Charlotte.tsx. /contact/ is identified by its canonical.
+      "url": "https://www.kortechservice.com/",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "1721 Sardis Rd N, Suite 7A",
