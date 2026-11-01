@@ -66,7 +66,7 @@ jobs:
                   -verify_hostname "${FTP_HOST}" -verify_return_error 2>&1)
           if printf '%s' "$out" | grep -q '^Verification error:'; then
             reason=$(printf '%s' "$out" | grep -m1 '^Verification error:')
-            echo "::error::the configured FTP host failed strict TLS validation ($reason). The certificate on port 21 is *.hostmonster.com, so BLUEHOST_FTP_HOST must be the server hostname (host2075.hostmonster.com) rather than ftp.kortechservice.com. Not deploying."
+            echo "::error::the configured FTP host failed strict TLS validation ($reason). The certificate on port 21 is *.hostmonster.com, so BLUEHOST_FTP_HOST must be the Bluehost server hostname (host2075.hostmonster.com). Any kortechservice.com name - the apex or ftp. - fails hostname validation. Not deploying."
             exit 1
           fi
           if ! printf '%s' "$out" | grep -q '^Verification: OK'; then
