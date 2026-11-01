@@ -42,6 +42,25 @@ seo-intelligence/**/.env*
 seo-intelligence/data/**/raw-*/
 seo-intelligence/data/**/*.tsv
 
+# Private infrastructure diagnostics. THIS REPOSITORY IS PUBLIC.
+#
+# The DNS/TLS investigations record the owner's own network while diagnosing a
+# fault that turned out to be ISP-side: public IP, LAN gateway address, gateway
+# MAC/OUI and the ISP's MDU network name. The Bluehost support drafts name the
+# backend server hostname and account-identifying details. None of that belongs
+# in a public repository, and none of it is needed to build or run the site.
+#
+# These are untracked today only because nobody has run `git add` on them - no
+# rule covered them, so a single `git add -A` would have published the owner's
+# home network details. Matched by name so the directory as a whole stays
+# committable: the 12 tracked SEO/release reports are unaffected, and a new
+# report is only ignored if its name says it is one of these diagnostics.
+seo-intelligence/reports/ssl-hsts-*.md
+seo-intelligence/reports/dns-and-tls-*.md
+seo-intelligence/reports/bluehost-*-request-*.md
+# Scratch working directory for in-progress analysis.
+seo-intelligence/reports/_work/
+
 # visual QA artifacts (generated)
 visual-qa-report.json
 visual-qa-shots/
