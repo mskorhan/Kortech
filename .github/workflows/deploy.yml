@@ -4,6 +4,18 @@ on:
   push:
     branches:
       - main
+  # Lets a deploy be run deliberately without pushing a commit. Needed to
+  # verify a rotated FTP credential: otherwise the only way to exercise the
+  # new secret is to merge something, which couples a credential test to an
+  # unrelated content change. It deploys the current main, which is what a
+  # push to main would have deployed anyway, and the same concurrency group
+  # keeps it from overlapping a push-triggered run.
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Why this deploy was requested
+        required: false
+        default: manual re-deploy of current main
 
 permissions:
   contents: read
