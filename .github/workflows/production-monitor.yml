@@ -201,8 +201,17 @@ jobs:
           wend=$(cert_end www.kortechservice.com 443)
           wdays=$(days_until "$wend")
           echo "web certificate expires ${wend:-unknown} ($wdays days)"
+          # A ::warning:: on a SUCCESSFUL scheduled run notifies nobody - GitHub
+          # mails on failure, so a warning is only seen by someone who opens the
+          # run. The 30-day warning is therefore an early heads-up, and under 14
+          # days is a hard failure so the alert actually reaches someone. These
+          # certificates renew automatically well before 14 days, so reaching
+          # that point means renewal has failed: a real alarm, not noise.
           if [ "$wdays" = unknown ]; then
             echo "::warning::could not read the web certificate's expiry date, so expiry is unchecked"
+          elif [ "$wdays" -lt 14 ]; then
+            echo "::error::web certificate expires in $wdays days ($wend) - automatic renewal appears to have failed"
+            fail=1
           elif [ "$wdays" -lt 30 ]; then
             echo "::warning::web certificate expires in $wdays days ($wend)"
           fi
@@ -241,6 +250,9 @@ jobs:
           fi
           if [ "$fdays" = unknown ]; then
             echo "::warning::could not read the port 21 certificate's expiry, so expiry is unchecked"
+          elif [ "$fdays" -lt 14 ]; then
+            echo "::error::the port 21 certificate expires in $fdays days ($fend) - deploys fail closed when it lapses, and renewal appears to have failed"
+            fail=1
           elif [ "$fdays" -lt 30 ]; then
             echo "::warning::the port 21 certificate expires in $fdays days ($fend) - deploys fail closed when it lapses"
           fi
