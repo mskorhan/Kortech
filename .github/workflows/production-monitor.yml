@@ -115,11 +115,43 @@ jobs:
             echo | timeout 30 openssl s_client "$@" 2>/dev/null \
               | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2
           }
-          days_until() {  # notAfter -> whole days, 999 when unparseable
-            [ -z "$1" ] && { echo 999; return; }
-            e=$(date -u -d "$1" +%s 2>/dev/null) || { echo 999; return; }
+          # Prints whole days remaining, or "unknown" when there is no parseable
+          # date. It must NOT substitute a large number for a missing date: a
+          # cert fetch that fails returns an empty string, and a sentinel like
+          # 999 would then satisfy every "-lt 30" test, so a monitor that could
+          # not read the certificate at all would report its expiry as healthy.
+          # Callers treat "unknown" as a warning instead.
+          days_until() {  # notAfter -> whole days, or "unknown"
+            [ -z "$1" ] && { echo unknown; return; }
+            e=$(date -u -d "$1" +%s 2>/dev/null) || { echo unknown; return; }
             echo $(( (e - $(date -u +%s)) / 86400 ))
           }
+
+          # Self-test the checker before trusting what it says about production.
+          # A verifier that accepts everything would report a healthy site no
+          # matter what, so "the apex and www passed" is only meaningful if
+          # known-bad certificates are also seen to fail, on this runner, with
+          # this trust store, on every run - not once on a laptop before merge.
+          #
+          # Reachability is deliberately not a failure: badssl.com is a
+          # third-party host and an outage there must not page anyone about
+          # KorTech. Only a WRONG verdict fails, which is the thing that would
+          # make every other result in this job meaningless.
+          echo "::group::Verifier self-test (known-bad certificates must fail)"
+          for bad in expired.badssl.com wrong.host.badssl.com \
+                     self-signed.badssl.com untrusted-root.badssl.com; do
+            v=$(verify_host "$bad" 443)
+            case "$v" in
+              'Verification: OK')
+                echo "::error::self-test FAILED: $bad was accepted as valid, so this job's TLS verdicts cannot be trusted"
+                fail=1 ;;
+              'Verification error:'*)
+                echo "$bad correctly rejected ($v)" ;;
+              *)
+                echo "::warning::$bad was unreachable, so the verifier could not be self-tested against it ($v)" ;;
+            esac
+          done
+          echo "::endgroup::"
 
           echo "::group::Customer-facing HTTPS (hard failures)"
           for h in kortechservice.com www.kortechservice.com; do
@@ -169,7 +201,9 @@ jobs:
           wend=$(cert_end www.kortechservice.com 443)
           wdays=$(days_until "$wend")
           echo "web certificate expires ${wend:-unknown} ($wdays days)"
-          if [ "$wdays" -lt 30 ]; then
+          if [ "$wdays" = unknown ]; then
+            echo "::warning::could not read the web certificate's expiry date, so expiry is unchecked"
+          elif [ "$wdays" -lt 30 ]; then
             echo "::warning::web certificate expires in $wdays days ($wend)"
           fi
           echo "::endgroup::"
@@ -205,7 +239,9 @@ jobs:
             if [ "$v" != 'Verification: OK' ]; then
               echo "::warning::host2075.hostmonster.com:$p failed hostname validation: $v"
             fi
-            if [ "$mdays" -lt 30 ]; then
+            if [ "$mdays" = unknown ]; then
+              echo "::warning::could not read the mail/FTP certificate's expiry on port $p, so expiry is unchecked"
+            elif [ "$mdays" -lt 30 ]; then
               echo "::warning::mail/FTP certificate expires in $mdays days ($mend)"
             fi
           done
