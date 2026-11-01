@@ -292,10 +292,10 @@ const Waxhaw = () => {
       <section className="py-16 bg-emerald-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Have Us Pick It Up in Waxhaw
+            Bring Your Device In From Waxhaw
           </h2>
           <p className="text-xl text-emerald-200 mb-8">
-            Call or text with what is wrong and how many devices, and we will arrange collection
+            Call or text with what is wrong and how many devices, and we will tell you what to expect before you make the trip
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

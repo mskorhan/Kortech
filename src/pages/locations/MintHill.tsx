@@ -118,7 +118,7 @@ const MintHill = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Mint Hill NC Computer Upgrades &amp; Repair | KorTech"
-        description="Home computer repair, SSD and memory upgrades and Wi-Fi setup for Mint Hill, NC. Drop off at our Charlotte workshop or ask about pickup. Call 704-246-7642."
+        description="Home computer repair, SSD and memory upgrades and Wi-Fi setup for Mint Hill, NC. Drop off at our Charlotte workshop or ship it to us. Call 704-246-7642."
         canonicalUrl="/mint-hill-computer-repair"
         location="Mint Hill, NC"
         service="Computer Repair"

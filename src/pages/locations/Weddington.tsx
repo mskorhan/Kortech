@@ -138,7 +138,7 @@ const Weddington = () => {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <MapPin className="h-5 w-5 text-indigo-300" />
-              <span className="text-white font-medium">Union County | Mail-In, Drop-Off, or Pickup</span>
+              <span className="text-white font-medium">Union County | Mail-In or Drop-Off</span>
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -323,7 +323,7 @@ const Weddington = () => {
               <div className="text-left">
                 <p className="font-bold">KorTech Service</p>
                 <p className="text-indigo-200">1721 Sardis Rd N, Suite 7A, Charlotte, NC 28270</p>
-                <p className="text-indigo-200">Our only location. Mail-in and pickup both end up here</p>
+                <p className="text-indigo-200">Our only location. Mailed-in and dropped-off devices both end up here</p>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-4">
