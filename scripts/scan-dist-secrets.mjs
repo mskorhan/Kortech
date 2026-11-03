@@ -63,7 +63,22 @@ const PATTERNS = [
   [/VITE_[A-Z0-9_]*(?:SECRET|PASSWORD|PRIVATE|TOKEN|API_KEY)[A-Z0-9_]*/g, 'VITE_ secret-named var inlined into bundle'],
 ];
 
-const TEXT_EXT = new Set(['.js','.mjs','.cjs','.css','.html','.json','.txt','.xml','.map','.svg','.webmanifest','']);
+// `.md` and `.htaccess` are here deliberately, and `''` covers extensionless
+// files such as `_redirects`. An inventory of the real build found three text
+// files that no earlier list matched and that were therefore skipped in
+// silence - including `.htaccess`, which is server configuration and the one
+// file here most likely to carry a credential. A scanner that quietly ignores
+// a text file is worse than one that never claimed to read it.
+//
+// `extname('.htaccess')` returns '' (a leading dot is a basename, not an
+// extension), so it is matched by the '' entry rather than by name.
+const TEXT_EXT = new Set(['.js','.mjs','.cjs','.css','.html','.json','.txt','.xml','.map','.svg','.webmanifest','.md','']);
+
+// Binary assets that are intentionally not scanned. Credential-shaped ASCII
+// does not survive image compression, and scanning them would only add noise.
+// Listed explicitly so the "scanned N of M" line can be reconciled: anything
+// unscanned that is NOT one of these is a gap, not a decision.
+const BINARY_EXT = new Set(['.png','.jpg','.jpeg','.webp','.gif','.ico','.avif','.woff','.woff2','.ttf','.eot','.mp4','.webm','.pdf','.gz','.br','.zip']);
 
 function walk(dir) {
   const out = [];
@@ -153,7 +168,19 @@ function readZipEntriesAsText(buf) {
 let scanned = 0;
 for (const f of files) {
   const ext = extname(f).toLowerCase();
-  if (!TEXT_EXT.has(ext) && !OFFICE_EXT.has(ext)) continue;
+  if (!TEXT_EXT.has(ext) && !OFFICE_EXT.has(ext)) {
+    // Unknown extension: not scanned, and not on the known-binary list either.
+    // Report it rather than skipping in silence, so a newly shipped text
+    // format cannot slip past this gate unnoticed the way `.htaccess` did.
+    if (!BINARY_EXT.has(ext)) {
+      findings.push({
+        file: relative(DIST, f),
+        what: `unrecognised file type "${ext || '(none)'}" was not scanned - add it to TEXT_EXT if it is text, or to BINARY_EXT if it is not`,
+        sample: '',
+      });
+    }
+    continue;
+  }
   let text;
   if (OFFICE_EXT.has(ext)) {
     // Fail closed: an office document we cannot read is a document we cannot
