@@ -202,7 +202,28 @@ for (const f of files) {
       continue;
     }
   } else {
-    try { text = readFileSync(f, 'utf8'); } catch { continue; }
+    // Fail closed, exactly as the office-document branch above does. A text
+    // file we cannot read is a file we cannot clear, so it becomes a finding
+    // rather than a silent skip.
+    //
+    // The bare `continue` this replaces was a real hole: an unreadable asset
+    // vanished from the scan while a single readable file elsewhere kept the
+    // "scanned 0 files" guard quiet, so the whole run still reported PASS and
+    // exit 0. Verified before the fix - one unreadable file alongside one
+    // readable one printed "1 text files scanned of 2 total" and passed.
+    //
+    // Only the error CODE is reported. The message can contain a path, and
+    // nothing from the file's contents is ever surfaced.
+    try {
+      text = readFileSync(f, 'utf8');
+    } catch (err) {
+      findings.push({
+        file: relative(DIST, f),
+        what: `file could not be read, so its contents were not scanned (${err.code ?? 'read error'})`,
+        sample: '',
+      });
+      continue;
+    }
   }
   scanned++;
   // Only meaningful for real text assets; skip for zip-container documents.
@@ -212,7 +233,13 @@ for (const f of files) {
   for (const [re, label] of PATTERNS) {
     re.lastIndex = 0;
     const m = re.exec(text);
-    if (m) findings.push({ file: relative(DIST, f), what: label, sample: `${m[0].slice(0, 12)}...` });
+    // NEVER print the matched value. This output goes to GitHub Actions logs,
+    // which are public for this repository, so echoing even a prefix of a real
+    // credential would publish part of the secret the gate exists to catch -
+    // and would do it at the exact moment the secret is known to be live.
+    // The length alone is enough to tell two findings apart and to confirm the
+    // match was credential-shaped rather than a stray short string.
+    if (m) findings.push({ file: relative(DIST, f), what: label, sample: `${m[0].length} chars, value redacted` });
   }
 }
 
