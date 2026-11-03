@@ -184,7 +184,7 @@ const WhatIsPCBMicroSoldering = () => {
             </p>
             
             <ol>
-              <li><strong>Diagnostic Assessment:</strong> We use specialized equipment to identify the exact component failure</li>
+              <li><strong>Diagnostic Assessment:</strong> We identify the exact component failure before quoting the repair</li>
               <li><strong>Board Preparation:</strong> The circuit board is carefully cleaned and prepared</li>
               <li><strong>Component Removal:</strong> The damaged component is precisely removed using hot air rework stations</li>
               <li><strong>Board Repair:</strong> Any damaged pads or traces on the board are repaired</li>
