@@ -76,7 +76,7 @@ function run(dir, failRead) {
 }
 
 /** Build a throwaway dist-like dir, run the scanner, assert, clean up. */
-function check(name, { files, expectFail, expectText, failReadFile }) {
+function check(name, { files, expectFail, expectText, expectAbsent, failReadFile }) {
   const dir = mkdtempSync(join(tmpdir(), 'scan-canary-'));
   try {
     for (const [rel, content] of Object.entries(files)) {
@@ -88,14 +88,36 @@ function check(name, { files, expectFail, expectText, failReadFile }) {
     const failed = code !== 0;
     let ok = failed === expectFail;
     if (ok && expectText) ok = out.includes(expectText);
+    // Negative assertions. These exist because a positive-only check is not a
+    // redaction test: asserting that "value redacted" APPEARS says nothing
+    // about whether the secret ALSO appears somewhere else in the output.
+    // Verified - adding `console.error(m[0])` to the scanner left all 29
+    // positive-only cases passing while the full credential was printed.
+    let leaked = null;
+    if (ok && expectAbsent) {
+      leaked = expectAbsent.find((bad) => out.includes(bad)) ?? null;
+      if (leaked) ok = false;
+    }
     if (ok) {
       pass++;
       console.log(`  ok    ${name}`);
     } else {
       fail++;
       console.log(`  FAIL  ${name}`);
+      if (leaked) {
+        // Describe the leak without reprinting it - this harness's own output
+        // goes to the same public CI log the scanner's does.
+        console.log(`        LEAK: scanner output contained a value it must redact (${leaked.length} chars)`);
+      }
       console.log(`        expected ${expectFail ? 'non-zero' : 'zero'} exit${expectText ? ` containing "${expectText}"` : ''}, got exit ${code}`);
-      console.log(`        output: ${out.trim().split('\n').join('\n        ')}`);
+      // Mask any value we asserted must be absent before echoing the output.
+      // Otherwise the harness would republish, in the same public CI log, the
+      // exact secret whose leak it is reporting.
+      let shown = out;
+      for (const bad of expectAbsent ?? []) {
+        shown = shown.split(bad).join(`<redacted ${bad.length} chars>`);
+      }
+      console.log(`        output: ${shown.trim().split('\n').join('\n        ')}`);
     }
   } finally {
     rmSync(dir, { recursive: true, force: true });
@@ -286,9 +308,31 @@ check('the same two files pass when nothing is made unreadable', {
 });
 // Findings must never echo the matched bytes - this output lands in public
 // Actions logs.
+//
+// The assertions below are deliberately NEGATIVE, and that is the whole point
+// of the case. An earlier version checked only that "value redacted" appeared,
+// which is not a redaction test: it says nothing about whether the secret also
+// appears elsewhere in the output. Independent review proved it hollow by
+// adding `console.error(m[0])` to the scanner - the full credential was
+// printed and all 29 cases still passed.
+//
+// `expectAbsent` is checked against combined stdout+stderr, so a leak through
+// either stream fails. It covers both the whole synthetic credential and the
+// 12-character prefix the scanner used to print, so neither the original
+// behaviour nor a raw dump can return unnoticed.
 check('a finding reports length only, never the credential value', {
   files: { 'assets/app.js': `const k="${FAKE.aws}";` },
-  expectFail: true, expectText: 'value redacted',
+  expectFail: true,
+  expectText: 'value redacted',
+  expectAbsent: [FAKE.aws, FAKE.aws.slice(0, 12)],
+});
+// Same guarantee for a different pattern, so the redaction is not accidentally
+// specific to one branch.
+check('a Resend-key finding also never echoes the value', {
+  files: { 'assets/app.js': `const k="${FAKE.resend}";` },
+  expectFail: true,
+  expectText: 'value redacted',
+  expectAbsent: [FAKE.resend, FAKE.resend.slice(0, 12)],
 });
 
 console.log('\nNegative cases - the scanner MUST pass these:\n');
