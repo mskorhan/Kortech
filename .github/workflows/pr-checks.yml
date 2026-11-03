@@ -31,6 +31,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history: scripts/generate-sitemap.mjs derives each route's
+          # <lastmod> from `git log -1 --format=%cs -- <source file>`. In a
+          # shallow clone every such query resolves to the single boundary
+          # commit, so all 58 URLs collapse to that commit's date. Full
+          # history is what makes per-route dates real - and makes CI test
+          # the same date behaviour the production build produces.
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -61,6 +69,9 @@ jobs:
       # broken, a green scan below means nothing.
       - name: Secret scanner self-test
         run: npm run test:scan-secrets
+
+      - name: Sitemap lastmod regression (per-route dates, full history)
+        run: npm run test:sitemap-lastmod
 
       # Catch a credential or source map inlined into the bundle at review
       # time, not at deploy time. Same check the deploy workflow gates on.
@@ -97,6 +108,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history: scripts/generate-sitemap.mjs derives each route's
+          # <lastmod> from `git log -1 --format=%cs -- <source file>`. In a
+          # shallow clone every such query resolves to the single boundary
+          # commit, so all 58 URLs collapse to that commit's date. Full
+          # history is what makes per-route dates real - and makes CI test
+          # the same date behaviour the production build produces.
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
