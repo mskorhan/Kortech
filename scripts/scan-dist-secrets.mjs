@@ -17,6 +17,7 @@
  */
 import { readdirSync, statSync, readFileSync } from 'node:fs';
 import { join, extname, relative } from 'node:path';
+import { inflateRawSync } from 'node:zlib';
 
 const DIST = process.argv[2] ?? 'dist';
 
@@ -26,10 +27,13 @@ const DIST = process.argv[2] ?? 'dist';
 // firmware-password help URL, and a scanner that cries wolf gets disabled.
 const PATTERNS = [
   // Known false-positive risk: this also matches ordinary English that happens
-  // to start with "re_" (git history contains "re_extra_approval_for_..."). If
-  // this ever blocks a deploy over prose rather than a key, tighten it to
-  // /re_[A-Za-z0-9]{24,}/ (real Resend keys are long and not word-shaped)
-  // rather than deleting the pattern.
+  // to start with "re_" (git history contains "re_extra_approval_for_...").
+  //
+  // If prose ever blocks a deploy, do NOT drop `_` from the character class to
+  // tighten it: Resend keys themselves contain an internal underscore
+  // (re_<id>_<body>), so `/re_[A-Za-z0-9]{24,}/` would stop matching real keys
+  // while still looking stricter. Raise the minimum length instead and keep
+  // `_`, or require a non-word boundary. Never delete the pattern.
   [/re_[A-Za-z0-9_]{16,}/g,                      'Resend API key'],
   [/sk_live_[A-Za-z0-9]{10,}/g,                  'Stripe live secret key'],
   [/rk_live_[A-Za-z0-9]{10,}/g,                  'Stripe live restricted key'],
@@ -78,21 +82,84 @@ for (const f of files) {
   }
 }
 
-// Office documents (.docx/.xlsx/.pptx) are zip containers of XML. Published
+// Office documents (.docx/.xlsx/.pptx) are zip containers of XML, and published
 // ones are shipped to visitors like any other asset, so they get scanned too.
-// Read as latin1 rather than utf8: the bytes are deflated, but credential-
-// shaped ASCII often survives in stored/low-compression entries and in
-// document metadata, and latin1 never throws on binary input.
+//
+// They must be DECOMPRESSED first. Word saves every entry deflated, and deflate
+// Huffman-codes literal bytes, so credential-shaped ASCII does NOT survive in
+// the raw file - including in document metadata. Reading the raw bytes finds
+// nothing and yields a pass that proves nothing. Verified: a key appended to a
+// deflated word/document.xml is invisible in the raw bytes and is only found
+// after inflating.
 const OFFICE_EXT = new Set(['.docx', '.xlsx', '.pptx']);
+
+// Minimal zip reader - no dependency, since this gate must not add one.
+// Walks the central directory and inflates each entry, returning the
+// concatenated text. Throws if the archive cannot be parsed, so the caller
+// can fail closed rather than silently skip a document.
+function readZipEntriesAsText(buf) {
+  // End of Central Directory: scan back for the 0x06054b50 signature.
+  let eocd = -1;
+  for (let i = buf.length - 22; i >= 0 && i > buf.length - 66000; i--) {
+    if (buf.readUInt32LE(i) === 0x06054b50) { eocd = i; break; }
+  }
+  if (eocd < 0) throw new Error('no End of Central Directory record');
+
+  const count = buf.readUInt16LE(eocd + 10);
+  let p = buf.readUInt32LE(eocd + 16); // offset of first central-directory entry
+  const parts = [];
+
+  for (let n = 0; n < count; n++) {
+    if (buf.readUInt32LE(p) !== 0x02014b50) throw new Error('bad central directory entry');
+    const method = buf.readUInt16LE(p + 10);
+    const compSize = buf.readUInt32LE(p + 20);
+    const nameLen = buf.readUInt16LE(p + 28);
+    const extraLen = buf.readUInt16LE(p + 30);
+    const commentLen = buf.readUInt16LE(p + 32);
+    const localOff = buf.readUInt32LE(p + 42);
+    const name = buf.toString('utf8', p + 46, p + 46 + nameLen);
+
+    // Local file header: name/extra lengths here can differ from the central
+    // directory's, so read them again to locate the data correctly.
+    if (buf.readUInt32LE(localOff) !== 0x04034b50) throw new Error('bad local file header');
+    const lNameLen = buf.readUInt16LE(localOff + 26);
+    const lExtraLen = buf.readUInt16LE(localOff + 28);
+    const dataStart = localOff + 30 + lNameLen + lExtraLen;
+    const data = buf.subarray(dataStart, dataStart + compSize);
+
+    if (method === 0) {
+      parts.push(data.toString('utf8'));
+    } else if (method === 8) {
+      parts.push(inflateRawSync(data).toString('utf8'));
+    } else {
+      throw new Error(`unsupported compression method ${method} for ${name}`);
+    }
+    p += 46 + nameLen + extraLen + commentLen;
+  }
+  return parts.join('\n');
+}
 
 let scanned = 0;
 for (const f of files) {
   const ext = extname(f).toLowerCase();
   if (!TEXT_EXT.has(ext) && !OFFICE_EXT.has(ext)) continue;
   let text;
-  try {
-    text = readFileSync(f, OFFICE_EXT.has(ext) ? 'latin1' : 'utf8');
-  } catch { continue; }
+  if (OFFICE_EXT.has(ext)) {
+    // Fail closed: an office document we cannot read is a document we cannot
+    // clear, so it becomes a finding rather than a silent skip.
+    try {
+      text = readZipEntriesAsText(readFileSync(f));
+    } catch (err) {
+      findings.push({
+        file: relative(DIST, f),
+        what: `office document could not be parsed, so its contents were not scanned (${err.message})`,
+        sample: '',
+      });
+      continue;
+    }
+  } else {
+    try { text = readFileSync(f, 'utf8'); } catch { continue; }
+  }
   scanned++;
   // Only meaningful for real text assets; skip for zip-container documents.
   if (!OFFICE_EXT.has(ext) && /\/\/[#@]\s*sourceMappingURL=/.test(text)) {
