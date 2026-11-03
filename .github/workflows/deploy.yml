@@ -61,8 +61,10 @@ jobs:
       # in dist/ is a published secret the moment the upload finishes.
       #
       # The realistic regression: someone adds a VITE_* variable holding a real
-      # key to .env. Vite inlines every VITE_* value into the bundle in
-      # plaintext at build time, and nothing else in CI would notice.
+      # key to .env and references it from client code. Vite inlines the value
+      # of each referenced VITE_* variable into the bundle in plaintext at build
+      # time, and nothing else in CI would notice. This catches values matching
+      # a known key format; a generic random token would still pass.
       #
       # Runs on the built artifact, not on src/, because inlining happens at
       # build time - the secret can be absent from source and present in dist/.

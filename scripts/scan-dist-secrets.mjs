@@ -6,9 +6,17 @@
  * that gets inlined into the bundle fails the deploy instead of shipping.
  *
  * The realistic regression this guards against: someone adds a VITE_* variable
- * holding a real key to .env. Vite inlines every VITE_* value into the client
- * bundle at build time, in plaintext, where anyone can read it. Nothing else in
- * CI would notice.
+ * holding a real key to .env and references it from client code. Vite inlines
+ * the value of each referenced VITE_* variable into the bundle at build time,
+ * in plaintext, where anyone can read it. Nothing else in CI would notice.
+ *
+ * Stated precisely, because it bounds what this gate is worth: Vite inlines
+ * only the variables the code actually references, and under static access the
+ * VALUE lands in the bundle, not the name. So this catches an inlined secret
+ * whose value matches a known key format (Resend, AWS, Stripe, Google, ...). A
+ * generic high-entropy token in a VITE_ variable would NOT be caught - no
+ * pattern can recognise it. The VITE_-name pattern below only fires on
+ * whole-object `import.meta.env` access, where names do reach the output.
  *
  * Fails on: high-signal credential patterns, any source map (a source map
  * republishes original source, and can carry secrets stripped from the bundle),
@@ -26,15 +34,17 @@ const DIST = process.argv[2] ?? 'dist';
 // site's own copy legitimately contains "Show password" and Apple's
 // firmware-password help URL, and a scanner that cries wolf gets disabled.
 const PATTERNS = [
-  // Known false-positive risk: this also matches ordinary English that happens
-  // to start with "re_" (git history contains "re_extra_approval_for_...").
+  // The leading \b matters. Without it this matched ordinary English mid-word:
+  // git history contains "require_extra_approval_for_unattributed_changes",
+  // whose "re_extra_approval_..." substring is key-shaped. A left word boundary
+  // discriminates exactly - the prose stops matching, a quoted key still does,
+  // and both cases are covered by canaries.
   //
-  // If prose ever blocks a deploy, do NOT drop `_` from the character class to
-  // tighten it: Resend keys themselves contain an internal underscore
-  // (re_<id>_<body>), so `/re_[A-Za-z0-9]{24,}/` would stop matching real keys
-  // while still looking stricter. Raise the minimum length instead and keep
-  // `_`, or require a non-word boundary. Never delete the pattern.
-  [/re_[A-Za-z0-9_]{16,}/g,                      'Resend API key'],
+  // If this ever needs tightening further, do NOT drop `_` from the character
+  // class. The exact Resend key format is not verified here, but `_` is
+  // plausible inside one, so removing it risks silently missing real keys while
+  // looking stricter. Never delete the pattern.
+  [/\bre_[A-Za-z0-9_]{16,}/g,                    'Resend API key'],
   [/sk_live_[A-Za-z0-9]{10,}/g,                  'Stripe live secret key'],
   [/rk_live_[A-Za-z0-9]{10,}/g,                  'Stripe live restricted key'],
   [/AKIA[0-9A-Z]{16}/g,                          'AWS access key id'],
@@ -48,7 +58,8 @@ const PATTERNS = [
   [/eyJ[A-Za-z0-9_-]{15,}\.eyJ[A-Za-z0-9_-]{15,}\./g, 'JWT with payload'],
   [/(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?|redis|amqp|mssql):\/\/[^\s"')]{6,}/g, 'database connection string'],
   [/https?:\/\/[A-Za-z0-9._%-]+:[^@/\s"')]+@/g,  'URL with embedded credentials'],
-  // VITE_-prefixed vars are inlined by Vite; one named like a secret is a bug.
+  // Only reaches the bundle under whole-object `import.meta.env` access, which
+  // emits names as well as values. Narrow, but free to check.
   [/VITE_[A-Z0-9_]*(?:SECRET|PASSWORD|PRIVATE|TOKEN|API_KEY)[A-Z0-9_]*/g, 'VITE_ secret-named var inlined into bundle'],
 ];
 
