@@ -28,7 +28,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { deflateRawSync } from 'node:zlib';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname } from 'node:path';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -52,13 +52,31 @@ const FAKE = {
 let pass = 0;
 let fail = 0;
 
-function run(dir) {
-  const r = spawnSync(process.execPath, [SCANNER, dir], { encoding: 'utf8' });
+const FAIL_READ_PRELOAD = pathToFileURL(join(HERE, 'scan-dist-secrets.failread.mjs')).href;
+
+/**
+ * Run the scanner as a real child process.
+ *
+ * `failRead` makes one exact path unreadable via a --import preload rather
+ * than via chmod. Permissions are the obvious way to do this and the wrong
+ * one: they are not portable to Windows, and a CI job running as root can
+ * read a 000-mode file anyway, so a permissions-based test would quietly stop
+ * testing anything. Injecting the error keeps the case deterministic
+ * everywhere.
+ */
+function run(dir, failRead) {
+  const args = failRead
+    ? ['--import', FAIL_READ_PRELOAD, SCANNER, dir]
+    : [SCANNER, dir];
+  const r = spawnSync(process.execPath, args, {
+    encoding: 'utf8',
+    env: { ...process.env, SCAN_FAIL_READ_PATH: failRead ?? '' },
+  });
   return { code: r.status, out: `${r.stdout}${r.stderr}` };
 }
 
 /** Build a throwaway dist-like dir, run the scanner, assert, clean up. */
-function check(name, { files, expectFail, expectText }) {
+function check(name, { files, expectFail, expectText, failReadFile }) {
   const dir = mkdtempSync(join(tmpdir(), 'scan-canary-'));
   try {
     for (const [rel, content] of Object.entries(files)) {
@@ -66,7 +84,7 @@ function check(name, { files, expectFail, expectText }) {
       mkdirSync(dirname(full), { recursive: true });
       writeFileSync(full, content);
     }
-    const { code, out } = run(dir);
+    const { code, out } = run(dir, failReadFile ? join(dir, failReadFile) : undefined);
     const failed = code !== 0;
     let ok = failed === expectFail;
     if (ok && expectText) ok = out.includes(expectText);
@@ -242,6 +260,35 @@ check('a shipped .zip is reported rather than waved through', {
 check('a shipped .pdf is reported rather than waved through', {
   files: { 'docs/flyer.pdf': Buffer.from('%PDF-1.7'), 'assets/app.js': CLEAN_JS },
   expectFail: true, expectText: 'unrecognised file type',
+});
+
+// REGRESSION. An unreadable text file used to hit a bare `continue` and vanish
+// from the scan in total silence.
+//
+// The second file here is the whole point of the case. With only the
+// unreadable file present the run exits non-zero anyway through the
+// "scanned 0 text files" guard - the right exit code for the wrong reason,
+// which would let this defect return unnoticed. The readable control keeps
+// that guard quiet, so this case can only pass if the unreadable file is
+// genuinely reported.
+//
+// Measured on the unfixed scanner, this exact shape printed
+// "1 text files scanned of 2 total" and exited 0.
+check('an unreadable text file is a finding, not a silent skip', {
+  files: { 'assets/unreadable.js': CLEAN_JS, 'assets/readable.js': CLEAN_JS },
+  failReadFile: 'assets/unreadable.js',
+  expectFail: true, expectText: 'could not be read',
+});
+// The injected failure must be the only reason the case above fails.
+check('the same two files pass when nothing is made unreadable', {
+  files: { 'assets/unreadable.js': CLEAN_JS, 'assets/readable.js': CLEAN_JS },
+  expectFail: false,
+});
+// Findings must never echo the matched bytes - this output lands in public
+// Actions logs.
+check('a finding reports length only, never the credential value', {
+  files: { 'assets/app.js': `const k="${FAKE.aws}";` },
+  expectFail: true, expectText: 'value redacted',
 });
 
 console.log('\nNegative cases - the scanner MUST pass these:\n');
