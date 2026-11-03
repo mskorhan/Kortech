@@ -49,24 +49,42 @@ function sitemap() {
   }
 }
 
-// Mirrors generate-sitemap.mjs's route -> source file mapping by reading the
-// generator itself, so the two cannot drift apart silently. Returns null for
-// anything it cannot resolve, so test 2 skips what it cannot verify rather
-// than asserting something false.
-function sourceFileForRoute(route) {
+// Reads generate-sitemap.mjs's own route -> source file maps so the two cannot
+// drift apart. Built by scanning `'key': 'value'` pairs line by line rather
+// than with a per-route regex: an earlier draft interpolated each route into a
+// `new RegExp`, which resolved only 2 of 58 routes while the tests below
+// silently skipped the other 56 and still reported green.
+//
+// This is still a mirror of the generator's logic, not the generator itself
+// (the generator self-executes on import, so it cannot be imported). The
+// ROUTE_COUNT assertion below is what keeps the mirror honest: if it stops
+// resolving every route, the suite fails instead of quietly checking less.
+const ROUTE_COUNT = 58;
+
+function buildRouteMap() {
   const gen = readFileSync(path.join(repo, 'scripts/generate-sitemap.mjs'), 'utf8');
+  const pairs = new Map();
+  for (const raw of gen.split(/\r?\n/)) {
+    const m = /^\s*'([^']+)'\s*:\s*'([^']+)'\s*,?\s*$/.exec(raw);
+    if (m) pairs.set(m[1], m[2]);
+  }
+  return pairs;
+}
+
+function sourceFileForRoute(route, pairs) {
   if (route === '/') return 'src/pages/Home.tsx';
   if (route === '/blog') return 'src/pages/Blog.tsx';
   if (route.startsWith('/blog/')) {
-    const slug = route.slice('/blog/'.length);
-    const m = gen.match(new RegExp(`['"]${slug}['"]\\s*:\\s*['"]([^'"]+)['"]`));
-    return m ? `src/pages/blog/${m[1]}` : null;
+    const file = pairs.get(route.slice('/blog/'.length));
+    return file ? `src/pages/blog/${file}` : null;
   }
-  const m = gen.match(new RegExp(`['"]${route}['"]\\s*:\\s*['"](src/pages/[^'"]+)['"]`));
-  if (m) return m[1];
-  const seg = route.replace(/^\//, '');
-  const g = gen.match(new RegExp(`['"]${seg}['"]\\s*:\\s*['"]([A-Za-z][^'"]*\\.tsx)['"]`));
-  return g ? `src/pages/services/${g[1]}` : null;
+  const direct = pairs.get(route);
+  if (direct && direct.startsWith('src/pages/')) return direct;
+  const bySegment = pairs.get(route.replace(/^\//, ''));
+  if (bySegment && bySegment.endsWith('.tsx') && !bySegment.includes('/')) {
+    return `src/pages/services/${bySegment}`;
+  }
+  return null;
 }
 
 // 1. THE GUARD. Without full history every per-route date below is the same
@@ -84,29 +102,45 @@ test('checkout has full history (shallow clone collapses all lastmod values)', (
 //    individual routes carry the wrong date.
 test('every route lastmod equals its mapped source file last-commit date', () => {
   const { rows } = sitemap();
-  assert.equal(rows.length, 58, 'expected 58 URLs');
+  assert.equal(rows.length, ROUTE_COUNT, `expected ${ROUTE_COUNT} URLs`);
+  const pairs = buildRouteMap();
   const mismatched = [];
+  const unresolved = [];
+  const undated = [];
   for (const { loc, lastmod } of rows) {
     const route = new URL(loc).pathname.replace(/\/$/, '') || '/';
-    const file = sourceFileForRoute(route);
-    if (!file) continue;
+    const file = sourceFileForRoute(route, pairs);
+    if (!file) { unresolved.push(route); continue; }
     const expected = git('log', '-1', '--format=%cs', '--', file);
-    if (expected && expected !== lastmod) mismatched.push({ route, file, expected, lastmod });
+    if (!expected) { undated.push({ route, file }); continue; }
+    if (expected !== lastmod) mismatched.push({ route, file, expected, lastmod });
   }
+  // Coverage first: without these, the comparison below can pass while
+  // checking almost nothing.
+  assert.deepEqual(unresolved, [], 'routes this test could not map to a source file');
+  assert.deepEqual(undated, [], 'mapped files with no commit date (would use the HEAD fallback)');
   assert.deepEqual(mismatched, [], 'routes whose lastmod disagrees with git history');
 });
 
-// 3. Unmapped / missing history is asserted, not hidden. Today 0 of the 58
-//    routes fall through to the HEAD fallback, so a date-spread assertion
-//    could never detect a regression here. A renamed or deleted mapped file
-//    would silently take the HEAD date: lastCommitDate() has no --follow and
-//    no existence check.
-test('every mapped source file exists (a renamed file silently takes the HEAD date)', () => {
+// 3. Missing mapped files are asserted, not hidden. Today 0 of the 58 routes
+//    reach repoFallbackDate(), so a date-spread assertion could never detect
+//    a regression here.
+//
+//    Two distinct failure modes, both verified in a scratch clone:
+//      - a RENAMED or DELETED path: `git log -1 -- <old path>` returns the
+//        rename/delete COMMIT's date, so the route silently freezes at the
+//        date it was renamed and never moves again. lastCommitDate() has no
+//        --follow, so the new path's history is not followed.
+//      - a path that NEVER existed (a typo in the map): returns empty, so
+//        lastmodFor() falls through to repoFallbackDate() = the HEAD date.
+//    Neither is caught by comparing dates, which is why this checks existence.
+test('every mapped source file exists (a stale path freezes or falls back)', () => {
   const { rows } = sitemap();
+  const pairs = buildRouteMap();
   const missing = [];
   for (const { loc } of rows) {
     const route = new URL(loc).pathname.replace(/\/$/, '') || '/';
-    const file = sourceFileForRoute(route);
+    const file = sourceFileForRoute(route, pairs);
     if (file && !existsSync(path.join(repo, file))) missing.push({ route, file });
   }
   assert.deepEqual(missing, [], 'mapped page files that no longer exist');
@@ -124,10 +158,6 @@ test('a commit touching only tooling does not advance any page lastmod', () => {
   const tmp = mkdtempSync(path.join(tmpdir(), 'sitemap-lastmod-'));
   try {
     execFileSync('git', ['clone', '--quiet', '--no-hardlinks', repo, tmp], { stdio: 'pipe' });
-    const inTmp = (...a) => execFileSync('git', a, { cwd: tmp, encoding: 'utf8' }).trim();
-    if (inTmp('rev-parse', '--is-shallow-repository') !== 'false') {
-      execFileSync('git', ['fetch', '--unshallow'], { cwd: tmp, stdio: 'pipe' });
-    }
     const read = () => {
       execFileSync('node', ['scripts/generate-sitemap.mjs'], { cwd: tmp, stdio: 'pipe' });
       const xml = readFileSync(path.join(tmp, 'public/sitemap.xml'), 'utf8');
@@ -135,9 +165,15 @@ test('a commit touching only tooling does not advance any page lastmod', () => {
         .map(([, loc, lastmod]) => ({ loc, lastmod }));
     };
     const before = read();
-    assert.equal(before.length, 58, 'expected 58 URLs in the reference clone');
+    assert.equal(before.length, ROUTE_COUNT, `expected ${ROUTE_COUNT} URLs in the reference clone`);
+    // A real tooling-only change, not --allow-empty: an empty commit touches
+    // no path at all, so it would not exercise the per-file lookup. This
+    // mirrors #52, which changed only CI tooling yet moved every live date.
+    const touched = path.join(tmp, 'scripts/generate-sitemap.lastmod.test.mjs');
+    writeFileSync(touched, `${readFileSync(touched, 'utf8')}\n// tooling-only touch\n`);
+    execFileSync('git', ['add', 'scripts/generate-sitemap.lastmod.test.mjs'], { cwd: tmp, stdio: 'pipe' });
     execFileSync('git', ['-c', 'user.email=t@t', '-c', 'user.name=t',
-      'commit', '--allow-empty', '-m', 'test: tooling-only, touches no page'],
+      'commit', '-m', 'test: tooling-only, touches no page file'],
     { cwd: tmp, stdio: 'pipe' });
     assert.deepEqual(read(), before, 'a tooling-only commit changed page lastmod values');
   } finally {
