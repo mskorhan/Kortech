@@ -214,9 +214,11 @@ check('empty build directory proves nothing', {
   files: {},
   expectFail: true, expectText: 'scanned 0 text files',
 });
-// `.htaccess` really was skipped in silence by an earlier version of the
-// scanner, and it is server configuration - the file in a build most likely to
-// carry a credential. Pinned so it cannot fall out of coverage again.
+// `.htaccess` is server configuration - the file in a build most likely to
+// carry a credential - and it is covered only incidentally, by the ''
+// (extensionless) entry, because `extname()` treats a leading dot as part of
+// the basename. Nothing names it explicitly, so these two cases pin that
+// coverage against a future tightening of TEXT_EXT.
 check('key in .htaccess is caught', {
   files: { '.htaccess': `# SetEnv API_KEY ${FAKE.resend}`, 'assets/app.js': CLEAN_JS },
   expectFail: true, expectText: 'Resend API key',
@@ -228,6 +230,17 @@ check('key in an extensionless file is caught', {
 // A text format nobody thought about must not pass by being unrecognised.
 check('unrecognised file type is reported, not skipped', {
   files: { 'data/config.yaml': 'key: value', 'assets/app.js': CLEAN_JS },
+  expectFail: true, expectText: 'unrecognised file type',
+});
+// Containers must NOT be pre-whitelisted as "binary". A shipped .zip or .pdf
+// can hold credential-shaped text that the scanner cannot see, so the right
+// outcome is a signal to decide, not a silent pass.
+check('a shipped .zip is reported rather than waved through', {
+  files: { 'downloads/bundle.zip': Buffer.from('PK\x03\x04binary'), 'assets/app.js': CLEAN_JS },
+  expectFail: true, expectText: 'unrecognised file type',
+});
+check('a shipped .pdf is reported rather than waved through', {
+  files: { 'docs/flyer.pdf': Buffer.from('%PDF-1.7'), 'assets/app.js': CLEAN_JS },
   expectFail: true, expectText: 'unrecognised file type',
 });
 

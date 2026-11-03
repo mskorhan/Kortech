@@ -63,22 +63,28 @@ const PATTERNS = [
   [/VITE_[A-Z0-9_]*(?:SECRET|PASSWORD|PRIVATE|TOKEN|API_KEY)[A-Z0-9_]*/g, 'VITE_ secret-named var inlined into bundle'],
 ];
 
-// `.md` and `.htaccess` are here deliberately, and `''` covers extensionless
-// files such as `_redirects`. An inventory of the real build found three text
-// files that no earlier list matched and that were therefore skipped in
-// silence - including `.htaccess`, which is server configuration and the one
-// file here most likely to carry a credential. A scanner that quietly ignores
-// a text file is worse than one that never claimed to read it.
+// `.md` was the one text extension an inventory of the real build found
+// unscanned, so it is added here.
 //
-// `extname('.htaccess')` returns '' (a leading dot is a basename, not an
-// extension), so it is matched by the '' entry rather than by name.
+// `.htaccess` and `_redirects` were ALREADY covered and are called out because
+// it is easy to assume otherwise: `extname()` treats a leading dot as part of
+// the basename, so `extname('.htaccess')` is '' - the same as a file with no
+// extension at all - and the '' entry matches both. That matters, since
+// `.htaccess` is server configuration and the file here most likely to carry a
+// credential.
 const TEXT_EXT = new Set(['.js','.mjs','.cjs','.css','.html','.json','.txt','.xml','.map','.svg','.webmanifest','.md','']);
 
 // Binary assets that are intentionally not scanned. Credential-shaped ASCII
-// does not survive image compression, and scanning them would only add noise.
-// Listed explicitly so the "scanned N of M" line can be reconciled: anything
-// unscanned that is NOT one of these is a gap, not a decision.
-const BINARY_EXT = new Set(['.png','.jpg','.jpeg','.webp','.gif','.ico','.avif','.woff','.woff2','.ttf','.eot','.mp4','.webm','.pdf','.gz','.br','.zip']);
+// does not survive image or font compression, and scanning them would only add
+// noise. Listed explicitly so the "scanned N of M" line can be reconciled:
+// anything unscanned that is NOT one of these is a gap, not a decision.
+//
+// Deliberately NOT listed: .pdf, .zip, .gz, .br. Those are containers or
+// compressed text, and whitelisting them in advance would let a shipped
+// archive pass with no signal - the same mistake the .docx handling exists to
+// avoid. None are produced by this build today, so leaving them off costs
+// nothing now and forces a decision if one ever appears.
+const BINARY_EXT = new Set(['.png','.jpg','.jpeg','.webp','.gif','.ico','.avif','.woff','.woff2','.ttf','.eot','.mp4','.webm']);
 
 function walk(dir) {
   const out = [];
