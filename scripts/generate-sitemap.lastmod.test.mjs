@@ -11,13 +11,13 @@
 // <lastmod> to `git log -1 -- <file>` in the same checkout - PASSES in a
 // shallow clone, because both sides return the same boundary date. That is a
 // test that passes for the wrong reason. Verified against a real depth-1
-// clone: tests 2-4 below all pass there while every date is wrong, and only
-// test 1 fails. Test 1 is the guard that actually catches the defect.
+// clone: the date comparisons below pass there while every date is wrong.
+// Test 1 is the guard that actually catches the defect.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, copyFileSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -158,6 +158,13 @@ test('a commit touching only tooling does not advance any page lastmod', () => {
   const tmp = mkdtempSync(path.join(tmpdir(), 'sitemap-lastmod-'));
   try {
     execFileSync('git', ['clone', '--quiet', '--no-hardlinks', repo, tmp], { stdio: 'pipe' });
+    // A clone copies the committed HEAD, not the working tree. Copy the
+    // generator in so this tests the generator as it currently stands on
+    // disk; otherwise an edit to it is silently not exercised here.
+    copyFileSync(
+      path.join(repo, 'scripts/generate-sitemap.mjs'),
+      path.join(tmp, 'scripts/generate-sitemap.mjs'),
+    );
     const read = () => {
       execFileSync('node', ['scripts/generate-sitemap.mjs'], { cwd: tmp, stdio: 'pipe' });
       const xml = readFileSync(path.join(tmp, 'public/sitemap.xml'), 'utf8');
@@ -166,15 +173,30 @@ test('a commit touching only tooling does not advance any page lastmod', () => {
     };
     const before = read();
     assert.equal(before.length, ROUTE_COUNT, `expected ${ROUTE_COUNT} URLs in the reference clone`);
+
     // A real tooling-only change, not --allow-empty: an empty commit touches
     // no path at all, so it would not exercise the per-file lookup. This
     // mirrors #52, which changed only CI tooling yet moved every live date.
-    const touched = path.join(tmp, 'scripts/generate-sitemap.lastmod.test.mjs');
-    writeFileSync(touched, `${readFileSync(touched, 'utf8')}\n// tooling-only touch\n`);
-    execFileSync('git', ['add', 'scripts/generate-sitemap.lastmod.test.mjs'], { cwd: tmp, stdio: 'pipe' });
+    // package.json is always tracked, and is not a page.
+    const touched = path.join(tmp, 'package.json');
+    writeFileSync(touched, `${readFileSync(touched, 'utf8')}\n`);
+    execFileSync('git', ['add', 'package.json'], { cwd: tmp, stdio: 'pipe' });
+    // Force a far-future date. Without this the new commit lands on today,
+    // which can equal HEAD's date - and then a generator leaking the HEAD
+    // date would produce identical output and this test would pass for the
+    // wrong reason.
+    const FAKE = '2099-01-01T12:00:00Z';
     execFileSync('git', ['-c', 'user.email=t@t', '-c', 'user.name=t',
       'commit', '-m', 'test: tooling-only, touches no page file'],
-    { cwd: tmp, stdio: 'pipe' });
+    { cwd: tmp, stdio: 'pipe', env: { ...process.env, GIT_AUTHOR_DATE: FAKE, GIT_COMMITTER_DATE: FAKE } });
+    // Check the premise instead of assuming it: the new HEAD really is dated
+    // differently from every page date, so a HEAD-date leak would be visible.
+    const headDate = execFileSync('git', ['log', '-1', '--format=%cs'],
+      { cwd: tmp, encoding: 'utf8' }).trim();
+    assert.equal(headDate, '2099-01-01', 'tooling commit did not take the forced date');
+    assert.ok(!before.some((r) => r.lastmod === headDate),
+      'forced date collides with a real page date; pick a different one');
+
     assert.deepEqual(read(), before, 'a tooling-only commit changed page lastmod values');
   } finally {
     rmSync(tmp, { recursive: true, force: true });
