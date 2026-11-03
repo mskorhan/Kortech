@@ -22,7 +22,23 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment files. THIS REPOSITORY IS PUBLIC, so a mode-specific env file
+# committed by accident is a published credential.
+#
+# `.env` alone was not enough: Vite also reads `.env.production`,
+# `.env.development` and `.env.<mode>.local`, and none of those matched the
+# old rules (`*.local` only catches the `.local` suffix forms).
+#
+# `.dev.vars` is Wrangler's LOCAL SECRETS file for the Worker - in this repo
+# that is where a real Resend key would sit during local development, so it is
+# the highest-risk filename here despite not being a `.env*` name at all.
 .env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+.wrangler/
 
 # SEO intelligence workspace - internal analytics only.
 # Never deploy: dist/ is FTP-synced to production, and this holds exported
@@ -58,6 +74,7 @@ seo-intelligence/data/**/*.tsv
 seo-intelligence/reports/ssl-hsts-*.md
 seo-intelligence/reports/dns-and-tls-*.md
 seo-intelligence/reports/bluehost-*-request-*.md
+seo-intelligence/reports/email-investigation-*.md
 # Scratch working directory for in-progress analysis.
 seo-intelligence/reports/_work/
 
@@ -65,3 +82,9 @@ seo-intelligence/reports/_work/
 visual-qa-report.json
 visual-qa-shots/
 .playwright-mcp/
+
+# Screenshots of the signed-in Google Business Profile admin UI. The business
+# data in them is public, but admin-session captures (profile avatar, manager
+# controls, pending-edit state) should not be published from a public repo.
+# They are local audit evidence only.
+seo-intelligence/data/gbp/evidence-*/

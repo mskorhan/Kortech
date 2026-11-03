@@ -53,6 +53,20 @@ jobs:
       - name: Build site
         run: npm run build
 
+      # Prove the secret scanner can still FAIL before trusting the run above.
+      # A guard that is never exercised degrades into a step that always prints
+      # PASS, so this plants credential-shaped values in a temporary directory
+      # and asserts each one is caught, alongside negative cases that keep it
+      # from crying wolf on ordinary site copy. Runs first: if the scanner is
+      # broken, a green scan below means nothing.
+      - name: Secret scanner self-test
+        run: npm run test:scan-secrets
+
+      # Catch a credential or source map inlined into the bundle at review
+      # time, not at deploy time. Same check the deploy workflow gates on.
+      - name: No secrets or source maps in build output
+        run: npm run scan-secrets
+
   # Behavioural tests that need a built site and a real browser.
   #
   # DELIBERATELY A SEPARATE JOB, not extra steps inside `build`. The ruleset
