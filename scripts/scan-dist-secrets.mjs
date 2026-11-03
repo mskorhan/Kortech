@@ -25,6 +25,11 @@ const DIST = process.argv[2] ?? 'dist';
 // site's own copy legitimately contains "Show password" and Apple's
 // firmware-password help URL, and a scanner that cries wolf gets disabled.
 const PATTERNS = [
+  // Known false-positive risk: this also matches ordinary English that happens
+  // to start with "re_" (git history contains "re_extra_approval_for_..."). If
+  // this ever blocks a deploy over prose rather than a key, tighten it to
+  // /re_[A-Za-z0-9]{24,}/ (real Resend keys are long and not word-shaped)
+  // rather than deleting the pattern.
   [/re_[A-Za-z0-9_]{16,}/g,                      'Resend API key'],
   [/sk_live_[A-Za-z0-9]{10,}/g,                  'Stripe live secret key'],
   [/rk_live_[A-Za-z0-9]{10,}/g,                  'Stripe live restricted key'],
@@ -73,13 +78,24 @@ for (const f of files) {
   }
 }
 
+// Office documents (.docx/.xlsx/.pptx) are zip containers of XML. Published
+// ones are shipped to visitors like any other asset, so they get scanned too.
+// Read as latin1 rather than utf8: the bytes are deflated, but credential-
+// shaped ASCII often survives in stored/low-compression entries and in
+// document metadata, and latin1 never throws on binary input.
+const OFFICE_EXT = new Set(['.docx', '.xlsx', '.pptx']);
+
 let scanned = 0;
 for (const f of files) {
-  if (!TEXT_EXT.has(extname(f).toLowerCase())) continue;
+  const ext = extname(f).toLowerCase();
+  if (!TEXT_EXT.has(ext) && !OFFICE_EXT.has(ext)) continue;
   let text;
-  try { text = readFileSync(f, 'utf8'); } catch { continue; }
+  try {
+    text = readFileSync(f, OFFICE_EXT.has(ext) ? 'latin1' : 'utf8');
+  } catch { continue; }
   scanned++;
-  if (/\/\/[#@]\s*sourceMappingURL=/.test(text)) {
+  // Only meaningful for real text assets; skip for zip-container documents.
+  if (!OFFICE_EXT.has(ext) && /\/\/[#@]\s*sourceMappingURL=/.test(text)) {
     findings.push({ file: relative(DIST, f), what: 'sourceMappingURL reference', sample: '' });
   }
   for (const [re, label] of PATTERNS) {
