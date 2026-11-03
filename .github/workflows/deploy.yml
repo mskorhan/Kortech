@@ -56,6 +56,19 @@ jobs:
       - name: Build site
         run: npm run build
 
+      # Fail before uploading anything if a credential or a source map made it
+      # into the build output. Client-side code is world-readable, so a secret
+      # in dist/ is a published secret the moment the upload finishes.
+      #
+      # The realistic regression: someone adds a VITE_* variable holding a real
+      # key to .env. Vite inlines every VITE_* value into the bundle in
+      # plaintext at build time, and nothing else in CI would notice.
+      #
+      # Runs on the built artifact, not on src/, because inlining happens at
+      # build time - the secret can be absent from source and present in dist/.
+      - name: Pre-flight - no secrets or source maps in build output
+        run: node scripts/scan-dist-secrets.mjs dist
+
       # Fail before uploading anything if the configured server does not offer
       # FTPS or its certificate does not validate for that exact hostname.
       # Without this, a hostname that fails strict validation would surface as

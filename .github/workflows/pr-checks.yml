@@ -53,6 +53,11 @@ jobs:
       - name: Build site
         run: npm run build
 
+      # Catch a credential or source map inlined into the bundle at review
+      # time, not at deploy time. Same check the deploy workflow gates on.
+      - name: No secrets or source maps in build output
+        run: npm run scan-secrets
+
   # Behavioural tests that need a built site and a real browser.
   #
   # DELIBERATELY A SEPARATE JOB, not extra steps inside `build`. The ruleset
