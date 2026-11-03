@@ -1,3 +1,25 @@
+/**
+ * TEST FIXTURE — NOT the production worker, and NOT a record of it.
+ *
+ * This is a frozen copy of the worker as it was BEFORE the hardening work:
+ * no honeypot handling, no rate limiting. It exists so `deploy-order.test.mjs`
+ * can execute one question — would a worker of this shape still accept a
+ * submission carrying the new honeypot field, rather than reject it or print
+ * it into the notification email? — instead of asserting the answer in prose.
+ *
+ * Do NOT read this file to learn what production does.
+ *  - `worker/src/index.ts` is the real source and is ~177 lines longer; the
+ *    two differ by design, and that difference is the point of the fixture.
+ *  - Nothing here is deployed. The worker ships only when someone runs
+ *    `wrangler deploy`, separately from the site's merge-triggered deploy.
+ *  - What is actually running in production cannot be confirmed from this
+ *    repository. `wrangler` is unauthenticated in this environment, so the
+ *    live worker could have been deployed from any branch at any time.
+ *
+ * Because it is a deliberate historical baseline, this file is NOT kept in
+ * sync with `worker/src/index.ts`. Update it only to re-baseline against a
+ * different known-old shape, and say which shape in the commit message.
+ */
 export interface Env {
   RESEND_API_KEY: string;
   NOTIFY_TO_EMAIL: string;
