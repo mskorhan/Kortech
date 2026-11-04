@@ -132,7 +132,7 @@ const PS5HDMIRepair = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>In-House Repairs</span>
+                  <span>In-House Board-Level Repair</span>
                 </div>
               </div>
             </div>

@@ -384,8 +384,8 @@ export default function Home() {
                   <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4">
                     <Users className="h-6 w-6 text-purple-600" />
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">In-House Repairs</h3>
-                  <p className="text-sm sm:text-base text-slate-600 font-light">Board-level and device repairs handled at our Charlotte shop</p>
+                  <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Board-Level Repair In-House</h3>
+                  <p className="text-sm sm:text-base text-slate-600 font-light">Micro-soldering and board-level work done at our Charlotte shop</p>
                 </div>
 
                 <div className="card p-6 hover-lift data-stream">
