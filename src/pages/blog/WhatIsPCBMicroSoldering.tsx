@@ -17,7 +17,7 @@ const WhatIsPCBMicroSoldering = () => {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": "What is PCB-Level Micro-Soldering? | KorTech Service",
-      "description": "Learn what PCB-level micro-soldering is, how it works, and why it's crucial for modern electronics repair. Expert insights from Charlotte's electronics repair specialists.",
+      "description": "Learn what PCB-level micro-soldering is, how it works, and why it's crucial for modern electronics repair.",
       "image": "https://images.pexels.com/photos/3912982/pexels-photo-3912982.jpeg",
       "author": {
         "@type": "Organization",
@@ -76,7 +76,7 @@ const WhatIsPCBMicroSoldering = () => {
             
             <img 
               src="https://images.pexels.com/photos/3912982/pexels-photo-3912982.jpeg" 
-              alt="Professional micro-soldering work on electronic circuit board showing precision component-level repair services for smartphones and electronics" 
+              alt="Micro-soldering work on an electronic circuit board, illustrating component-level repair of smartphones and electronics"
               className="w-full max-w-3xl mx-auto rounded-2xl shadow-lg mb-8"
               loading="lazy"
             />
@@ -121,7 +121,7 @@ const WhatIsPCBMicroSoldering = () => {
             </ul>
             
             <p>
-              At KorTech Service in Charlotte, our micro-soldering specialists work with components as small as 0.01mm—about the width of a human hair. This level of precision allows us to repair issues that most repair shops can't address.
+              KorTech Service performs micro-soldering and board-level electronics repair in-house at our Charlotte shop, rather than sending boards out to a third party.
             </p>
             
             <h2>Common Issues Fixed With Micro-Soldering</h2>
@@ -129,7 +129,7 @@ const WhatIsPCBMicroSoldering = () => {
             <h3>1. Charging Port Repairs</h3>
             
             <p>
-              One of the most common micro-soldering repairs we perform in our Charlotte repair center is fixing charging ports. When a phone or laptop won't charge, it's often due to:
+              Charging port failure is one of the problems micro-soldering is commonly used to address. When a phone or laptop won't charge, it's often due to:
             </p>
             
             <ul>
@@ -139,7 +139,7 @@ const WhatIsPCBMicroSoldering = () => {
             </ul>
             
             <p>
-              Rather than replacing the entire motherboard (which could cost $300-800+), micro-soldering allows us to replace just the charging port component for a fraction of the cost.
+              Rather than replacing an entire motherboard, micro-soldering can target just the charging port component, which is typically far less expensive than a full board replacement.
             </p>
             
             <h3>2. HDMI Port Repairs</h3>
@@ -149,7 +149,7 @@ const WhatIsPCBMicroSoldering = () => {
             </p>
             
             <p>
-              Micro-soldering allows us to:
+              A micro-soldering repair of an HDMI port generally involves:
             </p>
             
             <ul>
@@ -158,12 +158,6 @@ const WhatIsPCBMicroSoldering = () => {
               <li>Install and precisely align a new port</li>
               <li>Create proper solder connections for all pins</li>
             </ul>
-            
-            <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-100 my-4">
-              <p className="text-yellow-800 font-medium mb-0">
-                <strong>Real Example:</strong> A Charlotte customer brought in a PS5 with no display output after their child accidentally yanked the HDMI cable. The HDMI port had pulled away from the board, damaging several traces. Through micro-soldering, we repaired the broken connections and replaced the port, saving them from having to purchase a new $500+ console.
-              </p>
-            </div>
             
             <h3>3. Backlight Circuit Repair</h3>
             
@@ -174,22 +168,22 @@ const WhatIsPCBMicroSoldering = () => {
             <h3>4. CPU/GPU Reballing</h3>
             
             <p>
-              In advanced cases, we can even perform "reballing" - the process of removing and replacing a CPU or GPU chip on a circuit board. This complex procedure is often needed for gaming consoles with overheating issues or laptops with graphics problems.
+              In advanced cases, a board may call for "reballing" - the process of removing and replacing a CPU or GPU chip on a circuit board. This complex procedure is sometimes considered for gaming consoles with overheating issues or laptops with graphics problems.
             </p>
             
             <h2>The Micro-Soldering Process</h2>
             
             <p>
-              Here's what happens during a typical micro-soldering repair at our Charlotte facility:
+              A typical micro-soldering repair involves these stages:
             </p>
             
             <ol>
-              <li><strong>Diagnostic Assessment:</strong> We identify the exact component failure before quoting the repair</li>
+              <li><strong>Diagnostic Assessment:</strong> The failed component is identified</li>
               <li><strong>Board Preparation:</strong> The circuit board is carefully cleaned and prepared</li>
-              <li><strong>Component Removal:</strong> The damaged component is precisely removed using hot air rework stations</li>
+              <li><strong>Component Removal:</strong> The damaged component is precisely removed</li>
               <li><strong>Board Repair:</strong> Any damaged pads or traces on the board are repaired</li>
               <li><strong>Component Replacement:</strong> A new component is carefully placed and soldered</li>
-              <li><strong>Testing:</strong> Multiple tests ensure the repair is successful and durable</li>
+              <li><strong>Testing:</strong> The repaired board is tested</li>
               <li><strong>Reassembly:</strong> The device is carefully reassembled and tested again</li>
             </ol>
             
@@ -223,7 +217,7 @@ const WhatIsPCBMicroSoldering = () => {
             <h2>Devices That Benefit From Micro-Soldering</h2>
             
             <p>
-              At our Charlotte repair center, we regularly perform micro-soldering on:
+              Devices that commonly benefit from micro-soldering include:
             </p>
             
             <ul>
@@ -270,13 +264,13 @@ const WhatIsPCBMicroSoldering = () => {
             </p>
             
             <p>
-              In Charlotte, our team at KorTech Service has invested in advanced micro-soldering equipment and training to provide this specialized service. Whether it's a damaged charging port on your smartphone, an HDMI issue with your gaming console, or a complex motherboard problem with your laptop, our micro-soldering experts are ready to help.
+              KorTech Service offers micro-soldering and board-level repair in-house in Charlotte. Whether it's a damaged charging port on your smartphone, an HDMI issue with your gaming console, or a motherboard problem with your laptop, you can bring the device to our shop to have it looked at.
             </p>
             
             <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-100 my-8">
               <h3 className="text-xl font-bold text-indigo-800 mb-4">Need Professional Micro-Soldering in Charlotte?</h3>
               <p className="text-indigo-700 mb-4">
-                Our expert technicians provide precision micro-soldering repairs for all electronic devices. Diagnostic Fee Waived With Hardware Repair.
+                KorTech Service provides micro-soldering and component-level repairs in-house. Diagnostic Fee Waived With Hardware Repair.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -370,7 +364,7 @@ const WhatIsPCBMicroSoldering = () => {
             Need Professional Electronics Repair in Charlotte?
           </h2>
           <p className="text-xl text-indigo-100 mb-8">
-            Our expert technicians provide precision micro-soldering and component-level repairs for all electronic devices.
+            KorTech Service provides micro-soldering and component-level electronics repair in-house in Charlotte.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
