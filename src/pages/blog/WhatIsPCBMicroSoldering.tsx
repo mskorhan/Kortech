@@ -120,10 +120,6 @@ const WhatIsPCBMicroSoldering = () => {
               <li>Steady hands and years of training</li>
             </ul>
             
-            <p>
-              KorTech Service performs micro-soldering and board-level electronics repair in-house at our Charlotte shop, rather than sending boards out to a third party.
-            </p>
-            
             <h2>Common Issues Fixed With Micro-Soldering</h2>
             
             <h3>1. Charging Port Repairs</h3>

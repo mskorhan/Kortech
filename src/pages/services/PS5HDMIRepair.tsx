@@ -78,7 +78,7 @@ const PS5HDMIRepair = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="PS5 HDMI Repair Charlotte NC • KorTech Service"
-        description="Professional PS5 HDMI port repair in Charlotte, NC. Same-day service available. Expert technicians, quality parts. Call 704-246-7642 or Text/Call 980-888-5300."
+        description="PS5 HDMI port repair in Charlotte, NC. Same-day service available for eligible repairs. In-house board-level repair. Call 704-246-7642 or Text/Call 980-888-5300."
         canonicalUrl="/ps5-hdmi-repair"
         schema={schema}
       />
@@ -95,7 +95,7 @@ const PS5HDMIRepair = () => {
             <div className="space-y-8">
               <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
                 <Gamepad2 className="h-5 w-5 text-blue-300" />
-                <span className="text-white font-medium">Gaming Console Repair Experts</span>
+                <span className="text-white font-medium">Gaming Console Repair</span>
               </div>
               
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -104,8 +104,8 @@ const PS5HDMIRepair = () => {
               </h1>
               
               <p className="text-xl text-gray-200 leading-relaxed">
-                Professional PlayStation 5 HDMI port repair service. Fast turnaround, 
-                quality parts, and expert technicians. Get your PS5 back to gaming today!
+                PlayStation 5 HDMI port repair service. Board-level HDMI port
+                replacement done in-house at our Charlotte shop.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
