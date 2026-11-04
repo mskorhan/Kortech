@@ -11,15 +11,15 @@
 // The fixture is a frozen PRE-hardening copy of the worker - no honeypot
 // handling, no rate limiting - captured so this is an executed check rather
 // than an assertion in a PR description. It is deliberately NOT main's current
-// source: `worker/src/index.ts` is ~177 lines longer and already hardened, and
-// that gap is exactly what this test exercises.
+// source: `worker/src/index.ts` is substantially longer and already hardened,
+// and that gap is exactly what this test exercises.
 //
 // CAVEAT: this tests a known-old SHAPE of the worker, not the deployed one.
-// What is actually running in production cannot be confirmed from here -
-// wrangler is unauthenticated in this environment, and the worker ships only
-// via a manual `wrangler deploy`, so the live worker could have been deployed
-// from any branch at any time. A pass here means "a worker of this old shape
-// would tolerate the honeypot field", not "production is safe".
+// This repository does not record which worker version is deployed, and the
+// worker ships only via a manual `wrangler deploy`, so the live worker could
+// have been deployed from any branch at any time. A pass here means "a worker
+// of this old shape would tolerate the honeypot field", not "production is
+// safe" - to check production, read the live script from Cloudflare.
 
 import assert from 'node:assert/strict';
 import test from 'node:test';

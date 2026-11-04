@@ -8,13 +8,14 @@
  * it into the notification email? — instead of asserting the answer in prose.
  *
  * Do NOT read this file to learn what production does.
- *  - `worker/src/index.ts` is the real source and is ~177 lines longer; the
- *    two differ by design, and that difference is the point of the fixture.
+ *  - `worker/src/index.ts` is the real source: substantially longer and
+ *    already hardened. The two differ by design, and that difference is the
+ *    point of the fixture.
  *  - Nothing here is deployed. The worker ships only when someone runs
  *    `wrangler deploy`, separately from the site's merge-triggered deploy.
- *  - What is actually running in production cannot be confirmed from this
- *    repository. `wrangler` is unauthenticated in this environment, so the
- *    live worker could have been deployed from any branch at any time.
+ *  - This repository does not record which worker version is deployed, so the
+ *    live worker could have been deployed from any branch at any time. To see
+ *    what is actually running, read it from Cloudflare, not from here.
  *
  * Because it is a deliberate historical baseline, this file is NOT kept in
  * sync with `worker/src/index.ts`. Update it only to re-baseline against a
