@@ -18,7 +18,7 @@ const PCBMicroSoldering = () => {
   const faqs = [
     {
       question: "What is PCB-level micro-soldering?",
-      answer: "PCB-level micro-soldering is the precise repair of electronic components on circuit boards using specialized equipment. It involves replacing damaged chips, connectors, and components at the microscopic level."
+      answer: "PCB-level micro-soldering is the precise repair of individual electronic components on a circuit board, rather than replacing the whole board. It involves replacing damaged chips, connectors and components at the board level. KorTech Service performs this board-level work in-house, at our Charlotte shop."
     },
     {
       question: "What devices can benefit from micro-soldering repair?",
@@ -43,7 +43,7 @@ const PCBMicroSoldering = () => {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "PCB Micro-Soldering Repair Services",
-      "description": "Professional PCB-level micro-soldering and electronics rework services in Charlotte, NC. Expert circuit board repair for smartphones, laptops, and electronic devices.",
+      "description": "Professional PCB-level micro-soldering and electronics rework services in Charlotte, NC. In-house board-level circuit board repair for smartphones, laptops, and electronic devices.",
       "provider": {
         "@type": "LocalBusiness",
         "@id": "https://www.kortechservice.com/#organization",
@@ -109,7 +109,7 @@ const PCBMicroSoldering = () => {
               
               <p className="text-xl text-gray-200 leading-relaxed">
                 Professional PCB-level micro-soldering and electronics rework services in Charlotte, Matthews, and surrounding areas. 
-                Expert circuit board repair for complex electronic devices.
+                We perform this board-level circuit board repair in-house, at our own Charlotte shop.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -131,11 +131,11 @@ const PCBMicroSoldering = () => {
               <div className="flex items-center space-x-6 text-sm">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Expert Technicians</span>
+                  <span>In-House Board-Level Repair</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Precision Equipment</span>
+                  <span>Charlotte, NC Shop</span>
                 </div>
               </div>
             </div>
