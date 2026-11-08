@@ -25,6 +25,7 @@
     "test:forms": "node scripts/form-qa.mjs",
     "test:forms:prod": "node scripts/form-qa.mjs --base=https://www.kortechservice.com",
     "scan-secrets": "node scripts/scan-dist-secrets.mjs dist",
+    "test:sitemap-lastmod": "node --test scripts/generate-sitemap.lastmod.test.mjs",
     "test:scan-secrets": "node scripts/scan-dist-secrets.test.mjs",
     "verify-policies": "node scripts/verify-business-policies.mjs",
     "verify-policies:prod": "node scripts/verify-business-policies.mjs --base=https://www.kortechservice.com",
